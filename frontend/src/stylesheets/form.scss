@@ -1,0 +1,36 @@
+$formWidth: 300px;
+$fieldWidth: 200px;
+
+form {
+  width: $formWidth;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+#field-div {
+  position: relative;
+}
+
+#field-div label {
+  position: absolute;
+  left: 17px;
+  top: 7px;
+  font-size: 12px;
+}
+
+#field-div input {
+  display: block;
+  width: $fieldWidth;
+  padding: 10px 10px 5px 10px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+form button {
+  display: block;
+  width: $fieldWidth;
+  margin-top: 10px;
+}

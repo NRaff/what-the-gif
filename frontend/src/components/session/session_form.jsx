@@ -1,11 +1,12 @@
 import React from "react";
-import '../../stylesheets/form.css'
+import '../../stylesheets/root.scss'
 
 class SessionForm extends React.Component{
   constructor(props){
     super(props)
     this.state = this.props.user
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFocus = this.handleFocus.bind(this)
   }
 
   handleSubmit(e){
@@ -16,16 +17,21 @@ class SessionForm extends React.Component{
   update(field){
     return e => this.setState({[field]: e.currentTarget.value})
   }
+
+  handleFocus(){
+  }
   
   renderLogin(){
     return(
       <form onSubmit={this.handleSubmit}>
-        <label>Email
-          <input type="text" value={this.state.email} onChange={this.update('email')} />
-        </label>
-        <label>Password
-          <input type="password" value={this.state.password} onChange={this.update('password')} />
-        </label>
+        <div id = 'field-div'>
+          <label htmlFor='email' id='email'>Email </label>
+          <input type="text" id='email' value={this.state.email} onChange={this.update('email')} onFocus={this.handleFocus} />
+        </div>
+        <div id='field-div'>
+          <label htmlFor='email'>Password </label>
+          <input type="password" id='password' value={this.state.password} onChange={this.update('password')} />
+        </div>
         <button>{this.props.formType}</button>
 
       </form>  
