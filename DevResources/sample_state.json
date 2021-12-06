@@ -1,0 +1,82 @@
+{
+  "session": {
+    "isAuthenticated": true,
+    "currentUser": 1,
+    "currentGame": 1
+  },
+  "ui": {
+
+  },
+  "errors": {
+    "sessionErrors": {},
+    "gameErrors": {},
+    "roundErrors": {},
+    "playerErrors": {}
+  },
+  "entities": {
+    "cards": {
+      "gameDeck": {
+        "1": {
+          "id": 1,
+          "giphyUrl": "someurl.com",
+          "shortName": "CoolGif"
+        },
+        "2": {
+          "id": 2,
+          "giphyUrl": "someurl.com",
+          "shortName": "CoolGif"
+        }
+      },
+      "playedCards": {
+        "3": {
+          "id": 3,
+          "giphyUrl": "someurl.com",
+          "shortName": "CoolGif"
+        }
+      }
+    },
+    "players": {
+      "1": {
+        "id": 1,
+        "name": "Nick",
+        "favGif": "gif url/giphy id",
+        "games": [1,2,3,4],
+        "hand": [1,2,3,4,5]
+      },
+      "2": {
+        "id": 2,
+        "name": "Matt",
+        "favGif": "gif url/giphy id",
+        "games": [1, 2, 3, 4]
+      }
+    },
+    "games": {
+      "1": {
+        "id": 1,
+        "winner": null, 
+        "players": {
+          "1": {
+            "roundsWon": [] 
+          },
+          "2": {
+            "roundsWon": []
+          },
+          "3": {
+            "roundsWon": []
+          }
+        },
+        "currentRound": 1
+      }
+    },
+    "rounds": {
+      "1": {
+        "id": 1,
+        "winner": null, 
+        "winningGif": 1,
+        "judge": null, 
+        "category": "some category/adjective/verb",
+        "submittedGifs": [1,2,3]
+      }
+    }
+  }
+}
