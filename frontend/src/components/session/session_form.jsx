@@ -1,10 +1,12 @@
 import React from "react";
+import '../../stylesheets/root.scss'
 
 class SessionForm extends React.Component{
   constructor(props){
     super(props)
     this.state = this.props.user
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFocus = this.handleFocus.bind(this)
   }
 
   handleSubmit(e){
@@ -15,16 +17,21 @@ class SessionForm extends React.Component{
   update(field){
     return e => this.setState({[field]: e.currentTarget.value})
   }
+
+  handleFocus(){
+  }
   
   renderLogin(){
     return(
       <form onSubmit={this.handleSubmit}>
-        <label>Email
-          <input type="text" value={this.state.email} onChange={this.update('email')} />
-        </label>
-        <label>Password
+        <div>
+          <label>Email </label>
+          <input type="text" value={this.state.email} onChange={this.update('email')} onFocus={this.handleFocus} />
+        </div>
+        <div>
+          <label>Password </label>
           <input type="password" value={this.state.password} onChange={this.update('password')} />
-        </label>
+        </div>
         <button>{this.props.formType}</button>
       </form>  
     )
@@ -32,42 +39,36 @@ class SessionForm extends React.Component{
   renderSignup(){
     return(
       <form onSubmit={this.handleSubmit}>
-        <label>Display Name
+        <div>
+          <label>Display Name</label>
           <input type="text" value={this.state.displayName} onChange={this.update('displayName')} />
-        </label>
-        <label>Email
+        </div>
+        <div>
+          <label>Email</label>
           <input type="text" value={this.state.email} onChange={this.update('email')} />
-        </label>
-        <label>Password
+        </div>
+        <div>
+          <label>Password</label>
           <input type="password" value={this.state.password} onChange={this.update('password')} />
-        </label>
-        <label>Confirm Password
+        </div>
+        <div>
+          <label>Confirm Password</label>
           <input type="password" value={this.state.password2} onChange={this.update('password2')} />
-        </label>
+        </div>
         <button value={this.state.formType}> {this.props.formType}</button>
-
       </form>  
     )
   }
 
-  
-
   render(){
-    if (this.props.formType === 'Sign Up'){
+    let action = this.renderSignup()
+    if (this.props.formType === 'Login'){action = this.renderLogin()}
 
-      return(
-        <>
-          {this.renderSignup()}
-        </>
-
-      )
-    } else {
-      return (
-        <>
-          {this.renderLogin()}
-        </>
-      )
-    }
+    return(
+      <>
+        {action}
+      </>
+    )
   }
 }
 
