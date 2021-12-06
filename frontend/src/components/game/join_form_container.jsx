@@ -5,7 +5,6 @@ import JoinForm from "./join_form";
 const mSTP = state => ({
   errors: state.errors.game,
   game: state.entities.game
-  // Might need something here referencin the game key 
 })
 
 const mDTP = dispatch => ({

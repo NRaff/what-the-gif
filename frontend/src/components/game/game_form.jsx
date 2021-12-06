@@ -24,6 +24,8 @@ class GameForm extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     this.props.createGame(this.state)
+    // if succesful it should redirect to a form/page with the games info
+    
   }
 
   update(field){
