@@ -30,6 +30,7 @@ router.post('/register', (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
+  debugger
   // Check to make sure nobody has already registered with a duplicate email
   User.findOne({ email: req.body.email })
     .then(user => {
@@ -39,7 +40,7 @@ router.post('/register', (req, res) => {
       } else {
         // Otherwise create a new user
         const newUser = new User({
-          displayName: req.body.handle,
+          displayName: req.body.displayName,
           email: req.body.email,
           password: req.body.password
         })
