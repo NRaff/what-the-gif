@@ -47,7 +47,8 @@
         "id": 2,
         "name": "Matt",
         "favGif": "gif url/giphy id",
-        "games": [1, 2, 3, 4]
+        "games": [1, 2, 3, 4],
+        "hand": [1,2,3,4,5]
       }
     },
     "games": {
