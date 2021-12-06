@@ -65,7 +65,8 @@
             "roundsWon": []
           }
         },
-        "currentRound": 1
+        "currentRound": 1,
+        "winningScore": 10
       }
     },
     "rounds": {
