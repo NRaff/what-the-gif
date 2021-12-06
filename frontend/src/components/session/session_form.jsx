@@ -24,58 +24,51 @@ class SessionForm extends React.Component{
   renderLogin(){
     return(
       <form onSubmit={this.handleSubmit}>
-        <div id = 'field-div'>
-          <label htmlFor='email' id='email'>Email </label>
-          <input type="text" id='email' value={this.state.email} onChange={this.update('email')} onFocus={this.handleFocus} />
+        <div>
+          <label>Email </label>
+          <input type="text" value={this.state.email} onChange={this.update('email')} onFocus={this.handleFocus} />
         </div>
-        <div id='field-div'>
-          <label htmlFor='email'>Password </label>
-          <input type="password" id='password' value={this.state.password} onChange={this.update('password')} />
+        <div>
+          <label>Password </label>
+          <input type="password" value={this.state.password} onChange={this.update('password')} />
         </div>
         <button>{this.props.formType}</button>
-
       </form>  
     )
   }
   renderSignup(){
     return(
       <form onSubmit={this.handleSubmit}>
-        <label>Display Name
+        <div>
+          <label>Display Name</label>
           <input type="text" value={this.state.displayName} onChange={this.update('displayName')} />
-        </label>
-        <label>Email
+        </div>
+        <div>
+          <label>Email</label>
           <input type="text" value={this.state.email} onChange={this.update('email')} />
-        </label>
-        <label>Password
+        </div>
+        <div>
+          <label>Password</label>
           <input type="password" value={this.state.password} onChange={this.update('password')} />
-        </label>
-        <label>Confirm Password
+        </div>
+        <div>
+          <label>Confirm Password</label>
           <input type="password" value={this.state.password2} onChange={this.update('password2')} />
-        </label>
+        </div>
         <button value={this.state.formType}> {this.props.formType}</button>
-
       </form>  
     )
   }
 
-  
-
   render(){
-    if (this.props.formType === 'Sign Up'){
+    let action = this.renderSignup()
+    if (this.props.formType === 'Login'){action = this.renderLogin()}
 
-      return(
-        <>
-          {this.renderSignup()}
-        </>
-
-      )
-    } else {
-      return (
-        <>
-          {this.renderLogin()}
-        </>
-      )
-    }
+    return(
+      <>
+        {action}
+      </>
+    )
   }
 }
 

@@ -10,18 +10,18 @@ form {
   margin-top: 50px;
 }
 
-#field-div {
+form>div {
   position: relative;
 }
 
-#field-div label {
+label {
   position: absolute;
   left: 17px;
   top: 7px;
   font-size: 12px;
 }
 
-#field-div input {
+input {
   display: block;
   width: $fieldWidth;
   padding: 10px 10px 5px 10px;
