@@ -4,13 +4,15 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
-import axios from 'axios'
+// import axios from 'axios'
 
-import { logout } from './actions/session_actions';
+import { logout, login } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
-
+  window.login = login
+  window.logout = logout
+  
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
 
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // Render our root component and pass in the store as a prop
   const root = document.getElementById('root');
+  window.store = store
 
   ReactDOM.render(<Root store={store} />, root);
 });
