@@ -7,6 +7,7 @@ const db = require('./config/keys').mongoURI;
 // * Setup
 const port = process.env.PORT || 5000;
 const users = require("./routes/api/users")
+const games = require("./routes/api/games")
 const bodyParser = require('body-parser')
 
 
@@ -20,6 +21,7 @@ require('./config/passport')(passport);
 
 // * Define Routes for App
 app.use("/api/users", users);
+app.use("/api/games", games);
 
 // * Activate and start listening on server
 mongoose
