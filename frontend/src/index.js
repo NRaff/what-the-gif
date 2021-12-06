@@ -6,12 +6,13 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 // import axios from 'axios'
 
-import { logout, login } from './actions/session_actions';
+import { logout, login, signup } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   window.login = login
   window.logout = logout
+  window.signup = signup
   
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
