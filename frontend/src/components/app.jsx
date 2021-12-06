@@ -4,17 +4,22 @@ import { Switch } from 'react-router-dom';
 import Main from './landing';
 import SignupForm from './session/signup_form_container';
 import LoginForm from './session/login_form_container';
+import {Route} from 'react-router-dom'
 
 const App = () => (
-  <div>
 
-    <Main />
-    <SignupForm />
-    <LoginForm />
-  </div>
-  // <Switch>
-  //   <AuthRoute exact path="/" component={Main} />
-  // </Switch>
+
+    // <Main />
+
+
+
+    <Route>
+      <ProtectedRoute exact path="/" component={Main} />
+      <AuthRoute exact path="/login" component={LoginForm} />
+      <AuthRoute exact path="/signup" component={SignupForm} />
+
+    </Route>
+
 );
 
 export default App;
