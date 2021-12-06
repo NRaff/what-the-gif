@@ -1,4 +1,5 @@
 import React from "react";
+import '../../stylesheets/form.css'
 
 class SessionForm extends React.Component{
   constructor(props){
