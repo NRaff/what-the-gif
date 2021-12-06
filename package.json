@@ -1,0 +1,42 @@
+{
+  "name": "whatthegif",
+  "version": "1.0.0",
+  "description": "A realtime gif game.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NRaff/what-the-gif.git"
+  },
+  "keywords": [
+    "gif",
+    "game",
+    "fun"
+  ],
+  "author": "Dream-team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NRaff/what-the-gif/issues"
+  },
+  "homepage": "https://github.com/NRaff/what-the-gif#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "5.13.13",
+    "passport": "^0.5.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
