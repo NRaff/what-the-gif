@@ -1,4 +1,4 @@
-import * as GameUtil from '../util/game_api_util'
+import * as GameUtil from '../util/game_util'
 import jwtDecode from 'jwt-decode'
 
 // Action Types
