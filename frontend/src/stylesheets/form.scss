@@ -17,8 +17,11 @@ form>div {
 label {
   position: absolute;
   left: 17px;
-  top: 7px;
+  top: 0px;
   font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: white;
 }
 
 input {
