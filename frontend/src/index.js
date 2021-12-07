@@ -7,12 +7,18 @@ import { setAuthToken } from './util/session_api_util';
 // import axios from 'axios'
 
 import { logout, login, signup } from './actions/session_actions';
+import {
+  joinGame,
+  createGame
+} from './actions/game_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   window.login = login
   window.logout = logout
   window.signup = signup
+  window.createGame = createGame
+  window.joinGame = joinGame
   
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {

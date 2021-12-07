@@ -6,7 +6,7 @@ const GameReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_GAME:
       // Top level key of game ID and the object of the game
-      return Object.assign({}, state, { [action.game.id]: action.game})
+      return Object.assign({}, state, { [action.game._id]: action.game})
     default:
       return state;
   }

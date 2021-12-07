@@ -19,15 +19,15 @@ export const receiveErrors = errors => ({
 // Thunk action for creating/joining a game
 
 export const createGame = game => dispatch => GameUtil.createGame(game)
-  .then((game) => 
-    (dispatch(receiveGame(game))
+  .then((payload) => 
+    (dispatch(receiveGame(payload.data))
   ), err => 
     dispatch(receiveErrors(err))
   );
 
 export const joinGame = game => dispatch => GameUtil.joinGame(game)
-  .then((game) => 
-    dispatch(receiveGame(game)
+  .then((payload) => 
+    dispatch(receiveGame(payload.data)
   ), err => 
     dispatch(receiveErrors(err))
   )
