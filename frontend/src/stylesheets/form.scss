@@ -11,11 +11,16 @@ form {
   margin: 0 auto;
   margin-top: 50px;
   border-radius: 20px;
-  background-color: white;
+  background-color: black;
 }
 
 form>div {
   position: relative;
+}
+
+form button {
+  
+
 }
 
 label {
@@ -25,7 +30,8 @@ label {
   font-size: 12px;
   padding-left: 5px;
   padding-right: 5px;
-  background-color: white;
+  background-color: black;
+  color: white;
 }
 
 input {
@@ -34,10 +40,15 @@ input {
   padding: 10px;
   border-radius: 10px;
   margin: 10px;
+  color: white;
+  background-color: black;
+  border: 1px solid white;
 }
 
 form button {
   display: block;
-  width: $fieldWidth;
+  width: $fieldWidth + 20;
   margin-top: 10px;
+  background-color: $color2;
+  color: white;
 }
