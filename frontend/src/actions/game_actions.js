@@ -1,5 +1,5 @@
 import * as GameUtil from '../util/game_util'
-import jwtDecode from 'jwt-decode'
+// import jwtDecode from 'jwt-decode'
 
 // Action Types
 export const RECEIVE_GAME = 'RECEIVE_GAME'
