@@ -28,10 +28,12 @@ class SessionForm extends React.Component{
           <label>Email </label>
           <input type="text" value={this.state.email} onChange={this.update('email')} onFocus={this.handleFocus} />
         </div>
+        {this.props.errors ? this.props.errors.email : ''}
         <div>
           <label>Password </label>
           <input type="password" value={this.state.password} onChange={this.update('password')} />
         </div>
+        {this.props.errors ? this.props.errors.password : ''}
         <button>{this.props.formType}</button>
       </form>  
     )
@@ -43,18 +45,22 @@ class SessionForm extends React.Component{
           <label>Display Name</label>
           <input type="text" value={this.state.displayName} onChange={this.update('displayName')} />
         </div>
+        {this.props.errors ? this.props.errors.displayName : ''}
         <div>
           <label>Email</label>
           <input type="text" value={this.state.email} onChange={this.update('email')} />
         </div>
+        {this.props.errors ? this.props.errors.email : ''}
         <div>
           <label>Password</label>
           <input type="password" value={this.state.password} onChange={this.update('password')} />
         </div>
+        {this.props.errors ? this.props.errors.password : ''}
         <div>
           <label>Confirm Password</label>
           <input type="password" value={this.state.password2} onChange={this.update('password2')} />
         </div>
+        {this.props.errors ? this.props.errors.password2 : ''}
         <button value={this.state.formType}> {this.props.formType}</button>
       </form>  
     )
