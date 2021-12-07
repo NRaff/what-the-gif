@@ -11,11 +11,6 @@ export const receiveAllCategories = (categories) => ({
   categories
 })
 
-// export const receiveCategory = (category) => ({
-//   type: RECEIVE_CATEGORY,
-//   category
-// })
-
 export const receiveErrors = errors => ({
   type: RECEIVE_CATEGORY_ERRORS,
   errors
