@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_CARDS } from "../actions/game_deck_actions";
+import { RECEIVE_ALL_CARDS, REMOVE_DEALT_CARDS } from "../actions/game_deck_actions";
 
 const gameDeck = (state = {}, action) => {
   Object.freeze(state)
@@ -10,6 +10,10 @@ const gameDeck = (state = {}, action) => {
         nextState[idx + 1] = card
       }) 
       return nextState
+    case REMOVE_DEALT_CARDS:
+      delete nextState[action.cardId]
+      return nextState
+
 
     default:
       return state;
