@@ -14,12 +14,15 @@ const App = () => (
     <header>
       <Navbar />
     </header>
-
+    
     <Route>
       <Route exact path="/" component={Splash} />
+      <div className='components'>
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
+      </div>
     </Route>
+    
   </div>
 );
 

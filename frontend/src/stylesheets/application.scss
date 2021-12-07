@@ -1,13 +1,24 @@
-$color1: #801869;
-$color2: #3f8dc2;
-$color3: #ce801b;
+@import 'color_palette.scss';
 
 button {
   font-weight: 600;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 0px;
   margin: 10px;
   cursor: pointer;
 }
 
+h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.components {
+  display: block;
+  margin-top: 100px;
+}
+
+body {
+  font-family: sans-serif;
+  // background-color: black;
+}

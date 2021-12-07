@@ -29,13 +29,16 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div className='nav'>
-      <div id='left-nav'>
-        <Link to={`/`}><button>Home</button></Link>
-      </div>
-      <div id='right-nav'>
-        {this.userNav()}
-      </div>
+      <div className='container'>
+        <div className='nav'>
+          <section id='left-nav'>
+            <Link to={`/`}><button>Home</button></Link>
+          </section>
+          <section id='right-nav'>
+            {this.userNav()}
+          </section>
+        </div>
+        <div id="spacer"></div>
       </div>
     )
   }
