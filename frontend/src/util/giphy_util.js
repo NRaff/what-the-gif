@@ -8,7 +8,7 @@ const giphy = {
   gifById: "https://api.giphy.com/v1/gifs/"
 }
 
-const gifObject = gif => ({
+export const gifObject = gif => ({
   title: gif.title,
   embedUrl: gif.embed_url,
   gifId: gif.id,
