@@ -6,5 +6,5 @@ export const createGame = (gameData) => (
 
 export const joinGame = (gameData) => (
   // Not sure on the routes name just guessing its join
-  axios.post('/api/games/join', gameData)
+  axios.patch('/api/games/join', gameData)
 )
