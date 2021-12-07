@@ -26,6 +26,9 @@
 
 .nav button {
   margin: 20px 0px 0px 20px;
-  background-color: $color1;
+  background-color: rgba(0,0,0,0);
   color: white;
+  font-size: 17px;
+  // border: 1px solid white;
+  padding: 5px 10px 5px 10px;
 }
