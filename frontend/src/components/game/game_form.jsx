@@ -1,5 +1,4 @@
 import React from "react";
-import { receiveCurrentUser } from "../../actions/session_actions";
 import { gameKey } from "../component_utils/methods";
 import '../../stylesheets/root.scss'
 
@@ -67,6 +66,7 @@ class GameForm extends React.Component{
           <label>Game Key</label>
             <input type="text"
                    value={this.state.gameCode} 
+                   onChange={this.update('gameCode')}
                    />
           </div >
           <button>Create Game</button>
