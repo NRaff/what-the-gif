@@ -20,12 +20,7 @@ let params = {
   gifId: "&gif_id="
 }
 
-const greenCategories = [
-  "actions",
-  "memes",
-  "reactions"
-]
-
+// Gets a bunch of gifs in an array
 export const getGameDeck = async (categories) => {
   let deckGifs = [];
   for (const cat of categories){
@@ -35,11 +30,12 @@ export const getGameDeck = async (categories) => {
   return deckGifs
 }
 
+// Should return a gif object from giphy
 export const getGifById = gifId => (
   axios.get(giphy.gifById + params.api_key + params.gifId + gifId)
 )
 
-
+// Returns 10 (or specified number) of gifs
 export const searchGifs = (searchTerm, numCards=10) => {
   const requestItems = [
     giphy.search,
@@ -55,11 +51,19 @@ export const searchGifs = (searchTerm, numCards=10) => {
   )
 }
 
+// gets gif parent categories
 export const getGifCategories = () => (
   axios.get(giphy.categories + params.api_key)
 )
 
-// does not hit an api
+const greenCategories = [
+  "actions",
+  "memes",
+  "reactions"
+]
+
+//Segments out sub categories and returns array
+//getGifCategories().then(res => giphy_util.getGameCategories(res))
 export const getGameCategories = payload => {
   // debugger
   const categories = payload.data.data.filter(sub => (
