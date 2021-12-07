@@ -71,9 +71,9 @@ class SessionForm extends React.Component{
     if (this.props.formType === 'Login'){action = this.renderLogin()}
 
     return(
-      <>
+      <div id='form'>
         {action}
-      </>
+      </div>
     )
   }
 }

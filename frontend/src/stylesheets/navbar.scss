@@ -1,7 +1,17 @@
+@import 'color_palette.scss';
+
+.container {
+  position: absolute;
+  top: 0;
+  width: 98vw;
+}
+
 .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  // background-color: rgba(0, 0, 0, .4);
+  // box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .4);
 }
 
 .logged-in {
@@ -11,12 +21,14 @@
 
 #display-name {
   background-color: white;
-  border: 1px solid blue;
   color: black;
 }
 
 .nav button {
-  margin: 5px;
-  background-color: blue;
+  margin: 20px 0px 0px 20px;
+  background-color: rgba(0,0,0,0);
   color: white;
+  font-size: 17px;
+  // border: 1px solid white;
+  padding: 5px 10px 5px 10px;
 }

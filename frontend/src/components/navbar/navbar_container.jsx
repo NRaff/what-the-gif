@@ -5,6 +5,7 @@ import { logout } from "../../actions/session_actions";
 
 const mSTP = state => ({
   errors: state.errors.session,
+  auth: state.session.isAuthenticated,
   currentUser: state.session.user
 })
 

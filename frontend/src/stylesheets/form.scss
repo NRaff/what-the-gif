@@ -1,3 +1,5 @@
+@import 'color_palette.scss';
+
 $formWidth: 300px;
 $fieldWidth: 200px;
 
@@ -8,6 +10,8 @@ form {
   align-items: center;
   margin: 0 auto;
   margin-top: 50px;
+  border-radius: 20px;
+  background-color: black;
 }
 
 form>div {
@@ -17,20 +21,29 @@ form>div {
 label {
   position: absolute;
   left: 17px;
-  top: 7px;
+  top: 3px;
   font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: black;
+  color: white;
 }
 
 input {
   display: block;
   width: $fieldWidth;
-  padding: 10px 10px 5px 10px;
+  padding: 10px;
   border-radius: 10px;
-  margin: 5px;
+  margin: 10px;
+  color: white;
+  background-color: black;
+  border: 1px solid white;
 }
 
 form button {
   display: block;
-  width: $fieldWidth;
+  width: $fieldWidth + 20;
   margin-top: 10px;
+  background-color: $color2;
+  color: white;
 }
