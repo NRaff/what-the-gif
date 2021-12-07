@@ -2,24 +2,25 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import Main from './landing';
+import Splash from './splash/splash_container';
 import SignupForm from './session/signup_form_container';
 import LoginForm from './session/login_form_container';
 import {Route} from 'react-router-dom'
+import Navbar from './navbar/navbar_container';
 
 const App = () => (
 
-
-    // <Main />
-
-
+  <div>
+    <header>
+      <Navbar />
+    </header>
 
     <Route>
-      <ProtectedRoute exact path="/" component={Main} />
+      <Route exact path="/" component={Splash} />
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
-
     </Route>
-
+  </div>
 );
 
 export default App;
