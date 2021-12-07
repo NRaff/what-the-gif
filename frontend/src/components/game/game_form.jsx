@@ -47,18 +47,20 @@ class GameForm extends React.Component{
             <input type="number"
                    min="3"
                    max="8"
-                   value={parseInt(this.state.maxPlayers)} 
+                   value={this.state.maxPlayers} 
                    onChange={this.update('maxPlayers')}/>
         </div>
         <div>
           <label>Max Score</label>
-            <input type="text"
+            <input type="number"
+                   min="1"
+                   max="15"
                    value={this.state.scoreToWin} 
                    onChange={this.update('scoreToWin')}/>
         </div>
         <div>
           <label>Round Time Limit</label>
-            <input type="text"
+            <input type="number"
                    value={this.state.roundTimeLimit} 
                    onChange={this.update('roundTimeLimit')}/>
         </div >
