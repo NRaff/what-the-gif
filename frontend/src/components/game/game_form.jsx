@@ -1,4 +1,5 @@
 import React from "react";
+import { receiveCurrentUser } from "../../actions/session_actions";
 import { gameKey } from "../component_utils/methods";
 
 // Name of the game/lobby name
@@ -10,12 +11,12 @@ class GameForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
+      gameOwner: this.props.currentUser,
       title: '',
-      numPlayers: '',
+      maxPlayers: 8,
       gameCode: gameKey(6),
-      scoreToWin: '',
-      //players: {}? not sure about this one
-      roundTimeLimit: ''
+      scoreToWin: 8,
+      roundTimeLimit: 60
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -44,8 +45,8 @@ class GameForm extends React.Component{
             <input type="number"
                    min="3"
                    max="8"
-                   value={parseInt(this.state.numPlayers)} 
-                   onChange={this.update('numPlayers')}/>
+                   value={parseInt(this.state.maxPlayers)} 
+                   onChange={this.update('maxPlayers')}/>
           </label>
           <label>Max Score
             <input type="text"
