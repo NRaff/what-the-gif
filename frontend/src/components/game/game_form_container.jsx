@@ -1,7 +1,6 @@
 import GameForm from "./game_form";
 import { connect } from "react-redux";
-import {createGame} from "../../actions/game_actions"
-
+import { createGame } from "../../actions/game_actions";
   // State will be set in the form
 const mSTP = state => ({
   // Errors name may be different
