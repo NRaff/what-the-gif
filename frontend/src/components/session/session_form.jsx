@@ -10,6 +10,7 @@ class SessionForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFocus = this.handleFocus.bind(this)
     this.anonLogin = this.anonLogin.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
   }
 
   handleSubmit(e){
@@ -22,6 +23,10 @@ class SessionForm extends React.Component{
   }
 
   handleFocus(){
+  }
+
+  componentWillUnmount(){
+    this.props.clearErrors()
   }
 
   anonLogin(){
@@ -83,7 +88,7 @@ class SessionForm extends React.Component{
 
   render(){
     let action = this.renderSignup()
-    if (this.props.formType === 'Login'){action = this.renderLogin()}
+    if (this.props.formType === 'Log In'){action = this.renderLogin()}
 
     return(
       <div id='form'>
