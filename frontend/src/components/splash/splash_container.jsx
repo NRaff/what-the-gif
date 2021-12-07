@@ -3,7 +3,8 @@ import Splash from "./splash";
 
 
 const mSTP = state => ({
-  errors: state.errors.session
+  errors: state.errors.session,
+  auth: state.session.isAuthenticated
 })
 
 
