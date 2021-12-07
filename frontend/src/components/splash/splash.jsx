@@ -1,5 +1,6 @@
 import React from "react";
 import '../../stylesheets/root.scss'
+import { Link } from "react-router-dom";
 
 class Splash extends React.Component {
   constructor(props) {
@@ -14,8 +15,8 @@ class Splash extends React.Component {
           <section className='center'>
             <h1>WHAT THE GIF!?</h1>
             <div id='game-nav'>
-              <button>Create Game</button>
-              <button>Join Game</button>
+              <Link to='/create'><button>Create Game</button></Link>
+              <Link to='/join'><button>Join Game</button></Link>
             </div>
           </section>
           <section className='bottom' />
