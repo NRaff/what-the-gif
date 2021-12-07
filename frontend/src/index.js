@@ -11,6 +11,7 @@ import {
   joinGame,
   createGame
 } from './actions/game_actions'
+import { fetchCards } from './actions/game_deck_actions';
 import { getGameCategories, getGameDeck, getGifCategories, searchGifs } from './util/giphy_util';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.searchGifs = searchGifs
   window.getGifCategories = getGifCategories
   window.getGameCategories = getGameCategories
+  window.fetchCards = fetchCards
+
   const cats = [
     'wow',
     'wtf',

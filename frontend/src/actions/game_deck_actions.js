@@ -1,4 +1,4 @@
-// import * as GiphyUtil from '../util/gigphy_util'
+import * as GiphyUtil from '../util/giphy_util'
 
 export const RECEIVE_ALL_CARDS = "RECEIVE_ALL_CARDS"
 export const REMOVE_DEALT_CARDS = "REMOVE_DEALT_CARDS"
@@ -13,5 +13,5 @@ export const removeDeltCards = cardId => ({
   cardId
 })
 
-// export const fetchCards = () => dispatch => GiphyUtil.fetchCards()
-//   .then(payload => dispatch(receiveCards(payload.data)))
+export const fetchCards = () => dispatch => GiphyUtil.getGameDeck(['happy'])
+  .then(payload => dispatch(receiveCards(payload)))
