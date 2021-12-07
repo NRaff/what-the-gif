@@ -6,7 +6,7 @@ class JoinForm extends React.Component {
     super(props)
     this.state = {
       playerId: this.props.currentUser,
-      gameKey: ''
+      gameCode: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -18,7 +18,7 @@ class JoinForm extends React.Component {
   }
 
   update(field){
-    return e => this.setState({[field]: e.currentTarget.value})
+    return e => this.setState({[field]: e.target.value})
   }
 
   render(){
@@ -27,8 +27,8 @@ class JoinForm extends React.Component {
         <div>
         <label>Game Code</label>
           <input type="text"
-                 value={this.state.gameKey} 
-                 onChange={this.update('gameKey')}/>
+                 value={this.state.gameCode} 
+                 onChange={this.update('gameCode')}/>
         </div>
         <button>Join Game</button>
       </form>
