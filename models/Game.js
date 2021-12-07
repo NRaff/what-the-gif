@@ -27,6 +27,18 @@ const GameSchema = new Schema({
   maxPlayers: {
     type: Number,
     required: true
+  }, 
+  scoreToWin: {
+    type: Number,
+    required: true
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  roundTimeLimit: {
+    type: Number,
+    required: true
   }
 }, {
   timestamps: true
