@@ -1,6 +1,6 @@
 import React from "react";
-import { receiveCurrentUser } from "../../actions/session_actions";
 import { gameKey } from "../component_utils/methods";
+import '../../stylesheets/root.scss'
 
 // Name of the game/lobby name
 // Max number of players for the game
@@ -36,33 +36,41 @@ class GameForm extends React.Component{
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
-          <label>Game Name
+        <div>
+          <label>Game Name</label>
             <input type="text"
                    value={this.state.title} 
                    onChange={this.update('title')}/>
-          </label>
-          <label>Max Players
+        </div>
+        <div>
+          <label>Max Players</label>
             <input type="number"
                    min="3"
                    max="8"
-                   value={parseInt(this.state.maxPlayers)} 
+                   value={this.state.maxPlayers} 
                    onChange={this.update('maxPlayers')}/>
-          </label>
-          <label>Max Score
-            <input type="text"
+        </div>
+        <div>
+          <label>Max Score</label>
+            <input type="number"
+                   min="1"
+                   max="15"
                    value={this.state.scoreToWin} 
                    onChange={this.update('scoreToWin')}/>
-          </label>
-          <label>Round Time Limit
-            <input type="text"
+        </div>
+        <div>
+          <label>Round Time Limit</label>
+            <input type="number"
                    value={this.state.roundTimeLimit} 
                    onChange={this.update('roundTimeLimit')}/>
-          </label>
-          <label>Game Key
+        </div >
+        <div>
+          <label>Game Key</label>
             <input type="text"
                    value={this.state.gameCode} 
+                   onChange={this.update('gameCode')}
                    />
-          </label>
+          </div >
           <button>Create Game</button>
       </form>
     )

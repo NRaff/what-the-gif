@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Navbar from "./navbar";
 import { logout } from "../../actions/session_actions";
+import { receiveCurrentUser } from "../../actions/session_actions";
 
 
 const mSTP = state => ({
@@ -11,7 +12,8 @@ const mSTP = state => ({
 
 
 const mDTP = dispatch => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  receiveCurrentUser: (user) => dispatch(receiveCurrentUser(user))
 })
 
 export default connect(mSTP, mDTP)(Navbar)

@@ -1,11 +1,12 @@
 import React from "react";
+import '../../stylesheets/root.scss'
 
 class JoinForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       playerId: this.props.currentUser,
-      gameKey: ''
+      gameCode: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,17 +18,18 @@ class JoinForm extends React.Component {
   }
 
   update(field){
-    return e => this.setState({[field]: e.currentTarget.value})
+    return e => this.setState({[field]: e.target.value})
   }
 
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>Game Code
+        <div>
+        <label>Game Code</label>
           <input type="text"
-                 value={this.state.gameKey} 
-                 onChange={this.update('gameKey')}/>
-        </label>
+                 value={this.state.gameCode} 
+                 onChange={this.update('gameCode')}/>
+        </div>
         <button>Join Game</button>
       </form>
     )

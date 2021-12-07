@@ -9,10 +9,13 @@ class Navbar extends React.Component {
   }
 
   userNav() {
+    const user = this.props.currentUser
     return (
       (this.props.auth ? (
         <div className='logged-in'>
-          <button id='display-name'>{this.props.currentUser.displayName}</button>
+          <Link to={`/profile/${user.id}`}>
+            <button id='display-name'>{user.displayName}</button>
+          </Link>
           <button id='log-out' onClick={this.props.logout}>Log Out</button>
         </div>
       ) : (

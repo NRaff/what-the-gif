@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import UsersReducer from "./users_reducer";
+import UserReducer from "./user_reducer";
 import GameReducer from "./game_reducer";
 import cards from "./cards_reducer";
 
 const EntitiesReducer = combineReducers({
-  users: UsersReducer,
+  users: UserReducer,
   games: GameReducer,
   cards: cards
 })

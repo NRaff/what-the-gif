@@ -1,5 +1,7 @@
 import React from "react";
 import '../../stylesheets/root.scss'
+import { gameKey } from "../component_utils/methods";
+import { Link } from "react-router-dom";
 
 class SessionForm extends React.Component{
   constructor(props){
@@ -7,6 +9,8 @@ class SessionForm extends React.Component{
     this.state = this.props.user
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFocus = this.handleFocus.bind(this)
+    this.anonLogin = this.anonLogin.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
   }
 
   handleSubmit(e){
@@ -19,6 +23,20 @@ class SessionForm extends React.Component{
   }
 
   handleFocus(){
+  }
+
+  componentWillUnmount(){
+    this.props.clearErrors()
+  }
+
+  anonLogin(){
+    let pass = gameKey(8)
+    this.setState({
+      displayName: gameKey(6),
+      email: gameKey(7) + '@whatthegif.com',
+      password: pass,
+      password2: pass
+    })
   }
   
   renderLogin(){
@@ -34,7 +52,8 @@ class SessionForm extends React.Component{
           <input type="password" value={this.state.password} onChange={this.update('password')} />
         </div>
         {this.props.errors ? this.props.errors.password : ''}
-        <button>{this.props.formType}</button>
+        <div>No account? <Link to='/signup'>Sign Up</Link></div>
+        <button onClick={this.handleSubmit}>{this.props.formType}</button>
       </form>  
     )
   }
@@ -61,6 +80,7 @@ class SessionForm extends React.Component{
           <input type="password" value={this.state.password2} onChange={this.update('password2')} />
         </div>
         {this.props.errors ? this.props.errors.password2 : ''}
+        <button onClick={this.anonLogin}>Generate Anonymous Login</button>
         <button value={this.state.formType}> {this.props.formType}</button>
       </form>  
     )
@@ -68,7 +88,7 @@ class SessionForm extends React.Component{
 
   render(){
     let action = this.renderSignup()
-    if (this.props.formType === 'Login'){action = this.renderLogin()}
+    if (this.props.formType === 'Log In'){action = this.renderLogin()}
 
     return(
       <div id='form'>
