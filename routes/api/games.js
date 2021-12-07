@@ -47,11 +47,14 @@ router.post("/create", (req, res) => {
         return res.status(400).json({game: "Please generate a new code"})
       } else {
         const newGame = new Game({
-          players: req.body.players, 
+          // players: req.body.players, testtest
           round: req.body.round,
           gameOwner: req.body.gameOwner,
           gameCode: req.body.gameCode,
           maxPlayers: req.body.maxPlayers
+        })
+        newGame.players.push({
+          user: req.body.gameOwner
         })
         newGame.save()
           .then(game => res.json(game))

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Player = require('./Player')
+const PlayerSchema = require('./Player')
 
 const GameSchema = new Schema({
   winner: {
@@ -8,7 +8,7 @@ const GameSchema = new Schema({
     ref: 'users'
   },
   players: {
-    type: [],//{Player},
+    type: [PlayerSchema],//{Player},
     required: true
   },
   round: {
