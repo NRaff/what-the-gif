@@ -22,8 +22,8 @@ const App = () => (
       <div className='components'>
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
-      <Route path="/create" component={NewGame} />
-      <Route path="/join" component={JoinGame} />
+      <ProtectedRoute path="/create" component={NewGame} />
+      <ProtectedRoute path="/join" component={JoinGame} />
       </div>
     </Route>
   </div>
