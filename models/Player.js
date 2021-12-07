@@ -12,5 +12,4 @@ const PlayerSchema = new Schema({
     ref: 'users'
   }
 })
-// module.exports = Player = mongoose.model('Player', PlayerSchema)
 module.exports = PlayerSchema

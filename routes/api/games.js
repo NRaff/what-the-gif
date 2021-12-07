@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const Game = require('../../models/Game')
-const Player = require('../../models/Player')
+const PlayerSchema = require('../../models/Player')
 
 // * Get User Games
 router.get("/", (req, res) => res.json({
@@ -18,22 +18,10 @@ router.patch("/join", (req, res) => {
       if (!game) {
         return res.status(422).json({game: "Invalid game code"})
       } else {
-        Player.findById(req.body.playerId)
-          .then(player => {
-            if (!player) {
-              return res.status(422).json({players: "Unable to connect player"})
-            } else {
-              const newPlayer = new Player({user: player})
-              newPlayer.save()
-                .then(player => {
-                  game.players.push(player)
-                  game.save()
-                    .then(updatedGame => res.json(updatedGame))
-                    .catch(err => console.log(err))
-                })
-                .catch(err => console.log(err))
-            }
-          })
+      game.players.push({user: req.body.playerId})
+      game.save()
+        .then(updatedGame => res.json(updatedGame))
+        .catch(err => console.log(err))
       }
     })
 })
