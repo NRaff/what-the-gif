@@ -4,7 +4,8 @@ import axios from "axios";
 const giphy = {
   search: "https://api.giphy.com/v1/gifs/search",
   trending: "https://api.giphy.com/v1/gifs/trending",
-  categories:"https://api.giphy.com/v1/gifs/categories"
+  categories:"https://api.giphy.com/v1/gifs/categories",
+  gifById: "https://api.giphy.com/v1/gifs/"
 }
 
 // always set the api key as 
@@ -15,7 +16,8 @@ let params = {
   limit: "&limit=",
   offset: "&offset=",
   rating: "&rating=pg-13",
-  lang: "lang=en",
+  lang: "&lang=en",
+  gifId: "&gif_id="
 }
 
 const greenCategories = [
@@ -32,6 +34,10 @@ export const getGameDeck = async (categories) => {
   }
   return deckGifs
 }
+
+export const getGifById = gifId => (
+  axios.get(giphy.gifById + params.api_key + params.gifId + gifId)
+)
 
 
 export const searchGifs = (searchTerm, numCards=10) => {
