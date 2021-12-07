@@ -4,7 +4,7 @@ import JoinForm from "./join_form";
 
 const mSTP = state => ({
   errors: state.errors.game,
-  game: state.entities.game
+  currentUser: state.session.user.id
 })
 
 const mDTP = dispatch => ({
