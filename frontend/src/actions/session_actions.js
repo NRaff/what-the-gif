@@ -55,9 +55,10 @@ export const login = user => dispatch => (
 
 // Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend
 export const signup = user => dispatch => (
-  APIUtil.signup(user).then(({data}) => (
-    dispatch(receiveCurrentUser(data))
-  ), err => (
+  APIUtil.signup(user).then(() => {
+    // debugger
+    dispatch(login(user))
+  }, err => (
     dispatch(receiveErrors(err.response.data))
   ))
 );
