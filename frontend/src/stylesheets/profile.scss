@@ -1,0 +1,25 @@
+#profile-module {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#profile-module h1 {
+  margin-bottom: 20px;
+}
+
+#p-info {
+  display: block;
+  width: 300px;
+  justify-content: left;
+}
+
+#p-info h2 {
+  display: inline-block;
+  font-weight: 800;
+  margin-right: 10px;
+}
+
+#p-info p {
+  display: inline-block;
+}

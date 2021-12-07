@@ -8,8 +8,13 @@ class Profile extends React.Component {
   }
 
   render(){
+    const user = this.props.currentUser
     return(
-      <div></div>
+      <div id='profile-module'>
+        <h1>User Profile</h1>
+        <div id='p-info'><h2>Display Name:</h2> <p>{user.displayName}</p></div>
+        <div id='p-info'><h2>Email:</h2> <p>{user.email}</p></div>
+      </div>
     )
   }
 }
