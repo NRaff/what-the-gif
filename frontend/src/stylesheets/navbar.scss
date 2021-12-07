@@ -1,0 +1,22 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logged-in {
+  display: flex;
+  flex-direction: row;
+}
+
+#display-name {
+  background-color: white;
+  border: 1px solid blue;
+  color: black;
+}
+
+.nav button {
+  margin: 5px;
+  background-color: blue;
+  color: white;
+}
