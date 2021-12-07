@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100vh;
+  min-height: 375px;
   background-color: rgba(0, 0, 0, .6);
 }
 
@@ -36,13 +37,13 @@
 }
 
 .center h1 {
-  font-size: 50px;
+  font-size: 80px;
   color: white;
   // text-shadow: 0px 4px 4px rgba(0, 0, 0, .6);
 }
 
 .splash button {
-  background-color: $color1;
+  background-color: $color2;
   color: white;
   // box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .6);
 }

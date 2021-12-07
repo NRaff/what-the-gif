@@ -12,7 +12,7 @@ class Splash extends React.Component {
         <div className='splash'>
           <section className='top' />
           <section className='center'>
-            <h1>What the GIF!?</h1>
+            <h1>WHAT THE GIF!?</h1>
             <div id='game-nav'>
               <button>Create Game</button>
               <button>Join Game</button>
