@@ -23,12 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
   window.searchGifs = searchGifs
   window.getGifCategories = getGifCategories
   window.getGameCategories = getGameCategories
-  window.categories = [
+  const cats = [
     'wow',
     'wtf',
     'yikes'
   ]
-  window.getGameDeck = getGameDeck(categories)
+  window.cats = cats
+  window.getGameDeck = getGameDeck(cats)
   
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
