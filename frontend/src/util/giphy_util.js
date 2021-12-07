@@ -24,11 +24,12 @@ const greenCategories = [
   "reactions"
 ]
 
-export const searchGifs = searchTerm => {
+export const searchGifs = (searchTerm, numCards=10) => {
   const requestItems = [
     giphy.search,
     params.api_key,
     params.rating,
+    `${params.limit}${numCards}`,
     params.q,
     searchTerm,
   ]
