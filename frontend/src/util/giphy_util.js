@@ -24,16 +24,15 @@ const greenCategories = [
   "reactions"
 ]
 
-export const searchDeckCategories = async (categories) => {
+export const getGameDeck = async (categories) => {
   let deckGifs = [];
-  await categories.forEach(cat => {
-    searchGifs(cat,30).then(res => {
-      // debugger
-      deckGifs = deckGifs.concat(res.data.data)
-    })
-  })
+  for (const cat of categories){
+    let response = await searchGifs(cat, 30)
+    deckGifs = deckGifs.concat(response.data.data)
+  }
   return deckGifs
 }
+
 
 export const searchGifs = (searchTerm, numCards=10) => {
   const requestItems = [

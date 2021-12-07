@@ -11,7 +11,7 @@ import {
   joinGame,
   createGame
 } from './actions/game_actions'
-import { getGameCategories, getGifCategories, searchDeckCategories, searchGifs } from './util/giphy_util';
+import { getGameCategories, getGameDeck, getGifCategories, searchGifs } from './util/giphy_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getGameCategories = getGameCategories
   window.categories = [
     'wow',
-    // 'wtf',
-    // 'yikes',
+    'wtf',
+    'yikes'
   ]
-  window.searchDeckCategories = searchDeckCategories
+  window.getGameDeck = getGameDeck(categories)
   
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
