@@ -5,6 +5,7 @@ export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT"
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
+export const CLEAR_ERRORS = "CLEAR_ERRORS"
 
 
 export const logoutUser = () => ({
@@ -24,6 +25,10 @@ export const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
 });
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
+})
 
 export const logout = () => dispatch => {
   // Remove the token from local storage
@@ -50,9 +55,10 @@ export const login = user => dispatch => (
 
 // Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend
 export const signup = user => dispatch => (
-  APIUtil.signup(user).then(({data}) => (
-    dispatch(receiveCurrentUser(data))
-  ), err => (
+  APIUtil.signup(user).then(() => {
+    // debugger
+    dispatch(login(user))
+  }, err => (
     dispatch(receiveErrors(err.response.data))
   ))
 );

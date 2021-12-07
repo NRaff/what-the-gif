@@ -8,6 +8,10 @@ class Splash extends React.Component {
     this.splashNav = this.splashNav.bind(this)
   }
 
+  // componentDidMount(){
+  //   this.props.receiveCurrentUser(this.props.currentUser)
+  // }
+
   splashNav(){
     return (
       (this.props.auth ? (
@@ -18,7 +22,7 @@ class Splash extends React.Component {
       ) : (
         <div className='logged-out'>
           <Link to='/login'>
-            <button id='log-in-button'>Login to Play</button>
+            <button id='log-in-button'>Log In to Play</button>
           </Link>
         </div >
       )))

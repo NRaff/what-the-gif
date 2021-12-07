@@ -8,6 +8,10 @@ class Navbar extends React.Component {
     this.userNav = this.userNav.bind(this)
   }
 
+  // componentDidMount(){
+  //   this.props.receiveCurrentUser(this.props.currentUser)
+  // }
+
   userNav() {
     return (
       (this.props.auth ? (
