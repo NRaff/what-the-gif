@@ -1,4 +1,5 @@
 import React from "react";
+import '../../stylesheets/root.scss'
 
 class JoinForm extends React.Component {
   constructor(props){
@@ -23,11 +24,12 @@ class JoinForm extends React.Component {
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>Game Code
+        <div>
+        <label>Game Code</label>
           <input type="text"
                  value={this.state.gameKey} 
                  onChange={this.update('gameKey')}/>
-        </label>
+        </div>
         <button>Join Game</button>
       </form>
     )
