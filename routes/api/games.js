@@ -39,7 +39,10 @@ router.post("/create", (req, res) => {
           round: req.body.round,
           gameOwner: req.body.gameOwner,
           gameCode: req.body.gameCode,
-          maxPlayers: req.body.maxPlayers
+          maxPlayers: req.body.maxPlayers,
+          scoreToWin: req.body.scoreToWin,
+          title: req.body.title,
+          roundTimeLimit: req.body.roundTimeLimit
         })
         newGame.players.push({
           user: req.body.gameOwner
