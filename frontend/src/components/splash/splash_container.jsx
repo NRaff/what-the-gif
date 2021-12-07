@@ -5,8 +5,7 @@ import { receiveCurrentUser } from "../../actions/session_actions";
 
 const mSTP = state => ({
   errors: state.errors.session,
-  auth: state.session.isAuthenticated,
-  currentUser: state.session.user.id
+  auth: state.session.isAuthenticated
 })
 
 
