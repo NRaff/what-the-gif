@@ -24,6 +24,17 @@ const greenCategories = [
   "reactions"
 ]
 
+export const searchDeckCategories = async (categories) => {
+  let deckGifs = [];
+  await categories.forEach(cat => {
+    searchGifs(cat,30).then(res => {
+      // debugger
+      deckGifs = deckGifs.concat(res.data.data)
+    })
+  })
+  return deckGifs
+}
+
 export const searchGifs = (searchTerm, numCards=10) => {
   const requestItems = [
     giphy.search,
