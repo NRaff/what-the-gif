@@ -17,7 +17,7 @@ const App = () => (
       <Navbar />
     </header>
     
-    <Switch>
+    <Route>
       <Route exact path="/" component={Splash} />
       <div className='components'>
       <AuthRoute exact path="/login" component={LoginForm} />
@@ -25,7 +25,7 @@ const App = () => (
       <Route path="/create" component={NewGame} />
       <Route path="/join" component={JoinGame} />
       </div>
-    </Switch>
+    </Route>
   </div>
 );
 
