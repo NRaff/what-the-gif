@@ -1,4 +1,4 @@
-
+import { removeDeltCards } from "./game_deck_actions"
 export const RECEIVE_PLAYED_CARD = 'RECEIVE_PLAYED_CARD'
 export const REMOVE_DEALT_CARD = 'REMOVE_DEALT_CARD'
 
@@ -15,4 +15,7 @@ export const removeDeltCard = cardId => ({
 
 // The corresponding thunk action to receive a played card should also call the removeDeltCards action
 
-// export const fetchCard = card => dispatch => 
+export const fetchCard = card => dispatch => {
+   dispatch(receivePlayedCard(card))
+   dispatch(removeDeltCards(card))
+}
