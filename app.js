@@ -4,10 +4,20 @@ const app = express();
 const passport = require('passport');
 const db = require('./config/keys').mongoURI;
 const path = require('path')
-const http = require('http')
-const server = http.createServer(app)
+const {createServer} = require('http')
+const server = createServer(app)
 const { Server } = require("socket.io")
 const io = new Server(server)
+// const io = new Server({
+//   server,
+//   // serveClient: false,
+//   // cors: {
+//   //   origin: "http://localhost:3000/#/",
+//   //   methods: ["GET", "POST", "PATCH"],
+//   //   allowedHeaders: ["Access-Control-Allow-Origin"],
+//   //   credentials: true,
+//   // }
+// })
 
 
 // * Setup
@@ -46,10 +56,20 @@ mongoose
 // * Setup Sockets
 io.on('connection', socket => {
   console.log('a user connected')
+  socket.on('test chat', msg => {
+    io.emit('test chat', console.log(msg))
+  })
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
 })
 
 server.listen(port, () => {
   console.log(`Listening on ${port}`)
 })
+
+// io.listen(port, () => {
+//   console.log(`Listening from io`)
+// })
 
 // app.listen(port, () => console.log(`Server is running on port ${port}`));
