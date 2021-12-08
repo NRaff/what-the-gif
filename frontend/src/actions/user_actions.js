@@ -4,11 +4,15 @@ export const RECEIVE_FAVORITE_GIF = "RECEIVE_FAVORITE_GIF";
 export const REMOVE_FAVORITE_GIF = "REMOVE_FAVORITE_GIF";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const RECEIVE_USER = "RECEIVE_USER"
+
 
 export const receiveFavoriteGIF = gif => ({
   type: RECEIVE_FAVORITE_GIF,
   gif
 });
+
+
 
 export const removeFavoriteGIF = gifId => ({
   type: REMOVE_FAVORITE_GIF,

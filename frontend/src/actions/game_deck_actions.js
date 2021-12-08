@@ -14,15 +14,11 @@ export const removeDeltCard = cardId => ({
   cardId
 })
 
-export const removeDeltCards = cards => {
-return ({
-
+export const removeDeltCards = payload => ({
   type: REMOVE_CARDS,
-  cards
-}
+  payload
+})
 
-)
-}
 
 export const fetchCards = () => dispatch => GiphyUtil.getGameDeck(['happy'])
   .then(payload => dispatch(receiveCards(payload)))

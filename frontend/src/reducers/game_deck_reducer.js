@@ -17,9 +17,11 @@ const gameDeck = (state = {}, action) => {
       return nextState
 
     case REMOVE_CARDS:
-      action.cards.forEach((card) => {
+      let deleteCards = action.payload.cards
+      debugger
+      deleteCards.forEach((card) => {
 
-        delete nextState[card.gifId]
+        delete nextState[card]
       })
       return nextState
     default:

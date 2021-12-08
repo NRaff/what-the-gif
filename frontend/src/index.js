@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 // import axios from 'axios'
 
+import { fetchHand, removeCardHand, receiveCardToHand } from './actions/hand_actions';
 import { logout, login, signup } from './actions/session_actions';
 import {
   joinGame,
@@ -19,6 +20,7 @@ import { fetchGifCategories } from './actions/deck_category_actions';
 import { getGameCategories, getGameDeck, getGifCategories, searchGifs } from './util/giphy_util';
 import { playCategory } from './actions/deck_category_actions';
 import { fetchGifs } from './actions/searched_gifs_actions';
+import {fetchPlayedCards} from './actions/played_cards_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -33,10 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchCards = fetchCards
   window.fetchGifs = fetchGifs
   window.fetchCard = fetchCard
+  window.fetchPlayedCards = fetchPlayedCards
+  window.removeCardHand = removeCardHand
+  window.receiveCardToHand = receiveCardToHand
 
   window.fetchPlayedCategory = fetchPlayedCategory
   window.fetchGifCategories = fetchGifCategories
   window.playCategory = playCategory
+  window.fetchHand = fetchHand
 
   const cats = [
     'wow',
