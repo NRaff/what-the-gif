@@ -1,4 +1,4 @@
-import { RECEIVE_PLAYED_CATEGORY, REMOVE_PLAYED_CATEGORY } from "../actions/played_category_actions";
+import { RECEIVE_PLAYED_CATEGORY, REMOVE_PLAYED_CATEGORY } from "../actions/played_category_actions"; // test
 
 const playedCategory = (state = {}, action) => {
   Object.freeze(state)
