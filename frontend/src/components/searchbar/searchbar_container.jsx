@@ -9,7 +9,7 @@ const mSTP = state => ({
 
 
 const mDTP = dispatch => ({
-  fetchGifs: searchTerm => dispatch(fetchGifs(searchTerm)),
+  fetchGifs: (searchTerm, num) => dispatch(fetchGifs(searchTerm, num)),
   clearGifs: () => dispatch(clearGifs())
 })
 

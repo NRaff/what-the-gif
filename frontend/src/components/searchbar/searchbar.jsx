@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.fetchGifs(this.state.searchTerm)
+    this.props.fetchGifs(this.state.searchTerm, 9)
   }
 
   updateSearchTerm(e){

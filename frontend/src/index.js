@@ -21,6 +21,9 @@ import { getGameCategories, getGameDeck, getGifCategories, searchGifs } from './
 import { playCategory } from './actions/deck_category_actions';
 import { fetchGifs } from './actions/searched_gifs_actions';
 import {fetchPlayedCards} from './actions/played_cards_actions'
+import { setFavoriteGIF } from './util/user_util'
+import { setFavGIF } from './actions/user_actions'
+import { deleteFavGIF } from './actions/user_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -38,6 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchPlayedCards = fetchPlayedCards
   window.removeCardHand = removeCardHand
   window.receiveCardToHand = receiveCardToHand
+
+
+  window.setFavoriteGIF = setFavoriteGIF
+  window.gifPayload = { 
+    _id: '61b0f4408b2dfb580c1c9c31',
+    gifId: '10UeedrT5MIfPG'
+  }
+  window.setFavGIF = setFavGIF
+  window.deleteFavGIF = deleteFavGIF
 
   window.fetchPlayedCategory = fetchPlayedCategory
   window.fetchGifCategories = fetchGifCategories
