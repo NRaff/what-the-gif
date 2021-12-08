@@ -10,9 +10,9 @@ export const receiveFavoriteGIF = user => ({
   user
 });
 
-export const removeFavoriteGIF = gifId => ({
+export const removeFavoriteGIF = user => ({
   type: REMOVE_FAVORITE_GIF,
-  gifId
+  user
 });
 
 export const receiveErrors = errors => ({
@@ -31,16 +31,9 @@ export const setFavGIF = gif => dispatch => UserUtil.setFavoriteGIF(gif)
       dispatch(receiveErrors(err))
   );
 
-export const updateFavGIF = gif => dispatch => UserUtil.editFavoriteGIF(gif)
-  .then((user) =>
-  (dispatch(receiveFavoriteGIF(user))
-  ), err =>
-    dispatch(receiveErrors(err))
-  );
-
-export const deleteFavGIF = gifId => dispatch => UserUtil.editFavoriteGIF(gifId)
-  .then(() =>
-  (dispatch(removeFavoriteGIF(gifId))
+export const deleteFavGIF = (user) => dispatch => UserUtil.removeFavoriteGIF(user)
+  .then((payload) =>
+  (dispatch(removeFavoriteGIF(payload.data.user))
   ), err =>
     dispatch(receiveErrors(err))
   );

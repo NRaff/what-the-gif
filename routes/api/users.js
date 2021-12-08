@@ -131,4 +131,20 @@ router.patch('/fav/create', (req, res) => {
   })
 })
 
+router.patch('/fav/delete', (req, res) => {
+  User.findByIdAndUpdate(req.body._id, {favGIF: ''}, {new: true, useFindAndModify: false}, (error, doc) => {
+
+    if (error) {
+        console.log('Something went wrong when deleting gif')
+        return res.status(400).json({ error: 'Something is wrong here' })
+    } else {
+      console.log(doc)
+      return res.json({
+        success: true,
+        user: doc
+      })
+    }
+  })
+})
+
 module.exports = router;

@@ -21,6 +21,7 @@ import { playCategory } from './actions/deck_category_actions';
 import { fetchGifs } from './actions/searched_gifs_actions';
 import { setFavoriteGIF } from './util/user_util'
 import { setFavGIF } from './actions/user_actions'
+import { deleteFavGIF } from './actions/user_actions'
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   window.login = login
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gifId: '10UeedrT5MIfPG'
   }
   window.setFavGIF = setFavGIF
+  window.deleteFavGIF = deleteFavGIF
   window.fetchPlayedCategory = fetchPlayedCategory
   window.fetchGifCategories = fetchGifCategories
   window.playCategory = playCategory
