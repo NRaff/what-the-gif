@@ -14,14 +14,20 @@ const receiveGifs = gifs => ({
   gifs
 })
 
-const clearGifs = () => ({
+export const clearGifs = () => ({
   type: CLEAR_GIFS
 })
 
 export const fetchGifs = searchTerm => dispatch => {
   giphyUtil.searchGifs(searchTerm)
     .then( ({ data }) => {
-      debugger
       dispatch(receiveGifs(data.data))
+    })
+}
+
+export const fetchGif = gifId => dispatch => {
+  giphyUtil.searchGifs(gifId)
+    .then(({ data }) => {
+      dispatch(receiveGif(data.data))
     })
 }
