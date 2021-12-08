@@ -12,8 +12,13 @@ import {
   createGame
 } from './actions/game_actions'
 import { fetchCards } from './actions/game_deck_actions';
-import { fetchCard, fetchPlayedCards } from './actions/played_cards_actions';
+
+import { fetchCard } from './actions/played_cards_actions';
+import { fetchPlayedCategory } from './actions/played_category_actions';
+import { fetchGifCategories } from './actions/deck_category_actions';
 import { getGameCategories, getGameDeck, getGifCategories, searchGifs } from './util/giphy_util';
+import { playCategory } from './actions/deck_category_actions';
+import { fetchGifs } from './actions/searched_gifs_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -26,8 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getGifCategories = getGifCategories
   window.getGameCategories = getGameCategories
   window.fetchCards = fetchCards
+  window.fetchGifs = fetchGifs
   window.fetchCard = fetchCard
-  window.fetchPlayedCards = fetchPlayedCards
+
+  window.fetchPlayedCategory = fetchPlayedCategory
+  window.fetchGifCategories = fetchGifCategories
+  window.playCategory = playCategory
 
   const cats = [
     'wow',

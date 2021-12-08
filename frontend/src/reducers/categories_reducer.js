@@ -1,14 +1,10 @@
-import { RECEIVE_ALL_CATEGORIES } from '../actions/category_actions'
+import { combineReducers } from "redux";
+import DeckCategoryReducer from "./deck_categories_reducer";
+import playedCategory from "./played_category_reducer";
 
-const CategoryReducer = (state = {}, action) => {
-  Object.freeze(state)
+const categories = combineReducers({
+  deckCategory: DeckCategoryReducer,
+  playedCategory: playedCategory
+})
 
-  switch (action.type) {
-    case RECEIVE_ALL_CATEGORIES:
-      return Object.assign({}, state, { [action.category._id]: action.category})
-    default:
-      return state;
-  }
-}
-
-export default CategoryReducer;
+export default categories;
