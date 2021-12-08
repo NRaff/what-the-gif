@@ -17,5 +17,5 @@ export const removeDeltCard = cardId => ({
 
 export const fetchCard = card => dispatch => {
    dispatch(receivePlayedCard(card))
-   dispatch(removeDeltCards(card))
+   dispatch(removeDeltCards(card.gifId))
 }
