@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import Profile from "./profile";
 
 const mSTP = state => ({
-  errors: state.errors.session,
+  errors: state.errors.user,
   auth: state.session.isAuthenticated,
   currentUser: state.session.user
 })

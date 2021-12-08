@@ -10,7 +10,7 @@ const giphy = {
 
 export const gifObject = gif => ({
   title: gif.title,
-  embedUrl: gif.embed_url,
+  embedUrl: gif.url,
   gifId: gif.id,
   images: gif.images
 })

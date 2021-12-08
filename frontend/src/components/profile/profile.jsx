@@ -1,6 +1,7 @@
 import React from "react";
 // import { Link } from 'react-router-dom'
 import '../../stylesheets/root.scss'
+import SearchBar from "../searchbar/searchbar_container";
 
 class Profile extends React.Component {
   // constructor(props) {
@@ -32,6 +33,8 @@ class Profile extends React.Component {
             </tr>
           </tbody>
         </table>
+
+        <SearchBar />
       </div>
     )
   }
