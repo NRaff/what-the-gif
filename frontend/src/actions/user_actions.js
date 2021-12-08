@@ -5,14 +5,14 @@ export const REMOVE_FAVORITE_GIF = "REMOVE_FAVORITE_GIF";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-export const receiveFavoriteGIF = gif => ({
+export const receiveFavoriteGIF = user => ({
   type: RECEIVE_FAVORITE_GIF,
-  gif
+  user
 });
 
-export const removeFavoriteGIF = gifId => ({
+export const removeFavoriteGIF = user => ({
   type: REMOVE_FAVORITE_GIF,
-  gifId
+  user
 });
 
 export const receiveErrors = errors => ({
@@ -25,22 +25,15 @@ export const clearErrors = () => ({
 });
 
 export const setFavGIF = gif => dispatch => UserUtil.setFavoriteGIF(gif)
-  .then((gif) => 
-    (dispatch(receiveFavoriteGIF(gif))
+  .then((payload) => 
+    (dispatch(receiveFavoriteGIF(payload.data.user))
     ), err =>
       dispatch(receiveErrors(err))
   );
 
-export const updateFavGIF = gif => dispatch => UserUtil.editFavoriteGIF(gif)
-  .then((gif) =>
-  (dispatch(receiveFavoriteGIF(gif))
-  ), err =>
-    dispatch(receiveErrors(err))
-  );
-
-export const deleteFavGIF = gifId => dispatch => UserUtil.editFavoriteGIF(gifId)
-  .then(() =>
-  (dispatch(removeFavoriteGIF(gifId))
+export const deleteFavGIF = (user) => dispatch => UserUtil.removeFavoriteGIF(user)
+  .then((payload) =>
+  (dispatch(removeFavoriteGIF(payload.data.user))
   ), err =>
     dispatch(receiveErrors(err))
   );
