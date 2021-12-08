@@ -12,8 +12,16 @@ class Profile extends React.Component {
     return(
       <div id='profile-module'>
         <h1>User Profile</h1>
-        <div id='p-info'><h2>Display Name:</h2> <p>{user.displayName}</p></div>
-        <div id='p-info'><h2>Email:</h2> <p>{user.email}</p></div>
+        <table>
+          <th></th>
+          <tr id='p-info'>
+            <td>
+              <h2>Display Name:</h2>
+            </td> 
+            <td>{user.displayName}</td>
+          </tr>
+          <tr id='p-info'><td><h2>Email:</h2></td> <td>{user.email}</td></tr>
+        </table>
       </div>
     )
   }
