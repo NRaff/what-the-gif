@@ -24,7 +24,7 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const setFavGIF = gif => dispatch => UserUtil.setFavoriteGIF(gif)
+export const setFavGIF = req => dispatch => UserUtil.setFavoriteGIF(req)
   .then((payload) => 
     (dispatch(receiveFavoriteGIF(payload.data.user))
     ), err =>

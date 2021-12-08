@@ -9,7 +9,7 @@ const mSTP = state => ({
 
 
 const mDTP = dispatch => ({
-  
+  fetchUser: (userId) => dispatch(fetchUser)
 })
 
 export default connect(mSTP, mDTP)(Profile)

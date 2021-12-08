@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.fetchGifs(this.state.searchTerm, 9)
+    this.props.fetchGifs(this.state.searchTerm, 18)
   }
 
   updateSearchTerm(e){
@@ -34,7 +34,13 @@ class SearchBar extends React.Component {
           </div>
         </form>
         <div className='results'>
-            {(this.props.results.length !== 0) ? <SearchResults results={this.props.results} /> : null}
+            {(this.props.results.length !== 0) ? 
+            <SearchResults 
+              results={this.props.results}
+              user={this.props.user}
+              setFavGIF={this.props.setFavGIF}
+              deleteFavGIF={this.props.deleteFavGIF}
+              /> : null}
         </div>
       </div>
     )
