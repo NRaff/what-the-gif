@@ -1,4 +1,5 @@
 import { RECEIVE_GIFS, RECEIVE_GIF } from "../actions/searched_gifs_actions";
+import { gifObject } from "../util/giphy_util";
 
 const SearchedGifsReducer = (state={}, action) => {
   Object.freeze(state)
@@ -8,7 +9,7 @@ const SearchedGifsReducer = (state={}, action) => {
     case RECEIVE_GIFS:
       let nState = {}
       action.gifs.forEach((gif) => {
-        nState[gif.id] = gif
+        nState[gif.id] = gifObject(gif)
       })
       return nState
     default:
