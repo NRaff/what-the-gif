@@ -80,7 +80,9 @@ router.post('/login', (req, res) => {
             const payload = {
               id: user.id,
               displayName: user.displayName,
-              email: user.email
+              email: user.email,
+              favGIF: user.favGIF,
+              curHand: user.curHand
             }
             jwt.sign(
               payload,
@@ -96,6 +98,24 @@ router.post('/login', (req, res) => {
             return res.status(400).json({ password: 'Incorrect password' });
           }
         })
+    })
+})
+
+router.post('/user', (req, res) => {
+  const {id} = req.body
+  console.log(req.body.id)
+  console.log(id)
+  User.findOne({_id: id})
+    .then(user => {
+      console.log(user)
+      res.json({
+        success: true,
+        user
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      return res.status(422).json({ Error: "No user found" })
     })
 })
 
