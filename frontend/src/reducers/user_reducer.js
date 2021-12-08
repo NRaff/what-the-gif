@@ -15,7 +15,10 @@ const UserReducer = (state={}, action) => {
     case RECEIVE_INITIAL_HAND:
       
       let user = action.payload.user
-      let cards = action.payload.cards
+      let cards = []
+      action.payload.cards.forEach(card => {
+        cards.push(card.gifId)
+      })
       let nextState = Object.assign({}, state)
       nextState[user].hand = cards 
       return nextState
