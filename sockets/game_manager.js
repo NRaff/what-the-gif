@@ -20,7 +20,7 @@ module.exports = (io, socket) => {
         socket.join(res.gameCode)
         // console.log(res)
         socket.on(res.gameCode, () => {console.log(`Game Channel: ${res.title}`)})
-        io.in(res.gameCode).emit(`Channel Rooms: ${res.title}`)
+        io.in('test chat').emit(`Channel Rooms: ${res.title}`)
         console.log(res.gameCode)
         console.log(socket.rooms)
       })

@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "gameOwner": "61aebee64cc56c6b513259b2",
     "title": "Tesdfsdst",
     "maxPlayers": 8,
-    "gameCode": "pretty",
+    "gameCode": "new another",
     "scoreToWin": 8,
     "roundTimeLimit": 60
   }
