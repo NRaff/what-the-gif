@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 // import axios from 'axios'
 
+import { fetchHand, removeCardHand, receiveCardToHand } from './actions/hand_actions';
 import { logout, login, signup } from './actions/session_actions';
 import {
   joinGame,
@@ -19,9 +20,11 @@ import { fetchGifCategories } from './actions/deck_category_actions';
 import { getGameCategories, getGameDeck, getGifCategories, searchGifs } from './util/giphy_util';
 import { playCategory } from './actions/deck_category_actions';
 import { fetchGifs } from './actions/searched_gifs_actions';
+import {fetchPlayedCards} from './actions/played_cards_actions'
 import { setFavoriteGIF } from './util/user_util'
 import { setFavGIF } from './actions/user_actions'
 import { deleteFavGIF } from './actions/user_actions'
+
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   window.login = login
@@ -35,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchCards = fetchCards
   window.fetchGifs = fetchGifs
   window.fetchCard = fetchCard
+  window.fetchPlayedCards = fetchPlayedCards
+  window.removeCardHand = removeCardHand
+  window.receiveCardToHand = receiveCardToHand
+
+
   window.setFavoriteGIF = setFavoriteGIF
   window.gifPayload = { 
     _id: '61b0f4408b2dfb580c1c9c31',
@@ -42,9 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.setFavGIF = setFavGIF
   window.deleteFavGIF = deleteFavGIF
+
   window.fetchPlayedCategory = fetchPlayedCategory
   window.fetchGifCategories = fetchGifCategories
   window.playCategory = playCategory
+  window.fetchHand = fetchHand
 
   const cats = [
     'wow',

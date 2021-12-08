@@ -8,9 +8,9 @@ export const receivePlayedCard = card => ({
   card
 })
 
-export const receivePlayedCards = cards => ({
+export const receivePlayedCards = payload => ({
   type: RECEIVE_PLAYED_CARDS,
-  cards
+  payload
 })
 
 export const removePlayedCard = cardId => ({

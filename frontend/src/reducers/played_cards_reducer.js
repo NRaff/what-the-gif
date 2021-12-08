@@ -12,7 +12,7 @@ const playedCardsReducer = (state = {}, action) => {
       return nextState
     case RECEIVE_PLAYED_CARDS:
       // let allCards = Object.values(action.cards)
-      action.cards.forEach((card) => {
+      action.payload.cards.forEach((card) => {
         nextState[card.gifId] = card
       })
 
