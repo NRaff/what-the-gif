@@ -1,5 +1,4 @@
 import * as UserUtil from '../util/user_util'
-import jwt_decode from 'jwt-decode'
 
 export const RECEIVE_FAVORITE_GIF = "RECEIVE_FAVORITE_GIF";
 export const REMOVE_FAVORITE_GIF = "REMOVE_FAVORITE_GIF";

@@ -16,6 +16,7 @@ import { fetchCard } from './actions/played_cards_actions';
 import { fetchPlayedCategory } from './actions/played_category_actions';
 import { fetchGifCategories } from './actions/category_actions';
 import { getGameCategories, getGameDeck, getGifCategories, searchGifs } from './util/giphy_util';
+import { fetchGifs } from './actions/searched_gifs_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getGifCategories = getGifCategories
   window.getGameCategories = getGameCategories
   window.fetchCards = fetchCards
+  window.fetchGifs = fetchGifs
   window.fetchCard = fetchCard
   window.fetchPlayedCategory = fetchPlayedCategory
   window.fetchGifCategories = fetchGifCategories
