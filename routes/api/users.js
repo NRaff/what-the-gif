@@ -101,8 +101,7 @@ router.post('/login', (req, res) => {
 
 router.patch('/hand/update', (req, res) => {
   User.findByIdAndUpdate(req.body._id, {curHand: req.body.hand}, {new: true, useFindAndModify: false}, (error, doc) => {
-    // determine if request works or not
-    // pass in error
+
     if (error) {
         console.log('Something went wrong when updating hand')
         return res.status(400).json({ error: 'Something is wrong here' })
@@ -118,8 +117,7 @@ router.patch('/hand/update', (req, res) => {
 
 router.patch('/fav/create', (req, res) => {
   User.findByIdAndUpdate(req.body._id, {favGIF: req.body.gifId}, {new: true, useFindAndModify: false}, (error, doc) => {
-    // determine if request works or not
-    // pass in error
+
     if (error) {
         console.log('Something went wrong when updating gif')
         return res.status(400).json({ error: 'Something is wrong here' })
