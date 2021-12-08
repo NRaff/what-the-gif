@@ -8,6 +8,7 @@ const {createServer} = require('http')
 const server = createServer(app)
 const { Server } = require("socket.io")
 const io = new Server(server)
+const registerGameManager = require("./sockets/game_manager")
 // const io = new Server({
 //   server,
 //   // serveClient: false,
@@ -54,10 +55,15 @@ mongoose
 
 
 // * Setup Sockets
+const onConnection = socket => {
+  registerGameManager(io, socket)
+}
+
 io.on('connection', socket => {
+  onConnection(socket)
   console.log('a user connected')
   socket.on('test chat', msg => {
-    io.emit('test chat', console.log(msg))
+    io.emit('test chat', msg)
   })
   socket.on('disconnect', () => {
     console.log('user disconnected');

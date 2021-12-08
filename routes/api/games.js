@@ -5,8 +5,6 @@ const passport = require('passport');
 const Game = require('../../models/Game')
 const PlayerSchema = require('../../models/Player')
 const jwt = require('jsonwebtoken');
-
-
 const validateGameJoin = require('../../validations/joingame');
 const validateCreateGameInput = require('../../validations/creategame');
 

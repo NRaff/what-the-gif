@@ -4,7 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { io } from 'socket.io-client'
-import { setAuthToken } from './util/session_api_util';
+import * as SessionAPI from './util/session_api_util';
 import { logout, login, signup } from './actions/session_actions';
 import {
   joinGame,
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getGameDeck = getGameDeck(cats)
   
   if (localStorage.jwtToken) {
-    setAuthToken(localStorage.jwtToken);
+    SessionAPI.setAuthToken(localStorage.jwtToken);
 
     const decodedUser = jwt_decode(localStorage.jwtToken);
     const preloadedState = { session: { isAuthenticated: true, user: decodedUser } };
@@ -62,14 +62,31 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
   var socket = io()
-  // const socket = io("http://localhost:5000/#/")
-  // const socket = io("http://localhost:5000/#/", {
-  //   withCredentials: true,
-  //   extraHeaders: {
-  //     "Access-Control-Allow-Origin": true
-  //   }
-  // })
+  socket.on('test chat', msg => {
+    console.log(msg)
+  })
+  socket.on('pretty', msg => {
+    console.log(msg)
+  })
+  const user = {
+    email: "free@email.com",
+    password: "123456"
+  }
 
+  const testGame = {
+    "gameOwner": "61aebee64cc56c6b513259b2",
+    "title": "Tesdfsdst",
+    "maxPlayers": 8,
+    "gameCode": "pretty",
+    "scoreToWin": 8,
+    "roundTimeLimit": 60
+  }
+  const testGameSocket = () => {
+    socket.emit('game:create', testGame)
+  }
+  window.testGameSocket = testGameSocket
+  socket.emit('test chat', 'base socket working')
+  
 
   const root = document.getElementById('root');
   window.store = store
