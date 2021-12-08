@@ -12,7 +12,7 @@ export const gifObject = gif => ({
   title: gif.title,
   embedUrl: gif.url,
   gifId: gif.id,
-  images: gif.images
+  // images: gif.images
 })
 // always set the api key as 
 // the first param after the endpoint

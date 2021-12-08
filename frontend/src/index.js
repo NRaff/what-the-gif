@@ -12,6 +12,7 @@ import {
   createGame
 } from './actions/game_actions'
 import { fetchCards } from './actions/game_deck_actions';
+
 import { fetchCard } from './actions/played_cards_actions';
 import { fetchPlayedCategory } from './actions/played_category_actions';
 import { fetchGifCategories } from './actions/deck_category_actions';
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchCards = fetchCards
   window.fetchGifs = fetchGifs
   window.fetchCard = fetchCard
+
   window.fetchPlayedCategory = fetchPlayedCategory
   window.fetchGifCategories = fetchGifCategories
   window.playCategory = playCategory

@@ -1,4 +1,4 @@
-import { RECEIVE_PLAYED_CARD, REMOVE_DEALT_CARD } from "../actions/played_cards_actions";
+import { RECEIVE_PLAYED_CARD, REMOVE_DEALT_CARD, RECEIVE_PLAYED_CARDS } from "../actions/played_cards_actions";
 
 const playedCardsReducer = (state = {}, action) => {
   Object.freeze(state)
@@ -9,6 +9,13 @@ const playedCardsReducer = (state = {}, action) => {
       return nextState[action.card.id] = action.card
     case REMOVE_DEALT_CARD: 
       delete nextState[action.cardId]
+      return nextState
+    case RECEIVE_PLAYED_CARDS:
+      // let allCards = Object.values(action.cards)
+      action.cards.forEach((card) => {
+        nextState[card.gifId] = card
+      })
+
       return nextState
     default:
       return state;
