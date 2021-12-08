@@ -8,6 +8,12 @@ const giphy = {
   gifById: "https://api.giphy.com/v1/gifs/"
 }
 
+export const gifObject = gif => ({
+  title: gif.title,
+  embedUrl: gif.embed_url,
+  gifId: gif.id,
+  images: gif.images
+})
 // always set the api key as 
 // the first param after the endpoint
 let params = {
