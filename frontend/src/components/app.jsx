@@ -10,6 +10,7 @@ import Navbar from './navbar/navbar_container';
 import NewGame from './game/game_form_container';
 import JoinGame from './game/join_form_container';
 import Profile from './profile/profile_container';
+import Board from './game/board/board_container';
 
 const App = () => (
 
@@ -26,6 +27,7 @@ const App = () => (
       <ProtectedRoute path="/create" component={NewGame} />
       <ProtectedRoute path="/join" component={JoinGame} />
       <ProtectedRoute path="/profile/:userId" component={Profile} />
+      <Route path='/board' component={Board} />
       </div>
     </Route>
   </div>
