@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const passport = require('passport');
 const db = require('./config/keys').mongoURI;
+const path = require('path')
 
 // * Setup
 const port = process.env.PORT || 5000;
@@ -10,6 +11,13 @@ const users = require("./routes/api/users")
 const games = require("./routes/api/games")
 const bodyParser = require('body-parser')
 
+// * Prep for production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 // * Add middleware for body parser
 app.use(bodyParser.urlencoded({
