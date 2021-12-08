@@ -12,7 +12,7 @@ import {
   createGame
 } from './actions/game_actions'
 import { fetchCards } from './actions/game_deck_actions';
-import { fetchCard } from './actions/played_cards_reducer';
+import { fetchCard } from './actions/played_cards_actions';
 import { getGameCategories, getGameDeck, getGifCategories, searchGifs } from './util/giphy_util';
 
 document.addEventListener('DOMContentLoaded', () => {
