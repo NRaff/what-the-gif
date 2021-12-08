@@ -7,6 +7,9 @@ class Profile extends React.Component {
   // constructor(props) {
   //   super(props)
   // }
+  componentDidMount() {
+    this.props.fetchUser(this.props.currentUser)
+  }
 
   render(){
     const user = this.props.currentUser

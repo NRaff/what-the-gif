@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Profile from "./profile";
+import { fetchUser } from "../../actions/user_actions";
 
 const mSTP = state => ({
   errors: state.errors.user,
@@ -9,7 +10,7 @@ const mSTP = state => ({
 
 
 const mDTP = dispatch => ({
-  // fetchUser: (userId) => dispatch(fetchUser)
+  fetchUser: (user) => dispatch(fetchUser(user))
 })
 
 export default connect(mSTP, mDTP)(Profile)
