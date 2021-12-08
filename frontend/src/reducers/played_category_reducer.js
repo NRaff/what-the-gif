@@ -5,7 +5,8 @@ const playedCategory = (state = {}, action) => {
   const nextState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_PLAYED_CATEGORY:
-      return nextState[action.category.id] = action.category
+      nextState[action.category.id] = action.category
+      return nextState
     case REMOVE_PLAYED_CATEGORY:
       delete nextState[action.category.id]
       return nextState
