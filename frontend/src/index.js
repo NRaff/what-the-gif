@@ -81,8 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
     "scoreToWin": 8,
     "roundTimeLimit": 60
   }
-  const testGameSocket = () => {
+
+  const joinPayload = {
+    gameCode: "new another",
+    playerId: ""
+  }
+  const createGameSocket = () => {
     socket.emit('game:create', testGame)
+  }
+
+  const joinGameSocket = () => {
+    socket.emit('game:join', "new another")
   }
   window.testGameSocket = testGameSocket
   socket.emit('test chat', 'base socket working')
