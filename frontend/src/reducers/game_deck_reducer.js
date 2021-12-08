@@ -1,8 +1,9 @@
-import { RECEIVE_ALL_CARDS, REMOVE_DEALT_CARDS } from "../actions/game_deck_actions";
+import { RECEIVE_ALL_CARDS, REMOVE_DEALT_CARD, REMOVE_CARDS } from "../actions/game_deck_actions";
 import { gifObject } from "../util/giphy_util";
 const gameDeck = (state = {}, action) => {
   Object.freeze(state)
   const nextState = Object.assign({}, state)
+  
   switch (action.type) {
     case RECEIVE_ALL_CARDS:
       // let allCards = Object.values(action.cards)
@@ -11,11 +12,16 @@ const gameDeck = (state = {}, action) => {
         nextState[card.id] = gifObject(card)
       }) 
       return nextState
-    case REMOVE_DEALT_CARDS:
+    case REMOVE_DEALT_CARD:
       delete nextState[action.cardId]
       return nextState
 
+    case REMOVE_CARDS:
+      action.cards.forEach((card) => {
 
+        delete nextState[card.gifId]
+      })
+      return nextState
     default:
       return state;
   }
