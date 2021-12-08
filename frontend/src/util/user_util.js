@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const setFavoriteGIF = (gif) => (
+export const setFavoriteGIF = (payload) => (
   // All routes are TEMP - will need to replace once the backend routes are created
-  axios.post('/api/users/fav/create', gif)
+  axios.patch('/api/users/fav/create', payload)
 )
 
 export const editFavoriteGIF = (gif) => (

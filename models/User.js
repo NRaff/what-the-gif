@@ -17,6 +17,10 @@ const UserSchema = new Schema({
   curHand: {
     type: Array,
     required: true
+  },
+  favGIF: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true

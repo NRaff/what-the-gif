@@ -19,7 +19,7 @@ import { fetchGifCategories } from './actions/deck_category_actions';
 import { getGameCategories, getGameDeck, getGifCategories, searchGifs } from './util/giphy_util';
 import { playCategory } from './actions/deck_category_actions';
 import { fetchGifs } from './actions/searched_gifs_actions';
-
+import { setFavoriteGIF } from './util/user_util'
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   window.login = login
@@ -33,7 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchCards = fetchCards
   window.fetchGifs = fetchGifs
   window.fetchCard = fetchCard
-
+  window.setFavoriteGIF = setFavoriteGIF
+  window.gifPayload = { 
+    _id: '61b0f4408b2dfb580c1c9c31',
+    gifId: '10UeedrT5MIfPG'
+  }
   window.fetchPlayedCategory = fetchPlayedCategory
   window.fetchGifCategories = fetchGifCategories
   window.playCategory = playCategory
