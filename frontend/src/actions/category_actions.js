@@ -15,5 +15,8 @@ export const removeCategory = (category) => ({
   category
 })
 
-export const fetchGifCategories = categories => dispatch => GiphyUtil.getGifCategories(categories)
-  .then(categories => dispatch(receiveAllCategories(categories)))
+export const fetchGifCategories = () => dispatch => GiphyUtil.getGifCategories()
+  .then(categories => {
+    const cats = GiphyUtil.getGameCategories(categories)
+    dispatch(receiveAllCategories(cats))
+  })

@@ -6,9 +6,12 @@ const CategoryReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_ALL_CATEGORIES:
-      return nextState[action.category.id] = action.category
+      action.categories.forEach((category, idx) => {
+        nextState[idx + 1] = category
+      })
+      return nextState
     case REMOVE_CATEGORY:
-      delete nextState[action.category.id]
+      delete nextState[action.category]
       return nextState
     default:
       return state;
