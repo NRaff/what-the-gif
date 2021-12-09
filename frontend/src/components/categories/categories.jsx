@@ -27,10 +27,10 @@ class Categories extends React.Component{
       <div>
         <div id="categories">
           {randomCategory.map(category => (          
-            category.name   
+            <h1 key={category.id}>{category.name.toUpperCase()}</h1>
           ))}      
         </div>
-        <button onClick={() => this.handleSubmit(randomCategory)}></button>
+        <button onClick={() => this.handleSubmit(randomCategory)}>Shuffle</button>
       </div>
     )
   }

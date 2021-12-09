@@ -69,8 +69,8 @@ class Hand extends React.Component {
 
     return(
       <div className="player-hand-show">
-        <h1>this is my hand</h1>
-        <div className='player-lineup'>
+        <h2>MY HAND</h2>
+        <div className='card-lineup'>
           {(this.props.users.length !== 0) ?
             <Card 
               users={this.props.users}

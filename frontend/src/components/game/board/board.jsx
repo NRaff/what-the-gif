@@ -3,10 +3,12 @@ import '../../../stylesheets/root.scss'
 import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
 import GameManager from "../../../util/game_socket_util"
+import Categories from "../../categories/categories_container";
 
 class Board extends React.Component {
   constructor(props){
     super(props)
+    this.count = (this.props.game ? this.props.game.roundTimeLimit : 60)
 
     this.scores = this.scores.bind(this)
   }
@@ -29,28 +31,33 @@ class Board extends React.Component {
     )
   }
 
-  componentDidMount(){
-    // this.props.fetchCards()
+  timer(){
+    this.count -= 1
+    return (<p>{this.count}</p>)
+  }
+
+  timeInt(){
+    let time = setInterval(this.timer, 60000)
   }
   
   render() {
-    // const testPlayers = [{ displayName: 'test1' }, { displayName: 'test2' }, { displayName: 'test3' }, { displayName: 'test4' }]
     const game = this.props.game ? this.props.game : {players: []}
     return (
       <div className='board-container'>
+        <header>
+          <h2>ROUND 1</h2>
+          <div id='round-timer'>
+            {this.timeInt()}
+          </div>
+        </header>
         <section className='player-lineup'>
-
           {playerIndex(this.props.users)}
-
+          {this.scores(this.props.users)}
         </section>
-        <section className='scores'>
-          
+        <section className='categories'>
+          <h2>CATEGORY</h2>
+          <Categories />
         </section>
-
-        <section className='prompt'>
-
-        </section>
-
         <section className='player-hand'>
           <Hand />
         </section>
