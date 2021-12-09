@@ -3,7 +3,6 @@ import '../../../stylesheets/root.scss'
 import { randomSample } from "../../../util/game_setup";
 import { shuffleArray } from "../../component_utils/methods";
 import Card from "./card";
-import { shuffleArray } from "../../component_utils/methods";
 
 export const playerHandIDs = (users) => {
     const arr=[]
@@ -42,7 +41,7 @@ class Hand extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.currentUser)
-    this.props.fetchCards()
+    // this.props.fetchCards()
   }
 
   handleSubmit(payload){
