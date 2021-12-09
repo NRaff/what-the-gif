@@ -18,43 +18,51 @@ const createGame = game => {
   return newGame.save()
 }
 
-const joinGame = (payload, socket, io) => {
-  // console.log(payload)
-  Game.findOne({gameCode: payload.gameCode})
-    .then(game => {
-      if (!game) {
-        const errPayload = {
-          error: err,
-          type: "RECEIVE_GAME_ERRORS"
+const joinGame = (payload, io, socket) => {
+  const { errors, isValid } = validateGameJoin(payload);
+
+  if (!isValid) {
+    const errPayload = {
+      errors: errors,
+      type: "RECEIVE_GAME_ERRORS"
+    }
+    socket.emit('join-game-error', errPayload)
+  } else {
+    Game.findOne({ gameCode: payload.gameCode })
+      .then(game => {
+        if (!game) {
+          const errPayload = {
+            errors: err,
+            type: "RECEIVE_GAME_ERRORS"
+          }
+          socket.emit('join-game-error', errPayload)
+        } else {
+          game.players.push({ user: payload.playerId })
+          game.save()
+            .then(updatedGame => {
+              const newPayload = {
+                game: updatedGame,
+                type: "RECEIVE_GAME"
+              }
+              io.emit(`joined-game:${game.gameCode}`, newPayload)
+            })
+            .catch(err => {
+              const errPayload = {
+                errors: err,
+                type: "RECEIVE_GAME_ERRORS"
+              }
+              socket.emit('join-game-error', errPayload)
+            })
         }
-        io.emit('join-game-error', errPayload)
-      } else {
-        game.players.push({user: payload.playerId})
-        game.save()
-          .then(updatedGame => {
-            const newPayload = {
-              game: updatedGame,
-              type: "RECEIVE_GAME"
-            }
-            io.emit(`joined-game:${game.gameCode}`, newPayload)
-            // io.emit(`game-update:${game.gameCode}`, newPayload)
-          })
-          .catch(err => {
-            const errPayload = {
-              error: err,
-              type: "RECEIVE_GAME_ERRORS"
-            }
-            io.emit('join-game-error', errPayload)
-          })
-      }
-    })
+      })
+  }
 }
 
 // * Export socket listeners and events
 module.exports = (io, socket) => {
   // * Join Game
   const socketJoinGame = payload => {
-    joinGame(payload,socket, io)
+    joinGame(payload, io, socket)
   }
 
   // * Create a game
@@ -64,7 +72,7 @@ module.exports = (io, socket) => {
     let response = {}
     if (!isValid) {
       const payload = {
-        error: errors,
+        errors: errors,
         type: "RECEIVE_GAME_ERRORS",
         locale: "Validation"
       }
@@ -82,7 +90,7 @@ module.exports = (io, socket) => {
         .catch(err => {
           console.log('Create Game Fail')
           const payload = {
-            error: err,
+            errors: err,
             type: "RECEIVE_GAME_ERRORS",
             locale: "Save"
           }

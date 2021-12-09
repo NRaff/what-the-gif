@@ -15,9 +15,7 @@ class JoinForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
-    // this.props.joinGame(this.state)
-    const socket = GameManager(this.state.gameCode)
-    // debugger
+    const socket = GameManager(this.state.gameCode, this.props.dispatch)
     socket.emit(`game:join`, this.state)
   }
 

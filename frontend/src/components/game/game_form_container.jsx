@@ -10,7 +10,8 @@ const mSTP = state => ({
 
 // Need to have functions to createGame, maybe need delete game at some point
 const mDTP = dispatch => ({
-  createGame: game => dispatch(createGame(game))
+  createGame: game => dispatch(createGame(game)),
+  dispatch: dispatch
 })
 
 export default connect(mSTP, mDTP)(GameForm)

@@ -8,7 +8,8 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-  joinGame: game => dispatch(joinGame(game))
+  joinGame: game => dispatch(joinGame(game)),
+  dispatch: dispatch
 })
 
 export default connect(mSTP, mDTP)(JoinForm)
