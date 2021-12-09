@@ -26,33 +26,38 @@ class Board extends React.Component {
   }
 
   scores(players){
+    
     return (
-      players.map((player, i) => (
-        <div className='scorecard' id={i} key={i}>
-          <p>Score: {player.roundsWon.length}</p>
-        </div>
-      ))
+      players.map((player, i) => {
+        if (i > 0 && player._id === players[i-1]._id) return null
+        else return(
+          <div className='scorecard' id={i} key={i}>
+            <p>Score: {player.roundsWon.length}</p>
+          </div>
+        )
+      })
     )
   }
   
   render() {
-    // let time = setTimeout(() => {
-    //   this.setState({ count: this.state.count - 1 })
-    // }, 1000)
     const game = this.props.game ? this.props.game : {players: []}
     return (
       <div className='board-container'>
-        <header>
-          <h2>ROUND 1</h2> 
-          <p>TIME REMAINING:</p>
-          {/* <Timer /> */}
-        </header>
-        <div className='player-lineup'>
-          {playerIndex(this.props.users)}
+        <div className='topwrap'>
+          <header>
+            <h2>ROUND 1</h2>
+            <p>TIME REMAINING </p>
+            <Timer remaining={game.roundTimeLimit} />
+          </header>
+          <div id='game-info'>
+            <div className='player-lineup'>
+              {playerIndex(this.props.users)}
+            </div>
+            <div id='scores'>
+              {this.props.game ? this.scores(this.props.game.players) : null}
+            </div>
+          </div>
         </div>
-        <section id='scores'>
-          {this.props.game ? this.scores(this.props.game.players) : null}
-        </section>
         <section className='categories'>
           <h2>CATEGORY</h2>
           <Categories />

@@ -35,8 +35,15 @@
   text-align: center;
 }
 
-.board-container section {
-  margin-bottom: 20px;
+#scores {
+  margin-bottom: 30px;
+}
+
+.topwrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .board-container h1 {
@@ -46,10 +53,22 @@
 .board-container h2 {
   font-size: 20px;
   font-weight: 700;
-  margin: 10px 20px 10px 20px;
+  margin-bottom: 10px;
   display: inline-block;
 }
 
 .board-container header {
   margin-bottom: 20px;
+  margin-right: 50px;
+}
+
+.board-container span {
+  font-weight: 700px;
+  font-size: 40px;
+}
+
+
+#categories {
+  margin-top: -10px;
+  padding-top: 0px;
 }
