@@ -26,7 +26,7 @@ export const setupCards = (manager, cats) => {
     })
 }
 
-const randomSample = (cats, num=10) => (
+export const randomSample = (cats, num=10) => (
   shuffleArray(cats).slice(0, num)
 )
 

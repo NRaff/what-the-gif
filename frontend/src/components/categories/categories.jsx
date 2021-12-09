@@ -9,7 +9,7 @@ class Categories extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchCategories()
+    // this.props.fetchCategories()
   }
 
   handleSubmit(randomCategory){

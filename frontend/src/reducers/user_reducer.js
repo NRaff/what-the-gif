@@ -31,7 +31,6 @@ const UserReducer = (state={}, action) => {
         cards.push(card.gifId)
       })
       let nextState = Object.assign({}, state)
-      debugger
       nextState[user].curHand = cards 
       return nextState
     case REMOVE_CARD_FROM_HAND:      
