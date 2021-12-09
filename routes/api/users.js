@@ -103,18 +103,14 @@ router.post('/login', (req, res) => {
 
 router.post('/user', (req, res) => {
   const {id} = req.body
-  console.log(req.body.id)
-  console.log(id)
   User.findOne({_id: id})
     .then(user => {
-      console.log(user)
       res.json({
         success: true,
         user
       })
     })
     .catch(err => {
-      console.log(err)
       return res.status(422).json({ Error: "No user found" })
     })
 })
@@ -126,7 +122,6 @@ router.patch('/hand/update', (req, res) => {
         console.log('Something went wrong when updating hand')
         return res.status(400).json({ error: 'Something is wrong here' })
     } else {
-      console.log(doc)
       return res.json({
         success: true,
         user: doc

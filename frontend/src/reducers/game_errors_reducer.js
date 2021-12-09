@@ -3,8 +3,9 @@ import { RECEIVE_GAME_ERRORS } from "../actions/game_actions";
 const gameErrors = (state = {}, action) => {
   Object.freeze(state)
 
-  switch (action.value) {
+  switch (action.type) {
     case RECEIVE_GAME_ERRORS:
+      debugger
       return action.errors
   
     default:
