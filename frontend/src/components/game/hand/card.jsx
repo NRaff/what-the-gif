@@ -20,6 +20,9 @@ class Card extends React.Component {
         {/* {console.log(playerHandIDs)} */}
         {/* {console.log(this)} */}
         i am 12
+        <div>
+          <img src="" alt="" />
+        </div>
       </div>
     )
 
