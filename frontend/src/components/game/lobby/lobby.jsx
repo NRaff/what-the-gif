@@ -22,7 +22,9 @@ class Lobby extends React.Component {
   }
 
   componentDidMount(){
+    const { currentUser, gameCode } = this.props
     this.props.fetchUser(this.props.currentUser)
+    // get the game too if it doesn't already exist
   }
 
   // playerLineup(players) {
@@ -38,7 +40,9 @@ class Lobby extends React.Component {
   // }
 
   startGame(){
-    this.props.history.push('/game')
+    const {game} = this.props
+    debugger
+    this.props.history.push(`/game/${game.gameCode}`)
   }
 
   render() {

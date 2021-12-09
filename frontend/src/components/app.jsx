@@ -33,8 +33,8 @@ const App = () => (
       <ProtectedRoute path="/create" component={NewGame} />
       <ProtectedRoute path="/join" component={JoinGame} />
       <ProtectedRoute path="/profile/:userId" component={Profile} />
-      <Route path='/lobby' component={Lobby} />
-      <Route path='/game' component={Board} />
+      <Route path='/lobby/:gameCode' component={Lobby} />
+      <Route path='/game/:gameCode' component={Board} />
       </div>
     </Route>
   </div>

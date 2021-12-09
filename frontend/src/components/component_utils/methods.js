@@ -9,5 +9,9 @@ export const gameKey = (length) => {
 
 export const randomLength = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
+}
 
+export const findByCode = (games, code) => {
+  games.filter(game => (game.gameCode === code))
+  return games[0]
 }
