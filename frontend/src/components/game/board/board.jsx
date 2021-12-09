@@ -10,24 +10,27 @@ class Board extends React.Component {
     this.scores = this.scores.bind(this)
   }
 
-  scores(playerScores){
+  scores(players){
     return (
-      playerScores.map((player, i) => (
-        <div className='player-card' id={i} key={i}>
-          {player.favGIF ? (<img src={player.favGIF} alt="favGIF" />) : null}
-          <div id='shade' />
-          <p>{player.displayName}</p>
+      players.map((player, i) => (
+        <div className='scorecard' id={i} key={i}>
+          <p>{player.score}</p>
         </div>
       ))
     )
   }
+
+  componentDidMount(){
+    // this.props.fetchCards()
+  }
   
   render() {
     // const testPlayers = [{ displayName: 'test1' }, { displayName: 'test2' }, { displayName: 'test3' }, { displayName: 'test4' }]
+    const game = this.props.game ? this.props.game : {players: []}
     return (
       <div className='board-container'>
         <section className='player-lineup'>
-          {playerIndex(this.props.players)}
+          {playerIndex(this.props.users)}
         </section>
         <section className='scores'>
           

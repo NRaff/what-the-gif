@@ -31,7 +31,7 @@ class GameForm extends React.Component{
     // ${this.state.gameCode}
     socket.emit(`game:create`, this.state)
     // if succesful it should redirect to a form/page with the games info
-    this.props.history.push(`/lobby`)
+    this.props.history.push(`/lobby/${this.state.gameCode}`)
   }
 
   update(field){
