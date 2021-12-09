@@ -25,7 +25,7 @@ class Board extends React.Component {
     return (
       players.map((player, i) => (
         <div className='scorecard' id={i} key={i}>
-          <p>{player.roundsWon.length} Rounds Won</p>
+          <p>Score: {player.roundsWon.length}</p>
         </div>
       ))
     )
