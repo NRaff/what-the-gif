@@ -1,11 +1,23 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
 
+export const playerIndex = (players) => {
+  return (
+    players.map((player, i) => (
+      <div className='player-card' id={i} key={i}>
+        {player.favGIF ? (<img src={player.favGIF} alt="favGIF" />) : null}
+        <div id='shade' />
+        <p>{player.displayName}</p>
+      </div>
+    ))
+  )
+}
+
 class Lobby extends React.Component {
   constructor(props) {
     super(props)
 
-    this.playerLineup = this.playerLineup.bind(this)
+    // this.playerLineup = this.playerLineup.bind(this)
     this.startGame = this.startGame.bind(this)
   }
 
@@ -13,17 +25,17 @@ class Lobby extends React.Component {
     this.props.fetchUser(this.props.currentUser)
   }
 
-  playerLineup(players) {
-    return (
-      players.map((player, i) => (
-        <div className='player-card' id={i} key={i}>
-          {player.favGIF ? (<img src={player.favGIF} alt="favGIF" />) : null}
-          <div id='shade' />
-          <p>{player.displayName}</p>
-        </div>
-      ))
-    )
-  }
+  // playerLineup(players) {
+  //   return (
+  //     players.map((player, i) => (
+  //       <div className='player-card' id={i} key={i}>
+  //         {player.favGIF ? (<img src={player.favGIF} alt="favGIF" />) : null}
+  //         <div id='shade' />
+  //         <p>{player.displayName}</p>
+  //       </div>
+  //     ))
+  //   )
+  // }
 
   startGame(){
     this.props.history.push('/game')
@@ -35,7 +47,7 @@ class Lobby extends React.Component {
       <div className='lobby-container'>
         <h1>Waiting for players to join...</h1>
         <section className='player-lineup'>
-          {this.playerLineup(this.props.players)}
+          {playerIndex(this.props.players)}
         </section>
         <section className='start-game'>
           <button onClick={this.startGame}>Start Game</button>

@@ -1,23 +1,11 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
+import {playerIndex} from '../lobby/lobby'
 
 class Board extends React.Component {
   constructor(props){
     super(props)
-    
-    this.playerLineup = this.playerLineup.bind(this)
-  }
   
-  playerLineup(players) {
-    return (
-      players.map((player, i) => (
-        <div className='player-card' id={i} key={i}>
-          {player.favGIF ? (<img src={player.favGIF} alt="favGIF" />) : null}
-          <div id='shade' />
-          <p>{player.displayName}</p>
-        </div>
-      ))
-    )
   }
   
   render() {
@@ -25,7 +13,7 @@ class Board extends React.Component {
     return (
       <div className='board-container'>
         <section className='player-lineup'>
-          {this.playerLineup(testPlayers)}
+          {playerIndex(this.props.players)}
         </section>
 
         <section className='prompt'>
