@@ -1,6 +1,7 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
 import { shuffleArray } from "../../component_utils/methods";
+import Card from "./card";
 
 class Hand extends React.Component {
   constructor(props){
@@ -12,46 +13,65 @@ class Hand extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.currentUser)
     this.props.fetchCards()
-  }
-
-  handleSubmit(payload){
-    this.pageIndex += 1
-    this.props.fetchHand(payload)
-  }
-
-  render(){
-  
-    if (!this.props.users) return null;
+    // console.log(this.props.gameDeck)
+    if (this.props.gameDeck[0] === undefined) {
+      return null
+    }
     const shflD = (shuffleArray(this.props.gameDeck))
     const deckArr = []
     for (let i = 0; i < 5; i++) {
       deckArr.push(shflD[i])
     }
-    const curId = this.props.currentUser.id;
-    const payload = { user: curId, cards: deckArr }
+    // const curId = this.props.currentUser.id;
+    const {users, currentUser} = this.props
+    // const player = users[currentUser.id]
+    const playerr = this.props.currentUser.id
+    const payload = { user: playerr, cards: deckArr }
+    debugger
+    // console.log(payload)
+    this.props.fetchHand(payload)
+  }
 
-    if (deckArr[0] === undefined) return null;
+  handleSubmit(payload){
+    this.pageIndex += 1
+  }
+
+  render(){
+    // if (!this.props.users) return null;
+    // const shflD = (shuffleArray(this.props.gameDeck))
+    // const deckArr = []
+    // for (let i = 0; i < 5; i++) {
+    //   deckArr.push(shflD[i])
+    // }
+    // const curId = this.props.currentUser.id;
+    // const payload = { user: curId, cards: deckArr }
+    
     return(
       <div className="player-hand-show">
-        <h2>MY HAND</h2>
-        {this.pageIndex !== 0 ? (
-
         <div className="hand-map">
-          {deckArr.map((card, i)=>(
-            <div key={i}>
-              <ul>{card.title}</ul>
-              <img src={card.images.fixed_height.url} alt="altname" key={card.id}/>
-            </div>
-          )
-          )}
+          <div className='player-lineup'>
+            {/* {console.log(this.props)} */}
+            {/* {this.pageIndex !== 0 ? (
+              deckArr.map((card, i)=>(
+                <div key={i}>
+              
+                <Card 
+                users={this.props.users}
+                currentUser={this.props.currentUser}
+                gameDeck={this.props.gameDeck}
+                card= {card}
+                
+                />
+                </div>
+              ))) : null } */}
+          </div>
         </div>
-        ) : null } 
-        
-        <div className="shuffle-deck">
+
+        {/* <div className="shuffle-deck">
           {(this.pageIndex === 0) ? (
             <button onClick={() => this.handleSubmit(payload)} >Deal Cards</button>
           ) : null}
-        </div>
+        </div> */}
       </div>
     )
   }
