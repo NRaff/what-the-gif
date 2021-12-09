@@ -9,17 +9,6 @@ const server = createServer(app)
 const { Server } = require("socket.io")
 const io = new Server(server)
 const registerGameManager = require("./sockets/game_manager")
-// const io = new Server({
-//   server,
-//   // serveClient: false,
-//   // cors: {
-//   //   origin: "http://localhost:3000/#/",
-//   //   methods: ["GET", "POST", "PATCH"],
-//   //   allowedHeaders: ["Access-Control-Allow-Origin"],
-//   //   credentials: true,
-//   // }
-// })
-
 
 // * Setup
 const port = process.env.PORT || 5000;
@@ -62,9 +51,6 @@ const onConnection = socket => {
 io.on('connection', socket => {
   onConnection(socket)
   console.log('a user connected')
-  // socket.on('test chat', msg => {
-  //   io.emit('test chat', msg)
-  // })
 
   socket.on('disconnect', () => {
     console.log('user disconnected');
@@ -74,9 +60,3 @@ io.on('connection', socket => {
 server.listen(port, () => {
   console.log(`Listening on ${port}`)
 })
-
-// io.listen(port, () => {
-//   console.log(`Listening from io`)
-// })
-
-// app.listen(port, () => console.log(`Server is running on port ${port}`));
