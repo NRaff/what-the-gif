@@ -3,7 +3,6 @@ import Hand from "./hand";
 import { fetchHand } from "../../../actions/hand_actions";
 import { fetchUser } from "../../../actions/user_actions";
 import { fetchGif, myGif } from "../../../actions/searched_gifs_actions";
-import { fetchCards } from "../../../actions/game_deck_actions";
 
 const mSTP = state => {
   return{
@@ -17,10 +16,10 @@ const mSTP = state => {
 
 const mDTP = dispatch => ({
   fetchUser: (user) => dispatch(fetchUser(user)),
-  fetchHand: (hand) => dispatch(fetchHand(hand)),
+  fetchHand: (payload) => dispatch(fetchHand(payload)),
   fetchGif: (gifId) => dispatch(fetchGif(gifId)),
   myGif: (gifId) => dispatch(myGif(gifId)),
-  fetchCards: () => dispatch(fetchCards())
+  // fetchCards: () => dispatch(fetchCards())
 })
 
 export default connect(mSTP, mDTP)(Hand)

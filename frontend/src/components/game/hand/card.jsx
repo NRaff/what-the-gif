@@ -9,15 +9,19 @@ class Card extends React.Component {
   }
 
   render() {
-    
-    return (
-      <div>
-        <div className="the-card" onClick={() => this.handleSubmit()}>
+    const {card} = this.props
+    if (card) {
+      return (
+        <div>
+          <div className="the-card" onClick={() => this.handleSubmit()}>
             <ul>{this.props.card.title}</ul>
-              <img src={this.props.card.images.fixed_height.url} alt="altname" key={this.props.card.id}/>
+            <img src={this.props.card.images.fixed_height.url} alt="altname" key={this.props.card.id} />
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return null
+    }
   }
 }
 

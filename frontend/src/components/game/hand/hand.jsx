@@ -1,5 +1,7 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
+import { randomSample } from "../../../util/game_setup";
+import { shuffleArray } from "../../component_utils/methods";
 import Card from "./card";
 import { shuffleArray } from "../../component_utils/methods";
 
@@ -35,7 +37,6 @@ export const showHand = (arr) => {
 class Hand extends React.Component {
   constructor(props){
     super(props)
-
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -51,7 +52,6 @@ class Hand extends React.Component {
   render(){
   
     if (!this.props.users) return null;
-    // console.log(this.props)
     const shflD = (shuffleArray(this.props.gameDeck))
     const deckArr = []
     for (let i = 0; i < 5; i++) {
@@ -72,8 +72,7 @@ class Hand extends React.Component {
               users={this.props.users}
               currentUser={this.props.currentUser}
               gameDeck={this.props.gameDeck}
-              card={card} />
-          
+              card={card} />       
           ))}
         </div>
         <div className="shuffle-deck">
@@ -82,7 +81,6 @@ class Hand extends React.Component {
       </div>
     )
   }
-
 }
 
 export default Hand
