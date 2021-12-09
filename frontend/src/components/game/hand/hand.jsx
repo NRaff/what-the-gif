@@ -1,5 +1,6 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
+// import configureStore from "../../../store/store";
 
 class Hand extends React.Component {
   constructor(props){
@@ -9,7 +10,7 @@ class Hand extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.currentUser)
+    this.props.fetchUser(this.props.currentUser)    
   }
 
   playerHand(hand){
@@ -23,14 +24,24 @@ class Hand extends React.Component {
   }
 
   render(){
-    const testHand = [{ curHand: 'l7fdqmHQ1jCg2HzQlx, o75ajIFH0QnQC3nCeD, xT5LMHxhOfscxPfIfm, TdfyKrN7HGTIY, MeIucAjPKoA120R7sN' }]
+    // const user = this.props.user ? this.props.user : this.props.currentUser
+    if (!this.props.users) {
+      return (null)
+    }
+    // console.log('test')
+    const userID = this.props.currentUser.id
+    // console.log(this.props.users)
+    
+    // console.log(this.props.user.61b0f4408b2dfb580c1c9c31.curHand)
+
     return(
       <div className="player-hand-show">
         {/* <label>Your Hand</label> */}
         <h1>this is my hand</h1>
         {/* {this.playerHand} */}
         <section className='player-lineup'>
-          {this.playerHand(testHand)}
+          {/* {console.log('testtesttesttest')} */}
+          {/* {console.log(this.props.currentUser)} */}
         </section>
       </div>
     )

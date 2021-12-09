@@ -5,7 +5,7 @@ import '../../../stylesheets/root.scss'
 const Card = ({card}) => {
   return (
     <div>
-      <img src=""/>
+      <img src="" alt="cardGIF"/>
     </div>
   )
 }

@@ -6,7 +6,7 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 // import axios from 'axios'
 
-import { fetchHand, removeCardHand, receiveCardToHand } from './actions/hand_actions';
+import { fetchHand, removeCardHand, receiveCardToHand} from './actions/hand_actions';
 import { logout, login, signup } from './actions/session_actions';
 import {
   joinGame,
