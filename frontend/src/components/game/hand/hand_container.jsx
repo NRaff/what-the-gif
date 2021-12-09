@@ -8,9 +8,10 @@ import { fetchCards } from "../../../actions/game_deck_actions";
 const mSTP = state => {
   return{
     currentUser: state.session.user,
-    users: Object.values(state.entities.users),
+    users: state.entities.users,
     results: Object.values(state.entities.searchgifs),
-    gameDeck: Object.values(state.entities.cards.gameDeck)
+    gameDeck: Object.values(state.entities.cards.gameDeck),
+    playedCards: Object.values(state.entities.cards.playedCards)
   };
 }
 

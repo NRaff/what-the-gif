@@ -38,7 +38,10 @@ class Lobby extends React.Component {
     const manager = GameManager(gameCode, dispatch)
     manager.sendToGame({type: 'GAME_STARTED'})
     setupGameDeck(manager)
-    this.props.history.push(`/game/${game.gameCode}`)
+      .then(() => {
+        this.props.history.push(`/game/${game.gameCode}`)
+      })
+    
   }
 
   goToGame(){

@@ -3,8 +3,8 @@ import { shuffleArray } from '../components/component_utils/methods'
 import { RECEIVE_ALL_CATEGORIES } from '../actions/deck_category_actions'
 import { RECEIVE_ALL_CARDS } from '../actions/game_deck_actions'
 
-export const setupGameDeck = manager => {
-  GiphyUtil.getGifCategories()
+export const setupGameDeck = async manager => {
+  await GiphyUtil.getGifCategories()
     .then( categories => {
       const cats = GiphyUtil.getGameCategories(categories)
       const payload = {

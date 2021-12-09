@@ -11,10 +11,10 @@ class Hand extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.currentUser)
+    // this.props.fetchUser(this.props.currentUser)
     this.props.fetchCards()
     // console.log(this.props.gameDeck)
-    if (this.props.gameDeck[0] === undefined) {
+    if (this.props.users === {} || this.props.gameDeck.length === 0) {
       return null
     }
     const shflD = (shuffleArray(this.props.gameDeck))
@@ -22,12 +22,13 @@ class Hand extends React.Component {
     for (let i = 0; i < 5; i++) {
       deckArr.push(shflD[i])
     }
+    debugger
     // const curId = this.props.currentUser.id;
     const {users, currentUser} = this.props
     // const player = users[currentUser.id]
-    const playerr = this.props.currentUser.id
-    const payload = { user: playerr, cards: deckArr }
-    debugger
+    const player = this.props.currentUser.id
+    const payload = { user: player, cards: deckArr }
+    // debugger
     // console.log(payload)
     this.props.fetchHand(payload)
   }
@@ -45,25 +46,26 @@ class Hand extends React.Component {
     // }
     // const curId = this.props.currentUser.id;
     // const payload = { user: curId, cards: deckArr }
-    
+    const {users, currentUser, playedCards} = this.props
+    // debugger
+    const currentHand = users[currentUser.id].curHand
     return(
       <div className="player-hand-show">
         <div className="hand-map">
           <div className='player-lineup'>
             {/* {console.log(this.props)} */}
-            {/* {this.pageIndex !== 0 ? (
-              deckArr.map((card, i)=>(
+            {this.pageIndex !== 0 ? (
+              currentHand.map((card, i)=>(
                 <div key={i}>
               
-                <Card 
-                users={this.props.users}
-                currentUser={this.props.currentUser}
-                gameDeck={this.props.gameDeck}
-                card= {card}
-                
-                />
+                  <Card 
+                    users={this.props.users}
+                    currentUser={this.props.currentUser}
+                    gameDeck={this.props.gameDeck}
+                    card={playedCards[card]}
+                  />
                 </div>
-              ))) : null } */}
+              ))) : null }
           </div>
         </div>
 
