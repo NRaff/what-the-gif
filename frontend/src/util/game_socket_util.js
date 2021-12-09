@@ -5,10 +5,7 @@ var socket = io()
 
 const manager = gameCode =>  ({
   sendToGame: payload => {
-    const newPayload = {
-      type: payload.type,
-      gameCode
-    }
+    const newPayload = Object.assign({}, payload,{gameCode})
     socket.emit(`game:update`, newPayload)
   },
   getGame: () => {

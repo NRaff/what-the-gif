@@ -6,8 +6,7 @@ const gameDeck = (state = {}, action) => {
   
   switch (action.type) {
     case RECEIVE_ALL_CARDS:
-      // let allCards = Object.values(action.cards)
-      
+      if (!action.cards) return nextState
       action.cards.forEach((card, idx) => {
         nextState[card.id] = gifObject(card)
       }) 
