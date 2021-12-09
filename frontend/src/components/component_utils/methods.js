@@ -15,3 +15,7 @@ export const findByCode = (games, code) => {
   games.filter(game => (game.gameCode === code))
   return games[0]
 }
+
+export const shuffleArray = array => {
+  return (array.sort(() => Math.random() - 0.5))
+}

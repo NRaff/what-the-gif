@@ -20,6 +20,7 @@ class SearchResults extends React.Component {
   
   render(){
     const user = this.props.user
+    console.log(this.props)
     const results = this.props.results.map((gif, i) => {
       return(
         <div className='gif-result' key={i} id={gif.images.fixed_height.url} onClick={this.handleClick} >

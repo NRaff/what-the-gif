@@ -2,7 +2,6 @@ import React from "react";
 // import { Link } from 'react-router-dom'
 import '../../stylesheets/root.scss'
 import SearchBar from "../searchbar/searchbar_container";
-
 class Profile extends React.Component {
   // constructor(props) {
   //   super(props)
@@ -13,7 +12,7 @@ class Profile extends React.Component {
 
   render(){
     const user = this.props.user ? this.props.user : this.props.currentUser
-
+    // console.log(this.props)
     return(
       <div id='profile-module'>
         <h1>User Profile</h1>
@@ -38,7 +37,7 @@ class Profile extends React.Component {
             {this.props.user ? (this.props.user.favGIF ? (
               <tr id='p-info'>
                 <td>
-                  <h2>Favorite GIF</h2>
+                  <h2>Favorite GIF:</h2>
                 </td>
                 <td>
                   <img src={user.favGIF} alt="Favorite GIF" />
