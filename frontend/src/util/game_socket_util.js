@@ -1,6 +1,4 @@
 import { io } from 'socket.io-client'
-import { receiveGame } from '../actions/game_actions'
-import { receiveUsers } from '../actions/user_actions'
 import GameDispatch from './game_dispatch'
 
 var socket = io()
