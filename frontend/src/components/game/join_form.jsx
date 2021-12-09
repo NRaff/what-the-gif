@@ -1,5 +1,6 @@
 import React from "react";
 import '../../stylesheets/root.scss'
+import GameManager from "../../util/game_socket_util"
 
 class JoinForm extends React.Component {
   constructor(props){
@@ -14,7 +15,10 @@ class JoinForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.joinGame(this.state)
+    // this.props.joinGame(this.state)
+    const socket = GameManager(this.state.gameCode)
+    // debugger
+    socket.emit(`game:join`, this.state)
   }
 
   update(field){

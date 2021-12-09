@@ -62,9 +62,10 @@ const onConnection = socket => {
 io.on('connection', socket => {
   onConnection(socket)
   console.log('a user connected')
-  socket.on('test chat', msg => {
-    io.emit('test chat', msg)
-  })
+  // socket.on('test chat', msg => {
+  //   io.emit('test chat', msg)
+  // })
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });

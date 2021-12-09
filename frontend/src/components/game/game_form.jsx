@@ -1,6 +1,7 @@
 import React from "react";
 import { gameKey } from "../component_utils/methods";
 import '../../stylesheets/root.scss'
+import GameManager from "../../util/game_socket_util"
 
 // Name of the game/lobby name
 // Max number of players for the game
@@ -24,9 +25,11 @@ class GameForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.createGame(this.state)
+    // this.props.createGame(this.state)
+    const socket = GameManager(this.state.gameCode)
+    // ${this.state.gameCode}
+    socket.emit(`game:create`, this.state)
     // if succesful it should redirect to a form/page with the games info
-    
   }
 
   update(field){

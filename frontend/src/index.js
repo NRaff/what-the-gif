@@ -61,42 +61,53 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore({});
   }
-  var socket = io()
-  socket.on('test chat', msg => {
-    console.log(msg)
-  })
-  socket.on('pretty', msg => {
-    console.log(msg)
-  })
-  const user = {
-    email: "free@email.com",
-    password: "123456"
-  }
+  // var socket = io()
+  // socket.on('test chat', msg => {
+  //   console.log(msg)
+  // })
+  // socket.on('pretty', msg => {
+  //   console.log(msg)
+  // })
+  // const user = {
+  //   email: "free@email.com",
+  //   password: "123456"
+  // }
 
-  const testGame = {
-    "gameOwner": "61aebee64cc56c6b513259b2",
-    "title": "Tesdfsdst",
-    "maxPlayers": 8,
-    "gameCode": "new another",
-    "scoreToWin": 8,
-    "roundTimeLimit": 60
-  }
+  // const testGame = {
+  //   "gameOwner": "61aebee64cc56c6b513259b2",
+  //   "title": "Tesdfsdst",
+  //   "maxPlayers": 8,
+  //   "gameCode": "new 9",
+  //   "scoreToWin": 8,
+  //   "roundTimeLimit": 60
+  // }
 
-  const joinPayload = {
-    gameCode: "new another",
-    playerId: ""
-  }
-  const createGameSocket = () => {
-    socket.emit('game:create', testGame)
-  }
+  // const joinPayload = {
+  //   gameCode: "new 9",
+  //   playerId: "61b0185794380516aae68435"
+  // }
+  // const createGameSocket = () => {
+  //   socket.emit('game:create', testGame)
+  // }
 
-  const joinGameSocket = () => {
-    socket.emit('game:join', "new another")
-  }
-  window.testGameSocket = testGameSocket
-  socket.emit('test chat', 'base socket working')
-  
-
+  // const joinGameSocket = () => {
+  //   socket.emit('game:join', joinPayload)
+  // }
+  // window.joinGameSocket = joinGameSocket
+  // window.createGameSocket = createGameSocket
+  // socket.emit('test chat', 'base socket working')
+  // socket.on('joined-game', payload => {
+  //   console.log(payload)
+  // })
+  // socket.on('create-game', payload => {
+  //   console.log(payload)
+  // })
+  // socket.on('create-game-error', payload => {
+  //   console.log(payload)
+  // })
+  // socket.on('join-game-error', payload => {
+  //   console.log(payload)
+  // })
   const root = document.getElementById('root');
   window.store = store
 

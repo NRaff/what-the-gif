@@ -18,14 +18,34 @@ const createGame = game => {
   return newGame.save()
 }
 
-const joinGame = async payload => {
-  await Game.findOne({gameCode: payload.gameCode})
+const joinGame = (payload, socket, io) => {
+  // console.log(payload)
+  Game.findOne({gameCode: payload.gameCode})
     .then(game => {
       if (!game) {
-        return res.status(422).json({game: "Invalid game code"})
+        const errPayload = {
+          error: err,
+          type: "RECEIVE_GAME_ERRORS"
+        }
+        io.emit('join-game-error', errPayload)
       } else {
         game.players.push({user: payload.playerId})
-        return game.save()
+        game.save()
+          .then(updatedGame => {
+            const newPayload = {
+              game: updatedGame,
+              type: "RECEIVE_GAME"
+            }
+            io.emit(`joined-game:${game.gameCode}`, newPayload)
+            // io.emit(`game-update:${game.gameCode}`, newPayload)
+          })
+          .catch(err => {
+            const errPayload = {
+              error: err,
+              type: "RECEIVE_GAME_ERRORS"
+            }
+            io.emit('join-game-error', errPayload)
+          })
       }
     })
 }
@@ -34,13 +54,7 @@ const joinGame = async payload => {
 module.exports = (io, socket) => {
   // * Join Game
   const socketJoinGame = payload => {
-    joinGame(payload)
-      .then(updatedGame => {
-        socket.emit('test chat', updatedGame)
-      })
-      .catch(err => {
-        socket.emit('test chat', err)
-      })
+    joinGame(payload,socket, io)
   }
 
   // * Create a game
@@ -49,25 +63,32 @@ module.exports = (io, socket) => {
 
     let response = {}
     if (!isValid) {
-      response = {
-        status: 400,
-        errors: errors
+      const payload = {
+        error: errors,
+        type: "RECEIVE_GAME_ERRORS",
+        locale: "Validation"
       }
-      socket.emit('test chat', response)
-      return response
+      io.emit('create-game-error', payload)
+    } else {
+      createGame(game)
+        .then(res => {
+          console.log('Create Game Success')
+          const payload = {
+            game: res,
+            type: "RECEIVE_GAME"
+          }
+          io.emit(`created-game:${game.gameCode}`, payload)
+        })
+        .catch(err => {
+          console.log('Create Game Fail')
+          const payload = {
+            error: err,
+            type: "RECEIVE_GAME_ERRORS",
+            locale: "Save"
+          }
+          io.emit('create-game-error', payload)
+        })
     }
-    createGame(game)
-      .then(res => {
-        socket.join(res.gameCode)
-        // console.log(res)
-        socket.on(res.gameCode, () => {console.log(`Game Channel: ${res.title}`)})
-        io.in('test chat').emit(`Channel Rooms: ${res.title}`)
-        console.log(res.gameCode)
-        console.log(socket.rooms)
-      })
-      .catch(err => {
-        socket.emit('test chat', {error: err})
-      })
   }
   socket.on("game:join", socketJoinGame)
   socket.on("game:create", socketCreateGame)
