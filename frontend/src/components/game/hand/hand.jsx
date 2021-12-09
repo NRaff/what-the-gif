@@ -1,15 +1,15 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
 import Card from "./card";
-// import { myGif, fetchGif } from "../../../actions/searched_gifs_actions";
 import { shuffleArray } from "../../component_utils/methods";
-// import { fetchHand } from "../../../actions/hand_actions";
+
 
 export const playerHandIDs = (users) => {
     const arr=[]
     if (users && users.length >= 1){
       users.forEach((item)=>{
-        const myHand = (item.curHand[0].split(','))
+        // console.log(item.split(','))
+        const myHand = (item.split(','))
         myHand.forEach((item)=>{
           if (item.length !== 18){
             arr.push(item.slice(1))
@@ -21,11 +21,18 @@ export const playerHandIDs = (users) => {
     } else {
       return null
     }
-
+    return(arr)
 }
 
-// const slat = myGif('l7fdqmHQ1jCg2HzQlx')
-// console.log(this.props)
+export const showHand = (arr) => {
+  return(
+    arr.map((gifID, i) => (
+      <div className="a-card" id={i} key={i}>
+        
+      </div>
+    ))
+  )
+}
 
 class Hand extends React.Component {
   constructor(props){
@@ -44,31 +51,49 @@ class Hand extends React.Component {
   }
 
   render(){
-    if (!this.props.users) return null;
   
+    if (!this.props.users) return null;
+    // console.log(this.props)
     const shflD = (shuffleArray(this.props.gameDeck))
-
     const deckArr = []
     for (let i = 0; i < 5; i++) {
       deckArr.push(shflD[i])
     }
-
     const curId = this.props.currentUser.id;
-  
     const payload = { user: curId, cards: deckArr }
-    console.log(payload)
+    // console.log(this.props.users[0].curHand)
+
+    if (this.props.users.length !== 0) {
+      const newGifId = (playerHandIDs(this.props.users[0].curHand))
+      console.log(newGifId)
+    } else {
+      return null
+    }
+    // console.log(payload)
+    // const showHand = arr => {
+    //   return
+    // }
+
 
     return(
       <div className="player-hand-show">
         <h1>this is my hand</h1>
         <div className='player-lineup'>
-          <Card 
-            users={this.props.users}
-            currentUser={this.props.currentUser}
+
+          {/* {console.log(showHand(playerHandIDs(this.props.users[0].curHand)))} */}
+          {(this.props.users.length !== 0) ?
             
-          />
+            <Card 
+              users={this.props.users}
+              currentUser={this.props.currentUser}
+              gameDeck={this.props.gameDeck}
+          /> : null }
+          {/* {console.log(this.props.users)} */}
+
         </div>
-        <button onClick={() => this.handleSubmit(payload)}>Deal Cards</button>
+        <div className="shuffle-deck">
+          <button onClick={() => this.handleSubmit(payload)}>Deal Cards</button>
+        </div>
       </div>
     )
   }
