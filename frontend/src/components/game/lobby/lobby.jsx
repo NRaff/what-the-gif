@@ -42,7 +42,7 @@ class Lobby extends React.Component {
   }
 
   render() {
-    const testPlayers = [{ displayName: 'test1' }, { displayName: 'test2' }, { displayName: 'test3' }, { displayName: 'test4' }]
+    // const testPlayers = [{ displayName: 'test1' }, { displayName: 'test2' }, { displayName: 'test3' }, { displayName: 'test4' }]
     return (
       <div className='lobby-container'>
         <h1>Waiting for players to join...</h1>
