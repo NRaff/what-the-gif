@@ -33,7 +33,6 @@ const joinGame = (payload, io, socket) => {
     Game.findOne({ gameCode: payload.gameCode })
     .then(game => {
       if (!game) {
-        console.log("Error: no game found")
         const errPayload = {
           errors: err,
           type: "RECEIVE_GAME_ERRORS"
@@ -49,17 +48,14 @@ const joinGame = (payload, io, socket) => {
         .then( users => {
           game.save()
           .then(updatedGame => {
-            console.log("updated game received")
             const newPayload = {
               game: updatedGame,
               users: users,
               type: "JOINED_GAME"
             }
-            // payload should include users
             io.emit(`joined-game:${game.gameCode}`, newPayload)
           })
           .catch(err => {
-            console.log("Join Game Error")
             const errPayload = {
               errors: err,
               type: "RECEIVE_GAME_ERRORS"
@@ -89,8 +85,6 @@ module.exports = (io, socket) => {
   // * Create a game
   const socketCreateGame = game => {
     const { errors, isValid } = validateCreateGameInput(game);
-
-    let response = {}
     if (!isValid) {
       const payload = {
         errors: errors,
@@ -101,7 +95,6 @@ module.exports = (io, socket) => {
     } else {
       createGame(game)
         .then(res => {
-          console.log('Create Game Success')
           const payload = {
             game: res,
             type: "RECEIVE_GAME"
@@ -109,7 +102,6 @@ module.exports = (io, socket) => {
           io.emit(`created-game:${game.gameCode}`, payload)
         })
         .catch(err => {
-          console.log('Create Game Fail')
           const payload = {
             errors: err,
             type: "RECEIVE_GAME_ERRORS",
