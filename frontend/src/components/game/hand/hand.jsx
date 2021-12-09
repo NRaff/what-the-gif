@@ -1,79 +1,84 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
-import { shuffleArray } from "../../component_utils/methods";
 import Card from "./card";
+import { shuffleArray } from "../../component_utils/methods";
+
+export const playerHandIDs = (users) => {
+    const arr=[]
+    if (users && users.length >= 1){
+      users.forEach((item)=>{
+        const myHand = (item.split(','))
+        myHand.forEach((item)=>{
+          if (item.length !== 18){
+            arr.push(item.slice(1))
+          } else {
+            arr.push(item)
+          }
+        })
+      })
+    } else {
+      return null
+    }
+    return(arr)
+}
+
+export const showHand = (arr) => {
+  return(
+    arr.map((gifID, i) => (
+      <div className="a-card" id={i} key={i}>
+        
+      </div>
+    ))
+  )
+}
 
 class Hand extends React.Component {
   constructor(props){
     super(props)
-    this.pageIndex = 0
+
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
-    // this.props.fetchUser(this.props.currentUser)
+    this.props.fetchUser(this.props.currentUser)
     this.props.fetchCards()
-    // console.log(this.props.gameDeck)
-    if (this.props.users === {} || this.props.gameDeck.length === 0) {
-      return null
-    }
+  }
+
+  handleSubmit(payload){
+    this.props.fetchHand(payload)
+  }
+
+  render(){
+  
+    if (!this.props.users) return null;
+    // console.log(this.props)
     const shflD = (shuffleArray(this.props.gameDeck))
     const deckArr = []
     for (let i = 0; i < 5; i++) {
       deckArr.push(shflD[i])
     }
-    debugger
-    // const curId = this.props.currentUser.id;
-    const {users, currentUser} = this.props
-    // const player = users[currentUser.id]
-    const player = this.props.currentUser.id
-    const payload = { user: player, cards: deckArr }
-    // debugger
-    // console.log(payload)
-    this.props.fetchHand(payload)
-  }
+    const curId = this.props.currentUser.id;
+    const payload = { user: curId, cards: deckArr }
 
-  handleSubmit(payload){
-    this.pageIndex += 1
-  }
-
-  render(){
-    // if (!this.props.users) return null;
-    // const shflD = (shuffleArray(this.props.gameDeck))
-    // const deckArr = []
-    // for (let i = 0; i < 5; i++) {
-    //   deckArr.push(shflD[i])
-    // }
-    // const curId = this.props.currentUser.id;
-    // const payload = { user: curId, cards: deckArr }
-    const {users, currentUser, playedCards} = this.props
-    // debugger
-    const currentHand = users[currentUser.id].curHand
+    if (this.props.gameDeck[0] === undefined) return null
+    
     return(
       <div className="player-hand-show">
-        <div className="hand-map">
-          <div className='player-lineup'>
-            {/* {console.log(this.props)} */}
-            {this.pageIndex !== 0 ? (
-              currentHand.map((card, i)=>(
-                <div key={i}>
-              
-                  <Card 
-                    users={this.props.users}
-                    currentUser={this.props.currentUser}
-                    gameDeck={this.props.gameDeck}
-                    card={playedCards[card]}
-                  />
-                </div>
-              ))) : null }
-          </div>
-        </div>
+        <h1>this is my hand</h1>
+        <div className='player-lineup'>
+          {deckArr.map(card => (
 
-        {/* <div className="shuffle-deck">
-          {(this.pageIndex === 0) ? (
-            <button onClick={() => this.handleSubmit(payload)} >Deal Cards</button>
-          ) : null}
-        </div> */}
+            <Card 
+              users={this.props.users}
+              currentUser={this.props.currentUser}
+              gameDeck={this.props.gameDeck}
+              card={card} />
+          
+          ))}
+        </div>
+        <div className="shuffle-deck">
+          <button onClick={() => this.handleSubmit(payload)}>Deal Cards</button>
+        </div>
       </div>
     )
   }
