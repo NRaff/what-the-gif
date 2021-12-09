@@ -38,7 +38,7 @@ export const getGameDeck = async (categories) => {
 
 // Should return a gif object from giphy
 export const getGifById = gifId => (
-  axios.get(giphy.gifById + params.api_key + params.gifId + gifId)
+  axios.get(giphy.search + params.api_key + params.gifId + gifId)
 )
 
 // Returns 10 (or specified number) of gifs
