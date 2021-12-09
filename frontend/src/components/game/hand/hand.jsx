@@ -36,19 +36,18 @@ class Hand extends React.Component {
     
     return(
       <div className="player-hand-show">
-        <h1>this is my hand</h1>
+        <h2>MY HAND</h2>
           {this.pageCounter > 0 ? (
         <div className='player-lineup'>
-
             {deckArr.map(card => (
   
               <Card 
                 users={this.props.users}
                 currentUser={this.props.currentUser}
                 gameDeck={this.props.gameDeck}
-                card={card} />       
+                card={card}
+                key={card.gifId}/>       
             ))}
-
         </div>
           ) : null}
           {this.pageCounter === 0 ? (
