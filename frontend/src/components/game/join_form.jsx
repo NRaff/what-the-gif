@@ -30,9 +30,11 @@ class JoinForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div>
         <label>Game Code</label>
-          <input type="text"
-                 value={this.state.gameCode} 
-                 onChange={this.update('gameCode')}/>
+          <input 
+            type="text"
+            value={this.state.gameCode} 
+            onChange={this.update('gameCode')}
+          />
         </div>
         <button>Join Game</button>
       </form>
