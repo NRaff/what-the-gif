@@ -7,9 +7,13 @@ class Profile extends React.Component {
   // constructor(props) {
   //   super(props)
   // }
+  componentDidMount() {
+    this.props.fetchUser(this.props.currentUser)
+  }
 
   render(){
-    const user = this.props.currentUser
+    const user = this.props.user ? this.props.user : this.props.currentUser
+
     return(
       <div id='profile-module'>
         <h1>User Profile</h1>
@@ -31,6 +35,16 @@ class Profile extends React.Component {
                 <p>{user.email}</p>
               </td>
             </tr>
+            {this.props.user ? (this.props.user.favGIF ? (
+              <tr id='p-info'>
+                <td>
+                  <h2>Favorite GIF</h2>
+                </td>
+                <td>
+                  <img src={user.favGIF} alt="Favorite GIF" />
+                </td>
+              </tr>
+            ) : (null)) : (null)}
           </tbody>
         </table>
 

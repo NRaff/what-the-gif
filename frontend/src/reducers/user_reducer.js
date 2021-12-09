@@ -1,14 +1,19 @@
-import { RECEIVE_FAVORITE_GIF, REMOVE_FAVORITE_GIF } from "../actions/user_actions";
-import { RECEIVE_CURRENT_USER} from "../actions/session_actions"
-import { RECEIVE_INITIAL_HAND, REMOVE_CARD_FROM_HAND, RECEIVE_NEW_CARD} from '../actions/hand_actions'
+
+import { RECEIVE_FAVORITE_GIF, RECEIVE_USER, REMOVE_FAVORITE_GIF } from "../actions/user_actions";
+import { RECEIVE_CURRENT_USER} from "../actions/session_actions";
+import { RECEIVE_INITIAL_HAND, REMOVE_CARD_FROM_HAND, RECEIVE_NEW_CARD} from '../actions/hand_actions';
+
 
 const UserReducer = (state={}, action) => {
   Object.freeze(state)
+  let nState = Object.assign({}, state)
   switch(action.type) {
+    case RECEIVE_USER:
+      // debugger
+      nState[action.user._id] = action.user
     case RECEIVE_FAVORITE_GIF:
       return Object.assign({}, state, { [action.user._id]: action.user })
     case REMOVE_FAVORITE_GIF:
-      let nState = Object.assign({}, state)
       nState[action.user._id].favGIF = ''
       return nState
     case RECEIVE_CURRENT_USER:
