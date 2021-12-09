@@ -24,10 +24,10 @@ class SearchResults extends React.Component {
       return(
         <div className='gif-result' key={i} id={gif.images.fixed_height.url} onClick={this.handleClick} >
           <img src={gif.images.fixed_height.url} alt={gif.title} />
-            <FaStar 
+            {/* <FaStar 
               key={i} 
-              // color={user.fav}
-            />
+              color={user.favGIF === gif.images.fixed_height.url ? 'gold' : 'gray'}
+            /> */}
             
         </div>
       )
@@ -37,9 +37,12 @@ class SearchResults extends React.Component {
     // 
 
     return(
+      <>
+        <h2>Set your favorite GIF by clicking below. <br/> This will show up with your display name during a game.</h2>
       <div className='gif-wrapper'>
         {results}
       </div>
+      </>
     )
   }
 }

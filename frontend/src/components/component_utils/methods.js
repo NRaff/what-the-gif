@@ -6,3 +6,8 @@ export const gameKey = (length) => {
   }
   return key;
 }
+
+export const randomLength = (min, max) => {
+  return Math.floor(Math.random() * (max - min) + min);
+
+}

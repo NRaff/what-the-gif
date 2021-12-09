@@ -5,7 +5,8 @@ import { createGame } from "../../actions/game_actions";
 const mSTP = state => ({
   // Errors name may be different
   errors: state.errors.game,
-  currentUser: state.session.user.id
+  currentUser: state.session.user.id,
+  games: Object.values(state.entities.games)
 })
 
 // Need to have functions to createGame, maybe need delete game at some point

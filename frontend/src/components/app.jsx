@@ -12,6 +12,11 @@ import JoinGame from './game/join_form_container';
 import Profile from './profile/profile_container';
 import Board from './game/board/board_container';
 
+import Categories from './categories/categories_container'
+
+import Lobby from './game/lobby/lobby_container'
+
+
 const App = () => (
 
   <div>
@@ -22,12 +27,14 @@ const App = () => (
     <Route>
       <Route exact path="/" component={Splash} />
       <div className='components'>
+      <Route exact path ="/category" component={Categories} />
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
       <ProtectedRoute path="/create" component={NewGame} />
       <ProtectedRoute path="/join" component={JoinGame} />
       <ProtectedRoute path="/profile/:userId" component={Profile} />
-      <Route path='/board' component={Board} />
+      <Route path='/lobby' component={Lobby} />
+      <Route path='/game' component={Board} />
       </div>
     </Route>
   </div>
