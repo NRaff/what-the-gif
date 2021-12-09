@@ -26,6 +26,7 @@ class Board extends React.Component {
   
   render() {
     // const testPlayers = [{ displayName: 'test1' }, { displayName: 'test2' }, { displayName: 'test3' }, { displayName: 'test4' }]
+    const game = this.props.game ? this.props.game : {players: []}
     return (
       <div className='board-container'>
         <section className='player-lineup'>
