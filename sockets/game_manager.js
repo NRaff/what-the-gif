@@ -125,11 +125,20 @@ const joinGame = (payload, io, socket) => {
   }
 }
 
+const updateGame = (payload, io) => {
+  const {gameCode} = payload
+  io.emit(`joined-game:${gameCode}`, payload)
+}
+
 // * Export socket listeners and events
 module.exports = (io, socket) => {
   // * Join Game
   const socketJoinGame = payload => {
     joinGame(payload, io, socket)
+  }
+
+  const socketUpdateGame = payload => {
+    updateGame(payload, io)
   }
 
   const socketGetGame = payload => {
@@ -168,4 +177,5 @@ module.exports = (io, socket) => {
   socket.on("game:join", socketJoinGame)
   socket.on("game:create", socketCreateGame)
   socket.on("game:get", socketGetGame)
+  socket.on("game:update", socketUpdateGame)
 }

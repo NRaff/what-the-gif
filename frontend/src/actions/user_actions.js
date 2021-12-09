@@ -6,6 +6,7 @@ export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_USERS = "RECEIVE_USERS";
+export const CLEAR_USERS = "CLEAR_USERS";
 
 export const receiveFavoriteGIF = user => ({
   type: RECEIVE_FAVORITE_GIF,
@@ -34,6 +35,10 @@ export const receiveUser = user => ({
 export const receiveUsers = users => ({
   type: RECEIVE_USERS,
   users
+})
+
+export const clearUsers = () => ({
+  type: CLEAR_USERS
 })
 
 export const fetchUser = payload => dispatch => {

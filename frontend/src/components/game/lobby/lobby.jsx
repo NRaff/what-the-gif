@@ -17,35 +17,21 @@ export const playerIndex = (players) => {
 class Lobby extends React.Component {
   constructor(props) {
     super(props)
-
-    // this.playerLineup = this.playerLineup.bind(this)
     this.startGame = this.startGame.bind(this)
   }
 
   componentDidMount(){
-    const { currentUser, gameCode, game, dispatch } = this.props
+    const { gameCode, game, dispatch } = this.props
     const manager = GameManager(gameCode, dispatch)
-    this.props.fetchUser(this.props.currentUser)
     if (!game) {
-      manager.getGame(gameCode)
+      manager.getGame()
     }
   }
 
-  // playerLineup(players) {
-  //   return (
-  //     players.map((player, i) => (
-  //       <div className='player-card' id={i} key={i}>
-  //         {player.favGIF ? (<img src={player.favGIF} alt="favGIF" />) : null}
-  //         <div id='shade' />
-  //         <p>{player.displayName}</p>
-  //       </div>
-  //     ))
-  //   )
-  // }
-
   startGame(){
-    const {game} = this.props
-    debugger
+    const {game,gameCode,dispatch} = this.props
+    const manager = GameManager(gameCode, dispatch)
+    manager.sendToGame({type: 'GAME_STARTED'})
     this.props.history.push(`/game/${game.gameCode}`)
   }
 

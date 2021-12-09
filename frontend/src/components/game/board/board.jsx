@@ -2,12 +2,21 @@ import React from "react";
 import '../../../stylesheets/root.scss'
 import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
+import GameManager from "../../../util/game_socket_util"
 
 class Board extends React.Component {
   constructor(props){
     super(props)
 
     this.scores = this.scores.bind(this)
+  }
+
+  componentDidMount(){
+    const {game, gameCode, dispatch} = this.props
+    if (!game) {
+      const manager = GameManager(gameCode, dispatch)
+      manager.getGame()
+    }
   }
 
   scores(playerScores){
