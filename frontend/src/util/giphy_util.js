@@ -36,6 +36,15 @@ export const getGameDeck = async (categories) => {
   return deckGifs
 }
 
+export const setGameDeck = cats => {
+  let deckGifs;
+  cats.forEach(async cat => {
+    let response = await searchGifs(cat, 30)
+    deckGifs = deckGifs.concat(response.data.data)
+  })
+  return deckGifs
+}
+
 // Should return a gif object from giphy
 export const getGifById = gifId => (
   axios.get(giphy.search + params.api_key + params.gifId + gifId)

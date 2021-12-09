@@ -14,6 +14,7 @@ const mSTP = (state, ownProps) => {
     players: Object.values(state.entities.users),
     currentUser: state.session.user,
     users: Object.values(state.entities.users),
+    categories: Object.values(state.entities.categories)
   })
 }
 

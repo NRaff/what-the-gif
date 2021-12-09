@@ -127,6 +127,7 @@ const joinGame = (payload, io, socket) => {
 
 const updateGame = (payload, io) => {
   const {gameCode} = payload
+  console.log(payload.type)
   io.emit(`joined-game:${gameCode}`, payload)
 }
 
