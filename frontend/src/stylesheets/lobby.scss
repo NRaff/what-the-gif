@@ -3,9 +3,28 @@
   justify-content: center;
 }
 
-.lobby-container h1 {
+.lobby-container header {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.lobby-container h1 {
+  margin-bottom: 10px;
+}
+
+.lobby-container h2 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.lobby-container header p {
+  background-color: rgb(46, 46, 46);
+  margin: 0 auto;
+  font-size: 30px;
+  width: 150px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .start-game {
