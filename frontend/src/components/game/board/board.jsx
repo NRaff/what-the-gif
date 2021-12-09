@@ -2,6 +2,7 @@ import React from "react";
 import '../../../stylesheets/root.scss'
 import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
+import Card from "../hand/card_container"
 
 class Board extends React.Component {
   constructor(props){
@@ -27,6 +28,7 @@ class Board extends React.Component {
     return (
       <div className='board-container'>
         <section className='player-lineup'>
+          {/* {console.log(this.props)} */}
           {playerIndex(this.props.players)}
         </section>
         <section className='scores'>

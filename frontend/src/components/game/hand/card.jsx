@@ -1,13 +1,29 @@
 import React from "react";
-
-import '../../../stylesheets/root.scss'
+// import { render } from "react-dom";
+import '../../../stylesheets/root.scss';
 // show gif img + title
-const Card = ({card}) => {
-  return (
-    <div>
-      <img src="" alt="cardGIF"/>
-    </div>
-  )
+// import { playerHandIDs } from "./hand";
+// import Hand from "./hand";
+// import { fetchUser } from "../../../actions/user_actions";
+// import { searchGifs } from "../../../util/giphy_util";
+// import { fetchGif } from "../../../actions/searched_gifs_actions";
+
+
+
+class Card extends React.Component {
+
+
+  render() {
+    // console.log(this.props)
+    return (
+      <div>
+        {/* {console.log(playerHandIDs)} */}
+        {/* {console.log(this)} */}
+        i am 12
+      </div>
+    )
+
+  }
 }
 
 export default Card;

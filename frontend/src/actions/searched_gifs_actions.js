@@ -31,3 +31,10 @@ export const fetchGif = gifId => dispatch => {
       dispatch(receiveGif(data.data))
     })
 }
+
+export const myGif = (gifId) => dispatch => {
+  giphyUtil.getGifById(gifId)
+    .then(({ data }) => {
+      dispatch(receiveGif(data.data))
+    })
+}

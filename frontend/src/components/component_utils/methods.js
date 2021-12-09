@@ -11,3 +11,7 @@ export const randomLength = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 
 }
+
+export const shuffleArray = array => {
+  return (array.sort(() => Math.random() - 0.5))
+}
