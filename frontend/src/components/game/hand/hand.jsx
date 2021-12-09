@@ -46,15 +46,16 @@ class Hand extends React.Component {
     // }
     // const curId = this.props.currentUser.id;
     // const payload = { user: curId, cards: deckArr }
-    const {users, currentUser, playedCards} = this.props
-    // debugger
-    const currentHand = users[currentUser.id].curHand
+    // const {users, currentUser, playedCards} = this.props
+    // // debugger
+    // const currentHand = users[currentUser.id].curHand
+    console.log(this.props)
     return(
       <div className="player-hand-show">
-        <div className="hand-map">
-          <div className='player-lineup'>
+        {/* <div className="hand-map">
+          <div className='player-lineup'> */}
             {/* {console.log(this.props)} */}
-            {this.pageIndex !== 0 ? (
+            {/* {this.pageIndex !== 0 ? (
               currentHand.map((card, i)=>(
                 <div key={i}>
               
@@ -67,7 +68,7 @@ class Hand extends React.Component {
                 </div>
               ))) : null }
           </div>
-        </div>
+        </div> */}
 
         {/* <div className="shuffle-deck">
           {(this.pageIndex === 0) ? (

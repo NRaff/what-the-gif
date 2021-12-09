@@ -11,7 +11,7 @@ import NewGame from './game/game_form_container';
 import JoinGame from './game/join_form_container';
 import Profile from './profile/profile_container';
 import Board from './game/board/board_container';
-
+import Endgame from './game/endgame/endgame_container';
 import Categories from './categories/categories_container'
 
 import Lobby from './game/lobby/lobby_container'
@@ -35,6 +35,7 @@ const App = () => (
       <ProtectedRoute path="/profile/:userId" component={Profile} />
       <Route path='/lobby/:gameCode' component={Lobby} />
       <Route path='/game/:gameCode' component={Board} />
+      <Route path='/over' component={Endgame} />
       </div>
     </Route>
   </div>
