@@ -11,6 +11,7 @@ import NewGame from './game/game_form_container';
 import JoinGame from './game/join_form_container';
 import Profile from './profile/profile_container';
 import Board from './game/board/board_container';
+import Categories from './categories/categories_container'
 
 const App = () => (
 
@@ -22,6 +23,7 @@ const App = () => (
     <Route>
       <Route exact path="/" component={Splash} />
       <div className='components'>
+      <Route exact path ="/category" component={Categories} />
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
       <ProtectedRoute path="/create" component={NewGame} />
