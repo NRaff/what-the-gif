@@ -35,8 +35,17 @@ class Lobby extends React.Component {
     this.props.history.push(`/game/${game.gameCode}`)
   }
 
+  goToGame(){
+    const {game, history} = this.props
+    history.push(`/game/${game.gameCode}`)
+  }
+
   render() {
     // const testPlayers = [{ displayName: 'test1' }, { displayName: 'test2' }, { displayName: 'test3' }, { displayName: 'test4' }]
+    const {gameStatus} = this.props
+    if (gameStatus) {
+      this.goToGame()
+    }
     return (
       <div className='lobby-container'>
         <h1>Waiting for players to join...</h1>

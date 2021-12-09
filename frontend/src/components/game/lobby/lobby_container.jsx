@@ -10,7 +10,8 @@ const mSTP = (state, ownProps) => {
     game: findByCode(games,code),
     gameCode: code,
     players: Object.values(state.entities.users),
-    currentUser: state.session.user
+    currentUser: state.session.user,
+    gameStatus: state.ui.gameStatus
   })
 }
 
