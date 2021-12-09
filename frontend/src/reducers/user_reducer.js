@@ -1,4 +1,4 @@
-import { RECEIVE_FAVORITE_GIF, RECEIVE_USER, REMOVE_FAVORITE_GIF } from "../actions/user_actions";
+import { RECEIVE_FAVORITE_GIF, RECEIVE_USER, REMOVE_FAVORITE_GIF, RECEIVE_USERS } from "../actions/user_actions";
 import { RECEIVE_CURRENT_USER} from "../actions/session_actions";
 import { RECEIVE_INITIAL_HAND, REMOVE_CARD_FROM_HAND, RECEIVE_NEW_CARD} from '../actions/hand_actions';
 
@@ -15,6 +15,12 @@ const UserReducer = (state={}, action) => {
     case REMOVE_FAVORITE_GIF:
       nState[action.user._id].favGIF = ''
       return nState
+    case RECEIVE_USERS:
+      let newState = {}
+      action.users.forEach(user => {
+        newState[user._id] = user
+      })
+      return newState;
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, {[action.currentUser.id]: action.currentUser})
     case RECEIVE_INITIAL_HAND:

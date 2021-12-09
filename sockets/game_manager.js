@@ -1,6 +1,8 @@
 const validateGameJoin = require('../validations/joingame');
 const validateCreateGameInput = require('../validations/creategame');
 const Game = require('../models/Game')
+const User = require('../models/User')
+const mongoose = require('mongoose')
 
 // * Helper methods
 const createGame = game => {
@@ -29,32 +31,51 @@ const joinGame = (payload, io, socket) => {
     socket.emit('join-game-error', errPayload)
   } else {
     Game.findOne({ gameCode: payload.gameCode })
-      .then(game => {
-        if (!game) {
+    .then(game => {
+      if (!game) {
+        console.log("Error: no game found")
+        const errPayload = {
+          errors: err,
+          type: "RECEIVE_GAME_ERRORS"
+        }
+        socket.emit('join-game-error', errPayload)
+      } else {
+        game.players.push({ user: payload.playerId })
+        User.find({
+          '_id': { $in: game.players.map(p => (
+            mongoose.Types.ObjectId(p.user)
+          ))}
+        })
+        .then( users => {
+          game.save()
+          .then(updatedGame => {
+            console.log("updated game received")
+            const newPayload = {
+              game: updatedGame,
+              users: users,
+              type: "JOINED_GAME"
+            }
+            // payload should include users
+            io.emit(`joined-game:${game.gameCode}`, newPayload)
+          })
+          .catch(err => {
+            console.log("Join Game Error")
+            const errPayload = {
+              errors: err,
+              type: "RECEIVE_GAME_ERRORS"
+            }
+            socket.emit('join-game-error', errPayload)
+          })
+        })
+        .catch( err => {
           const errPayload = {
-            errors: err,
+            errors: "Please refresh your page and try again.",
             type: "RECEIVE_GAME_ERRORS"
           }
           socket.emit('join-game-error', errPayload)
-        } else {
-          game.players.push({ user: payload.playerId })
-          game.save()
-            .then(updatedGame => {
-              const newPayload = {
-                game: updatedGame,
-                type: "RECEIVE_GAME"
-              }
-              io.emit(`joined-game:${game.gameCode}`, newPayload)
-            })
-            .catch(err => {
-              const errPayload = {
-                errors: err,
-                type: "RECEIVE_GAME_ERRORS"
-              }
-              socket.emit('join-game-error', errPayload)
-            })
-        }
-      })
+        })
+      }
+    })
   }
 }
 
