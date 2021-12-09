@@ -7,7 +7,7 @@ import { fetchGif, myGif } from "../../../actions/searched_gifs_actions";
 const mSTP = state => {
   return{
     currentUser: state.session.user,
-    users: state.entities.users,
+    users: Object.values(state.entities.users),
     results: Object.values(state.entities.searchgifs),
     gameDeck: Object.values(state.entities.cards.gameDeck),
     playedCards: Object.values(state.entities.cards.playedCards)
