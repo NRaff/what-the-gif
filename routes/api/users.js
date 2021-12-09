@@ -80,7 +80,9 @@ router.post('/login', (req, res) => {
             const payload = {
               id: user.id,
               displayName: user.displayName,
-              email: user.email
+              email: user.email,
+              favGIF: user.favGIF,
+              curHand: user.curHand
             }
             jwt.sign(
               payload,
@@ -97,6 +99,72 @@ router.post('/login', (req, res) => {
           }
         })
     })
+})
+
+router.post('/user', (req, res) => {
+  const {id} = req.body
+  console.log(req.body.id)
+  console.log(id)
+  User.findOne({_id: id})
+    .then(user => {
+      console.log(user)
+      res.json({
+        success: true,
+        user
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      return res.status(422).json({ Error: "No user found" })
+    })
+})
+
+router.patch('/hand/update', (req, res) => {
+  User.findByIdAndUpdate(req.body._id, {curHand: req.body.hand}, {new: true, useFindAndModify: false}, (error, doc) => {
+
+    if (error) {
+        console.log('Something went wrong when updating hand')
+        return res.status(400).json({ error: 'Something is wrong here' })
+    } else {
+      console.log(doc)
+      return res.json({
+        success: true,
+        user: doc
+      })
+    }
+  })
+})
+
+router.patch('/fav/create', (req, res) => {
+  User.findByIdAndUpdate(req.body._id, {favGIF: req.body.gifId}, {new: true, useFindAndModify: false}, (error, doc) => {
+
+    if (error) {
+        console.log('Something went wrong when updating gif')
+        return res.status(400).json({ error: 'Something is wrong here' })
+    } else {
+      console.log(doc)
+      return res.json({
+        success: true,
+        user: doc
+      })
+    }
+  })
+})
+
+router.patch('/fav/delete', (req, res) => {
+  User.findByIdAndUpdate(req.body._id, {favGIF: ''}, {new: true, useFindAndModify: false}, (error, doc) => {
+
+    if (error) {
+        console.log('Something went wrong when deleting gif')
+        return res.status(400).json({ error: 'Something is wrong here' })
+    } else {
+      console.log(doc)
+      return res.json({
+        success: true,
+        user: doc
+      })
+    }
+  })
 })
 
 module.exports = router;

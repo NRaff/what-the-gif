@@ -5,9 +5,12 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import * as SessionAPI from './util/session_api_util';
 import { logout } from './actions/session_actions';
+import { setAuthToken } from './util/session_api_util';
+import { logout } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
+
   
   if (localStorage.jwtToken) {
     SessionAPI.setAuthToken(localStorage.jwtToken);

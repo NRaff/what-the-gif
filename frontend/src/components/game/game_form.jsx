@@ -21,6 +21,7 @@ class GameForm extends React.Component{
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.game = this.props.games
   }
 
   handleSubmit(e){
@@ -30,6 +31,7 @@ class GameForm extends React.Component{
     // ${this.state.gameCode}
     socket.emit(`game:create`, this.state)
     // if succesful it should redirect to a form/page with the games info
+    this.props.history.push(`/lobby`)
   }
 
   update(field){

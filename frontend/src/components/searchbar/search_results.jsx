@@ -1,18 +1,48 @@
 import React from "react"
+import '../../stylesheets/root.scss'
+import { FaStar } from 'react-icons/fa'
 
 class SearchResults extends React.Component {
+  constructor(props){
+    super(props)
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+  
+  handleClick(e){
+    const req = {
+      _id: this.props.user.id,
+      gifId: e.currentTarget.id
+    }
+    this.props.setFavGIF(req)
+
+  }
+  
   render(){
-    const results = this.props.results.map((gif, i) => (
-      <li className='gif-result' id={i} key={i} >
-        <img src={gif.images.preview_gif.url} alt={gif.title} />
-        {/* <p>{gif.title}</p> */}
-      </li>
-    ))
+    const user = this.props.user
+    const results = this.props.results.map((gif, i) => {
+      return(
+        <div className='gif-result' key={i} id={gif.images.fixed_height.url} onClick={this.handleClick} >
+          <img src={gif.images.fixed_height.url} alt={gif.title} />
+            {/* <FaStar 
+              key={i} 
+              color={user.favGIF === gif.images.fixed_height.url ? 'gold' : 'gray'}
+            /> */}
+            
+        </div>
+      )
+      
+    })
+
+    // 
 
     return(
-      <ul>
+      <>
+        <h2>Set your favorite GIF by clicking below. <br/> This will show up with your display name during a game.</h2>
+      <div className='gif-wrapper'>
         {results}
-      </ul>
+      </div>
+      </>
     )
   }
 }

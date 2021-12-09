@@ -13,6 +13,13 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  curHand: {
+    type: Array,
+    required: true
+  },
+  favGIF: {
+    type: String
   }
 }, {
   timestamps: true
