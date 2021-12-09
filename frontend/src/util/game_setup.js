@@ -16,11 +16,28 @@ export const setupCategories = manager => {
 }
 
 export const setupCards = (manager, cats) => {
-  GiphyUtil.getGameDeck(randomSample(cats))
+  GiphyUtil.getGameDeck(randomSample(cats, 8))
     .then(cards => {
+      const newCards = cards.map(card => {
+        const newCard = GiphyUtil.gifObject(card)
+        return newCard
+      })
       const cardsPayload = {
         type: RECEIVE_ALL_CARDS,
-        cards: cards
+        cards: newCards
+      }
+      // debugger
+      manager.sendToGame(cardsPayload)
+    })
+}
+
+
+export const searchGifs = (manager, cats) => {
+  GiphyUtil.searchGifs("stoked",10)
+    .then(res => {
+      const cardsPayload = {
+        type: RECEIVE_ALL_CARDS,
+        cards: res.data.data
       }
       manager.sendToGame(cardsPayload)
     })

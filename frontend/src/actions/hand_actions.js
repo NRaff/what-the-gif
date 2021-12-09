@@ -5,7 +5,6 @@ export const RECEIVE_INITIAL_HAND = 'RECEIVE_INITIAL_HAND'
 export const RECEIVE_NEW_CARD = 'RECEIVE_NEW_CARD'
 export const REMOVE_CARD_FROM_HAND = 'REMOVE_CARD_FROM_HAND'
 
-
 export const receiveInitialHand = payload => ({
   type: RECEIVE_INITIAL_HAND,
   payload
