@@ -4,6 +4,11 @@ const app = express();
 const passport = require('passport');
 const db = require('./config/keys').mongoURI;
 const path = require('path')
+const {createServer} = require('http')
+const server = createServer(app)
+const { Server } = require("socket.io")
+const io = new Server(server)
+const registerGameManager = require("./sockets/game_manager")
 
 // * Setup
 const port = process.env.PORT || 5000;
@@ -36,5 +41,22 @@ mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
-  
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+
+
+// * Setup Sockets
+const onConnection = socket => {
+  registerGameManager(io, socket)
+}
+
+io.on('connection', socket => {
+  onConnection(socket)
+  console.log('a user connected')
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+})
+
+server.listen(port, () => {
+  console.log(`Listening on ${port}`)
+})

@@ -1,5 +1,6 @@
 import React from "react";
 import '../../stylesheets/root.scss'
+import GameManager from "../../util/game_socket_util"
 
 class JoinForm extends React.Component {
   constructor(props){
@@ -14,7 +15,9 @@ class JoinForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.joinGame(this.state)
+    const socket = GameManager(this.state.gameCode, this.props.dispatch)
+    socket.emit(`game:join`, this.state)
+    // ! Need to determine how to avoid pushing to the lobby unless success
     this.props.history.push('/lobby')
   }
 

@@ -1,14 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require('mongoose');
-const passport = require('passport');
 const Game = require('../../models/Game')
-const PlayerSchema = require('../../models/Player')
-const jwt = require('jsonwebtoken');
-
-
 const validateGameJoin = require('../../validations/joingame');
 const validateCreateGameInput = require('../../validations/creategame');
+
+// ! DEPRECATED (see socket/game_manager instead)
 
 // * Get User Games
 router.get("/", (req, res) => res.json({
