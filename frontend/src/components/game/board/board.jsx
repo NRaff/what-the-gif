@@ -1,5 +1,6 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
+import Hand from "../hand/hand_container";
 
 class Board extends React.Component {
   constructor(props){
@@ -31,7 +32,7 @@ class Board extends React.Component {
         </section>
 
         <section className='player-hand'>
-
+          <Hand />
         </section>
       </div>
     )
