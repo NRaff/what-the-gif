@@ -15,7 +15,8 @@ const mSTP = (state, ownProps) => {
 }
 
 const mDTP = dispatch => ({
-  fetchUser: (user) => dispatch(fetchUser(user))
+  fetchUser: (user) => dispatch(fetchUser(user)),
+  dispatch: dispatch
 })
 
 export default connect(mSTP, mDTP)(Lobby)

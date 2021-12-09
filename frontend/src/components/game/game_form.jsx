@@ -26,10 +26,9 @@ class GameForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    // this.props.createGame(this.state)
-    const socket = GameManager(this.state.gameCode, this.props.dispatch)
-    // ${this.state.gameCode}
-    socket.emit(`game:create`, this.state)
+    const {gameCode, dispatch} = this.props
+    const manager = GameManager(gameCode, dispatch)
+    manager.createGame(this.state)
     // if succesful it should redirect to a form/page with the games info
     this.props.history.push(`/lobby/${this.state.gameCode}`)
   }

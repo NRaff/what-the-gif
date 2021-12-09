@@ -1,5 +1,6 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
+import GameManager from "../../../util/game_socket_util"
 
 export const playerIndex = (players) => {
   return (
@@ -22,9 +23,12 @@ class Lobby extends React.Component {
   }
 
   componentDidMount(){
-    const { currentUser, gameCode } = this.props
+    const { currentUser, gameCode, game, dispatch } = this.props
+    const manager = GameManager(gameCode, dispatch)
     this.props.fetchUser(this.props.currentUser)
-    // get the game too if it doesn't already exist
+    if (!game) {
+      manager.getGame(gameCode)
+    }
   }
 
   // playerLineup(players) {

@@ -4,6 +4,21 @@ import { receiveUsers } from '../actions/user_actions'
 
 var socket = io()
 
+const manager = {
+  sendToGame: (gameCode, payload) => {
+    socket.emit(`joined-game:${gameCode}`, payload)
+  },
+  getGame: gameCode => {
+    socket.emit(`game:get`, { gameCode })
+  },
+  createGame: payload => {
+    socket.emit(`game:create`, payload)
+  },
+  joinGame: payload => {
+    socket.emit(`game:join`, payload)
+  }
+}
+
 const setupGameSocket = (gameCode, dispatch) => {
   socket.on(`joined-game:${gameCode}`, payload => {
     dispatch(receiveUsers(payload.users))
@@ -19,7 +34,7 @@ const setupGameSocket = (gameCode, dispatch) => {
     dispatch(payload)
   })
 
-  return socket
+  return manager
 }
 
 export default setupGameSocket;
