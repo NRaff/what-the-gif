@@ -14,3 +14,24 @@
   background-color: rgb(141, 133, 133);
   text-align: center;
 }
+
+.board-container {
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.board-container section {
+  margin-bottom: 30px;
+}
+
+.board-container h1 {
+  font-size: 70px;
+}
+
+.board-container h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
