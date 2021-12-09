@@ -22,15 +22,15 @@ export const playerHandIDs = (users) => {
     return(arr)
 }
 
-export const showHand = (arr) => {
-  return(
-    arr.map((gifID, i) => (
-      <div className="a-card" id={i} key={i}>
+// export const showHand = (arr) => {
+//   return(
+//     arr.map((gifID, i) => (
+//       <div className="a-card" id={i} key={i}>
         
-      </div>
-    ))
-  )
-}
+//       </div>
+//     ))
+//   )
+// }
 
 class Hand extends React.Component {
   constructor(props){
@@ -62,22 +62,35 @@ class Hand extends React.Component {
 
     if (this.props.users.length !== 0) {
       const newGifId = (playerHandIDs(this.props.users[0].curHand))
-      console.log(newGifId)
+      // console.log(newGifId)
     } else {
       return null
     }
 
+    console.log(deckArr)
+    // debugger
+    if (deckArr[0] === undefined) return null;
     return(
       <div className="player-hand-show">
-        <h1>this is my hand</h1>
-        <div className='player-lineup'>
+        {/* <h1>this is my hand</h1> */}
+        <div className="hand-map">
+          {deckArr.map((card, i)=>(
+            <div>
+              <a>{card.title}</a>
+              <img src={card.images.fixed_height.url} alt="altname" id={i} key={i}/>
+            </div>
+            
+          )
+          )}
+        </div>
+        {/* <div className='player-lineup'>
           {(this.props.users.length !== 0) ?
             <Card 
               users={this.props.users}
               currentUser={this.props.currentUser}
               gameDeck={this.props.gameDeck}
           /> : null }
-        </div>
+        </div> */}
         <div className="shuffle-deck">
           <button onClick={() => this.handleSubmit(payload)}>Deal Cards</button>
         </div>
