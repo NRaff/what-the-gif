@@ -1,6 +1,8 @@
 .lobby-container {
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .lobby-container header {
@@ -66,3 +68,19 @@
   position: absolute;
   top: 0
 }
+
+.start-game {
+  margin: 0 auto;
+  width: 200px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.start-game button {
+  width: 175px;
+}
+
+// .lobby-container button {
+//   margin: 0 auto;
+// }

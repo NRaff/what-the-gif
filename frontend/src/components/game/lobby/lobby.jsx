@@ -59,8 +59,9 @@ class Lobby extends React.Component {
         <header>
           <h1>Waiting for players to join...</h1>
           <h2>Game Code:</h2><p>{this.props.gameCode}</p>
-          <h2>Players:</h2>
+          
         </header>
+          <h2>Players:</h2>
         <section className='player-lineup'>
           {playerIndex(this.props.players)}
         </section>

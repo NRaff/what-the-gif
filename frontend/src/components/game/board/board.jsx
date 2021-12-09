@@ -4,11 +4,11 @@ import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
 import GameManager from "../../../util/game_socket_util"
 import Categories from "../../categories/categories_container";
+import Timer from './timer'
 
 class Board extends React.Component {
   constructor(props){
     super(props)
-    this.count = (this.props.game ? this.props.game.roundTimeLimit : 60)
 
     this.scores = this.scores.bind(this)
   }
@@ -25,34 +25,29 @@ class Board extends React.Component {
     return (
       players.map((player, i) => (
         <div className='scorecard' id={i} key={i}>
-          <p>{player.score}</p>
+          <p>{player.roundsWon.length} Rounds Won</p>
         </div>
       ))
     )
   }
-
-  timer(){
-    this.count -= 1
-    return (<p>{this.count}</p>)
-  }
-
-  timeInt(){
-    let time = setInterval(this.timer, 60000)
-  }
   
   render() {
+    // let time = setTimeout(() => {
+    //   this.setState({ count: this.state.count - 1 })
+    // }, 1000)
     const game = this.props.game ? this.props.game : {players: []}
     return (
       <div className='board-container'>
         <header>
-          <h2>ROUND 1</h2>
-          <div id='round-timer'>
-            {this.timeInt()}
-          </div>
+          <h2>ROUND 1</h2> 
+          <p>TIME REMAINING:</p>
+          {/* <Timer /> */}
         </header>
-        <section className='player-lineup'>
+        <div className='player-lineup'>
           {playerIndex(this.props.users)}
-          {this.scores(this.props.users)}
+        </div>
+        <section id='scores'>
+          {this.props.game ? this.scores(this.props.game.players) : null}
         </section>
         <section className='categories'>
           <h2>CATEGORY</h2>
