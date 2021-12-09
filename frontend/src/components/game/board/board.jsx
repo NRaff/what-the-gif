@@ -8,10 +8,12 @@ class Board extends React.Component {
     this.playerLineup = this.playerLineup.bind(this)
   }
   
-  playerLineup(players){
-    return(
+  playerLineup(players) {
+    return (
       players.map((player, i) => (
         <div className='player-card' id={i} key={i}>
+          {player.favGIF ? (<img src={player.favGIF} alt="favGIF" />) : null}
+          <div id='shade' />
           <p>{player.displayName}</p>
         </div>
       ))

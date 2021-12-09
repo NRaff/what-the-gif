@@ -17,6 +17,8 @@ class Lobby extends React.Component {
     return (
       players.map((player, i) => (
         <div className='player-card' id={i} key={i}>
+          {player.favGIF ? (<img src={player.favGIF} alt="favGIF" />) : null}
+          <div id='shade' />
           <p>{player.displayName}</p>
         </div>
       ))
@@ -31,6 +33,7 @@ class Lobby extends React.Component {
     const testPlayers = [{ displayName: 'test1' }, { displayName: 'test2' }, { displayName: 'test3' }, { displayName: 'test4' }]
     return (
       <div className='lobby-container'>
+        <h1>Waiting for players to join...</h1>
         <section className='player-lineup'>
           {this.playerLineup(this.props.players)}
         </section>
