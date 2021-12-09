@@ -1,19 +1,18 @@
 import { connect } from "react-redux";
-import Hand from "./hand";
-import { fetchHand } from "../../../actions/hand_actions";
+import Card from "./card"
 import { fetchUser } from "../../../actions/user_actions";
-
+import { fetchHand } from "../../../actions/hand_actions";
 
 const mSTP = state => {
   return{
-    currentUser: state.session.user,
-    users: Object.values(state.entities.users)
+    currentUser: state.session.user
   };
 }
 
 const mDTP = dispatch => ({
   fetchUser: (user) => dispatch(fetchUser(user)),
   fetchHand: (hand) => dispatch(fetchHand(hand))
+
 })
 
-export default connect(mSTP, mDTP)(Hand)
+export default connect(mSTP, mDTP)(Card)

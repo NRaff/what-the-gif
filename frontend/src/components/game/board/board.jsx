@@ -1,5 +1,6 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
+import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
 
 class Board extends React.Component {
@@ -37,7 +38,7 @@ class Board extends React.Component {
         </section>
 
         <section className='player-hand'>
-
+          <Hand />
         </section>
       </div>
     )

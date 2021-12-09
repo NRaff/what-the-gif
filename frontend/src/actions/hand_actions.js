@@ -24,6 +24,10 @@ export const fetchHand = payload => dispatch => {
     dispatch(receivePlayedCards(payload))
 }
 
+export const fetchCurHand = payload => dispatch => {
+    dispatch(receiveInitialHand(payload))
+}
+
 export const removeCardHand = payload => dispatch => {
   dispatch(removeCardFromHand(payload))
 }

@@ -1,4 +1,3 @@
-
 import { RECEIVE_FAVORITE_GIF, RECEIVE_USER, REMOVE_FAVORITE_GIF } from "../actions/user_actions";
 import { RECEIVE_CURRENT_USER} from "../actions/session_actions";
 import { RECEIVE_INITIAL_HAND, REMOVE_CARD_FROM_HAND, RECEIVE_NEW_CARD} from '../actions/hand_actions';
@@ -25,13 +24,13 @@ const UserReducer = (state={}, action) => {
         cards.push(card.gifId)
       })
       let nextState = Object.assign({}, state)
-      nextState[user].hand = cards 
+      nextState[user].curHand = cards 
       return nextState
     case REMOVE_CARD_FROM_HAND:      
       let currentUser = action.payload.user
       let cardId = action.payload.cardId
       let revisedArray = []
-      state[currentUser].hand.forEach(card => {
+      state[currentUser].curHand.forEach(card => {
         if (card === cardId){
         } else {
           revisedArray.push(card)
