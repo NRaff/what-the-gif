@@ -38,7 +38,7 @@ class Profile extends React.Component {
             {this.props.user ? (this.props.user.favGIF ? (
               <tr id='p-info'>
                 <td>
-                  <h2>Favorite GIF</h2>
+                  <h2>Favorite GIF:</h2>
                 </td>
                 <td>
                   <img src={user.favGIF} alt="Favorite GIF" />

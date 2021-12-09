@@ -31,3 +31,4 @@ export const joinGame = game => dispatch => GameUtil.joinGame(game)
   ), err => 
     dispatch(receiveErrors(err))
   )
+

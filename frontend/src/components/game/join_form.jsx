@@ -15,7 +15,7 @@ class JoinForm extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     this.props.joinGame(this.state)
-    this.props.history.push('/lobby')
+    this.props.history.push(`/lobby${this.state.gameCode}`)
   }
 
   update(field){
