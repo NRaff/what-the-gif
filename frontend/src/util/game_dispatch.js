@@ -12,14 +12,17 @@ const GameDispatch = (action, dispatch) => {
   switch(action.type) {
     case RECEIVE_ALL_CATEGORIES:
       dispatch(receiveAllCategories(action.categories))
+      break;
     case RECEIVE_ALL_CARDS:
       dispatch(receiveCards(action.cards))
+      break;
     case GAME_STARTED:
       dispatch(startGame())
       break;
     case JOINED_GAME:
       dispatch(receiveUsers(action.users))
       dispatch(receiveGame(action.game))
+      break;
     default:
       break;
   }

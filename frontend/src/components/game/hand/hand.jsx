@@ -11,26 +11,34 @@ class Hand extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchUser(this.props.currentUser)
-    this.props.fetchCards()
-    // console.log(this.props.gameDeck)
-    if (this.props.users === {} || this.props.gameDeck.length === 0) {
-      return null
+    // this.props.fetchCards()
+    // if (this.props.users === {} || this.props.gameDeck.length === 0) {
+    //   return null
+    // }
+    // const shflD = (shuffleArray(this.props.gameDeck))
+    // const deckArr = []
+    // for (let i = 0; i < 5; i++) {
+    //   deckArr.push(shflD[i])
+    // }
+    // const {users, currentUser} = this.props
+    // const player = this.props.currentUser.id
+    // const payload = { user: player, cards: deckArr }
+    // this.props.fetchHand(payload)
+    
+  }
+
+  getHand() {
+    const {users, gameDeck, currentUser, fetchHand} = this.props
+    if (users === {} || gameDeck.length === 0) {
+      return false
+    } else {
+      const payload = {
+        user: currentUser.id,
+        cards: gameDeck
+      }
+      fetchHand(payload)
+      return true
     }
-    const shflD = (shuffleArray(this.props.gameDeck))
-    const deckArr = []
-    for (let i = 0; i < 5; i++) {
-      deckArr.push(shflD[i])
-    }
-    debugger
-    // const curId = this.props.currentUser.id;
-    const {users, currentUser} = this.props
-    // const player = users[currentUser.id]
-    const player = this.props.currentUser.id
-    const payload = { user: player, cards: deckArr }
-    // debugger
-    // console.log(payload)
-    this.props.fetchHand(payload)
   }
 
   handleSubmit(payload){
@@ -38,22 +46,15 @@ class Hand extends React.Component {
   }
 
   render(){
-    // if (!this.props.users) return null;
-    // const shflD = (shuffleArray(this.props.gameDeck))
-    // const deckArr = []
-    // for (let i = 0; i < 5; i++) {
-    //   deckArr.push(shflD[i])
-    // }
-    // const curId = this.props.currentUser.id;
-    // const payload = { user: curId, cards: deckArr }
     const {users, currentUser, playedCards} = this.props
-    // debugger
     const currentHand = users[currentUser.id].curHand
+    // if (!this.getHand()) {
+    //   return null
+    // }
     return(
       <div className="player-hand-show">
         <div className="hand-map">
           <div className='player-lineup'>
-            {/* {console.log(this.props)} */}
             {this.pageIndex !== 0 ? (
               currentHand.map((card, i)=>(
                 <div key={i}>

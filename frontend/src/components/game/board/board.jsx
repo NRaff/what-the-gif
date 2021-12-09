@@ -4,6 +4,7 @@ import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
 import GameManager from "../../../util/game_socket_util"
 import Categories from "../../categories/categories_container";
+import { setupCards } from "../../../util/game_setup";
 
 class Board extends React.Component {
   constructor(props){
@@ -14,10 +15,13 @@ class Board extends React.Component {
   }
 
   componentDidMount(){
-    const {game, gameCode, dispatch} = this.props
+    const {game, gameCode, dispatch, categories} = this.props
+    const manager = GameManager(gameCode, dispatch)
     if (!game) {
-      const manager = GameManager(gameCode, dispatch)
       manager.getGame()
+    }
+    if (categories.length > 0) {
+      setupCards(manager, categories)
     }
   }
 
