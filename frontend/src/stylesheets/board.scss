@@ -35,9 +35,13 @@
   text-align: center;
 }
 
-.board-container section {
-  margin-bottom: 20px;
+#scores {
+  margin-bottom: 30px;
 }
+
+// .board-container div {
+//   margin-bottom: 20px;
+// }
 
 .board-container h1 {
   font-size: 70px;
@@ -46,10 +50,16 @@
 .board-container h2 {
   font-size: 20px;
   font-weight: 700;
-  margin: 10px 20px 10px 20px;
+  margin-bottom: 10px;
   display: inline-block;
 }
 
 .board-container header {
   margin-bottom: 20px;
+}
+
+
+#categories {
+  margin-top: -10px;
+  padding-top: 0px;
 }
