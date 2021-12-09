@@ -5,7 +5,6 @@ const gameErrors = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_GAME_ERRORS:
-      debugger
       return action.errors
   
     default:

@@ -13,30 +13,45 @@ class Hand extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.currentUser)
     this.props.fetchCards()
-  }
-
-  handleSubmit(payload){
-    this.pageIndex += 1
-    this.props.fetchHand(payload)
-  }
-
-  render(){
-    if (!this.props.users) return null;
+    // console.log(this.props.gameDeck)
+    if (this.props.gameDeck[0] === undefined) {
+      return null
+    }
     const shflD = (shuffleArray(this.props.gameDeck))
     const deckArr = []
     for (let i = 0; i < 5; i++) {
       deckArr.push(shflD[i])
     }
-    const curId = this.props.currentUser.id;
-    const payload = { user: curId, cards: deckArr }
+    // const curId = this.props.currentUser.id;
+    const {users, currentUser} = this.props
+    // const player = users[currentUser.id]
+    const playerr = this.props.currentUser.id
+    const payload = { user: playerr, cards: deckArr }
+    debugger
+    // console.log(payload)
+    this.props.fetchHand(payload)
+  }
+
+  handleSubmit(payload){
+    this.pageIndex += 1
+  }
+
+  render(){
+    // if (!this.props.users) return null;
+    // const shflD = (shuffleArray(this.props.gameDeck))
+    // const deckArr = []
+    // for (let i = 0; i < 5; i++) {
+    //   deckArr.push(shflD[i])
+    // }
+    // const curId = this.props.currentUser.id;
+    // const payload = { user: curId, cards: deckArr }
     
-    console.log(deckArr)
-    if (deckArr[0] === undefined) return null;
     return(
       <div className="player-hand-show">
         <div className="hand-map">
           <div className='player-lineup'>
-            {this.pageIndex !== 0 ? (
+            {/* {console.log(this.props)} */}
+            {/* {this.pageIndex !== 0 ? (
               deckArr.map((card, i)=>(
                 <div key={i}>
               
@@ -48,15 +63,15 @@ class Hand extends React.Component {
                 
                 />
                 </div>
-              ))) : null }
+              ))) : null } */}
           </div>
         </div>
 
-        <div className="shuffle-deck">
+        {/* <div className="shuffle-deck">
           {(this.pageIndex === 0) ? (
             <button onClick={() => this.handleSubmit(payload)} >Deal Cards</button>
           ) : null}
-        </div>
+        </div> */}
       </div>
     )
   }
