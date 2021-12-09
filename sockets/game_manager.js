@@ -20,6 +20,56 @@ const createGame = game => {
   return newGame.save()
 }
 
+// returns a promise
+const getPlayers = players => (
+  User.find({
+    '_id': {
+      $in: players.map(p => (
+        mongoose.Types.ObjectId(p.user)
+      ))
+    }
+  })
+)
+
+const getGame = (payload, io, socket) => {
+  Game.findOne({gameCode: payload.gameCode})
+  .then(game => {
+    getPlayers(game.players)
+      .then(users => {
+        game.save()
+          .then(updatedGame => {
+            const newPayload = {
+              game: updatedGame,
+              users: users,
+              type: "JOINED_GAME"
+            }
+            io.emit(`joined-game:${game.gameCode}`, newPayload)
+          })
+          .catch(err => {
+            const errPayload = {
+              errors: err,
+              type: "RECEIVE_GAME_ERRORS"
+            }
+            socket.emit('join-game-error', errPayload)
+          })
+      })
+      .catch(err => {
+        const errPayload = {
+          errors: "Please refresh your page and try again.",
+          type: "RECEIVE_GAME_ERRORS"
+        }
+        socket.emit('join-game-error', errPayload)
+      })
+    })
+  .catch(err => {
+    const errPayload = {
+      errors: "Please refresh your page and try again.",
+      type: "RECEIVE_GAME_ERRORS"
+    }
+    socket.emit('join-game-error', errPayload)
+  })
+}
+
 const joinGame = (payload, io, socket) => {
   const { errors, isValid } = validateGameJoin(payload);
 
@@ -75,11 +125,24 @@ const joinGame = (payload, io, socket) => {
   }
 }
 
+const updateGame = (payload, io) => {
+  const {gameCode} = payload
+  io.emit(`joined-game:${gameCode}`, payload)
+}
+
 // * Export socket listeners and events
 module.exports = (io, socket) => {
   // * Join Game
   const socketJoinGame = payload => {
     joinGame(payload, io, socket)
+  }
+
+  const socketUpdateGame = payload => {
+    updateGame(payload, io)
+  }
+
+  const socketGetGame = payload => {
+    getGame(payload, io, socket)
   }
 
   // * Create a game
@@ -113,4 +176,6 @@ module.exports = (io, socket) => {
   }
   socket.on("game:join", socketJoinGame)
   socket.on("game:create", socketCreateGame)
+  socket.on("game:get", socketGetGame)
+  socket.on("game:update", socketUpdateGame)
 }

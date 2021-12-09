@@ -1,18 +1,23 @@
 import { connect } from "react-redux";
 import Lobby from "./lobby";
 import { fetchUser } from "../../../actions/user_actions";
-import { joinGame } from "../../../actions/game_actions";
+import { findByCode } from "../../component_utils/methods";
 
-const mSTP = (state, ownProps) => ({
-  game: state.entities.games[ownProps.match.params.gameCode],
-  players: Object.values(state.entities.users),
-  currentUser: state.session.user,
-  gameCode: ownProps.match.params.gameCode
-})
+const mSTP = (state, ownProps) => {
+  const games = Object.values(state.entities.games)
+  const code = ownProps.match.params.gameCode
+  return ({
+    game: findByCode(games,code),
+    gameCode: code,
+    players: Object.values(state.entities.users),
+    currentUser: state.session.user,
+    gameStatus: state.ui.gameStatus
+  })
+}
 
 const mDTP = dispatch => ({
   fetchUser: (user) => dispatch(fetchUser(user)),
-  joinGame: game => dispatch(joinGame(game))
+  dispatch: dispatch
 })
 
 export default connect(mSTP, mDTP)(Lobby)

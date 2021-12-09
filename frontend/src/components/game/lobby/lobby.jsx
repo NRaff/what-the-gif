@@ -1,5 +1,6 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
+import GameManager from "../../../util/game_socket_util"
 
 export const playerIndex = (players) => {
   return (
@@ -16,25 +17,38 @@ export const playerIndex = (players) => {
 class Lobby extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
       playerId: this.props.currentUser,
       gameCode: this.props.gameCode
     }
-
     this.startGame = this.startGame.bind(this)
   }
 
   componentDidMount(){
-    this.props.fetchUser(this.props.currentUser)
+    const { gameCode, game, dispatch } = this.props
+    const manager = GameManager(gameCode, dispatch)
+    if (!game) {
+      manager.getGame()
+    }
   }
 
   startGame(){
-    this.props.history.push(`/game/${this.props.gameCode}`)
+    const {game,gameCode,dispatch} = this.props
+    const manager = GameManager(gameCode, dispatch)
+    manager.sendToGame({type: 'GAME_STARTED'})
+    this.props.history.push(`/game/${game.gameCode}`)
+  }
+
+  goToGame(){
+    const {game, history} = this.props
+    history.push(`/game/${game.gameCode}`)
   }
 
   render() {
-    // const testPlayers = [{ displayName: 'test1' }, { displayName: 'test2' }, { displayName: 'test3' }, { displayName: 'test4' }]
+    const {gameStatus} = this.props
+    if (gameStatus) {
+      this.goToGame()
+    }
     return (
       <div className='lobby-container'>
         <header>

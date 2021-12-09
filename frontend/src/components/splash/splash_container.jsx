@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import Splash from "./splash";
 import { receiveCurrentUser } from "../../actions/session_actions";
+import { clearUsers } from "../../actions/user_actions";
+import { resetGame } from "../../actions/ui_actions";
 
 
 const mSTP = state => ({
@@ -10,7 +12,9 @@ const mSTP = state => ({
 
 
 const mDTP = dispatch => ({
-  receiveCurrentUser: (user) => dispatch(receiveCurrentUser(user))
+  receiveCurrentUser: (user) => dispatch(receiveCurrentUser(user)),
+  clearUsers: () => dispatch(clearUsers()),
+  resetGame: () => dispatch(resetGame())
 })
 
 export default connect(mSTP, mDTP)(Splash)

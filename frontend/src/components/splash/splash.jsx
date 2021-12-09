@@ -8,6 +8,11 @@ class Splash extends React.Component {
     this.splashNav = this.splashNav.bind(this)
   }
 
+  componentDidMount(){
+    this.props.clearUsers()
+    this.props.resetGame()
+  }
+
   splashNav(){
     return (
       (this.props.auth ? (
