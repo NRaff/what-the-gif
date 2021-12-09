@@ -1,0 +1,49 @@
+.lobby-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.lobby-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.start-game {
+  margin: 0 auto;
+  width: 200px;
+}
+
+.player-card {
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.player-card img {
+  width: 150px;
+  height: 75px;
+  object-fit: cover;
+  z-index: 0;
+  position: absolute;
+  top: 0
+}
+
+.player-card p {
+  position: absolute;
+  top: 0;
+  margin-top: 20px;
+  z-index: 2;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 30px;
+}
+
+#shade {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 150px;
+  height: 75px;
+  position: absolute;
+  top: 0
+}

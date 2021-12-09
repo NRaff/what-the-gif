@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Board from "./board";
+import Lobby from "./lobby";
 import { fetchUser } from "../../../actions/user_actions";
 
 const mSTP = state => ({
@@ -12,4 +12,4 @@ const mDTP = dispatch => ({
   fetchUser: (user) => dispatch(fetchUser(user))
 })
 
-export default connect(mSTP, mDTP)(Board)
+export default connect(mSTP, mDTP)(Lobby)
