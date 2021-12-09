@@ -63,7 +63,7 @@ class Hand extends React.Component {
     
     return(
       <div className="player-hand-show">
-        <h1>this is my hand</h1>
+        <h2>MY HAND</h2>
         <div className='player-lineup'>
           {deckArr.map(card => (
 
@@ -71,7 +71,8 @@ class Hand extends React.Component {
               users={this.props.users}
               currentUser={this.props.currentUser}
               gameDeck={this.props.gameDeck}
-              card={card} />       
+              card={card}
+              key={card.gifId} />       
           ))}
         </div>
         <div className="shuffle-deck">
