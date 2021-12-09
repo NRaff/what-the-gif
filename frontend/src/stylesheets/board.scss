@@ -39,9 +39,12 @@
   margin-bottom: 30px;
 }
 
-// .board-container div {
-//   margin-bottom: 20px;
-// }
+.topwrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 
 .board-container h1 {
   font-size: 70px;
@@ -56,6 +59,12 @@
 
 .board-container header {
   margin-bottom: 20px;
+  margin-right: 50px;
+}
+
+.board-container span {
+  font-weight: 700px;
+  font-size: 40px;
 }
 
 

@@ -1,26 +1,21 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
 
-class Timer extends React.Component {
+const { useEffect, useState } = React;
 
-  constructor(props){
-    super(props)
-    this.state = {
-      count: 60
+const Timer = React.memo(function Timer({remaining}) {
+  const [showSec, setShowSec] = useState(remaining);
+  useEffect(() => setShowSec(remaining), [remaining]);
+  useEffect(() => {
+    const timer =
+      showSec > 0 &&
+      setTimeout(() => setShowSec(showSec - 1), 1000);
+    if (showSec === 0) {
+      return null;
     }
-  }
-
-  render(){
-    let time = setTimeout(() => {
-      this.setState({ count: this.state.count - 1 })
-    }, 1000)
-
-
-    return (
-      <div>{time}</div>
-    )
-  }
-  
-}
+    return () => clearInterval(timer);
+  }, [showSec]);
+  return <span>{showSec}</span>;
+});
 
 export default Timer
