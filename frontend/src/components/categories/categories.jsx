@@ -1,5 +1,4 @@
 import React from "react";
-import { randomLength } from "../component_utils/methods";
 import '../../stylesheets/root.scss'
 import GameManager from "../../util/game_socket_util"
 import { NEXT_ROUND, UPDATE_CATEGORY } from "../../actions/ui_actions";
@@ -12,15 +11,10 @@ class Categories extends React.Component{
     this.manager = undefined;
   }
 
-  componentDidMount(){
-    // this.props.fetchCategories()
-  }
-
   handleSubmit(category){
     const {gameCode, dispatch, deckCategories, playedCategories} = this.props
     this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
     const newRoundNum = Object.values(playedCategories).length + 1
-    // debugger
     this.manager.sendToGame({type: UPDATE_CATEGORY})
     this.manager.sendToGame({type: NEXT_ROUND, roundNum: newRoundNum})
     const playPayload = {
