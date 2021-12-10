@@ -31,7 +31,7 @@ const mDTP = dispatch => ({
   resetRound: () => dispatch(resetRound()),
   nextRound: () => dispatch(nextRound()),
   nextCategory: () => dispatch(updateCategory()),
-  removeCard: (gif) => dispatch(removeCard(gif))
+  removeCard: () => dispatch(removeCard())
 })
 
 export default connect(mSTP, mDTP)(Board)

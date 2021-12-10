@@ -11,6 +11,7 @@ class Splash extends React.Component {
   componentDidMount(){
     this.props.clearUsers()
     this.props.resetGame()
+    this.props.removeCard()
   }
 
   splashNav(){
