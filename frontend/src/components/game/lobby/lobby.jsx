@@ -23,21 +23,22 @@ class Lobby extends React.Component {
       gameCode: this.props.gameCode
     }
     this.startGame = this.startGame.bind(this)
+    this.manager = undefined;
   }
 
   componentDidMount(){
     const { gameCode, game, dispatch } = this.props
-    const manager = GameManager(gameCode, dispatch)
+    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
     if (!game) {
-      manager.getGame()
+      this.manager.getGame()
     }
   }
 
   startGame(){
     const {game,gameCode,dispatch} = this.props
-    const manager = GameManager(gameCode, dispatch)
-    manager.sendToGame({type: 'GAME_STARTED'})
-    setupGame(manager)
+    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager.sendToGame({type: 'GAME_STARTED'})
+    setupGame(this.manager)
     this.props.history.push(`/game/${game.gameCode}`)
   }
 

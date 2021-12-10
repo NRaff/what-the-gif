@@ -9,7 +9,7 @@ class JoinForm extends React.Component {
       playerId: this.props.currentUser,
       gameCode: ''
     }
-
+    this.manager = undefined
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -17,8 +17,8 @@ class JoinForm extends React.Component {
     e.preventDefault()
     const {gameCode} = this.state
     const {dispatch} = this.props
-    const manager = GameManager(gameCode, dispatch)
-    manager.joinGame(this.state)
+    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager.joinGame(this.state)
     // ! Need to determine how to avoid pushing to the lobby unless success
     this.props.history.push(`/lobby/${gameCode}`)
   }

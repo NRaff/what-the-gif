@@ -9,6 +9,7 @@ class Categories extends React.Component{
   constructor(props){
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.manager = undefined;
   }
 
   componentDidMount(){
@@ -17,14 +18,14 @@ class Categories extends React.Component{
 
   handleSubmit(category){
     const {gameCode, dispatch} = this.props
-    const manager = GameManager(gameCode, dispatch )
-    manager.sendToGame({type: UPDATE_CATEGORY})
-    manager.sendToGame({type: NEXT_ROUND})
+    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager.sendToGame({type: UPDATE_CATEGORY})
+    this.manager.sendToGame({type: NEXT_ROUND})
     const playPayload = {
       type: PLAY_CATEGORY,
       category
     }
-    manager.sendToGame(playPayload)
+    this.manager.sendToGame(playPayload)
   }
 
   render(){

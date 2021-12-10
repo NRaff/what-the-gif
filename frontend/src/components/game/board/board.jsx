@@ -92,7 +92,6 @@ class Board extends React.Component {
           </div>
           <div id='select'>
             {submit ? <img src={submit} alt="" /> : null}
-            
           </div>
         </section>
         <section className='player-hand'>

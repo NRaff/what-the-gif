@@ -33,6 +33,7 @@ const GameDispatch = (action, dispatch) => {
       dispatch(updateCategory())
       break;
     case PLAY_CATEGORY:
+      // debugger
       dispatch(receivePlayedCategory(action.category))
       dispatch(removeCategory(action.category))
     default:
