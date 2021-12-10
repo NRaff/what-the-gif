@@ -96,3 +96,30 @@
   margin-top: -10px;
   padding-top: 0px;
 }
+
+.player-hand {
+  margin-top: 20px;
+}
+
+.the-card {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.the-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.select {
+  display: flex;
+}
+.select img {
+  position: absolute;
+  top: 200px;
+  right: 50px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}

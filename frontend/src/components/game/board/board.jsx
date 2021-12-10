@@ -60,8 +60,13 @@ class Board extends React.Component {
           </div>
         </div>
         <section className='categories'>
-          <h2>CATEGORY</h2>
-          <Categories />
+          <div id='cat-info'>
+            <h2>CATEGORY</h2>
+            <Categories />
+          </div>
+          <div id='select'>
+            
+          </div>
         </section>
         <section className='player-hand'>
           <Hand />
