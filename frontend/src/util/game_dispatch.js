@@ -29,7 +29,6 @@ const GameDispatch = (action, dispatch) => {
       dispatch(receiveGame(action.game))
       break;
     case NEXT_ROUND:
-      debugger
       dispatch(nextRound())
       break;
     case UPDATE_CATEGORY:

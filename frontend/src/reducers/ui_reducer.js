@@ -35,6 +35,7 @@ const uiReducer = (state=defaultState, action) => {
       nextState.roundOver = false
       return nextState
     case NEXT_ROUND:
+      
       nextState.roundNum += 1
       return nextState
     case UPDATE_CATEGORY:
