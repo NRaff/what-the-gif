@@ -3,7 +3,7 @@ import '../../../stylesheets/root.scss'
 
 const { useEffect, useState } = React;
 
-const Timer = React.memo(function Timer({remaining}) {
+const Timer = React.memo(function Timer({remaining, roundOver, resetRound}) {
   const [showSec, setShowSec] = useState(remaining);
   useEffect(() => setShowSec(remaining), [remaining]);
   useEffect(() => {
@@ -11,9 +11,12 @@ const Timer = React.memo(function Timer({remaining}) {
       showSec > 0 &&
       setTimeout(() => setShowSec(showSec - 1), 1000);
     if (showSec === 0) {
-      return null;
+      roundOver()
+      // resetRound()
     }
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer)
+    };
   }, [showSec]);
   return <span>{showSec}</span>;
 });

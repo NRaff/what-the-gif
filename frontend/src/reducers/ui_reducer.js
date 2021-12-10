@@ -4,8 +4,11 @@ import {
   RESET_GAME 
 } from "../util/game_dispatch";
 
+import { ROUND_OVER, RESET_ROUND } from "../actions/ui_actions";
+
 const defaultState = {
-  gameStatus: false
+  gameStatus: false,
+  roundOver: false
 }
 
 const uiReducer = (state=defaultState, action) => {
@@ -17,6 +20,12 @@ const uiReducer = (state=defaultState, action) => {
       return nextState
     case RESET_GAME:
       nextState.gameStatus = false
+      return nextState
+    case ROUND_OVER:
+      nextState.roundOver = true
+      return nextState
+    case RESET_ROUND:
+      nextState.roundOver = false
       return nextState
     default:
       return state

@@ -3,6 +3,7 @@ import Hand from "./hand";
 import { fetchHand } from "../../../actions/hand_actions";
 import { fetchUser } from "../../../actions/user_actions";
 import { fetchGif, myGif } from "../../../actions/searched_gifs_actions";
+import { submitCard, removeCard } from '../../../actions/played_card_actions'
 
 const mSTP = state => {
   return{
@@ -19,7 +20,8 @@ const mDTP = dispatch => ({
   fetchHand: (payload) => dispatch(fetchHand(payload)),
   fetchGif: (gifId) => dispatch(fetchGif(gifId)),
   myGif: (gifId) => dispatch(myGif(gifId)),
-  // fetchCards: () => dispatch(fetchCards())
+  submitCard: (card) => dispatch(submitCard(card)),
+  removeCard: (cardId) => dispatch(removeCard(cardId))
 })
 
 export default connect(mSTP, mDTP)(Hand)
