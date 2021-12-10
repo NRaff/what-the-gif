@@ -74,7 +74,7 @@ class Board extends React.Component {
         <section className='categories'>
           <div id='cat-info'>
             <h2>CATEGORY</h2>
-            <Categories />
+            <Categories gameCode={gameCode} />
           </div>
           <div id='select'>
             {submit ? <img src={submit} alt="" /> : null}
