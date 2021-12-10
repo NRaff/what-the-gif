@@ -16,18 +16,23 @@ class Categories extends React.Component{
 
   handleSubmit(category){
     const manager = GameManager(this.props.gameCode, this.props.dispatch )
-    
-    manager.sendToGame({type: UPDATE_CATEGORY})
-    manager.sendToGame({type: NEXT_ROUND})
-    this.props.playCategory(category)
+
+      manager.sendToGame({type: NEXT_ROUND})
+      manager.sendToGame({type: UPDATE_CATEGORY})
+      const playPayload = {
+        type: PLAY_CATEGORY,
+        category
+      }
+      manager.sendToGame(playPayload)
+    // this.props.playCategory(category)
     // this.props.nextRound()
     // this.props.nextCategory()
   }
-
+  
   render(){
-    if (!this.props.deckCategories.length > 0) return null
     const {currentCat, nextCategory, deckCategories} = this.props
-    const category = deckCategories[0]
+    if (!this.props.deckCategories.length > 0) return null
+    const category = deckCategories[currentCat]
     
     return (
       <div>
