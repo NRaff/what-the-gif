@@ -36,7 +36,7 @@ class Endgame extends React.Component {
         <h1>is the WINNER!</h1>
       </div>
         <div className='end-score'>
-          <h1>Score: {leaderScore}</h1>
+          <h2>Score: {leaderScore}</h2>
         </div>
       </div>
     )
