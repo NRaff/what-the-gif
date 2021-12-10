@@ -27,6 +27,7 @@ const uiReducer = (state=defaultState, action) => {
       return nextState
     case RESET_GAME:
       nextState.gameStatus = false
+      nextState.roundNum = 1
       return nextState
     case ROUND_OVER:
       nextState.roundOver = true
@@ -35,7 +36,7 @@ const uiReducer = (state=defaultState, action) => {
       nextState.roundOver = false
       return nextState
     case NEXT_ROUND:
-      nextState.roundNum += 1
+      nextState.roundNum = action.roundNum
       return nextState
     case UPDATE_CATEGORY:
       nextState.categoryNum += 1

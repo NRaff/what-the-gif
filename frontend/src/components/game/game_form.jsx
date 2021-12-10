@@ -19,16 +19,20 @@ class GameForm extends React.Component{
       scoreToWin: 8,
       roundTimeLimit: 60
     }
-
+    this.manager = undefined
     this.handleSubmit = this.handleSubmit.bind(this)
     this.game = this.props.games
+  }
+
+  componentWillUnmount(){
+    if (this.manager) this.manager.killSocket()
   }
 
   handleSubmit(e){
     e.preventDefault()
     const {gameCode, dispatch} = this.props
-    const manager = GameManager(gameCode, dispatch)
-    manager.createGame(this.state)
+    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager.createGame(this.state)
     // if succesful it should redirect to a form/page with the games info
     this.props.history.push(`/lobby/${this.state.gameCode}`)
   }
