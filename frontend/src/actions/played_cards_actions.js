@@ -18,9 +18,7 @@ export const removePlayedCard = cardId => ({
   cardId
 })
 
-
 // The corresponding thunk action to receive a played card should also call the removeDeltCards action
-
 export const fetchCard = card => dispatch => {
    dispatch(receivePlayedCard(card))
    dispatch(removeDeltCard(card.gifId))

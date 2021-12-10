@@ -12,7 +12,7 @@ export const gifObject = gif => ({
   title: gif.title,
   embedUrl: gif.url,
   gifId: gif.id,
-  images: gif.images
+  images: {fixed_height: gif.images.fixed_height}
 })
 // always set the api key as 
 // the first param after the endpoint
@@ -28,6 +28,7 @@ let params = {
 
 // Gets a bunch of gifs in an array
 export const getGameDeck = async (categories) => {
+  // debugger
   let deckGifs = [];
   for (const cat of categories){
     let response = await searchGifs(cat, 30)
@@ -58,7 +59,7 @@ export const searchGifs = (searchTerm, numCards=10) => {
     params.rating,
     `${params.limit}${numCards}`,
     params.q,
-    searchTerm,
+    searchTerm.name_encoded,
   ]
   const requestUrl = requestItems.join('')
   return (

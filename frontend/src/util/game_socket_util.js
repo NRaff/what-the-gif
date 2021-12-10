@@ -22,6 +22,7 @@ const manager = gameCode =>  ({
 
 const setupGameSocket = (gameCode, dispatch) => {
   socket.on(`joined-game:${gameCode}`, payload => {
+    // console.log(`Pushed to game: ${payload.type}`)
     GameDispatch(payload, dispatch)
   })
   socket.on(`created-game:${gameCode}`, payload => {

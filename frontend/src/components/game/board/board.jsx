@@ -18,13 +18,10 @@ class Board extends React.Component {
 
   componentDidMount(){
     const {game, gameCode, dispatch, categories} = this.props
-    const manager = GameManager(gameCode, dispatch)
-    if (!game) {
-      manager.getGame()
-    }
-    if (categories.length > 0) {
-      setupCards(manager, categories)
-    }
+    // if (!game) {
+    //   manager.getGame()
+    // }
+    // debugger
   }
 
   scores(players){
@@ -42,6 +39,11 @@ class Board extends React.Component {
   }
   
   render() {
+    const {categories, gameCode, dispatch} = this.props
+    // if (categories.length > 0) {
+    //   const manager = GameManager(gameCode, dispatch)
+    //   setupCards(manager, categories)
+    // }
     const game = this.props.game ? this.props.game : {players: []}
     const submit = this.props.submittedCards.images ? this.props.submittedCards.images.fixed_height.url : null
     //if round is over, dispatch the function

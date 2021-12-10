@@ -44,6 +44,5 @@ class Endgame extends React.Component {
     )
   }
 
-
 }
 export default Endgame

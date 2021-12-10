@@ -8,7 +8,7 @@ const gameDeck = (state = {}, action) => {
     case RECEIVE_ALL_CARDS:
       if (!action.cards) return nextState
       action.cards.forEach((card, idx) => {
-        nextState[card.id] = gifObject(card)
+        nextState[card.gifId] = card//gifObject(card)
       }) 
       return nextState
     case REMOVE_DEALT_CARD:
