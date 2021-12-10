@@ -15,6 +15,7 @@ class Board extends React.Component {
 
     this.scores = this.scores.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.manager = undefined;
   }
 
   componentDidMount(){
@@ -46,6 +47,7 @@ class Board extends React.Component {
   
   render() {
     const {categories, gameCode, dispatch} = this.props
+    this.manager = this.manager ? this.manager : GameManager(gameCode,dispatch)
     // if (categories.length > 0) {
     //   const manager = GameManager(gameCode, dispatch)
     //   setupCards(manager, categories)
@@ -74,6 +76,9 @@ class Board extends React.Component {
               nextCategory={this.props.nextCategory}
               removeCard={this.props.removeCard}
               submit={this.props.submittedCards}
+              gameManager={this.manager}
+              roundNum={this.props.roundNum}
+              category={this.props.categories[0]}
               />
           </header>
           <div id='game-info'>
@@ -88,7 +93,7 @@ class Board extends React.Component {
         <section className='categories'>
           <div id='cat-info'>
             <h2>CATEGORY</h2>
-            <Categories gameCode={gameCode} />
+            <Categories gameCode={gameCode} gameManager={this.manager} />
           </div>
           <div id='select'>
             {submit ? <img src={submit} alt="" /> : null}
