@@ -12,7 +12,6 @@ const Timer = React.memo(function Timer({remaining, roundOver, resetRound}) {
       setTimeout(() => setShowSec(showSec - 1), 1000);
     if (showSec === 0) {
       roundOver()
-      // resetRound()
     }
     return () => {
       clearInterval(timer)

@@ -3,7 +3,7 @@ import Board from "./board";
 import { fetchUser } from "../../../actions/user_actions";
 import { fetchCards } from "../../../actions/game_deck_actions";
 import { findByCode } from "../../component_utils/methods";
-import { roundOver, resetRound } from "../../../actions/ui_actions";
+import { roundOver, resetRound, nextRound } from "../../../actions/ui_actions";
 
 const mSTP = (state, ownProps) => {
   const games = Object.values(state.entities.games)
@@ -17,7 +17,8 @@ const mSTP = (state, ownProps) => {
     users: Object.values(state.entities.users),
     categories: Object.values(state.entities.categories.deckCategory),
     over: state.ui.roundOver,
-    submittedCards: state.entities.cards.submittedCards
+    submittedCards: state.entities.cards.submittedCards,
+    roundNum: state.ui.roundNum
   })
 }
 
@@ -26,7 +27,8 @@ const mDTP = dispatch => ({
   fetchCards: () => dispatch(fetchCards()),
   dispatch: dispatch,
   roundOver: () => dispatch(roundOver()),
-  resetRound: () => dispatch(resetRound())
+  resetRound: () => dispatch(resetRound()),
+  nextRound: () => dispatch(nextRound())
 })
 
 export default connect(mSTP, mDTP)(Board)

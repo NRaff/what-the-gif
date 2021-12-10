@@ -14,6 +14,7 @@ class Board extends React.Component {
 
 
     this.scores = this.scores.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount(){
@@ -37,6 +38,11 @@ class Board extends React.Component {
       })
     )
   }
+
+  handleClick(){
+    this.props.resetRound()
+    this.props.nextRound()
+  }
   
   render() {
     const {categories, gameCode, dispatch} = this.props
@@ -54,7 +60,7 @@ class Board extends React.Component {
       <div className='board-container'>
         <div className='topwrap'>
           <header>
-            <h2>ROUND 1</h2>
+            <h2>ROUND {this.props.roundNum}</h2>
             <p>TIME REMAINING </p>
             <Timer 
               remaining={game.roundTimeLimit}
@@ -86,8 +92,7 @@ class Board extends React.Component {
         </section>
 
         {this.props.over ? 
-        <button onClick={this.props.resetRound}>Reset Round</button> : null }
-         
+        <button onClick={this.handleClick}>Reset Round</button> : null }
         {/* <section className='gameisover'>
           <Endgame />
         </section> */}
