@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client'
 import GameDispatch from './game_dispatch'
 
-var socket = io()
+var socket = socket ? socket : io()
 
 
 const manager = gameCode =>  ({
