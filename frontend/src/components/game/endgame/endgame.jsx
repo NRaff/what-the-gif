@@ -3,6 +3,7 @@ import '../../../stylesheets/root.scss';
 import { playerIndex } from "../lobby/lobby";
 
 class Endgame extends React.Component {
+  // need to make conditional that only renders this component if a players score = winning score 
   render() {
     let leaderScore = 0;
     let leaderID = "";
@@ -37,6 +38,7 @@ class Endgame extends React.Component {
       </div>
         <div className='end-score'>
           <h2>Score: {leaderScore}</h2>
+          {/* can change this to include all of the winning gifs */}
         </div>
       </div>
     )
