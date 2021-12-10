@@ -27,7 +27,7 @@ const GameDispatch = (action, dispatch) => {
       dispatch(receiveGame(action.game))
       break;
     case NEXT_ROUND:
-      dispatch(nextRound())
+      dispatch(nextRound(action.roundNum))
       break;
     case UPDATE_CATEGORY:
       dispatch(updateCategory())

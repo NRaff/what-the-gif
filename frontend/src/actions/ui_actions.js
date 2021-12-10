@@ -33,6 +33,7 @@ export const updateCategory = () => ({
   type: UPDATE_CATEGORY
 })
 
-export const nextRound = () => ({
-  type: NEXT_ROUND
+export const nextRound = (roundNum) => ({
+  type: NEXT_ROUND,
+  roundNum
 })

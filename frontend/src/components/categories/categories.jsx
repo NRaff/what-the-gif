@@ -17,10 +17,12 @@ class Categories extends React.Component{
   }
 
   handleSubmit(category){
-    const {gameCode, dispatch} = this.props
+    const {gameCode, dispatch, deckCategories, playedCategories} = this.props
     this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    const newRoundNum = Object.values(playedCategories).length + 1
+    // debugger
     this.manager.sendToGame({type: UPDATE_CATEGORY})
-    this.manager.sendToGame({type: NEXT_ROUND})
+    this.manager.sendToGame({type: NEXT_ROUND, roundNum: newRoundNum})
     const playPayload = {
       type: PLAY_CATEGORY,
       category
