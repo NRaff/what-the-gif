@@ -3,19 +3,31 @@ import GameDispatch from './game_dispatch'
 
 var socket = io()
 
+
 const manager = gameCode =>  ({
   sendToGame: payload => {
     const newPayload = Object.assign({}, payload,{gameCode})
-    socket.emit(`game:update`, newPayload)
+    socket.emit(`game:update`, newPayload, () => {
+      socket.removeAllListeners(`joined-game:${gameCode}`)
+    })
   },
   getGame: () => {
-    socket.emit(`game:get`, { gameCode })
+    socket.emit(`game:get`, { gameCode }, () => {
+      socket.removeAllListeners(`joined-game:${gameCode}`)
+    })
   },
   createGame: payload => {
-    socket.emit(`game:create`, payload)
+    socket.emit(`game:create`, payload, () => {
+      socket.removeAllListeners(`joined-game:${gameCode}`)
+    })
   },
   joinGame: payload => {
-    socket.emit(`game:join`, payload)
+    socket.emit(`game:join`, payload, () => {
+      socket.removeAllListeners(`joined-game:${gameCode}`)
+    })
+  },
+  killSocket: () => {
+    socket.removeAllListeners(`joined-game:${gameCode}`)
   },
   socket: socket
 })
@@ -25,7 +37,7 @@ const setupGameSocket = (gameCode, dispatch) => {
     // console.log(`Pushed to game: ${payload.type}`)
     GameDispatch(payload, dispatch)
   })
-  socket.on(`created-game:${gameCode}`, payload => {
+  socket.once(`created-game:${gameCode}`, payload => {
     dispatch(payload)
   })
   socket.on('create-game-error', payload => {

@@ -24,6 +24,10 @@ class GameForm extends React.Component{
     this.game = this.props.games
   }
 
+  componentWillUnmount(){
+    // if (this.manager) this.manager.killSocket()
+  }
+
   handleSubmit(e){
     e.preventDefault()
     const {gameCode, dispatch} = this.props
