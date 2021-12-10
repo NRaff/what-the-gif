@@ -49,7 +49,7 @@ class Hand extends React.Component {
                   gameDeck={this.props.gameDeck}
                   card={card} />       
               </div>
-            ))}
+            ))}x
 
         </div>
           ) : null}
