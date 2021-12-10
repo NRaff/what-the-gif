@@ -14,6 +14,7 @@ class Board extends React.Component {
 
 
     this.scores = this.scores.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount(){
@@ -37,6 +38,11 @@ class Board extends React.Component {
       })
     )
   }
+
+  handleClick(){
+    this.props.resetRound()
+    this.props.nextRound()
+  }
   
   render() {
     const {categories, gameCode, dispatch} = this.props
@@ -44,8 +50,12 @@ class Board extends React.Component {
     //   const manager = GameManager(gameCode, dispatch)
     //   setupCards(manager, categories)
     // }
+
+    let zero = 0
+    // debugger
     const game = this.props.game ? this.props.game : {players: []}
-    const submit = this.props.submittedCards.images ? this.props.submittedCards.images.fixed_height.url : null
+    const submit = this.props.submittedCards.images ? 
+    this.props.submittedCards.images.fixed_height.url : null
     //if round is over, dispatch the function
     // action to dispatch the selected card from the user
     // action has a type, game manager listens
@@ -54,12 +64,16 @@ class Board extends React.Component {
       <div className='board-container'>
         <div className='topwrap'>
           <header>
-            <h2>ROUND 1</h2>
+            <h2>ROUND {this.props.roundNum}</h2>
             <p>TIME REMAINING </p>
             <Timer 
               remaining={game.roundTimeLimit}
               roundOver={this.props.roundOver}
               resetRound={this.props.resetRound}
+              nextRound={this.props.nextRound}
+              nextCategory={this.props.nextCategory}
+              removeCard={this.props.removeCard}
+              submit={this.props.submittedCards}
               />
           </header>
           <div id='game-info'>
@@ -74,7 +88,7 @@ class Board extends React.Component {
         <section className='categories'>
           <div id='cat-info'>
             <h2>CATEGORY</h2>
-            <Categories />
+            <Categories gameCode={gameCode} />
           </div>
           <div id='select'>
             {submit ? <img src={submit} alt="" /> : null}
@@ -86,8 +100,7 @@ class Board extends React.Component {
         </section>
 
         {this.props.over ? 
-        <button onClick={this.props.resetRound}>Reset Round</button> : null }
-         
+        <button onClick={this.handleClick}>Reset Round</button> : null }
         {/* <section className='gameisover'>
           <Endgame />
         </section> */}

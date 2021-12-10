@@ -6,9 +6,9 @@ export const receiveSubmittedCard = card => ({
   card
 })
 
-export const removeSubmittedCard = cardId => ({
+export const removeSubmittedCard = card => ({
   type: REMOVE_SUBMITTED_CARD,
-  cardId
+  card
 })
 
 export const submitCard = card => dispatch => {

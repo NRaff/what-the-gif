@@ -1,7 +1,7 @@
 import { receiveAllCategories, RECEIVE_ALL_CATEGORIES } from '../actions/deck_category_actions'
 import { receiveGame } from '../actions/game_actions'
 import { receiveCards, RECEIVE_ALL_CARDS } from '../actions/game_deck_actions'
-import { startGame } from '../actions/ui_actions'
+import { nextRound, NEXT_ROUND, startGame, updateCategory, UPDATE_CATEGORY } from '../actions/ui_actions'
 import { receiveUsers } from '../actions/user_actions'
 import { searchGifs } from './game_setup'
 import { setupCards } from './game_setup'
@@ -27,6 +27,13 @@ const GameDispatch = (action, dispatch) => {
     case JOINED_GAME:
       dispatch(receiveUsers(action.users))
       dispatch(receiveGame(action.game))
+      break;
+    case NEXT_ROUND:
+      debugger
+      dispatch(nextRound())
+      break;
+    case UPDATE_CATEGORY:
+      dispatch(updateCategory())
       break;
     default:
       break;

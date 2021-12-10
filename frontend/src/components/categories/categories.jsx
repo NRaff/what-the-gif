@@ -1,6 +1,8 @@
 import React from "react";
 import { randomLength } from "../component_utils/methods";
 import '../../stylesheets/root.scss'
+import GameManager from "../../util/game_socket_util"
+import { NEXT_ROUND, UPDATE_CATEGORY } from "../../actions/ui_actions";
 
 class Categories extends React.Component{
   constructor(props){
@@ -12,25 +14,25 @@ class Categories extends React.Component{
     // this.props.fetchCategories()
   }
 
-  handleSubmit(randomCategory){
-    this.props.playCategory(randomCategory[0])
+  handleSubmit(category){
+    const manager = GameManager(this.props.gameCode, this.props.dispatch )
+    this.props.playCategory(category)
+    manager.sendToGame({type: NEXT_ROUND})
+    manager.sendToGame({type: UPDATE_CATEGORY})
+    // this.props.nextRound()
+    // this.props.nextCategory()
   }
 
   render(){
- 
-  if (!this.props.deckCategories.length > 0) return null
-
-   let length = this.props.deckCategories.length - 1
-   let randomIndex = randomLength(0, length)
-   let randomCategory = [this.props.deckCategories[randomIndex]]
+    const {currentCat, nextCategory, deckCategories} = this.props
+    if (!this.props.deckCategories.length > 0) return null
+    const category = deckCategories[currentCat]
     return (
       <div>
         <div id="categories">
-          {randomCategory.map(category => (          
             <h1 key={category.id}>{category.name.toUpperCase()}</h1>
-          ))}      
         </div>
-        <button onClick={() => this.handleSubmit(randomCategory)}>Shuffle</button>
+        {/* <button onClick={() => this.handleSubmit(category)}>Shuffle</button> */}
       </div>
     )
   }
