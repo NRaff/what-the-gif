@@ -50,8 +50,12 @@ class Board extends React.Component {
     //   const manager = GameManager(gameCode, dispatch)
     //   setupCards(manager, categories)
     // }
+
+    let zero = 0
+    // debugger
     const game = this.props.game ? this.props.game : {players: []}
-    const submit = this.props.submittedCards.images ? this.props.submittedCards.images.fixed_height.url : null
+    const submit = this.props.submittedCards.images ? 
+    this.props.submittedCards.images.fixed_height.url : null
     //if round is over, dispatch the function
     // action to dispatch the selected card from the user
     // action has a type, game manager listens
@@ -66,6 +70,10 @@ class Board extends React.Component {
               remaining={game.roundTimeLimit}
               roundOver={this.props.roundOver}
               resetRound={this.props.resetRound}
+              nextRound={this.props.nextRound}
+              nextCategory={this.props.nextCategory}
+              removeCard={this.props.removeCard}
+              submit={this.props.submittedCards}
               />
           </header>
           <div id='game-info'>

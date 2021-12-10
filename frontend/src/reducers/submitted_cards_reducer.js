@@ -8,8 +8,9 @@ const submittedCardsReducer = (state = {}, action) => {
     case RECEIVE_SUBMITTED_CARD:
       return nextState[action.card.id] = action.card
     case REMOVE_SUBMITTED_CARD:
-      delete nextState[action.cardId]
-      return nextState
+      let nState = {}
+      // delete nextState[action.card.id]
+      return nState
     default:
       return state;
   }

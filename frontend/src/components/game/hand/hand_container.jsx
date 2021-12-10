@@ -21,7 +21,7 @@ const mDTP = dispatch => ({
   fetchGif: (gifId) => dispatch(fetchGif(gifId)),
   myGif: (gifId) => dispatch(myGif(gifId)),
   submitCard: (card) => dispatch(submitCard(card)),
-  removeCard: (cardId) => dispatch(removeCard(cardId))
+  removeCard: (card) => dispatch(removeCard(card))
 })
 
 export default connect(mSTP, mDTP)(Hand)
