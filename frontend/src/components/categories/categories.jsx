@@ -3,6 +3,7 @@ import { randomLength } from "../component_utils/methods";
 import '../../stylesheets/root.scss'
 import GameManager from "../../util/game_socket_util"
 import { NEXT_ROUND, UPDATE_CATEGORY } from "../../actions/ui_actions";
+import { PLAY_CATEGORY } from "../../actions/deck_category_actions";
 
 class Categories extends React.Component{
   constructor(props){
@@ -15,13 +16,15 @@ class Categories extends React.Component{
   }
 
   handleSubmit(category){
-    const manager = GameManager(this.props.gameCode, this.props.dispatch )
-    
+    const {gameCode, dispatch} = this.props
+    const manager = GameManager(gameCode, dispatch )
     manager.sendToGame({type: UPDATE_CATEGORY})
     manager.sendToGame({type: NEXT_ROUND})
-    this.props.playCategory(category)
-    // this.props.nextRound()
-    // this.props.nextCategory()
+    const playPayload = {
+      type: PLAY_CATEGORY,
+      category
+    }
+    manager.sendToGame(playPayload)
   }
 
   render(){

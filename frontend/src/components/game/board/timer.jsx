@@ -20,10 +20,11 @@ const Timer = React.memo(function Timer({
       setTimeout(() => setShowSec(showSec - 1), 1000);
     if (showSec === 0) {
       setTimeout(()=> {
-        roundOver()
+        console.log("TIMER")
+        roundOver() // send to game round over
         setShowSec(remaining)
-        nextRound()
-        nextCategory()
+        nextRound() // send to game next round
+        nextCategory() // send to game next category
         removeCard(submit)
       }, 1000)
       
