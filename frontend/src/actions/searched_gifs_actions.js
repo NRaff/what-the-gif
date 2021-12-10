@@ -19,7 +19,7 @@ export const clearGifs = () => ({
 })
 
 export const fetchGifs = (searchTerm, num=10) => dispatch => {
-  giphyUtil.searchGifs(searchTerm, num)
+  giphyUtil.searchFavGifs(searchTerm, num)
     .then( ({ data }) => {
       dispatch(receiveGifs(data.data))
     })

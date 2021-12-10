@@ -67,6 +67,21 @@ export const searchGifs = (searchTerm, numCards=10) => {
   )
 }
 
+export const searchFavGifs = (searchTerm, numCards = 10) => {
+  const requestItems = [
+    giphy.search,
+    params.api_key,
+    params.rating,
+    `${params.limit}${numCards}`,
+    params.q,
+    searchTerm
+  ]
+  const requestUrl = requestItems.join('')
+  return (
+    axios.get(requestUrl)
+  )
+}
+
 // gets gif parent categories
 export const getGifCategories = () => (
   axios.get(giphy.categories + params.api_key)
