@@ -66,9 +66,9 @@ class Board extends React.Component {
         <section className='player-hand'>
           <Hand />
         </section>
-        <section className='gameisover'>
+        {/* <section className='gameisover'>
           <Endgame />
-        </section>
+        </section> */}
       </div>
     )
   }
