@@ -2,14 +2,10 @@ import { connect } from "react-redux";
 import Endgame from "./endgame";
 import { fetchUser } from "../../../actions/user_actions";
 import { fetchCards } from "../../../actions/game_deck_actions";
-import { findByCode } from "../../component_utils/methods"
 
-const mSTP = (state, ownProps) => {
-  const games = Object.values(state.entities.games)
-  const code = ownProps.match.params.gameCode
+const mSTP = (state, ownProps) => { 
   return ({
-    game: findByCode(games, code),
-    gameCode: code,
+    game: Object.values(state.entities.games),
     players: Object.values(state.entities.users),
     currentUser: state.session.user,
     users: Object.values(state.entities.users),

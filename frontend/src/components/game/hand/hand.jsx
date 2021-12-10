@@ -74,7 +74,7 @@ class Hand extends React.Component {
               card={card} />       
           ))}
         </div>
-        <div className="shuffle-deck">
+        <div className="shuffle-deck" >
           <button onClick={() => this.handleSubmit(payload)}>Deal Cards</button>
         </div>
       </div>
