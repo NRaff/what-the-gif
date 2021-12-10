@@ -103,9 +103,7 @@ const joinGame = (payload, io, socket) => {
               users: users,
               type: "JOINED_GAME"
             }
-            io.emit(`joined-game:${game.gameCode}`, newPayload, () => {
-              io.removeAllListeners(`joined-game:${game.gameCode}`)
-            })
+            io.emit(`joined-game:${game.gameCode}`, newPayload)
           })
           .catch(err => {
             const errPayload = {
@@ -165,9 +163,7 @@ module.exports = (io, socket) => {
             game: res,
             type: "RECEIVE_GAME"
           }
-          io.emit(`created-game:${game.gameCode}`, payload, () => {
-            io.removeAllListeners(`created-game:${game.gameCode}`)
-          })
+          io.emit(`created-game:${game.gameCode}`, payload)
         })
         .catch(err => {
           const payload = {

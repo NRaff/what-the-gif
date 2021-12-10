@@ -25,7 +25,7 @@ class GameForm extends React.Component{
   }
 
   componentWillUnmount(){
-    if (this.manager) this.manager.killSocket()
+    // if (this.manager) this.manager.killSocket()
   }
 
   handleSubmit(e){
