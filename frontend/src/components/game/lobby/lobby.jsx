@@ -1,6 +1,6 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
-import { setupCategories } from "../../../util/game_setup";
+import { setupCategories, setupGame } from "../../../util/game_setup";
 import GameManager from "../../../util/game_socket_util"
 
 export const playerIndex = (players) => {
@@ -37,7 +37,7 @@ class Lobby extends React.Component {
     const {game,gameCode,dispatch} = this.props
     const manager = GameManager(gameCode, dispatch)
     manager.sendToGame({type: 'GAME_STARTED'})
-    setupCategories(manager)
+    setupGame(manager)
     this.props.history.push(`/game/${game.gameCode}`)
   }
 

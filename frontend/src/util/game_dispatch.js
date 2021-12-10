@@ -17,8 +17,6 @@ const GameDispatch = (action, dispatch) => {
   switch(action.type) {
     case RECEIVE_ALL_CATEGORIES:
       dispatch(receiveAllCategories(action.categories))
-      // searchGifs(manager)
-      setupCards(manager,action.categories)
       break;
     case RECEIVE_ALL_CARDS:
       dispatch(receiveCards(action.cards))
