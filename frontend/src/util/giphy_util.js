@@ -59,7 +59,7 @@ export const searchGifs = (searchTerm, numCards=10) => {
     params.rating,
     `${params.limit}${numCards}`,
     params.q,
-    searchTerm,
+    searchTerm.name_encoded,
   ]
   const requestUrl = requestItems.join('')
   return (

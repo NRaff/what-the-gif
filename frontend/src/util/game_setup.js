@@ -11,7 +11,6 @@ export const setupCategories = manager => {
         type: RECEIVE_ALL_CATEGORIES,
         categories: shuffleArray(cats)
       }
-      // console.log("GET CATEGORIES")
       manager.sendToGame(payload)
     })
 }
