@@ -99,9 +99,9 @@ class Board extends React.Component {
           <Hand />
         </section>
 
-        {this.props.over ? 
+        {/* {this.props.over ? 
         <button onClick={this.handleClick}>Reset Round</button> : null }
-        {/* <section className='gameisover'>
+        <section className='gameisover'>
           <Endgame />
         </section> */}
       </div>
