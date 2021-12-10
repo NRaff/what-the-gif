@@ -11,14 +11,18 @@ export const setupCategories = manager => {
         type: RECEIVE_ALL_CATEGORIES,
         categories: shuffleArray(cats)
       }
+      // console.log("GET CATEGORIES")
       manager.sendToGame(payload)
     })
 }
 
 export const setupCards = (manager, cats) => {
-  GiphyUtil.getGameDeck(randomSample(cats, 8))
+  // console.log("SETUP CARDS")
+  const sample = randomSample(cats, 8)
+  // debugger
+  GiphyUtil.getGameDeck(sample)
     .then(cards => {
-      const newCards = cards.map(card => {
+      const newCards = cards.map((card, idx) => {
         const newCard = GiphyUtil.gifObject(card)
         return newCard
       })
@@ -32,16 +36,16 @@ export const setupCards = (manager, cats) => {
 }
 
 
-export const searchGifs = (manager, cats) => {
-  GiphyUtil.searchGifs("stoked",10)
-    .then(res => {
-      const cardsPayload = {
-        type: RECEIVE_ALL_CARDS,
-        cards: res.data.data
-      }
-      manager.sendToGame(cardsPayload)
-    })
-}
+// export const searchGifs = (manager, cats) => {
+//   GiphyUtil.searchGifs("stoked",10)
+//     .then(res => {
+//       const cardsPayload = {
+//         type: RECEIVE_ALL_CARDS,
+//         cards: res.data.data
+//       }
+//       manager.sendToGame(cardsPayload)
+//     })
+// }
 
 export const randomSample = (cats, num=10) => (
   shuffleArray(cats).slice(0, num)

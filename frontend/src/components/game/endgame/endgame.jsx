@@ -11,7 +11,7 @@ class Endgame extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className ='end-screen'>
         <h1>test</h1>
