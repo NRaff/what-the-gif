@@ -4,6 +4,9 @@ import {
   RESET_GAME 
 } from "../util/game_dispatch";
 
+export const ROUND_OVER = 'ROUND_OVER'
+export const RESET_ROUND = 'RESET_ROUND'
+
 export const startGame = () => ({
   type: GAME_STARTED
 })
@@ -14,4 +17,12 @@ export const resetGame = () => ({
 
 export const endGame = () => ({
   type: GAME_OVER
+})
+
+export const roundOver = () => ({
+  type: ROUND_OVER
+})
+
+export const resetRound = () => ({
+  type: RESET_ROUND
 })
