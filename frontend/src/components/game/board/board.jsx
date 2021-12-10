@@ -6,6 +6,7 @@ import GameManager from "../../../util/game_socket_util"
 import Categories from "../../categories/categories_container";
 import { setupCards } from "../../../util/game_setup";
 import Timer from './timer'
+import Endgame from "../endgame/endgame_container";
 
 class Board extends React.Component {
   constructor(props){
@@ -70,6 +71,9 @@ class Board extends React.Component {
         <section className='player-hand'>
           <Hand />
         </section>
+        {/* <section className='gameisover'>
+          <Endgame />
+        </section> */}
       </div>
     )
   }
