@@ -40,13 +40,15 @@ class Hand extends React.Component {
           {this.pageCounter > 0 ? (
         <div className='player-lineup'>
 
-            {deckArr.map(card => (
-  
-              <Card 
-                users={this.props.users}
-                currentUser={this.props.currentUser}
-                gameDeck={this.props.gameDeck}
-                card={card} />       
+            {deckArr.map((card, idx) => (
+              <div key={card.id}>
+
+                <Card 
+                  users={this.props.users}
+                  currentUser={this.props.currentUser}
+                  gameDeck={this.props.gameDeck}
+                  card={card} />       
+              </div>
             ))}
 
         </div>
