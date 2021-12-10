@@ -5,6 +5,7 @@ import '../../../stylesheets/root.scss';
 class Card extends React.Component {
 
   handleSubmit(){
+    this.props.submitCard(this.props.card)
     // let prevcard = document.getElementsByClassName('select')
     // prevcard.className='the-card'
 

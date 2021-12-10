@@ -46,7 +46,10 @@ class Hand extends React.Component {
                 currentUser={this.props.currentUser}
                 gameDeck={this.props.gameDeck}
                 card={card}
-                key={card.gifId}/>       
+                key={card.gifId}
+                submitCard={this.props.submitCard}
+                removeCard={this.props.removeCard}
+                />       
             ))}
         </div>
           ) : null}
