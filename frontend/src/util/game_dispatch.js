@@ -3,13 +3,13 @@ import {
   RECEIVE_ALL_CATEGORIES, 
   removeCategory, 
   receiveAllCategories
-} from '../actions/deck_category_actions'
+} from '../actions/categories/deck_category_actions'
 import { receiveGame } from '../actions/game_actions'
 import { 
   RECEIVE_ALL_CARDS,
   receiveCards
  } from '../actions/cards/game_deck_actions'
-import { receivePlayedCategory } from '../actions/played_category_actions'
+import { receivePlayedCategory } from '../actions/categories/played_category_actions'
 import { 
   nextRound, 
   NEXT_ROUND, 

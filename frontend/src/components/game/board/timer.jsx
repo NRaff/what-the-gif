@@ -1,5 +1,5 @@
 import React from "react";
-import { PLAY_CATEGORY } from "../../../actions/deck_category_actions";
+import { PLAY_CATEGORY } from "../../../actions/categories/deck_category_actions";
 import { NEXT_ROUND, roundOver, UPDATE_CATEGORY } from "../../../actions/ui_actions";
 import '../../../stylesheets/root.scss'
 import { useDispatch } from "react-redux";

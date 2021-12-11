@@ -1,7 +1,7 @@
 import { 
   RECEIVE_ALL_CATEGORIES, 
   REMOVE_CATEGORY 
-} from '../../actions/deck_category_actions'
+} from '../../actions/categories/deck_category_actions'
 
 const DeckCategoryReducer = (state = {}, action) => {
   Object.freeze(state)

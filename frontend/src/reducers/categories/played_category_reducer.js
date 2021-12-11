@@ -1,7 +1,7 @@
 import { 
   RECEIVE_PLAYED_CATEGORY, 
   REMOVE_PLAYED_CATEGORY 
-} from "../../actions/played_category_actions";
+} from "../../actions/categories/played_category_actions";
 
 const playedCategory = (state = {}, action) => {
   Object.freeze(state)

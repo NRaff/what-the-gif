@@ -1,4 +1,4 @@
-import * as GiphyUtil from '../util/giphy_util';
+import * as GiphyUtil from '../../util/giphy_util';
 
 export const RECEIVE_PLAYED_CATEGORY = 'RECEIVE_PLAYED_CATEGORY'
 export const REMOVE_PLAYED_CATEGORY = 'REMOVE_PLAYED_CATEGORY'
