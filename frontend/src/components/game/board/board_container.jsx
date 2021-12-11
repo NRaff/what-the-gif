@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import Board from "./board";
 import { fetchUser } from "../../../actions/user_actions";
-import { fetchCards } from "../../../actions/game_deck_actions";
+import { fetchCards } from "../../../actions/cards/game_deck_actions";
 import { findByCode } from "../../component_utils/methods";
 import { roundOver, resetRound, nextRound, updateCategory } from "../../../actions/ui_actions";
-import { removeCard } from '../../../actions/played_card_actions'
+import { removeCard } from '../../../actions/cards/played_card_actions'
 
 const mSTP = (state, ownProps) => {
   const games = Object.values(state.entities.games)

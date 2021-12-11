@@ -3,7 +3,7 @@ import Hand from "./hand";
 import { fetchHand } from "../../../actions/hand_actions";
 import { fetchUser } from "../../../actions/user_actions";
 import { fetchGif, myGif } from "../../../actions/searched_gifs_actions";
-import { submitCard, removeCard } from '../../../actions/played_card_actions'
+import { submitCard, removeCard } from '../../../actions/cards/played_card_actions'
 
 const mSTP = state => {
   return{

@@ -3,7 +3,7 @@ import Splash from "./splash";
 import { receiveCurrentUser } from "../../actions/session_actions";
 import { clearUsers } from "../../actions/user_actions";
 import { resetGame } from "../../actions/ui_actions";
-import { removeCard } from '../../actions/played_card_actions'
+import { removeCard } from '../../actions/cards/played_card_actions'
 
 
 const mSTP = state => ({

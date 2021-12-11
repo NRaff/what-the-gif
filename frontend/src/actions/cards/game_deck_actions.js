@@ -1,4 +1,4 @@
-import * as GiphyUtil from '../util/giphy_util'
+import * as GiphyUtil from '../../util/giphy_util'
 
 export const RECEIVE_ALL_CARDS = "RECEIVE_ALL_CARDS"
 export const REMOVE_DEALT_CARD = "REMOVE_DEALT_CARDS"
