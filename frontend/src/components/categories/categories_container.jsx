@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Categories from "./categories";
-import { fetchGifCategories, playCategory } from "../../actions/deck_category_actions";
+import { fetchGifCategories, playCategory } from "../../actions/categories/deck_category_actions";
 import { nextRound, updateCategory } from "../../actions/ui_actions";
 
 const mSTP = state => ({

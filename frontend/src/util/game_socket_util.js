@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client'
 import GameDispatch from './game_dispatch'
 
-var socket = socket ? socket : io()
+var socket = io()
 
 
 const manager = gameCode =>  ({
@@ -33,19 +33,21 @@ const manager = gameCode =>  ({
 })
 
 const setupGameSocket = (gameCode, dispatch) => {
-  socket.on(`joined-game:${gameCode}`, payload => {
-    // console.log(`Pushed to game: ${payload.type}`)
-    GameDispatch(payload, dispatch)
-  })
-  socket.once(`created-game:${gameCode}`, payload => {
-    dispatch(payload)
-  })
-  socket.on('create-game-error', payload => {
-    dispatch(payload)
-  })
-  socket.on('join-game-error', payload => {
-    dispatch(payload)
-  })
+    // debugger
+    // try reviewing the included
+    socket.on(`joined-game:${gameCode}`, payload => {
+      // console.log(`Pushed to game: ${payload.type}`)
+      GameDispatch(payload, dispatch)
+    })
+    socket.once(`created-game:${gameCode}`, payload => {
+      dispatch(payload)
+    })
+    socket.on('create-game-error', payload => {
+      dispatch(payload)
+    })
+    socket.on('join-game-error', payload => {
+      dispatch(payload)
+    })
 
   return manager(gameCode)
 }

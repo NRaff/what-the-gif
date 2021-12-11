@@ -1,14 +1,27 @@
-import { PLAY_CATEGORY, receiveAllCategories, RECEIVE_ALL_CATEGORIES, removeCategory } from '../actions/deck_category_actions'
+import { 
+  PLAY_CATEGORY, 
+  RECEIVE_ALL_CATEGORIES, 
+  removeCategory, 
+  receiveAllCategories
+} from '../actions/categories/deck_category_actions'
 import { receiveGame } from '../actions/game_actions'
-import { receiveCards, RECEIVE_ALL_CARDS } from '../actions/game_deck_actions'
-import { receivePlayedCategory } from '../actions/played_category_actions'
-import { nextRound, NEXT_ROUND, startGame, updateCategory, UPDATE_CATEGORY } from '../actions/ui_actions'
+import { 
+  RECEIVE_ALL_CARDS,
+  receiveCards
+ } from '../actions/cards/game_deck_actions'
+import { receivePlayedCategory } from '../actions/categories/played_category_actions'
+import { 
+  nextRound, 
+  NEXT_ROUND, 
+  startGame, 
+  updateCategory, 
+  UPDATE_CATEGORY 
+} from '../actions/ui_actions'
 import { receiveUsers } from '../actions/user_actions'
 export const GAME_STARTED = 'GAME_STARTED'
 export const GAME_OVER = 'GAME_OVER'
 export const RESET_GAME = 'RESET_GAME'
 export const JOINED_GAME = 'JOINED_GAME'
-
 
 
 const GameDispatch = (action, dispatch) => {
@@ -36,6 +49,7 @@ const GameDispatch = (action, dispatch) => {
       // debugger
       dispatch(receivePlayedCategory(action.category))
       dispatch(removeCategory(action.category))
+      break;
     default:
       break;
   }

@@ -70,7 +70,7 @@ class Board extends React.Component {
             <p>TIME REMAINING </p>
             <Timer 
               remaining={game.roundTimeLimit}
-              roundOver={this.props.roundOver}
+              // roundOver={this.props.roundOver}
               resetRound={this.props.resetRound}
               nextRound={this.props.nextRound}
               nextCategory={this.props.nextCategory}

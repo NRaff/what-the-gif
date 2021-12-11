@@ -1,11 +1,22 @@
 {
   "session": {
     "isAuthenticated": true,
-    "currentUser": 1,
-    "currentGame": 1
+    "user": {
+      "id": "123",
+      "displayName": "dsfsd",
+      "email": "dsfsdf",
+      "exp": 12312321,
+      "iat": 2112123
+    }
   },
   "ui": {
-
+    "gameStatus": false,
+    "roundNum": 1,
+    "roundOver": true,
+    "categoryNum": 1,
+    "timesUp": false,
+    "showSubmitted": false,
+    "winnerChosen": false
   },
   "errors": {
     "sessionErrors": {},

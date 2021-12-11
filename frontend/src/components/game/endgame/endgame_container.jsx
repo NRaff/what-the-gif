@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Endgame from "./endgame";
 import { fetchUser } from "../../../actions/user_actions";
-import { fetchCards } from "../../../actions/game_deck_actions";
+import { fetchCards } from "../../../actions/cards/game_deck_actions";
 
 const mSTP = (state, ownProps) => { 
   return ({

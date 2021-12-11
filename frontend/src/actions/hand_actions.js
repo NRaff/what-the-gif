@@ -1,5 +1,5 @@
-import {removeDeltCards} from './game_deck_actions'
-import { receivePlayedCards } from './played_cards_actions'
+import {removeDeltCards} from './cards/game_deck_actions'
+import { receivePlayedCards } from './cards/played_cards_actions'
 // import * as giphyUtil from '../util/giphy_util'
 export const RECEIVE_INITIAL_HAND = 'RECEIVE_INITIAL_HAND'
 export const RECEIVE_NEW_CARD = 'RECEIVE_NEW_CARD'

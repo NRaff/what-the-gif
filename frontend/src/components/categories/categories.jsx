@@ -2,7 +2,7 @@ import React from "react";
 import '../../stylesheets/root.scss'
 import GameManager from "../../util/game_socket_util"
 import { NEXT_ROUND, UPDATE_CATEGORY } from "../../actions/ui_actions";
-import { PLAY_CATEGORY } from "../../actions/deck_category_actions";
+import { PLAY_CATEGORY } from "../../actions/categories/deck_category_actions";
 
 class Categories extends React.Component{
   constructor(props){
