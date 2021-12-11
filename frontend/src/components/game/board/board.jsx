@@ -19,15 +19,10 @@ class Board extends React.Component {
   }
 
   componentDidMount(){
-    const {game, gameCode, dispatch, categories} = this.props
-    // if (!game) {
-    //   manager.getGame()
-    // }
-    // debugger
+    this.setupBoard()
   }
 
   scores(players){
-    
     return (
       players.map((player, i) => {
         if (i > 0 && player._id === players[i-1]._id) return null
@@ -44,23 +39,46 @@ class Board extends React.Component {
     this.props.resetRound()
     this.props.nextRound()
   }
-  
-  render() {
-    const {categories, gameCode, dispatch} = this.props
-    this.manager = this.manager ? this.manager : GameManager(gameCode,dispatch)
+
+  dealHandPayload(player, cards) {
+    const payload = {
+      user: player._id,
+      cards: cards
+    }
+    return payload
+  }
+
+  // causes an infinite loop if triggered in render
+  setupBoard(){
+    const {players, gameDeck, gameCode, dispatch} = this.props
+    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    players.forEach((player,idx) => {
+      const start = idx * 5
+      const end = start + 5
+      const cards = gameDeck.slice(start, end)
+      this.manager.sendToGame({
+        type: "DEAL_HAND", 
+        payload: this.dealHandPayload(player, cards)
+      })
+
+    })
+  }
+
+  renderBoard(){
+    const { gameCode, dispatch } = this.props
+    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
     let zero = 0
-    const game = this.props.game ? this.props.game : {players: []}
-    const submit = this.props.submittedCards.images ? 
-    this.props.submittedCards.images.fixed_height.url : null
+    const game = this.props.game ? this.props.game : { players: [] }
+    const submit = this.props.submittedCards.images ?
+      this.props.submittedCards.images.fixed_height.url : null
     return (
       <div className='board-container'>
         <div className='topwrap'>
           <header>
             <h2>ROUND {this.props.roundNum}</h2>
             <p>TIME REMAINING </p>
-            <Timer 
+            <Timer
               remaining={game.roundTimeLimit}
-              // roundOver={this.props.roundOver}
               resetRound={this.props.resetRound}
               nextRound={this.props.nextRound}
               nextCategory={this.props.nextCategory}
@@ -69,7 +87,7 @@ class Board extends React.Component {
               gameManager={this.manager}
               roundNum={this.props.roundNum}
               category={this.props.categories[0]}
-              />
+            />
           </header>
           <div id='game-info'>
             <div className='player-lineup'>
@@ -100,6 +118,29 @@ class Board extends React.Component {
         </section> */}
       </div>
     )
+  }
+
+  renderLoading(){
+    return (
+      <h1>Setting up your game...</h1>
+    )
+  }
+  
+  render() {
+    const {players, gameDeck, categories} = this.props
+    if (
+      players.length > 0 &&
+      gameDeck.length > 0 &&
+      categories.length > 0
+    ) {
+      return (
+        this.renderBoard()
+      )
+    } else {
+      return (
+        this.renderLoading()
+      )
+    }
   }
 }
 

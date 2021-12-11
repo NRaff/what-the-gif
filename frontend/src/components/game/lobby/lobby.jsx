@@ -32,6 +32,7 @@ class Lobby extends React.Component {
     if (!game) {
       this.manager.getGame()
     }
+    setupGame(this.manager)
   }
 
   firstRound = () => ({
@@ -47,7 +48,6 @@ class Lobby extends React.Component {
     const {game,gameCode,dispatch} = this.props
     this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
     this.manager.sendToGame({type: 'GAME_STARTED', round: this.firstRound()})
-    setupGame(this.manager)
     this.props.history.push(`/game/${gameCode}`)
   }
 

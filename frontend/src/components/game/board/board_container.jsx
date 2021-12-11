@@ -19,7 +19,8 @@ const mSTP = (state, ownProps) => {
     categories: Object.values(state.entities.categories.deckCategory),
     over: state.ui.roundOver,
     submittedCards: state.entities.cards.submittedCards,
-    roundNum: state.ui.roundNum
+    roundNum: state.ui.roundNum,
+    gameDeck: Object.values(state.entities.cards.gameDeck)
   })
 }
 

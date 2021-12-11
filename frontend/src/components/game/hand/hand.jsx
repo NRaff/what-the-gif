@@ -11,11 +11,6 @@ class Hand extends React.Component {
     this.pageCounter = 0
   }
 
-  componentDidMount() {
-    this.props.fetchUser(this.props.currentUser)
-    // this.props.fetchCards()
-  }
-
   handleSubmit(payload){
     this.props.fetchHand(payload)
     this.pageCounter += 1
