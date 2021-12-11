@@ -18,6 +18,7 @@ import {
   UPDATE_CATEGORY 
 } from '../actions/ui_actions'
 import { receiveUsers } from '../actions/user_actions'
+import { receiveRound } from '../actions/round_actions'
 export const GAME_STARTED = 'GAME_STARTED'
 export const GAME_OVER = 'GAME_OVER'
 export const RESET_GAME = 'RESET_GAME'
@@ -34,6 +35,7 @@ const GameDispatch = (action, dispatch) => {
       break;
     case GAME_STARTED:
       dispatch(startGame())
+      dispatch(receiveRound(action.round))
       break;
     case JOINED_GAME:
       dispatch(receiveUsers(action.users))
@@ -46,7 +48,6 @@ const GameDispatch = (action, dispatch) => {
       dispatch(updateCategory())
       break;
     case PLAY_CATEGORY:
-      // debugger
       dispatch(receivePlayedCategory(action.category))
       dispatch(removeCategory(action.category))
       break;

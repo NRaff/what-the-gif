@@ -48,20 +48,10 @@ class Board extends React.Component {
   render() {
     const {categories, gameCode, dispatch} = this.props
     this.manager = this.manager ? this.manager : GameManager(gameCode,dispatch)
-    // if (categories.length > 0) {
-    //   const manager = GameManager(gameCode, dispatch)
-    //   setupCards(manager, categories)
-    // }
-
     let zero = 0
-    // debugger
     const game = this.props.game ? this.props.game : {players: []}
     const submit = this.props.submittedCards.images ? 
     this.props.submittedCards.images.fixed_height.url : null
-    //if round is over, dispatch the function
-    // action to dispatch the selected card from the user
-    // action has a type, game manager listens
-    // game manager changes slice of state when timer runs out
     return (
       <div className='board-container'>
         <div className='topwrap'>
