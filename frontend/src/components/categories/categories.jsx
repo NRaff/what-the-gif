@@ -1,6 +1,6 @@
 import React from "react";
 import '../../stylesheets/root.scss'
-import GameManager from "../../util/game_socket_util"
+import {manager} from "../../util/game_socket_util"
 import { NEXT_ROUND, UPDATE_CATEGORY } from "../../actions/ui_actions";
 import { PLAY_CATEGORY } from "../../actions/categories/deck_category_actions";
 
@@ -18,7 +18,7 @@ class Categories extends React.Component{
       deckCategories, 
       playedCategories
     } = this.props
-    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager = this.manager ? this.manager : manager(gameCode)
     const newRoundNum = Object.values(playedCategories).length + 1
     this.manager.sendToGame({type: UPDATE_CATEGORY})
     this.manager.sendToGame({type: NEXT_ROUND, roundNum: newRoundNum})

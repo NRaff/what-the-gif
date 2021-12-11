@@ -2,7 +2,7 @@ import React from "react";
 import '../../../stylesheets/root.scss'
 import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
-import GameManager from "../../../util/game_socket_util"
+import { manager } from "../../../util/game_socket_util"
 import Categories from "../../categories/categories_container";
 import { setupCards } from "../../../util/game_setup";
 import Timer from './timer'
@@ -19,7 +19,11 @@ class Board extends React.Component {
   }
 
   componentDidMount(){
-    this.setupBoard()
+    // can't be in component did mount because it will be called by all clients
+    const {currentUser, game} = this.props
+    if (currentUser.id === game.gameOwner) {
+      this.setupBoard()
+    }
   }
 
   scores(players){
@@ -48,14 +52,14 @@ class Board extends React.Component {
     return payload
   }
 
-  // causes an infinite loop if triggered in render
   setupBoard(){
     const {players, gameDeck, gameCode, dispatch} = this.props
-    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager = this.manager ? this.manager : manager(gameCode)
     players.forEach((player,idx) => {
       const start = idx * 5
       const end = start + 5
       const cards = gameDeck.slice(start, end)
+      debugger
       this.manager.sendToGame({
         type: "DEAL_HAND", 
         payload: this.dealHandPayload(player, cards)
@@ -66,7 +70,7 @@ class Board extends React.Component {
 
   renderBoard(){
     const { gameCode, dispatch } = this.props
-    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager = this.manager ? this.manager : manager(gameCode, dispatch)
     let zero = 0
     const game = this.props.game ? this.props.game : { players: [] }
     const submit = this.props.submittedCards.images ?

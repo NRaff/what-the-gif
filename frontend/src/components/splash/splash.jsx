@@ -1,6 +1,7 @@
 import React from "react";
 import '../../stylesheets/root.scss'
 import { Link } from "react-router-dom";
+// import {manager} from "../../util/game_socket_util"
 
 class Splash extends React.Component {
   constructor(props) {

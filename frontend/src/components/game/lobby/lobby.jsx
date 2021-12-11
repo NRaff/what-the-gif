@@ -1,7 +1,7 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
 import { setupGame } from "../../../util/game_setup";
-import GameManager from "../../../util/game_socket_util"
+import { manager } from "../../../util/game_socket_util"
 
 export const playerIndex = (players) => {
   return (
@@ -28,7 +28,8 @@ class Lobby extends React.Component {
 
   componentDidMount(){
     const { gameCode, game, dispatch } = this.props
-    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager = this.manager ? this.manager : manager(gameCode)
+    // debugger
     if (!game) {
       this.manager.getGame()
     }
@@ -46,7 +47,7 @@ class Lobby extends React.Component {
 
   startGame(){
     const {game,gameCode,dispatch} = this.props
-    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager = this.manager ? this.manager : manager(gameCode)
     this.manager.sendToGame({type: 'GAME_STARTED', round: this.firstRound()})
     this.props.history.push(`/game/${gameCode}`)
   }
