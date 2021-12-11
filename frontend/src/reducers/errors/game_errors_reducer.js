@@ -1,4 +1,4 @@
-import { RECEIVE_GAME_ERRORS } from "../actions/game_actions";
+import { RECEIVE_GAME_ERRORS } from "../../actions/game_actions";
 
 const gameErrors = (state = {}, action) => {
   Object.freeze(state)

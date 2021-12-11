@@ -1,13 +1,14 @@
 import React from "react";
 import { PLAY_CATEGORY } from "../../../actions/deck_category_actions";
-import { NEXT_ROUND, UPDATE_CATEGORY } from "../../../actions/ui_actions";
+import { NEXT_ROUND, roundOver, UPDATE_CATEGORY } from "../../../actions/ui_actions";
 import '../../../stylesheets/root.scss'
+import { useDispatch } from "react-redux";
 
 const { useEffect, useState } = React;
 
 const Timer = React.memo(function Timer({
   remaining, 
-  roundOver, 
+  // roundOver, 
   resetRound, 
   nextRound, 
   nextCategory,
@@ -18,29 +19,27 @@ const Timer = React.memo(function Timer({
   category
 }) {
   const [showSec, setShowSec] = useState(remaining);
-  // const manager = manager ? manager
+  const dispatch = useDispatch();
+  const timerEnds = () => {
+    gameManager.sendToGame({ type: UPDATE_CATEGORY })
+    const newRoundNum = roundNum + 1
+    gameManager.sendToGame({ type: NEXT_ROUND, roundNum: newRoundNum })
+    const payload = {
+      type: PLAY_CATEGORY,
+      category
+    }
+    gameManager.sendToGame(payload)
+    dispatch(roundOver())
+    setShowSec(remaining)
+    removeCard(submit)
+  }
   useEffect(() => setShowSec(remaining), [remaining]);
   useEffect(() => {
     const timer =
       showSec > 0 &&
       setTimeout(() => setShowSec(showSec - 1), 1000);
     if (showSec === 0) {
-      setTimeout(()=> {
-        gameManager.sendToGame({type: UPDATE_CATEGORY})
-        const newRoundNum = roundNum + 1
-        gameManager.sendToGame({ type: NEXT_ROUND, roundNum: newRoundNum })
-        const payload = {
-          type: PLAY_CATEGORY,
-          category
-        }
-        gameManager.sendToGame(payload)
-        roundOver() // send game dispatch
-        setShowSec(remaining)
-        // nextRound() // send to game dispatch with next round
-        // nextCategory() // send to game dispatch
-        removeCard(submit)
-      }, 1000)
-      
+      setTimeout(timerEnds, 1000)
     }
     return () => {
       clearInterval(timer)

@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import UserReducer from "./user_reducer";
 import GameReducer from "./game_reducer";
-import cards from "./cards_reducer";
+import cards from "./cards/cards_reducer";
 import SearchedGifsReducer from "./searched_gifs_reducer"
-import categories from "./categories_reducer";
+import categories from "./categories/categories_reducer";
 
 const EntitiesReducer = combineReducers({
   users: UserReducer,

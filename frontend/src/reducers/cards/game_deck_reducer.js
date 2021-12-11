@@ -1,5 +1,9 @@
-import { RECEIVE_ALL_CARDS, REMOVE_DEALT_CARD, REMOVE_CARDS } from "../actions/game_deck_actions";
-import { gifObject } from "../util/giphy_util";
+import { 
+  RECEIVE_ALL_CARDS, 
+  REMOVE_DEALT_CARD, 
+  REMOVE_CARDS 
+} from "../../actions/game_deck_actions";
+import { gifObject } from "../../util/giphy_util";
 const gameDeck = (state = {}, action) => {
   Object.freeze(state)
   const nextState = Object.assign({}, state)

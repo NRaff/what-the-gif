@@ -10,7 +10,6 @@ export const RESET_GAME = 'RESET_GAME'
 export const JOINED_GAME = 'JOINED_GAME'
 
 
-
 const GameDispatch = (action, dispatch) => {
   switch(action.type) {
     case RECEIVE_ALL_CATEGORIES:
@@ -36,6 +35,7 @@ const GameDispatch = (action, dispatch) => {
       // debugger
       dispatch(receivePlayedCategory(action.category))
       dispatch(removeCategory(action.category))
+      break;
     default:
       break;
   }

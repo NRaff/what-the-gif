@@ -1,4 +1,7 @@
-import { RECEIVE_SUBMITTED_CARD, REMOVE_SUBMITTED_CARD } from "../actions/played_card_actions"
+import { 
+  RECEIVE_SUBMITTED_CARD, 
+  REMOVE_SUBMITTED_CARD 
+} from "../../actions/played_card_actions"
 
 const submittedCardsReducer = (state = {}, action) => {
   Object.freeze(state)
