@@ -6,6 +6,8 @@ import { fetchHand } from "../../../actions/hand_actions";
 const mSTP = state => {
   return{
     currentUser: state.session.user,
+    currentPlayer: state.entities.users[state.session.user.id],
+    currentRound: state.entities.rounds[state.ui.roundNum],
     users: Object.values(state.entities.users)
   };
 }

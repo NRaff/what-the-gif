@@ -13,6 +13,7 @@ import { receivePlayedCategory } from '../actions/categories/played_category_act
 import { 
   nextRound, 
   NEXT_ROUND, 
+  setCurrentGame, 
   startGame, 
   updateCategory, 
   UPDATE_CATEGORY 
@@ -45,6 +46,7 @@ const GameDispatch = (action, dispatch) => {
     case JOINED_GAME:
       dispatch(receiveUsers(action.users))
       dispatch(receiveGame(action.game))
+      dispatch(setCurrentGame(action.game))
       break;
     case NEXT_ROUND:
       dispatch(nextRound(action.roundNum))

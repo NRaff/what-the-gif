@@ -1,7 +1,5 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
-import { randomSample } from "../../../util/game_setup";
-import { shuffleArray } from "../../component_utils/methods";
 import Card from "./card";
 
 class Hand extends React.Component {
@@ -37,9 +35,6 @@ class Hand extends React.Component {
             {currentPlayer.curHand.map(card => {
               return (
                 <Card
-                  users={this.props.users}
-                  currentUser={this.props.currentUser}
-                  gameDeck={this.props.gameDeck}
                   card={playedCards[card]}
                   key={card.gifId}
                   submitCard={this.props.submitCard}

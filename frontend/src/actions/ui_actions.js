@@ -8,6 +8,7 @@ export const ROUND_OVER = 'ROUND_OVER'
 export const RESET_ROUND = 'RESET_ROUND'
 export const UPDATE_CATEGORY = 'UPDATE_CATEGORY'
 export const NEXT_ROUND = 'NEXT_ROUND'
+export const SET_CURRENT_GAME = 'SET_CURRENT_GAME'
 
 export const startGame = () => ({
   type: GAME_STARTED
@@ -36,4 +37,9 @@ export const updateCategory = () => ({
 export const nextRound = (roundNum) => ({
   type: NEXT_ROUND,
   roundNum
+})
+
+export const setCurrentGame = game => ({
+  type: SET_CURRENT_GAME,
+  game
 })

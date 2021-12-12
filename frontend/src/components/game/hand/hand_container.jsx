@@ -15,7 +15,6 @@ const mSTP = state => {
     gameDeck: Object.values(state.entities.cards.gameDeck),
     playedCards: state.entities.cards.playedCards,
     roundNum: state.ui.roundNum
-
   };
 }
 

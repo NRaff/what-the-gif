@@ -8,7 +8,8 @@ import {
   ROUND_OVER, 
   RESET_ROUND,
   UPDATE_CATEGORY,
-  NEXT_ROUND
+  NEXT_ROUND,
+  SET_CURRENT_GAME
  } from "../actions/ui_actions";
 
 const defaultState = {
@@ -16,6 +17,7 @@ const defaultState = {
   roundOver: false,
   roundNum: 1,
   categoryNum: 0,
+  currentGame: null
 }
 
 const uiReducer = (state=defaultState, action) => {
@@ -40,6 +42,9 @@ const uiReducer = (state=defaultState, action) => {
       return nextState
     case UPDATE_CATEGORY:
       nextState.categoryNum += 1
+      return nextState;
+    case SET_CURRENT_GAME:
+      nextState.currentGame = action.game._id
       return nextState
     default:
       return state
