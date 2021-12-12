@@ -61,17 +61,6 @@ export const setupGame = (manager) => {
     })
 }
 
-// export const searchGifs = (manager, cats) => {
-//   GiphyUtil.searchGifs("stoked",10)
-//     .then(res => {
-//       const cardsPayload = {
-//         type: RECEIVE_ALL_CARDS,
-//         cards: res.data.data
-//       }
-//       manager.sendToGame(cardsPayload)
-//     })
-// }
-
 export const randomSample = (cats, num=10) => (
   shuffleArray(cats).slice(0, num)
 )

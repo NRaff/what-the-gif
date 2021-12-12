@@ -1,7 +1,7 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
-import { setupCategories, setupGame } from "../../../util/game_setup";
-import GameManager from "../../../util/game_socket_util"
+import { setupGame } from "../../../util/game_setup";
+import { manager } from "../../../util/game_socket_util"
 
 export const playerIndex = (players) => {
   return (
@@ -28,23 +28,46 @@ class Lobby extends React.Component {
 
   componentDidMount(){
     const { gameCode, game, dispatch } = this.props
-    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
+    this.manager = this.manager ? this.manager : manager(gameCode)
+    // debugger
     if (!game) {
       this.manager.getGame()
     }
+    setupGame(this.manager)
   }
+
+  firstRound = () => ({
+    id: 1,
+    winner: null,
+    winningGif: null,
+    judge: this.props.players[0]._id,
+    category: 1,
+    submittedGifs: []
+  })
 
   startGame(){
     const {game,gameCode,dispatch} = this.props
-    this.manager = this.manager ? this.manager : GameManager(gameCode, dispatch)
-    this.manager.sendToGame({type: 'GAME_STARTED'})
-    setupGame(this.manager)
+    this.manager = this.manager ? this.manager : manager(gameCode)
+    this.manager.sendToGame({type: 'GAME_STARTED', round: this.firstRound()})
     this.props.history.push(`/game/${gameCode}`)
   }
 
   goToGame(){
     const {game, gameCode, history} = this.props
     history.push(`/game/${gameCode}`)
+  }
+
+  displayStartButton() {
+    const {cards} = this.props
+    if (cards.length > 0) {
+      return (
+        <button onClick={this.startGame}>Start Game</button>
+      )
+    } else {
+      return (
+        <span>Setting up your game...</span>
+      )
+    }
   }
 
   render() {
@@ -64,7 +87,8 @@ class Lobby extends React.Component {
           {playerIndex(this.props.players)}
         </section>
         <section className='start-game'>
-          <button onClick={this.startGame}>Start Game</button>
+          {/* <button onClick={this.startGame}>Start Game</button> */}
+          {this.displayStartButton()}
         </section>
       </div>
     )

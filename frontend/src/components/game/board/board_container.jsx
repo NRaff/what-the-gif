@@ -9,7 +9,7 @@ import { removeCard } from '../../../actions/cards/played_card_actions'
 const mSTP = (state, ownProps) => {
   const games = Object.values(state.entities.games)
   const code = ownProps.match.params.gameCode
-  // ! review users vs players in board componenet
+
   return ({
     game: findByCode(games, code),
     gameCode: code,
@@ -19,7 +19,8 @@ const mSTP = (state, ownProps) => {
     categories: Object.values(state.entities.categories.deckCategory),
     over: state.ui.roundOver,
     submittedCards: state.entities.cards.submittedCards,
-    roundNum: state.ui.roundNum
+    roundNum: state.ui.roundNum,
+    gameDeck: Object.values(state.entities.cards.gameDeck)
   })
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import '../../../stylesheets/root.scss'
 import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
-import GameManager from "../../../util/game_socket_util"
+import { manager } from "../../../util/game_socket_util"
 import Categories from "../../categories/categories_container";
 import { setupCards } from "../../../util/game_setup";
 import Timer from './timer'
@@ -19,15 +19,14 @@ class Board extends React.Component {
   }
 
   componentDidMount(){
-    const {game, gameCode, dispatch, categories} = this.props
-    // if (!game) {
-    //   manager.getGame()
-    // }
-    // debugger
+    // can't be in component did mount because it will be called by all clients
+    const {currentUser, game} = this.props
+    if (currentUser.id === game.gameOwner) {
+      this.setupBoard()
+    }
   }
 
   scores(players){
-    
     return (
       players.map((player, i) => {
         if (i > 0 && player._id === players[i-1]._id) return null
@@ -44,33 +43,45 @@ class Board extends React.Component {
     this.props.resetRound()
     this.props.nextRound()
   }
-  
-  render() {
-    const {categories, gameCode, dispatch} = this.props
-    this.manager = this.manager ? this.manager : GameManager(gameCode,dispatch)
-    // if (categories.length > 0) {
-    //   const manager = GameManager(gameCode, dispatch)
-    //   setupCards(manager, categories)
-    // }
 
+  dealHandPayload(player, cards) {
+    const payload = {
+      user: player._id,
+      cards: cards
+    }
+    return payload
+  }
+
+  setupBoard(){
+    const {players, gameDeck, gameCode, dispatch} = this.props
+    this.manager = this.manager ? this.manager : manager(gameCode)
+    players.forEach((player,idx) => {
+      const start = idx * 5
+      const end = start + 5
+      const cards = gameDeck.slice(start, end)
+      this.manager.sendToGame({
+        type: "DEAL_HAND", 
+        payload: this.dealHandPayload(player, cards)
+      })
+
+    })
+  }
+
+  renderBoard(){
+    const { gameCode, dispatch } = this.props
+    this.manager = this.manager ? this.manager : manager(gameCode, dispatch)
     let zero = 0
-    // debugger
-    const game = this.props.game ? this.props.game : {players: []}
-    const submit = this.props.submittedCards.images ? 
-    this.props.submittedCards.images.fixed_height.url : null
-    //if round is over, dispatch the function
-    // action to dispatch the selected card from the user
-    // action has a type, game manager listens
-    // game manager changes slice of state when timer runs out
+    const game = this.props.game ? this.props.game : { players: [] }
+    const submit = this.props.submittedCards.images ?
+      this.props.submittedCards.images.fixed_height.url : null
     return (
       <div className='board-container'>
         <div className='topwrap'>
           <header>
             <h2>ROUND {this.props.roundNum}</h2>
             <p>TIME REMAINING </p>
-            <Timer 
+            <Timer
               remaining={game.roundTimeLimit}
-              // roundOver={this.props.roundOver}
               resetRound={this.props.resetRound}
               nextRound={this.props.nextRound}
               nextCategory={this.props.nextCategory}
@@ -79,7 +90,7 @@ class Board extends React.Component {
               gameManager={this.manager}
               roundNum={this.props.roundNum}
               category={this.props.categories[0]}
-              />
+            />
           </header>
           <div id='game-info'>
             <div className='player-lineup'>
@@ -110,6 +121,29 @@ class Board extends React.Component {
         </section> */}
       </div>
     )
+  }
+
+  renderLoading(){
+    return (
+      <h1>Setting up your game...</h1>
+    )
+  }
+  
+  render() {
+    const {players, gameDeck, categories} = this.props
+    if (
+      players.length > 0 &&
+      gameDeck.length > 0 &&
+      categories.length > 0
+    ) {
+      return (
+        this.renderBoard()
+      )
+    } else {
+      return (
+        this.renderLoading()
+      )
+    }
   }
 }
 

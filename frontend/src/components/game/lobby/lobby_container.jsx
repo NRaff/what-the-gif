@@ -11,7 +11,8 @@ const mSTP = (state, ownProps) => {
     gameCode: code,
     players: Object.values(state.entities.users),
     currentUser: state.session.user,
-    gameStatus: state.ui.gameStatus
+    gameStatus: state.ui.gameStatus,
+    cards: Object.values(state.entities.cards.gameDeck)
   })
 }
 
