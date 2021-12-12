@@ -8,22 +8,32 @@ class Hand extends React.Component {
   constructor(props){
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.pageCounter = 0
   }
 
   handleSubmit(payload){
     this.props.fetchHand(payload)
-    // this.pageCounter += 1
+  }
+
+  renderOverlay(){
+    const { currentRound, currentPlayer } = this.props
+    if (currentRound.judge === currentPlayer._id){
+      return (
+        <div className="hand-overlay">
+          <span>It's your turn to judge!</span>
+        </div>
+      )
+    }
   }
 
   render(){
-    if (!this.props.users) return null;
+    if (!this.props.users || !this.props.currentRound) return null;
     const {currentPlayer, playedCards} = this.props
     
     return(
       <div className="player-hand-show">
         <h2>MY HAND</h2>
         <div className='player-lineup'>
+            {this.renderOverlay()}
             {currentPlayer.curHand.map(card => {
               return (
                 <Card

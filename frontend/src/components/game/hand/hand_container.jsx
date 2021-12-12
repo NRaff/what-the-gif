@@ -9,10 +9,13 @@ const mSTP = state => {
   return{
     currentUser: state.session.user,
     currentPlayer: state.entities.users[state.session.user.id],
+    currentRound: state.entities.rounds[state.ui.roundNum],
     users: Object.values(state.entities.users),
     results: Object.values(state.entities.searchgifs),
     gameDeck: Object.values(state.entities.cards.gameDeck),
-    playedCards: state.entities.cards.playedCards
+    playedCards: state.entities.cards.playedCards,
+    roundNum: state.ui.roundNum
+
   };
 }
 

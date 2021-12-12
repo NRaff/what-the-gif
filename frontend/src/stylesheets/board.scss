@@ -4,6 +4,25 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  position: relative;
+}
+
+.hand-overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.421);
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hand-overlay span {
+  background-color: #AE06CF;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .endbox{
