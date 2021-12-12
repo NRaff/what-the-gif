@@ -59,8 +59,33 @@ class Board extends React.Component {
         type: "DEAL_HAND", 
         payload: this.dealHandPayload(player, cards)
       })
-
     })
+  }
+
+  renderTimer() {
+    const { game, timesUp} = this.props
+    if (!timesUp) {
+      return (
+        <>
+          <p>TIME REMAINING </p>
+          <Timer
+            remaining={game.roundTimeLimit}
+            resetRound={this.props.resetRound}
+            nextRound={this.props.nextRound}
+            nextCategory={this.props.nextCategory}
+            removeCard={this.props.removeCard}
+            submit={this.props.submittedCards}
+            gameManager={this.manager}
+            roundNum={this.props.roundNum}
+            category={this.props.categories[0]}
+          />
+        </>
+      )
+    } else {
+      return (
+        <span>Times up!</span>
+      )
+    }
   }
 
   renderBoard(){
@@ -75,18 +100,7 @@ class Board extends React.Component {
         <div className='topwrap'>
           <header>
             <h2>ROUND {this.props.roundNum}</h2>
-            <p>TIME REMAINING </p>
-            <Timer
-              remaining={game.roundTimeLimit}
-              resetRound={this.props.resetRound}
-              nextRound={this.props.nextRound}
-              nextCategory={this.props.nextCategory}
-              removeCard={this.props.removeCard}
-              submit={this.props.submittedCards}
-              gameManager={this.manager}
-              roundNum={this.props.roundNum}
-              category={this.props.categories[0]}
-            />
+            {this.renderTimer()}
           </header>
           <div id='game-info'>
             <div className='player-lineup'>
