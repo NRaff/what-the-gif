@@ -9,6 +9,7 @@ export const RESET_ROUND = 'RESET_ROUND'
 export const UPDATE_CATEGORY = 'UPDATE_CATEGORY'
 export const NEXT_ROUND = 'NEXT_ROUND'
 export const SET_CURRENT_GAME = 'SET_CURRENT_GAME'
+export const TOGGLE_TIME_UP = 'TOGGLE_TIME_UP'
 
 export const startGame = () => ({
   type: GAME_STARTED
@@ -42,4 +43,8 @@ export const nextRound = (roundNum) => ({
 export const setCurrentGame = game => ({
   type: SET_CURRENT_GAME,
   game
+})
+
+export const toggleTimeUp = () => ({
+  type: TOGGLE_TIME_UP
 })
