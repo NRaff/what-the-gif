@@ -8,10 +8,11 @@ import { submitCard, removeCard } from '../../../actions/cards/played_card_actio
 const mSTP = state => {
   return{
     currentUser: state.session.user,
+    currentPlayer: state.entities.users[state.session.user.id],
     users: Object.values(state.entities.users),
     results: Object.values(state.entities.searchgifs),
     gameDeck: Object.values(state.entities.cards.gameDeck),
-    playedCards: Object.values(state.entities.cards.playedCards)
+    playedCards: state.entities.cards.playedCards
   };
 }
 

@@ -59,7 +59,6 @@ class Board extends React.Component {
       const start = idx * 5
       const end = start + 5
       const cards = gameDeck.slice(start, end)
-      debugger
       this.manager.sendToGame({
         type: "DEAL_HAND", 
         payload: this.dealHandPayload(player, cards)
