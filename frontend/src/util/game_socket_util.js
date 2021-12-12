@@ -35,6 +35,10 @@ export const manager = gameCode =>  ({
   socket: socket
 })
 
+export const stopListening = () => {
+  socket.removeAllListeners()
+}
+
 export const setupGameSocket = (gameCode, dispatch) => {
     if (gameCode) {
       socket.on(`joined-game:${gameCode}`, payload => {

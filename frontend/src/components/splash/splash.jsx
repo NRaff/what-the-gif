@@ -1,7 +1,7 @@
 import React from "react";
 import '../../stylesheets/root.scss'
 import { Link } from "react-router-dom";
-import { setupGameSocket } from "../../util/game_socket_util";
+import { stopListening } from "../../util/game_socket_util";
 // import {manager} from "../../util/game_socket_util"
 
 class Splash extends React.Component {
@@ -11,9 +11,15 @@ class Splash extends React.Component {
   }
 
   componentDidMount(){
+    stopListening()
     this.props.clearUsers()
     this.props.resetGame()
-    this.props.removeCard()
+    // clear submitted cards
+    // clear cards
+    // clear games
+    // clear categories
+    // clear rounds
+    // this.props.removeCard()
   }
 
   splashNav(){
