@@ -63,6 +63,7 @@ const GameDispatch = (action, dispatch) => {
       dispatch(receiveSubmittedCard(action))
       break;
     default:
+      dispatch(action)
       break;
   }
 }

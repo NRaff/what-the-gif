@@ -15,6 +15,7 @@ const mSTP = (state, ownProps) => {
     gameCode: code,
     players: Object.values(state.entities.users),
     currentUser: state.session.user,
+    timesUp: state.ui.timesUp,
     users: Object.values(state.entities.users),
     categories: Object.values(state.entities.categories.deckCategory),
     over: state.ui.roundOver,

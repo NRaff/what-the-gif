@@ -59,15 +59,41 @@ class Board extends React.Component {
         type: "DEAL_HAND", 
         payload: this.dealHandPayload(player, cards)
       })
-
     })
+  }
+
+  renderTimer() {
+    const { game, timesUp} = this.props
+    if (!timesUp) {
+      return (
+        <>
+          <p>TIME REMAINING </p>
+          <Timer
+            currentUser={this.props.currentUser.id}
+            gameOwner={game.gameOwner}
+            remaining={game.roundTimeLimit}
+            resetRound={this.props.resetRound}
+            nextRound={this.props.nextRound}
+            nextCategory={this.props.nextCategory}
+            removeCard={this.props.removeCard}
+            submit={this.props.submittedCards}
+            gameManager={this.manager}
+            roundNum={this.props.roundNum}
+            category={this.props.categories[0]}
+          />
+        </>
+      )
+    } else {
+      return (
+        <span>Times up!</span>
+      )
+    }
   }
 
   renderBoard(){
     const { gameCode, dispatch } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode, dispatch)
     let zero = 0
-    const game = this.props.game ? this.props.game : { players: [] }
     const submit = this.props.submittedCards.images ?
       this.props.submittedCards.images.fixed_height.url : null
     return (
@@ -75,18 +101,7 @@ class Board extends React.Component {
         <div className='topwrap'>
           <header>
             <h2>ROUND {this.props.roundNum}</h2>
-            <p>TIME REMAINING </p>
-            <Timer
-              remaining={game.roundTimeLimit}
-              resetRound={this.props.resetRound}
-              nextRound={this.props.nextRound}
-              nextCategory={this.props.nextCategory}
-              removeCard={this.props.removeCard}
-              submit={this.props.submittedCards}
-              gameManager={this.manager}
-              roundNum={this.props.roundNum}
-              category={this.props.categories[0]}
-            />
+            {this.renderTimer()}
           </header>
           <div id='game-info'>
             <div className='player-lineup'>
