@@ -11,6 +11,8 @@ const Timer = React.memo(function Timer({
   remaining, 
   // roundOver,
   gameManager,
+  gameOwner,
+  currentUser,
   resetRound, 
   nextRound, 
   nextCategory,
@@ -36,7 +38,9 @@ const Timer = React.memo(function Timer({
     removeCard(submit)
   }
   const timerEnds = () => {
-    gameManager.sendToGame(toggleTimeUp())
+    if (gameOwner === currentUser) {
+      gameManager.sendToGame(toggleTimeUp())
+    }
   }
   useEffect(() => setShowSec(remaining), [remaining]);
   useEffect(() => {

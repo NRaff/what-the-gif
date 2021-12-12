@@ -69,6 +69,8 @@ class Board extends React.Component {
         <>
           <p>TIME REMAINING </p>
           <Timer
+            currentUser={this.props.currentUser.id}
+            gameOwner={game.gameOwner}
             remaining={game.roundTimeLimit}
             resetRound={this.props.resetRound}
             nextRound={this.props.nextRound}
@@ -92,7 +94,6 @@ class Board extends React.Component {
     const { gameCode, dispatch } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode, dispatch)
     let zero = 0
-    const game = this.props.game ? this.props.game : { players: [] }
     const submit = this.props.submittedCards.images ?
       this.props.submittedCards.images.fixed_height.url : null
     return (
