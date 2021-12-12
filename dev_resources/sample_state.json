@@ -44,9 +44,16 @@
           "giphyUrl": "someurl.com",
           "shortName": "CoolGif"
         }
+      },
+      "submittedCards": {
+        "submitterID": {
+          "id": 3,
+          "giphyUrl": "someurl.com",
+          "shortName": "CoolGif"
+        }
       }
     },
-    "players": {
+    "users": {
       "1": {
         "id": 1,
         "name": "Nick",
@@ -89,6 +96,12 @@
         "judge": null, 
         "category": "some category/adjective/verb",
         "submittedGifs": [1,2,3]
+      }
+    },
+    "categories": {
+      "1": {
+        "name": "stoked",
+        "name_encoded": "stoked"
       }
     }
   }

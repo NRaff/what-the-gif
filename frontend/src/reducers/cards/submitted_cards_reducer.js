@@ -8,7 +8,6 @@ const submittedCardsReducer = (state = {}, action) => {
   const nextState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_SUBMITTED_CARD:
-      debugger
       const { user, card } = action.payload
       nextState[user._id] = card
       return nextState;
