@@ -1,6 +1,6 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
-import Card from "./card";
+import CardContainer from "./card_container"
 
 class Hand extends React.Component {
   constructor(props){
@@ -31,10 +31,11 @@ class Hand extends React.Component {
       <div className="player-hand-show">
         <h2>MY HAND</h2>
         <div className='player-lineup'>
-            {this.renderOverlay()}
+            {/* uncomment this line when done testing */}
+            {/* {this.renderOverlay()} */}
             {currentPlayer.curHand.map(card => {
               return (
-                <Card
+                <CardContainer
                   card={playedCards[card]}
                   key={card.gifId}
                   submitCard={this.props.submitCard}
