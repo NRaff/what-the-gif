@@ -4,22 +4,18 @@ import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
 import { manager } from "../../../util/game_socket_util"
 import Categories from "../../categories/categories_container";
-import { setupCards } from "../../../util/game_setup";
 import Timer from './timer'
 import Endgame from "../endgame/endgame_container";
 
 class Board extends React.Component {
   constructor(props){
     super(props)
-
-
     this.scores = this.scores.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.manager = undefined;
   }
 
   componentDidMount(){
-    // can't be in component did mount because it will be called by all clients
     const {currentUser, game} = this.props
     if (currentUser.id === game.gameOwner) {
       this.setupBoard()

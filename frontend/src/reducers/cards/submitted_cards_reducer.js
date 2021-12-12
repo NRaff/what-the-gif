@@ -6,10 +6,11 @@ import {
 const submittedCardsReducer = (state = {}, action) => {
   Object.freeze(state)
   const nextState = Object.assign({}, state)
-
   switch (action.type) {
     case RECEIVE_SUBMITTED_CARD:
-      return nextState[action.card.id] = action.card
+      const { user, card } = action.payload
+      nextState[user._id] = card
+      return nextState;
     case REMOVE_SUBMITTED_CARD:
       let nState = {}
       // delete nextState[action.card.id]

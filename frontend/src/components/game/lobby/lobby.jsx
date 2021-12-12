@@ -27,12 +27,13 @@ class Lobby extends React.Component {
   }
 
   componentDidMount(){
-    const { gameCode, game, dispatch } = this.props
+    const { gameCode, game } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
     // debugger
     if (!game) {
       this.manager.getGame()
     }
+    //this currently runs for every single person that joins
     setupGame(this.manager)
   }
 

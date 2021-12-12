@@ -13,6 +13,7 @@ import { receivePlayedCategory } from '../actions/categories/played_category_act
 import { 
   nextRound, 
   NEXT_ROUND, 
+  setCurrentGame, 
   startGame, 
   updateCategory, 
   UPDATE_CATEGORY 
@@ -20,6 +21,7 @@ import {
 import { receiveUsers } from '../actions/user_actions'
 import { receiveRound } from '../actions/round_actions'
 import { fetchHand } from '../actions/hand_actions'
+import { receiveSubmittedCard, RECEIVE_SUBMITTED_CARD } from '../actions/cards/played_card_actions'
 export const GAME_STARTED = 'GAME_STARTED'
 export const GAME_OVER = 'GAME_OVER'
 export const RESET_GAME = 'RESET_GAME'
@@ -45,6 +47,7 @@ const GameDispatch = (action, dispatch) => {
     case JOINED_GAME:
       dispatch(receiveUsers(action.users))
       dispatch(receiveGame(action.game))
+      dispatch(setCurrentGame(action.game))
       break;
     case NEXT_ROUND:
       dispatch(nextRound(action.roundNum))
@@ -55,6 +58,9 @@ const GameDispatch = (action, dispatch) => {
     case PLAY_CATEGORY:
       dispatch(receivePlayedCategory(action.category))
       dispatch(removeCategory(action.category))
+      break;
+    case RECEIVE_SUBMITTED_CARD:
+      dispatch(receiveSubmittedCard(action))
       break;
     default:
       break;

@@ -1,11 +1,17 @@
 import React from "react";
+import { RECEIVE_SUBMITTED_CARD } from "../../../actions/cards/played_card_actions";
 // import { render } from "react-dom";
 import '../../../stylesheets/root.scss';
+import { manager, setupGameSocket } from "../../../util/game_socket_util";
 
 class Card extends React.Component {
-
+  constructor(props){
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
   handleSubmit(){
-    this.props.submitCard(this.props.card)
+    // this.props.submitCard(this.props.card)
+    this.chooseGif()
     // let prevcard = document.getElementsByClassName('select')
     // prevcard.className='the-card'
 
@@ -13,15 +19,33 @@ class Card extends React.Component {
     // card.className = 'select'
     //stuff
   }
+  chooseGif(){
+    const {currentPlayer, currentGame, card} = this.props
+    const gameManager = manager(currentGame.gameCode)
+    const payload = {
+      type: RECEIVE_SUBMITTED_CARD,
+      user: currentPlayer,
+      card
+    }
+    gameManager.sendToGame(payload)
+  }
 
   render() {
     const {card} = this.props
     if (card) {
       return (
         <div>
-          <div className="the-card" id={card.gifId} key={card.gifId} onClick={() => this.handleSubmit()}>
-            {/* <ul>{this.props.card.title}</ul> */}
-            <img src={this.props.card.images.fixed_height.url} alt="altname" key={this.props.card.id} />
+          <div 
+            className="the-card" 
+            id={card.gifId} 
+            key={card.gifId} 
+            onClick={this.handleSubmit}
+          >
+            <img 
+              src={this.props.card.images.fixed_height.url} 
+              alt="altname" 
+              key={this.props.card.id} 
+            />
           </div>
         </div>
       )
