@@ -6,7 +6,8 @@ import { manager } from "../../../util/game_socket_util"
 import Categories from "../../categories/categories_container";
 import Timer from './timer'
 import Endgame from "../endgame/endgame_container";
-import CardContainer from "../hand/card_container"
+// import CardContainer from "../hand/card_container"
+import {SubmittedCardContainer} from "../hand/card_container"
 import { toggleShowSubmitted } from "../../../actions/ui_actions";
 
 class Board extends React.Component {
@@ -85,8 +86,9 @@ class Board extends React.Component {
           {players.map(player => {
             return (
               // submittedCards[player._id].images.fixed_height
-              <CardContainer
+              <SubmittedCardContainer
                 card={submittedCards[player._id]}
+                playerId={player._id}
                 key={submittedCards[player._id].gifId}
               />
             )
