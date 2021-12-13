@@ -67,10 +67,10 @@ class Board extends React.Component {
   }
 
   showSubmitted(){
-    const { currentUser, game, gameCode, showSubmitted } = this.props
+    const { currentUser, game, gameCode, showSubmitted, currentRound } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
     // debugger
-    if (currentUser.id === game.gameOwner) {
+    if (currentUser.id === currentRound.judge) {
       // debugger
       this.manager.sendToGame(toggleShowSubmitted())
     }
@@ -101,7 +101,7 @@ class Board extends React.Component {
   }
 
   renderTimer() {
-    const { game, timesUp} = this.props
+    const { game, timesUp, currentUser, currentRound} = this.props
     if (!timesUp) {
       return (
         <>
@@ -125,9 +125,11 @@ class Board extends React.Component {
       return (
         <>
           <span>Times up!</span>
-          <button
-            onClick={() => this.showSubmitted()}
-          >Show Cards</button>
+          {currentUser.id === currentRound.judge ? (
+            <button
+              onClick={() => this.showSubmitted()}
+            >Show Cards</button>
+          ) : null}
         </>
       )
     }
