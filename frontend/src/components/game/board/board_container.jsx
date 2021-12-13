@@ -21,7 +21,8 @@ const mSTP = (state, ownProps) => {
     over: state.ui.roundOver,
     submittedCards: state.entities.cards.submittedCards,
     roundNum: state.ui.roundNum,
-    gameDeck: Object.values(state.entities.cards.gameDeck)
+    gameDeck: Object.values(state.entities.cards.gameDeck),
+    showSubmitted: state.ui.showSubmitted
   })
 }
 

@@ -10,6 +10,7 @@ export const UPDATE_CATEGORY = 'UPDATE_CATEGORY'
 export const NEXT_ROUND = 'NEXT_ROUND'
 export const SET_CURRENT_GAME = 'SET_CURRENT_GAME'
 export const TOGGLE_TIME_UP = 'TOGGLE_TIME_UP'
+export const TOGGLE_SHOW_SUBMITTED = 'TOGGLE_SHOW_SUBMITTED'
 
 export const startGame = () => ({
   type: GAME_STARTED
@@ -47,4 +48,8 @@ export const setCurrentGame = game => ({
 
 export const toggleTimeUp = () => ({
   type: TOGGLE_TIME_UP
+})
+
+export const toggleShowSubmitted= () => ({
+  type: TOGGLE_SHOW_SUBMITTED
 })

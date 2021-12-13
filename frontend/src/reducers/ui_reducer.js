@@ -10,7 +10,8 @@ import {
   UPDATE_CATEGORY,
   NEXT_ROUND,
   SET_CURRENT_GAME,
-  TOGGLE_TIME_UP
+  TOGGLE_TIME_UP,
+  TOGGLE_SHOW_SUBMITTED
  } from "../actions/ui_actions";
 
 const defaultState = {
@@ -19,7 +20,8 @@ const defaultState = {
   roundNum: 1,
   categoryNum: 0,
   currentGame: null,
-  timesUp: false
+  timesUp: false,
+  showSubmitted: false
 }
 
 const uiReducer = (state=defaultState, action) => {
@@ -50,6 +52,9 @@ const uiReducer = (state=defaultState, action) => {
       return nextState
     case TOGGLE_TIME_UP:
       nextState.timesUp = !nextState.timesUp
+      return nextState
+    case TOGGLE_SHOW_SUBMITTED:
+      nextState.showSubmitted = !nextState.showSubmitted
       return nextState
     default:
       return state

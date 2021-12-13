@@ -6,6 +6,8 @@ import { manager } from "../../../util/game_socket_util"
 import Categories from "../../categories/categories_container";
 import Timer from './timer'
 import Endgame from "../endgame/endgame_container";
+import CardContainer from "../hand/card_container"
+import { toggleShowSubmitted } from "../../../actions/ui_actions";
 
 class Board extends React.Component {
   constructor(props){
@@ -13,6 +15,7 @@ class Board extends React.Component {
     this.scores = this.scores.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.manager = undefined;
+    this.showSubmitted = this.showSubmitted.bind(this)
   }
 
   componentDidMount(){
@@ -62,6 +65,39 @@ class Board extends React.Component {
     })
   }
 
+  showSubmitted(){
+    const { currentUser, game, gameCode, showSubmitted } = this.props
+    this.manager = this.manager ? this.manager : manager(gameCode)
+    // debugger
+    if (currentUser.id === game.gameOwner) {
+      // debugger
+      this.manager.sendToGame(toggleShowSubmitted())
+    }
+  }
+
+
+
+  renderSubmitted(){
+    const {players, submittedCards, showSubmitted} = this.props
+    if (showSubmitted) {
+      return (
+        <div className="show-modal">
+          {players.map(player => {
+            return (
+              // submittedCards[player._id].images.fixed_height
+              <CardContainer
+                card={submittedCards[player._id]}
+                key={submittedCards[player._id].gifId}
+              />
+            )
+          })}
+        </div>
+      )
+    } else {
+      return null
+    }
+  }
+
   renderTimer() {
     const { game, timesUp} = this.props
     if (!timesUp) {
@@ -85,7 +121,12 @@ class Board extends React.Component {
       )
     } else {
       return (
-        <span>Times up!</span>
+        <>
+          <span>Times up!</span>
+          <button
+            onClick={() => this.showSubmitted()}
+          >Show Cards</button>
+        </>
       )
     }
   }
@@ -102,6 +143,7 @@ class Board extends React.Component {
           <header>
             <h2>ROUND {this.props.roundNum}</h2>
             {this.renderTimer()}
+            {this.renderSubmitted()}
           </header>
           <div id='game-info'>
             <div className='player-lineup'>
