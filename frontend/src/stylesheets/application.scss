@@ -26,42 +26,26 @@ h1 {
 body {
   font-family: sans-serif;
   background-color: black;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
-.player-lineup::-webkit-scrollbar-thumb {
+body ::-webkit-scrollbar-thumb {
   background-color: #2E2E2E;
+  color: black;
+  width: thin;
 }
 
-.player-lineup::-webkit-scrollbar-track {
+body ::-webkit-scrollbar-track {
   background-color: black;
+  color: black;
 }
 
-.player-lineup::-webkit-scrollbar {
+body ::-webkit-scrollbar {
   background-color: black;
+  color: black;
 }
 
-.player-lineup-hand::-webkit-scrollbar-thumb {
-  background-color: #2E2E2E;
-}
-
-.player-lineup-hand::-webkit-scrollbar-track {
-  background-color: black;
-}
-
-.player-lineup-hand::-webkit-scrollbar {
-  background-color: black;
-}
-
-.topwrap::-webkit-scrollbar-thumb {
-  background-color: #2E2E2E;
-}
-
-.topwrap::-webkit-scrollbar-track {
-  background-color: black;
-}
-
-.topwrap::-webkit-scrollbar {
+body ::-webkit-scrollbar-corner {
   background-color: black;
 }
 

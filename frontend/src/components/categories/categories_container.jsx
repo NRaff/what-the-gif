@@ -6,7 +6,8 @@ import { nextRound, updateCategory } from "../../actions/ui_actions";
 const mSTP = state => ({
   deckCategories: Object.values(state.entities.categories.deckCategory),
   playedCategories: state.entities.categories.playedCategory,
-  currentCat: state.ui.categoryNum
+  currentCat: state.ui.categoryNum,
+  timesUp: state.ui.timesUp,
 })
 
 

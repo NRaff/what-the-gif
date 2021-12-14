@@ -39,7 +39,7 @@ class Categories extends React.Component{
         <div id="categories">
             <h1 key={category.id}>{category.name.toUpperCase()}</h1>
         </div>
-        <button onClick={() => this.handleSubmit(category)}>Shuffle</button>
+        {this.props.timesUp ? null : <button onClick={() => this.handleSubmit(category)}>Shuffle</button>}
       </div>
     )
   }

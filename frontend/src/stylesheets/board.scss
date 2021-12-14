@@ -2,22 +2,53 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   margin: 0 auto;
-  position: relative;
-  // width: 50vw;
-  overflow: auto;
+  max-width: 1500px;
+  // position: relative;
 }
 
 .player-lineup-hand {
-    display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
-  // justify-content: safe center;
   margin: 0 auto;
-  position: relative;
-  // width: 50vw;
+  max-width: 850px;
+  // position: relative;
   overflow: auto;
+}
+
+.show-modal {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.show-modal h3 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 20px;
+}
+
+.winning-card h3 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 20px;
+}
+
+.winning-card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.winning-card img {
+  // width: 600px;
+}
+
+#game-info {
+  overflow: auto;
+  overflow-y: hidden;
+  max-width: 800px;
+  max-height: 140px;
 }
 
 .hand-overlay {
@@ -73,13 +104,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   margin: 0 auto;
 }
 
 .scorecard {
   width: 150px;
   margin: 0 10px 10px 10px;
+  min-width: 150px;
 }
 
 .board-container {
@@ -88,7 +119,7 @@
   justify-content: safe center;
   text-align: center;
   width: 80vw;
-  max-width: 950px;
+  // max-width: 950px;
 }
 
 #scores {
@@ -98,22 +129,9 @@
 .topwrap {
   display: flex;
   flex-direction: row;
-  align-items: safe center;
-  // justify-content: safe center;
-  overflow: auto;
+  align-items: center;
   margin: 0 auto;
-  position: static;
-  max-width: 1000px;
-  // min-width: 800px;
-}
-
-.topwrap:first-child{
-  margin-left: auto;
-  
-}
-
-.topwrap:last-child{
-  margin-right: auto;
+  margin-bottom: 20px;
 }
 
 .board-container h1 {
@@ -144,6 +162,16 @@
 #categories {
   margin-top: -10px;
   padding-top: 0px;
+  // display: flex;
+}
+
+.winner-wrap {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#show-wrap {
+  display: flex;
 }
 
 .player-hand {
