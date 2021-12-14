@@ -10,7 +10,9 @@ const mSTP = state => {
     currentPlayer: state.entities.users[state.session.user.id],
     currentRound: state.entities.rounds[state.ui.roundNum],
     currentGame: state.entities.games[state.ui.currentGame],
+    roundWinnerChosen: state.ui.roundWinnerChosen,
     players: state.entities.users,
+    submittedGifs: state.entities.cards.submittedCards,
     users: Object.values(state.entities.users)
   };
 }

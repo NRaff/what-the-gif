@@ -11,17 +11,19 @@ import {
   NEXT_ROUND,
   SET_CURRENT_GAME,
   TOGGLE_TIME_UP,
-  TOGGLE_SHOW_SUBMITTED
+  TOGGLE_SHOW_SUBMITTED,
+  ROUND_WINNER_CHOSEN
  } from "../actions/ui_actions";
 
 const defaultState = {
   gameStatus: false,
-  roundOver: false,
   roundNum: 1,
   categoryNum: 0,
   currentGame: null,
   timesUp: false,
-  showSubmitted: false
+  showSubmitted: false,
+  roundWinnerChosen: false,
+  roundOver: false
 }
 
 const uiReducer = (state=defaultState, action) => {
@@ -55,6 +57,9 @@ const uiReducer = (state=defaultState, action) => {
       return nextState
     case TOGGLE_SHOW_SUBMITTED:
       nextState.showSubmitted = !nextState.showSubmitted
+      return nextState
+    case ROUND_WINNER_CHOSEN:
+      nextState.roundWinnerChosen = !nextState.roundWinnerChosen
       return nextState
     default:
       return state

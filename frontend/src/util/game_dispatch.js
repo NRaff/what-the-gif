@@ -15,6 +15,7 @@ import {
   NEXT_ROUND, 
   setCurrentGame, 
   startGame, 
+  toggleRoundWinnerChosen, 
   updateCategory, 
   UPDATE_CATEGORY 
 } from '../actions/ui_actions'
@@ -27,6 +28,7 @@ export const GAME_OVER = 'GAME_OVER'
 export const RESET_GAME = 'RESET_GAME'
 export const JOINED_GAME = 'JOINED_GAME'
 export const DEAL_HAND = 'DEAL_HAND'
+export const RECEIVE_ROUND_WINNER = 'RECEIVE_ROUND_WINNER'
 
 
 const GameDispatch = (action, dispatch) => {
@@ -61,6 +63,10 @@ const GameDispatch = (action, dispatch) => {
       break;
     case RECEIVE_SUBMITTED_CARD:
       dispatch(receiveSubmittedCard(action))
+      break;
+    case RECEIVE_ROUND_WINNER:
+      dispatch(receiveRound(action.round))
+      dispatch(toggleRoundWinnerChosen())
       break;
     default:
       dispatch(action)

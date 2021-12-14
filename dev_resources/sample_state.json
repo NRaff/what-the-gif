@@ -11,12 +11,13 @@
   },
   "ui": {
     "gameStatus": false,
+    "currentGame": "sdfsdfsdfsdfd",
     "roundNum": 1,
-    "roundOver": true,
     "categoryNum": 1,
     "timesUp": false,
     "showSubmitted": false,
-    "winnerChosen": false
+    "winnerChosen": false,
+    "roundOver": true
   },
   "errors": {
     "sessionErrors": {},
