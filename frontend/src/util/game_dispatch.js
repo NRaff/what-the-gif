@@ -62,7 +62,7 @@ const GameDispatch = (action, dispatch) => {
       dispatch(nextRound(action.round.id))
       break;
     case UPDATE_CATEGORY:
-      dispatch(updateCategory())
+      dispatch(receiveRound(action.round))
       break;
     case PLAY_CATEGORY:
       dispatch(receivePlayedCategory(action.category))
@@ -73,6 +73,7 @@ const GameDispatch = (action, dispatch) => {
       break;
     case RECEIVE_ROUND_WINNER:
       dispatch(receiveRound(action.round))
+      dispatch(receiveGame(action.game))
       dispatch(toggleRoundWinnerChosen())
       break;
     default:

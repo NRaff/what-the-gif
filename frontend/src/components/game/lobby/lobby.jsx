@@ -42,7 +42,7 @@ class Lobby extends React.Component {
     winner: null,
     winningGif: null,
     judge: this.props.players[0]._id,
-    category: 1,
+    category: 0,
     submittedGifs: []
   })
 

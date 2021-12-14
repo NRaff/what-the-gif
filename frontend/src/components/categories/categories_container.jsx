@@ -8,6 +8,7 @@ const mSTP = state => ({
   playedCategories: state.entities.categories.playedCategory,
   currentCat: state.ui.categoryNum,
   timesUp: state.ui.timesUp,
+  currentRound: state.entities.rounds[state.ui.roundNum]
 })
 
 

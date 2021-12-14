@@ -16,24 +16,23 @@ class Categories extends React.Component{
       gameCode, 
       dispatch, 
       deckCategories, 
-      playedCategories
+      playedCategories,
+      currentRound
     } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
-    const newRoundNum = Object.values(playedCategories).length + 1
-    this.manager.sendToGame({type: UPDATE_CATEGORY})
-    this.manager.sendToGame({type: NEXT_ROUND, roundNum: newRoundNum})
-    const playPayload = {
-      type: PLAY_CATEGORY,
-      category
-    }
-    this.manager.sendToGame(playPayload)
+    const updatedRound = Object.assign({}, currentRound)
+    updatedRound.category += 1 
+    this.manager.sendToGame({
+      type: UPDATE_CATEGORY,
+      round: updatedRound
+    })
   }
 
   render(){
     if (!this.props.deckCategories.length > 0) return null
-    const {currentCat, nextCategory, deckCategories} = this.props
-    const category = deckCategories[0]
-    
+    const {currentCat, nextCategory, deckCategories, currentRound} = this.props
+    if (!currentRound) return null
+    const category = deckCategories[currentRound.category]
     return (
       <div>
         <div id="categories">

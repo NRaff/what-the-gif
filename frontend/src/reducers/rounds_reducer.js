@@ -8,6 +8,7 @@ const roundsReducer = (state={}, action) => {
   let nextState = Object.assign({}, state)
   switch(action.type) {
     case RECEIVE_ROUND:
+      // debugger
       nextState[action.round.id] = action.round
       return nextState;
     default:

@@ -3,7 +3,7 @@ import '../../../stylesheets/root.scss'
 import Hand from "../hand/hand_container";
 import {playerIndex} from '../lobby/lobby'
 import { manager } from "../../../util/game_socket_util"
-import Categories from "../../categories/categories_container";
+import CategoriesContainer from "../../categories/categories_container";
 import Timer from './timer'
 import Endgame from "../endgame/endgame_container";
 // import CardContainer from "../hand/card_container"
@@ -28,18 +28,15 @@ class Board extends React.Component {
   }
 
   scores(players){
-    let playerArr = []
+    const {game} = this.props
     return (
       players.map((player, i) => {
-        if (i > 0 && playerArr.includes(player.user)) return null
-        else {
-          playerArr.push(player.user)
-          return(
-            <div className='scorecard' id={i} key={i}>
-              <p>Score: {player.roundsWon.length}</p>
-            </div>
-          )
-        }
+        const playerObj = game.players.filter(obj => obj.user === player._id)[0]
+        return(
+          <div className='scorecard' id={i} key={i}>
+            <p>Score: {playerObj.roundsWon.length}</p>
+          </div>
+        )
       })
     )
   }
@@ -236,7 +233,7 @@ class Board extends React.Component {
               {playerIndex(this.props.users)}
             </div>
             <div id='scores'>
-              {this.props.game ? this.scores(this.props.game.players) : null}
+              {this.props.game ? this.scores(this.props.players) : null}
             </div>
           </div>
         </div>
@@ -245,7 +242,7 @@ class Board extends React.Component {
           <div id="select-wrap">
           <div id='cat-info'>
             <h2>CATEGORY</h2>
-            <Categories gameCode={gameCode} gameManager={this.manager} />
+            <CategoriesContainer gameCode={gameCode} gameManager={this.manager} />
           </div>
             <div className="winner-wrap">
               {this.renderWinner()}

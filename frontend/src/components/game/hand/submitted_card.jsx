@@ -30,9 +30,17 @@ class SubmittedCard extends React.Component {
       updatedRound.winner = playerId
       updatedRound.winningGif = card.gifId
       updatedRound.submittedGifs = Object.values(submittedGifs).map(gif => gif.gifId)
+      let updatedGame = Object.assign({}, currentGame)
+      updatedGame.players = updatedGame.players.map(player => {
+        if(player.user === updatedRound.winner) {
+          player.roundsWon.push(updatedRound.id)
+        }
+        return player
+      })
       const payload = {
         type: 'RECEIVE_ROUND_WINNER',
-        round: updatedRound
+        round: updatedRound,
+        game: updatedGame
       }
       gameManager.sendToGame(payload)
     }
