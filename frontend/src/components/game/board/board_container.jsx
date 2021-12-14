@@ -22,7 +22,10 @@ const mSTP = (state, ownProps) => {
     submittedCards: state.entities.cards.submittedCards,
     roundNum: state.ui.roundNum,
     gameDeck: Object.values(state.entities.cards.gameDeck),
-    showSubmitted: state.ui.showSubmitted
+    showSubmitted: state.ui.showSubmitted,
+    currentRound: state.entities.rounds[state.ui.roundNum],
+    roundWinnerChosen: state.ui.roundWinnerChosen,
+    playedCards: state.entities.cards.playedCards
   })
 }
 

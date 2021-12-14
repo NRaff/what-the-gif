@@ -6,7 +6,8 @@ import { manager } from "../../../util/game_socket_util"
 import Categories from "../../categories/categories_container";
 import Timer from './timer'
 import Endgame from "../endgame/endgame_container";
-import CardContainer from "../hand/card_container"
+// import CardContainer from "../hand/card_container"
+import {SubmittedCardContainer} from "../hand/card_container"
 import { toggleShowSubmitted } from "../../../actions/ui_actions";
 
 class Board extends React.Component {
@@ -70,16 +71,32 @@ class Board extends React.Component {
   }
 
   showSubmitted(){
-    const { currentUser, game, gameCode, showSubmitted } = this.props
+    const { currentUser, game, gameCode, showSubmitted, currentRound } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
-    // debugger
-    if (currentUser.id === game.gameOwner) {
-      // debugger
+    if (currentUser.id === currentRound.judge) {
       this.manager.sendToGame(toggleShowSubmitted())
     }
   }
 
-
+  renderWinner(){
+    const { roundWinnerChosen, currentRound, players, currentUser, playedCards } = this.props
+    if (roundWinnerChosen) {
+      const winningPlayer = players.filter(player => player._id === currentRound.winner)[0]
+      const winningGif = playedCards[currentRound.winningGif]
+      debugger
+      return (
+        <div className="winning-card">
+          <img src={winningGif.images.fixed_height.url} alt="the winning gif" />
+          <h3>{winningPlayer.displayName}</h3>
+          {currentRound.judge === currentUser.id ? (
+            <button>Next Round</button>
+          ) : null}
+        </div>
+      )
+    } else {
+      return (null)
+    }
+  }
 
   renderSubmitted(){
     const {players, submittedCards, showSubmitted} = this.props
@@ -89,8 +106,9 @@ class Board extends React.Component {
           {players.map(player => {
             return (
               // submittedCards[player._id].images.fixed_height
-              <CardContainer
+              <SubmittedCardContainer
                 card={submittedCards[player._id]}
+                playerId={player._id}
                 key={submittedCards[player._id].gifId}
               />
             )
@@ -103,7 +121,7 @@ class Board extends React.Component {
   }
 
   renderTimer() {
-    const { game, timesUp} = this.props
+    const { game, timesUp, currentUser, currentRound} = this.props
     if (!timesUp) {
       return (
         <>
@@ -127,9 +145,11 @@ class Board extends React.Component {
       return (
         <>
           <span>Times up!</span>
-          <button
-            onClick={() => this.showSubmitted()}
-          >Show Cards</button>
+          {currentUser.id === currentRound.judge ? (
+            <button
+              onClick={() => this.showSubmitted()}
+            >Show Cards</button>
+          ) : null}
         </>
       )
     }
@@ -148,6 +168,7 @@ class Board extends React.Component {
             <h2>ROUND {this.props.roundNum}</h2>
             {this.renderTimer()}
             {this.renderSubmitted()}
+            {this.renderWinner()}
           </header>
           <div id='game-info'>
             <div className='player-lineup'>
