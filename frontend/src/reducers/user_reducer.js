@@ -43,7 +43,7 @@ const UserReducer = (state={}, action) => {
           revisedArray.push(card)
         }
       })
-      state[currentUser].hand = revisedArray
+      state[currentUser].curHand = revisedArray
       return state
     case RECEIVE_NEW_CARD:    
       let handArray = []
