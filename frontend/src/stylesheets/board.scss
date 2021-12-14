@@ -13,7 +13,7 @@
     display: flex;
   flex-direction: row;
   align-items: center;
-  // justify-content: center;
+  // justify-content: safe center;
   margin: 0 auto;
   position: relative;
   // width: 50vw;
@@ -88,6 +88,7 @@
   justify-content: safe center;
   text-align: center;
   width: 80vw;
+  max-width: 950px;
 }
 
 #scores {
@@ -98,14 +99,17 @@
   display: flex;
   flex-direction: row;
   align-items: safe center;
-  justify-content: safe center;
+  // justify-content: safe center;
   overflow: auto;
   margin: 0 auto;
+  position: static;
+  max-width: 1000px;
   // min-width: 800px;
 }
 
 .topwrap:first-child{
   margin-left: auto;
+  
 }
 
 .topwrap:last-child{
@@ -144,7 +148,6 @@
 
 .player-hand {
   margin-top: 20px;
-
 }
 
 .the-card {

@@ -23,14 +23,18 @@ class Board extends React.Component {
   }
 
   scores(players){
+    let playerArr = []
     return (
       players.map((player, i) => {
-        if (i > 0 && player.user === players[i-1].user) console.log('errror')
-        else return(
-          <div className='scorecard' id={i} key={i}>
-            <p>Score: {player.roundsWon.length}</p>
-          </div>
-        )
+        if (i > 0 && playerArr.includes(player.user)) return null
+        else {
+          playerArr.push(player.user)
+          return(
+            <div className='scorecard' id={i} key={i}>
+              <p>Score: {player.roundsWon.length}</p>
+            </div>
+          )
+        }
       })
     )
   }
