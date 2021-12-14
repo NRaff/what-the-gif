@@ -5,7 +5,18 @@
   justify-content: center;
   margin: 0 auto;
   position: relative;
-  width: 80vw;
+  // width: 50vw;
+  overflow: auto;
+}
+
+.player-lineup-hand {
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  // justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  // width: 50vw;
   overflow: auto;
 }
 
@@ -52,8 +63,6 @@
   margin: 0 auto;
 }
 
-
-
 .end-screen{
   display: flex;
   flex-direction: row;
@@ -76,8 +85,9 @@
 .board-container {
   margin: 0 auto;
   align-items: center;
-  justify-content: center;
+  justify-content: safe center;
   text-align: center;
+  width: 80vw;
 }
 
 #scores {
@@ -87,12 +97,24 @@
 .topwrap {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  align-items: safe center;
+  justify-content: safe center;
+  overflow: auto;
+  margin: 0 auto;
+  // min-width: 800px;
+}
+
+.topwrap:first-child{
+  margin-left: auto;
+}
+
+.topwrap:last-child{
+  margin-right: auto;
 }
 
 .board-container h1 {
   font-size: 70px;
+  
 }
 
 .board-container h2 {
@@ -105,13 +127,15 @@
 .board-container header {
   margin-bottom: 20px;
   margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
 }
 
 .board-container span {
   font-weight: 700px;
   font-size: 40px;
 }
-
 
 #categories {
   margin-top: -10px;
@@ -120,6 +144,7 @@
 
 .player-hand {
   margin-top: 20px;
+
 }
 
 .the-card {

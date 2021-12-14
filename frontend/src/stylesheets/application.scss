@@ -38,9 +38,33 @@ body {
 }
 
 .player-lineup::-webkit-scrollbar {
-  // display: none;
   background-color: black;
 }
+
+.player-lineup-hand::-webkit-scrollbar-thumb {
+  background-color: #2E2E2E;
+}
+
+.player-lineup-hand::-webkit-scrollbar-track {
+  background-color: black;
+}
+
+.player-lineup-hand::-webkit-scrollbar {
+  background-color: black;
+}
+
+.topwrap::-webkit-scrollbar-thumb {
+  background-color: #2E2E2E;
+}
+
+.topwrap::-webkit-scrollbar-track {
+  background-color: black;
+}
+
+.topwrap::-webkit-scrollbar {
+  background-color: black;
+}
+
 
 html {
   background-color: black;
