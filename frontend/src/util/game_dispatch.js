@@ -16,13 +16,15 @@ import {
   setCurrentGame, 
   startGame, 
   toggleRoundWinnerChosen, 
+  toggleShowSubmitted, 
+  toggleTimeUp, 
   updateCategory, 
   UPDATE_CATEGORY 
 } from '../actions/ui_actions'
 import { receiveUsers } from '../actions/user_actions'
 import { receiveRound } from '../actions/round_actions'
 import { fetchHand } from '../actions/hand_actions'
-import { receiveSubmittedCard, RECEIVE_SUBMITTED_CARD } from '../actions/cards/played_card_actions'
+import { receiveSubmittedCard, RECEIVE_SUBMITTED_CARD, removeSubmittedCards } from '../actions/cards/played_card_actions'
 export const GAME_STARTED = 'GAME_STARTED'
 export const GAME_OVER = 'GAME_OVER'
 export const RESET_GAME = 'RESET_GAME'
@@ -52,7 +54,12 @@ const GameDispatch = (action, dispatch) => {
       dispatch(setCurrentGame(action.game))
       break;
     case NEXT_ROUND:
-      dispatch(nextRound(action.roundNum))
+      dispatch(toggleRoundWinnerChosen())
+      dispatch(toggleShowSubmitted())
+      dispatch(removeSubmittedCards())
+      dispatch(toggleTimeUp())
+      dispatch(receiveRound(action.round))
+      dispatch(nextRound(action.round.id))
       break;
     case UPDATE_CATEGORY:
       dispatch(updateCategory())

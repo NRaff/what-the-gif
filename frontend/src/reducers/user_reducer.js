@@ -9,6 +9,7 @@ const UserReducer = (state={}, action) => {
   switch(action.type) {
     case RECEIVE_USER:
       nState[action.user._id] = action.user
+      return nState
     case RECEIVE_FAVORITE_GIF:
       return Object.assign({}, state, { [action.user._id]: action.user })
     case REMOVE_FAVORITE_GIF:
@@ -30,30 +31,29 @@ const UserReducer = (state={}, action) => {
       action.payload.cards.forEach(card => {
         cards.push(card.gifId)
       })
-      let nextState = Object.assign({}, state)
-      nextState[user].curHand = cards 
-      return nextState
+      nState[user].curHand = cards 
+      return nState
     case REMOVE_CARD_FROM_HAND:      
       let currentUser = action.payload.user
       let cardId = action.payload.cardId
       let revisedArray = []
-      state[currentUser].curHand.forEach(card => {
+      nState[currentUser].curHand.forEach(card => {
         if (card === cardId){
         } else {
           revisedArray.push(card)
         }
       })
-      state[currentUser].hand = revisedArray
-      return state
+      nState[currentUser].curHand = revisedArray
+      return nState
     case RECEIVE_NEW_CARD:    
       let handArray = []
-      state.forEach(card => {
+      nState.forEach(card => {
         handArray.push(card)
       })
       handArray.push(action.card)
       return handArray
     default:
-      return state;
+      return nState;
   }
 }
 
