@@ -162,11 +162,22 @@ module.exports = (io, socket) => {
     } else {
       createGame(game)
         .then(res => {
-          const payload = {
-            game: res,
-            type: "RECEIVE_GAME"
-          }
-          io.emit(`created-game:${game.gameCode}`, payload)
+          User.find({
+            '_id': {
+              $in: res.players.map(p => (
+                mongoose.Types.ObjectId(p.user)
+              ))
+            }
+          })
+            .then(users => {
+              const payload = {
+                game: res,
+                users: users,
+                type: "JOINED_GAME"
+              }
+              io.emit(`joined-game:${game.gameCode}`, payload)
+            })
+          // io.emit(`created-game:${game.gameCode}`, payload)
         })
         .catch(err => {
           const payload = {
