@@ -36,12 +36,14 @@
 .winning-card h3 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 20px;
+  display: block;
 }
 
 .winning-card {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   width: 300px;
+  padding: 0px;
   margin: 0 auto;
 }
 
@@ -248,6 +250,10 @@ flex-direction: row;
   color: black;
   font-size: 15px;
   display: block;
+}
+
+#select h3, .the-card h3 {
+  color: black;
 }
 
 #select img {

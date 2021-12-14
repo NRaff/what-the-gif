@@ -85,9 +85,8 @@ class Board extends React.Component {
       const winningGif = playedCards[currentRound.winningGif]
       return (
         <div className="winning-card">
-          <h3>WINNER: {winningPlayer.displayName}</h3>
           <img src={winningGif.images.fixed_height.url} alt="the winning gif" />
-          
+          <h3>WINNER: {winningPlayer.displayName}</h3>
           {currentRound.judge === currentUser.id ? (
             <button>Next Round</button>
           ) : null}
@@ -186,15 +185,16 @@ class Board extends React.Component {
           </div>
         </div>
         <section className='categories'>
-          <div className="winner-wrap">
-            {this.renderWinner()}
-          </div>
+          
           <div id="select-wrap">
           <div id='cat-info'>
             <h2>CATEGORY</h2>
             <Categories gameCode={gameCode} gameManager={this.manager} />
           </div>
-          {this.renderSubmitted()}
+            <div className="winner-wrap">
+              {this.renderWinner()}
+            </div>
+          
             
               {submit[idx] && !this.props.timesUp ? 
               <div id='select'>
@@ -209,6 +209,7 @@ class Board extends React.Component {
         </section>
         <section className='player-hand'>
           {this.props.timesUp ? null : <Hand />}
+          {this.renderSubmitted()}
         </section>
 
         {/* {this.props.over ? 
