@@ -13,7 +13,6 @@ class SubmittedCard extends React.Component {
     const {users, submittedGifs, currentGame} = this.props
     const gameManager = manager(currentGame.gameCode)
     users.forEach(user => {
-      debugger
       const payload = {
         user: user._id,
         cardId: submittedGifs[user._id].gifId

@@ -69,14 +69,30 @@ class Board extends React.Component {
   showSubmitted(){
     const { currentUser, game, gameCode, showSubmitted, currentRound } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
-    // debugger
     if (currentUser.id === currentRound.judge) {
-      // debugger
       this.manager.sendToGame(toggleShowSubmitted())
     }
   }
 
-
+  renderWinner(){
+    const { roundWinnerChosen, currentRound, players, currentUser, playedCards } = this.props
+    if (roundWinnerChosen) {
+      const winningPlayer = players.filter(player => player._id === currentRound.winner)[0]
+      const winningGif = playedCards[currentRound.winningGif]
+      debugger
+      return (
+        <div className="winning-card">
+          <img src={winningGif.images.fixed_height.url} alt="the winning gif" />
+          <h3>{winningPlayer.displayName}</h3>
+          {currentRound.judge === currentUser.id ? (
+            <button>Next Round</button>
+          ) : null}
+        </div>
+      )
+    } else {
+      return (null)
+    }
+  }
 
   renderSubmitted(){
     const {players, submittedCards, showSubmitted} = this.props
@@ -148,6 +164,7 @@ class Board extends React.Component {
             <h2>ROUND {this.props.roundNum}</h2>
             {this.renderTimer()}
             {this.renderSubmitted()}
+            {this.renderWinner()}
           </header>
           <div id='game-info'>
             <div className='player-lineup'>
