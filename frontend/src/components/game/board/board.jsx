@@ -115,7 +115,7 @@ class Board extends React.Component {
 
   renderWinner(){
     const { roundWinnerChosen, currentRound, players, currentUser, playedCards } = this.props
-    if (roundWinnerChosen) {
+    if (roundWinnerChosen && currentRound.submittedGifs.length > 0) {
       const winningPlayer = players.filter(player => player._id === currentRound.winner)[0]
       const winningGif = playedCards[currentRound.winningGif]
       return (
@@ -164,7 +164,16 @@ class Board extends React.Component {
         </div>
       )
     } else if (showSubmitted && submissions.length === 0) {
-      return (<p>No cards were played this round!</p>)
+      return (
+      <>
+        <p>No cards were played this round!</p>
+          {this.props.currentRound.judge === this.props.currentUser.id ? (
+            <button 
+              onClick={() => this.nextRound()}
+            >Next Round</button>
+          ) : null}
+      </>
+      )
     }
     else {
       return null
