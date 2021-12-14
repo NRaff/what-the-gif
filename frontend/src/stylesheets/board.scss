@@ -191,6 +191,13 @@
   margin-top: 20px;
 }
 
+.player-hand h4 {
+  display: block;
+  margin-left: -15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .the-card {
   margin: 10px 10px 0px 0px;
   cursor: pointer;
@@ -278,7 +285,8 @@ flex-direction: row;
 
 .modal-player{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   // grid-template-rows: 3, 1fr;
   gap: 10px;
 }
+
