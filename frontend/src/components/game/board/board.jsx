@@ -107,19 +107,22 @@ class Board extends React.Component {
       return (
         <div id='show-wrap'>
           <div className="show-modal">
-            <p className="judge-text">
-              {/* {if currentRound.judge === currentUser.id} */}
-              Select the best GiF!
-            </p>
-            {players.map(player => {
-              return (
-                <SubmittedCardContainer
-                  card={submittedCards[player._id]}
-                  playerId={player._id}
-                  key={submittedCards[player._id].gifId}
-                />
-              )
-            })}
+            <div className="judge-text">
+              { (this.props.currentRound.judge === this.props.currentUser.id) ?
+              <h2>You are the judge. Select the best GiF!</h2> : <h2>Awaiting Judgement</h2>
+            }
+            </div>
+            <div className="modal-player">
+              {players.map(player => {
+                return (
+                  <SubmittedCardContainer
+                    card={submittedCards[player._id]}
+                    playerId={player._id}
+                    key={submittedCards[player._id].gifId}
+                  />
+                )
+              })}
+            </div>
           </div>
         </div>
       )

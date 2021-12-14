@@ -269,3 +269,16 @@ flex-direction: row;
 #select img {
   height: 150px;
 }
+
+.show-modal{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.modal-player{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  // grid-template-rows: 3, 1fr;
+  gap: 10px;
+}
