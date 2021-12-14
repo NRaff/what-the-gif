@@ -30,7 +30,7 @@ class Hand extends React.Component {
     return(
       <div className="player-hand-show">
         <h2>MY HAND</h2>
-        <div className='player-lineup'>
+        <div className='player-lineup-hand'>
             {/* uncomment this line when done testing */}
             {/* {this.renderOverlay()} */}
             {currentPlayer.curHand.map(card => {
