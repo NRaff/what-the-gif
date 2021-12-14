@@ -38,9 +38,10 @@ const getGame = (payload, io, socket) => {
       .then(users => {
         game.save()
           .then(updatedGame => {
+            const cleanedUsers = users.map(user => userParams(user))
             const newPayload = {
               game: updatedGame,
-              users: users,
+              users: cleanedUsers,
               type: "JOINED_GAME"
             }
             io.emit(`joined-game:${game.gameCode}`, newPayload)
@@ -101,9 +102,10 @@ const joinGame = (payload, io, socket) => {
         .then( users => {
           game.save()
           .then(updatedGame => {
+            const cleanedUsers = users.map(user => userParams(user))
             const newPayload = {
               game: updatedGame,
-              users: users,
+              users: cleanedUsers,
               type: "JOINED_GAME"
             }
             io.emit(`joined-game:${game.gameCode}`, newPayload)
@@ -133,6 +135,14 @@ const updateGame = (payload, io) => {
   // console.log(payload.type)
   io.emit(`joined-game:${gameCode}`, payload)
 }
+
+const userParams = user => ({
+  _id: user._id,
+  displayName: user.displayName,
+  curHand: user.curHand,
+  favGIF: user.favGIF,
+  email: user.email,
+})
 
 // * Export socket listeners and events
 module.exports = (io, socket) => {
@@ -170,9 +180,10 @@ module.exports = (io, socket) => {
             }
           })
             .then(users => {
+              const cleanedUsers = users.map(user => userParams(user))
               const payload = {
                 game: res,
-                users: users,
+                users: cleanedUsers,
                 type: "JOINED_GAME"
               }
               io.emit(`joined-game:${game.gameCode}`, payload)
