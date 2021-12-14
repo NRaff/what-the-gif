@@ -38,9 +38,10 @@ const getGame = (payload, io, socket) => {
       .then(users => {
         game.save()
           .then(updatedGame => {
+            const cleanedUsers = users.map(user => userParams(user))
             const newPayload = {
               game: updatedGame,
-              users: users,
+              users: cleanedUsers,
               type: "JOINED_GAME"
             }
             io.emit(`joined-game:${game.gameCode}`, newPayload)
@@ -101,9 +102,10 @@ const joinGame = (payload, io, socket) => {
         .then( users => {
           game.save()
           .then(updatedGame => {
+            const cleanedUsers = users.map(user => userParams(user))
             const newPayload = {
               game: updatedGame,
-              users: users,
+              users: cleanedUsers,
               type: "JOINED_GAME"
             }
             io.emit(`joined-game:${game.gameCode}`, newPayload)
@@ -134,6 +136,14 @@ const updateGame = (payload, io) => {
   io.emit(`joined-game:${gameCode}`, payload)
 }
 
+const userParams = user => ({
+  _id: user._id,
+  displayName: user.displayName,
+  curHand: user.curHand,
+  favGIF: user.favGIF,
+  email: user.email,
+})
+
 // * Export socket listeners and events
 module.exports = (io, socket) => {
   // * Join Game
@@ -162,11 +172,23 @@ module.exports = (io, socket) => {
     } else {
       createGame(game)
         .then(res => {
-          const payload = {
-            game: res,
-            type: "RECEIVE_GAME"
-          }
-          io.emit(`created-game:${game.gameCode}`, payload)
+          User.find({
+            '_id': {
+              $in: res.players.map(p => (
+                mongoose.Types.ObjectId(p.user)
+              ))
+            }
+          })
+            .then(users => {
+              const cleanedUsers = users.map(user => userParams(user))
+              const payload = {
+                game: res,
+                users: cleanedUsers,
+                type: "JOINED_GAME"
+              }
+              io.emit(`joined-game:${game.gameCode}`, payload)
+            })
+          // io.emit(`created-game:${game.gameCode}`, payload)
         })
         .catch(err => {
           const payload = {
