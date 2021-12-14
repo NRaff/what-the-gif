@@ -143,7 +143,7 @@ class Board extends React.Component {
           <div className="show-modal">
             <div className="judge-text">
               { (this.props.currentRound.judge === this.props.currentUser.id) ?
-              <h2>You are the judge. Select the best GiF!</h2> : <h2>Awaiting Judgement</h2>
+              <h4>You are the judge. Select the best GiF!</h4> : <h4>Awaiting Judgement</h4>
             }
             </div>
             <div className="modal-player">
@@ -163,7 +163,7 @@ class Board extends React.Component {
     } else if (showSubmitted && submissions.length === 0) {
       return (
       <>
-        <p>No cards were played this round!</p>
+        <h4>No cards were played this round!</h4>
           {this.props.currentRound.judge === this.props.currentUser.id ? (
             <button 
               onClick={() => this.nextRound()}

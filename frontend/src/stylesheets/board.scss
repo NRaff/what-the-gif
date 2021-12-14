@@ -142,6 +142,7 @@
 .topwrap {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
   margin-bottom: 20px;
@@ -189,6 +190,13 @@
 
 .player-hand {
   margin-top: 20px;
+}
+
+.player-hand h4 {
+  display: block;
+  margin-left: -15px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .the-card {
@@ -278,7 +286,8 @@ flex-direction: row;
 
 .modal-player{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   // grid-template-rows: 3, 1fr;
   gap: 10px;
 }
+
