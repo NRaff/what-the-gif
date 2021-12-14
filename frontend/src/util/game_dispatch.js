@@ -24,7 +24,7 @@ import {
 import { receiveUsers } from '../actions/user_actions'
 import { receiveRound } from '../actions/round_actions'
 import { fetchHand } from '../actions/hand_actions'
-import { receiveSubmittedCard, RECEIVE_SUBMITTED_CARD } from '../actions/cards/played_card_actions'
+import { receiveSubmittedCard, RECEIVE_SUBMITTED_CARD, removeSubmittedCards } from '../actions/cards/played_card_actions'
 export const GAME_STARTED = 'GAME_STARTED'
 export const GAME_OVER = 'GAME_OVER'
 export const RESET_GAME = 'RESET_GAME'
@@ -56,6 +56,7 @@ const GameDispatch = (action, dispatch) => {
     case NEXT_ROUND:
       dispatch(toggleRoundWinnerChosen())
       dispatch(toggleShowSubmitted())
+      dispatch(removeSubmittedCards())
       dispatch(toggleTimeUp())
       dispatch(receiveRound(action.round))
       dispatch(nextRound(action.round.id))
