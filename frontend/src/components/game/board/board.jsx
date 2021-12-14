@@ -107,6 +107,10 @@ class Board extends React.Component {
       return (
         <div id='show-wrap'>
           <div className="show-modal">
+            <p className="judge-text">
+              {/* {if currentRound.judge === currentUser.id} */}
+              Select the best GiF!
+            </p>
             {players.map(player => {
               return (
                 <SubmittedCardContainer
