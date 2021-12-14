@@ -193,6 +193,11 @@
   transition: margin 0.2s, top 0.2s, width 0.2s, height 0.2s;
 }
 
+.the-card p {
+  color: black;
+  font-size: 15px;
+}
+
 .the-card:hover {
   margin: -5px 5px 0px -5px;
   // margin-left: -5px;
@@ -218,14 +223,33 @@
   transition: width 0.2s, height 0.2s;
 }
 
-.select {
-  display: flex;
+#select-wrap {
+display: flex;
+flex-direction: row;
 }
-.select img {
-  position: absolute;
-  top: 200px;
-  right: 50px;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+
+#cat-info {
+  flex: 2;
+  margin-right: 20px;
+}
+
+#select {
+  flex: 1;
+  background-color: #f5f5f5;
+  padding: 5px 5px 30px;
+  border-radius: 5px;
+  margin-right: 20px;
+  height: 150px;
+  width: 100em;
+  display: inline-block;
+}
+
+#select h2 {
+  color: black;
+  font-size: 15px;
+  display: block;
+}
+
+#select img {
+  height: 150px;
 }
