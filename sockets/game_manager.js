@@ -90,8 +90,6 @@ const joinGame = (payload, io, socket) => {
         socket.emit('join-game-error', errPayload)
       } else {
         const existingPlayerIds = game.players.map(player => player.user)
-        console.log(`Existing Players: ${existingPlayerIds.join(', ')}`)
-        console.log(`New Player: ${payload.playerId}`)
         if (!existingPlayerIds.includes(payload.playerId)) {
           game.players.push({ user: payload.playerId })
         }
