@@ -52,7 +52,7 @@ class Card extends React.Component {
               key={this.props.card.id} 
             />
 
-            {submit && (submit.gifId === card.gifId) ? <p>SELECTED</p> : null}
+            {submit && (submit.gifId === card.gifId) ? <h2>SELECTED</h2> : null}
           </div>
         </div>
       )
