@@ -84,12 +84,15 @@ class Board extends React.Component {
       const winningPlayer = players.filter(player => player._id === currentRound.winner)[0]
       const winningGif = playedCards[currentRound.winningGif]
       return (
-        <div className="winning-card">
+        <div id='inner-win-wrap'>
+        <div className="winning-card" id='select'>
           <img src={winningGif.images.fixed_height.url} alt="the winning gif" />
           <h3>WINNER: {winningPlayer.displayName}</h3>
+          </div>
           {currentRound.judge === currentUser.id ? (
             <button>Next Round</button>
           ) : null}
+        
         </div>
       )
     } else {
