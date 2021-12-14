@@ -89,7 +89,12 @@ const joinGame = (payload, io, socket) => {
         }
         socket.emit('join-game-error', errPayload)
       } else {
-        game.players.push({ user: payload.playerId })
+        const existingPlayerIds = game.players.map(player => player.user)
+        console.log(`Existing Players: ${existingPlayerIds.join(', ')}`)
+        console.log(`New Player: ${payload.playerId}`)
+        if (!existingPlayerIds.includes(payload.playerId)) {
+          game.players.push({ user: payload.playerId })
+        }
         User.find({
           '_id': { $in: game.players.map(p => (
             mongoose.Types.ObjectId(p.user)

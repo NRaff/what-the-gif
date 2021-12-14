@@ -25,11 +25,16 @@ router.patch("/join", (req, res) => {
       if (!game) {
         return res.status(422).json({game: "Invalid game code"})
       } else {
-      game.players.push({user: req.body.playerId})
-      game.save()
-        .then(updatedGame => res.json(updatedGame))
-        .catch(err => console.log(err))
-      }
+        const existingPlayerIds = game.players.map(player => player.user)
+        console.log(`Existing Players: ${existingPlayerIds.join(', ')}`)
+        console.log(`New Player: ${req.body.playerId}`)
+        if(!existingPlayerIds.includes(req.body.playerId)) {
+          game.players.push({ user: req.body.playerId })
+        }
+        game.save()
+          .then(updatedGame => res.json(updatedGame))
+          .catch(err => console.log(err))
+        }
     })
 })
 
