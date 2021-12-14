@@ -1,7 +1,7 @@
 import * as GiphyUtil from '../../util/giphy_util'
 
 export const RECEIVE_ALL_CARDS = "RECEIVE_ALL_CARDS"
-export const REMOVE_DEALT_CARD = "REMOVE_DEALT_CARDS"
+export const REMOVE_DELT_CARD = "REMOVE_DELT_CARDS"
 export const REMOVE_CARDS = "REMOVE_CARDS"
 
 export const receiveCards = cards => ({
@@ -10,7 +10,7 @@ export const receiveCards = cards => ({
 })
 
 export const removeDeltCard = cardId => ({
-  type: REMOVE_DEALT_CARD, 
+  type: REMOVE_DELT_CARD, 
   cardId
 })
 

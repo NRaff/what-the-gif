@@ -102,11 +102,21 @@ class Board extends React.Component {
   }
 
   nextRound(){
-    const {gameCode} = this.props
+    const {gameCode, players, gameDeck} = this.props
     const gameManager = manager(gameCode)
+    // deal card to each player
     gameManager.sendToGame({
       type: NEXT_ROUND,
       round: this.setRound()
+    })
+    const playersNeedCard = players.filter(player => player.curHand.length < 5)
+    playersNeedCard.forEach((player, idx) => {
+      const payload = {
+        type: 'DEAL_CARD',
+        user: player,
+        card: gameDeck[idx]
+      }
+      gameManager.sendToGame(payload)
     })
   }
 

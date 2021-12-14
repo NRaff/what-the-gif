@@ -10,7 +10,8 @@ const playedCardsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_PLAYED_CARD:
-      return nextState[action.card.id] = action.card
+      nextState[action.card.gifId] = action.card
+      return nextState
     case REMOVE_DEALT_CARD: 
       delete nextState[action.cardId]
       return nextState

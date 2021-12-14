@@ -46,12 +46,10 @@ const UserReducer = (state={}, action) => {
       nState[currentUser].curHand = revisedArray
       return nState
     case RECEIVE_NEW_CARD:    
-      let handArray = []
-      nState.forEach(card => {
-        handArray.push(card)
-      })
-      handArray.push(action.card)
-      return handArray
+      const player = action.payload.user
+      const card = action.payload.card
+      nState[player._id].curHand.push(card.gifId)  
+      return nState
     default:
       return nState;
   }

@@ -1,6 +1,6 @@
 import { 
   RECEIVE_ALL_CARDS, 
-  REMOVE_DEALT_CARD, 
+  REMOVE_DELT_CARD, 
   REMOVE_CARDS 
 } from "../../actions/cards/game_deck_actions";
 import { gifObject } from "../../util/giphy_util";
@@ -15,7 +15,7 @@ const gameDeck = (state = {}, action) => {
         nextState[card.gifId] = card//gifObject(card)
       }) 
       return nextState
-    case REMOVE_DEALT_CARD:
+    case REMOVE_DELT_CARD:
       delete nextState[action.cardId]
       return nextState
 

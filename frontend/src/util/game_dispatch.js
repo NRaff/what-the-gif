@@ -7,7 +7,8 @@ import {
 import { receiveGame } from '../actions/game_actions'
 import { 
   RECEIVE_ALL_CARDS,
-  receiveCards
+  receiveCards,
+  removeDeltCard
  } from '../actions/cards/game_deck_actions'
 import { receivePlayedCategory } from '../actions/categories/played_category_actions'
 import { 
@@ -23,14 +24,16 @@ import {
 } from '../actions/ui_actions'
 import { receiveUsers } from '../actions/user_actions'
 import { receiveRound } from '../actions/round_actions'
-import { fetchHand } from '../actions/hand_actions'
+import { fetchHand, receiveNewCard } from '../actions/hand_actions'
 import { receiveSubmittedCard, RECEIVE_SUBMITTED_CARD, removeSubmittedCards } from '../actions/cards/played_card_actions'
+import { receivePlayedCard } from '../actions/cards/played_cards_actions'
 export const GAME_STARTED = 'GAME_STARTED'
 export const GAME_OVER = 'GAME_OVER'
 export const RESET_GAME = 'RESET_GAME'
 export const JOINED_GAME = 'JOINED_GAME'
 export const DEAL_HAND = 'DEAL_HAND'
 export const RECEIVE_ROUND_WINNER = 'RECEIVE_ROUND_WINNER'
+export const DEAL_CARD = 'DEAL_CARD'
 
 
 const GameDispatch = (action, dispatch) => {
@@ -47,6 +50,11 @@ const GameDispatch = (action, dispatch) => {
       break;
     case DEAL_HAND:
       dispatch(fetchHand(action.payload))
+      break;
+    case DEAL_CARD:
+      dispatch(removeDeltCard(action.card.gifId))
+      dispatch(receivePlayedCard(action.card))
+      dispatch(receiveNewCard(action))
       break;
     case JOINED_GAME:
       dispatch(receiveUsers(action.users))

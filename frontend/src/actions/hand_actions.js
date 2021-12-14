@@ -9,9 +9,9 @@ export const receiveInitialHand = payload => ({
   type: RECEIVE_INITIAL_HAND,
   payload
 })
-export const receiveNewCard = card => ({
+export const receiveNewCard = payload => ({
   type: RECEIVE_NEW_CARD,
-  card
+  payload
 })
 export const removeCardFromHand = payload => ({
   type: REMOVE_CARD_FROM_HAND,
