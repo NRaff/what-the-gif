@@ -16,6 +16,8 @@ import {
   setCurrentGame, 
   startGame, 
   toggleRoundWinnerChosen, 
+  toggleShowSubmitted, 
+  toggleTimeUp, 
   updateCategory, 
   UPDATE_CATEGORY 
 } from '../actions/ui_actions'
@@ -52,7 +54,11 @@ const GameDispatch = (action, dispatch) => {
       dispatch(setCurrentGame(action.game))
       break;
     case NEXT_ROUND:
-      dispatch(nextRound(action.roundNum))
+      dispatch(toggleRoundWinnerChosen())
+      dispatch(toggleShowSubmitted())
+      dispatch(toggleTimeUp())
+      dispatch(receiveRound(action.round))
+      dispatch(nextRound(action.round.id))
       break;
     case UPDATE_CATEGORY:
       dispatch(updateCategory())

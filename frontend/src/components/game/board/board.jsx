@@ -8,7 +8,8 @@ import Timer from './timer'
 import Endgame from "../endgame/endgame_container";
 // import CardContainer from "../hand/card_container"
 import {SubmittedCardContainer} from "../hand/card_container"
-import { toggleShowSubmitted } from "../../../actions/ui_actions";
+import { NEXT_ROUND, toggleShowSubmitted } from "../../../actions/ui_actions";
+import { RECEIVE_ROUND } from "../../../actions/round_actions";
 
 class Board extends React.Component {
   constructor(props){
@@ -78,6 +79,40 @@ class Board extends React.Component {
     }
   }
 
+  getNextJudge(){
+    const {currentRound, players} = this.props
+    for(let i=0; i < players.length; i++) {
+      if(currentRound.judge === players[i]._id) {
+        if(i === players.length - 1) {
+          return players[0]._id
+        } else {
+          return players[i + 1]._id
+        }
+      }
+    }
+  }
+
+  setRound(){
+    const { currentRound } = this.props
+    return ({
+      id: currentRound.id + 1,
+      winner: null,
+      winningGif: null,
+      judge: this.getNextJudge(),
+      category: currentRound.category + 1,
+      submittedGifs: []
+    })
+  }
+
+  nextRound(){
+    const {gameCode} = this.props
+    const gameManager = manager(gameCode)
+    gameManager.sendToGame({
+      type: NEXT_ROUND,
+      round: this.setRound()
+    })
+  }
+
   renderWinner(){
     const { roundWinnerChosen, currentRound, players, currentUser, playedCards } = this.props
     if (roundWinnerChosen) {
@@ -90,7 +125,9 @@ class Board extends React.Component {
           <h3>WINNER: {winningPlayer.displayName}</h3>
           </div>
           {currentRound.judge === currentUser.id ? (
-            <button>Next Round</button>
+            <button 
+              onClick={() => this.nextRound()}
+            >Next Round</button>
           ) : null}
         
         </div>
