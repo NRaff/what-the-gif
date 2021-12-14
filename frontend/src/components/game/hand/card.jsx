@@ -32,6 +32,11 @@ class Card extends React.Component {
 
   render() {
     const {card} = this.props
+    const submissions = Object.values(this.props.submittedGifs)
+    const userIds = Object.keys(this.props.submittedGifs)
+    const idx = userIds.indexOf(this.props.currentUser.id)
+    const submit = submissions[idx]
+
     if (card) {
       return (
         <div>
@@ -46,6 +51,8 @@ class Card extends React.Component {
               alt="altname" 
               key={this.props.card.id} 
             />
+
+            {submit && (submit.gifId === card.gifId) ? <h2>{'\u2713'}</h2> : null}
           </div>
         </div>
       )
