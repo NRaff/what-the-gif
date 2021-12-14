@@ -100,7 +100,8 @@ class Board extends React.Component {
 
   renderSubmitted(){
     const {players, submittedCards, showSubmitted} = this.props
-    if (showSubmitted) {
+    const submissions = Object.values(submittedCards)
+    if (showSubmitted && submissions.length > 0) {
       return (
         <div id='show-wrap'>
           <div className="show-modal">
@@ -116,7 +117,10 @@ class Board extends React.Component {
           </div>
         </div>
       )
-    } else {
+    } else if (showSubmitted && submissions.length === 0) {
+      return (<p>No cards were played this round!</p>)
+    }
+    else {
       return null
     }
   }
@@ -159,13 +163,12 @@ class Board extends React.Component {
   renderBoard(){
     const { gameCode, dispatch } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode, dispatch)
-    let zero = 0
+
     const submissions = Object.values(this.props.submittedCards)
-    const ids = Object.keys(this.props.submittedCards)
-    console.log(submissions)
-    console.log(ids)
-    const idx = ids.indexOf(this.props.currentUser.id)
+    const userIds = Object.keys(this.props.submittedCards)
+    const idx = userIds.indexOf(this.props.currentUser.id)
     const submit = submissions.map(submission => submission.images.fixed_height.url)
+
     return (
       <div className='board-container'>
         <div className='topwrap'>
