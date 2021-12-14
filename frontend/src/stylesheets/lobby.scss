@@ -82,6 +82,11 @@
   width: 175px;
 }
 
+.player-wrap {
+  display: flex;
+  overflow: auto;
+}
+
 // .lobby-container button {
 //   margin: 0 auto;
 // }

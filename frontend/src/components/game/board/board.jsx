@@ -85,8 +85,9 @@ class Board extends React.Component {
       const winningGif = playedCards[currentRound.winningGif]
       return (
         <div className="winning-card">
+          <h3>WINNER: {winningPlayer.displayName}</h3>
           <img src={winningGif.images.fixed_height.url} alt="the winning gif" />
-          <h3>{winningPlayer.displayName}</h3>
+          
           {currentRound.judge === currentUser.id ? (
             <button>Next Round</button>
           ) : null}
@@ -101,16 +102,18 @@ class Board extends React.Component {
     const {players, submittedCards, showSubmitted} = this.props
     if (showSubmitted) {
       return (
-        <div className="show-modal">
-          {players.map(player => {
-            return (
-              <SubmittedCardContainer
-                card={submittedCards[player._id]}
-                playerId={player._id}
-                key={submittedCards[player._id].gifId}
-              />
-            )
-          })}
+        <div id='show-wrap'>
+          <div className="show-modal">
+            {players.map(player => {
+              return (
+                <SubmittedCardContainer
+                  card={submittedCards[player._id]}
+                  playerId={player._id}
+                  key={submittedCards[player._id].gifId}
+                />
+              )
+            })}
+          </div>
         </div>
       )
     } else {
@@ -157,8 +160,12 @@ class Board extends React.Component {
     const { gameCode, dispatch } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode, dispatch)
     let zero = 0
-    const submit = this.props.submittedCards.images ?
-      this.props.submittedCards.images.fixed_height.url : null
+    const submissions = Object.values(this.props.submittedCards)
+    const ids = Object.keys(this.props.submittedCards)
+    console.log(submissions)
+    console.log(ids)
+    const idx = ids.indexOf(this.props.currentUser.id)
+    const submit = submissions.map(submission => submission.images.fixed_height.url)
     return (
       <div className='board-container'>
         <div className='topwrap'>
@@ -176,18 +183,20 @@ class Board extends React.Component {
           </div>
         </div>
         <section className='categories'>
-          {this.renderWinner()}
+          <div className="winner-wrap">
+            {this.renderWinner()}
+          </div>
           <div id='cat-info'>
             <h2>CATEGORY</h2>
             <Categories gameCode={gameCode} gameManager={this.manager} />
           </div>
           {this.renderSubmitted()}
           <div id='select'>
-            {submit ? <img src={submit} alt="" /> : null}
+            {submit && !this.props.timesUp ? <img src={submit[idx]} alt="" /> : null}
           </div>
         </section>
         <section className='player-hand'>
-          <Hand />
+          {this.props.timesUp ? null : <Hand />}
         </section>
 
         {/* {this.props.over ? 

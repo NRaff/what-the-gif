@@ -83,9 +83,11 @@ class Lobby extends React.Component {
           <h2>Game Code:</h2><p>{this.props.gameCode}</p>
           
         </header>
-          <h2>Players:</h2>
-        <section className='player-lineup'>
-          {playerIndex(this.props.players)}
+        <h2>Players:</h2>
+        <section className="player-wrap">
+          <div className='player-lineup'>
+            {playerIndex(this.props.players)}
+          </div>
         </section>
         <section className='start-game'>
           {/* <button onClick={this.startGame}>Start Game</button> */}
