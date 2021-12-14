@@ -83,7 +83,6 @@ class Board extends React.Component {
     if (roundWinnerChosen) {
       const winningPlayer = players.filter(player => player._id === currentRound.winner)[0]
       const winningGif = playedCards[currentRound.winningGif]
-      debugger
       return (
         <div className="winning-card">
           <img src={winningGif.images.fixed_height.url} alt="the winning gif" />
@@ -105,7 +104,6 @@ class Board extends React.Component {
         <div className="show-modal">
           {players.map(player => {
             return (
-              // submittedCards[player._id].images.fixed_height
               <SubmittedCardContainer
                 card={submittedCards[player._id]}
                 playerId={player._id}
@@ -167,8 +165,6 @@ class Board extends React.Component {
           <header>
             <h2>ROUND {this.props.roundNum}</h2>
             {this.renderTimer()}
-            {this.renderSubmitted()}
-            {this.renderWinner()}
           </header>
           <div id='game-info'>
             <div className='player-lineup'>
@@ -180,10 +176,12 @@ class Board extends React.Component {
           </div>
         </div>
         <section className='categories'>
+          {this.renderWinner()}
           <div id='cat-info'>
             <h2>CATEGORY</h2>
             <Categories gameCode={gameCode} gameManager={this.manager} />
           </div>
+          {this.renderSubmitted()}
           <div id='select'>
             {submit ? <img src={submit} alt="" /> : null}
           </div>
