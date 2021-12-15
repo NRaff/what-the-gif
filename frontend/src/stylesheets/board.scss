@@ -82,12 +82,13 @@
 }
 
 #judging-overlay {
-  background-color: $color4;
-  border-radius: 10px;
-  padding: 30px 80px 30px 80px;
+  background-color: black;
+  border-radius: 0px;
+  padding: 80px 210px 80px 210px;
   font-weight: 600;
   font-size: 40px;
-  min-width: 500px;
+  margin-left: -25px;
+  min-width: 450px;
 }
 
 .endbox{
@@ -177,8 +178,10 @@
 }
 
 .board-container span {
-  font-weight: 700px;
-  font-size: 40px;
+  font-weight: 800px;
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-top: -5px;
 }
 
 .categories{
@@ -224,6 +227,10 @@
   margin-left: -15px;
   font-size: 18px;
   font-weight: bold;
+}
+
+.player-hand-show h2 {
+  margin-left: -25px;
 }
 
 .the-card {
@@ -325,4 +332,12 @@
   grid-template-columns: repeat(2, 1fr);
   // grid-template-rows: 3, 1fr;
   gap: 10px;
+}
+
+#show-cards {
+  padding: 5px;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
