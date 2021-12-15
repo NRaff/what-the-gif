@@ -15,6 +15,7 @@ import Board from './game/board/board_container';
 import Categories from './categories/categories_container'
 
 import Lobby from './game/lobby/lobby_container'
+import About from './about/about';
 
 
 const App = () => (
@@ -35,6 +36,7 @@ const App = () => (
       <ProtectedRoute path="/profile/:userId" component={Profile} />
       <ProtectedRoute path='/lobby/:gameCode' component={Lobby} />
       <ProtectedRoute path='/game/:gameCode' component={Board} />
+      <ProtectedRoute path='/about' component={About} />
       {/* <Route path='/over' component={Endgame} /> */}
       </div>
     </Route>
