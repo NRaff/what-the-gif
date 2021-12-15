@@ -5,11 +5,9 @@ import {playerIndex} from '../lobby/lobby'
 import { manager } from "../../../util/game_socket_util"
 import CategoriesContainer from "../../categories/categories_container";
 import Timer from './timer'
-import Endgame from "../endgame/endgame_container";
-// import CardContainer from "../hand/card_container"
 import {SubmittedCardContainer} from "../hand/card_container"
 import { NEXT_ROUND, toggleShowSubmitted } from "../../../actions/ui_actions";
-import { RECEIVE_ROUND } from "../../../actions/round_actions";
+// import { RECEIVE_ROUND } from "../../../actions/round_actions";
 import EndGameContainer from "../../game/endgame/endgame_container"
 
 class Board extends React.Component {
@@ -56,7 +54,7 @@ class Board extends React.Component {
   }
 
   setupBoard(){
-    const {players, gameDeck, gameCode, dispatch} = this.props
+    const {players, gameDeck, gameCode} = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
     players.forEach((player,idx) => {
       const start = idx * 5
@@ -70,7 +68,7 @@ class Board extends React.Component {
   }
 
   showSubmitted(){
-    const { currentUser, game, gameCode, showSubmitted, currentRound } = this.props
+    const { currentUser, gameCode, currentRound } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
     if (currentUser.id === currentRound.judge) {
       this.manager.sendToGame(toggleShowSubmitted())
@@ -167,7 +165,7 @@ class Board extends React.Component {
                       key={submittedCards[player._id].gifId}
                     />
                   )
-                }
+                } else {return null}
               })}
             </div>
           </div>

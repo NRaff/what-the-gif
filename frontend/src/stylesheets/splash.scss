@@ -1,5 +1,17 @@
 @import 'color_palette.scss';
 
+$a: 'https://c.tenor.com/Oc4nf8N08jIAAAAC/mind-blow-galaxy.gif';
+$b: 'https://c.tenor.com/8OJLtN_l5k8AAAAC/wowww-oww.gif';
+$c: 'https://c.tenor.com/sQA_uCQ0f5AAAAAC/jonah-hill-excited.gif';
+$d: 'https://c.tenor.com/KfpsQwY6Dq4AAAAC/sunglasses-cant-deal-with-it.gif';
+$e: 'https://c.tenor.com/NZF7hC45-TIAAAAC/cat-unicorn.gif';
+
+
+$random: random(5);
+
+$list: $a, $b, $c, $d, $e;
+$nth: nth($list, $random);
+
 .splash {
   display: flex;
   flex-direction: column;
@@ -11,7 +23,7 @@
 }
 
 .bg {
-  background-image: url('https://c.tenor.com/3eIvVsG3yPYAAAAd/the-universe-tim-and-eric-mind-blown.gif');
+  background-image: url($nth);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
