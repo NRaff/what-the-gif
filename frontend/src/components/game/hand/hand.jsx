@@ -1,6 +1,7 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
 import { HandCardContainer } from "./card_container"
+import ReactTooltip from "react-tooltip";
 
 class Hand extends React.Component {
   constructor(props){
@@ -30,12 +31,13 @@ class Hand extends React.Component {
     return(
       <div className="player-hand-show">
         <h2>MY HAND</h2>
-        <div className='player-lineup-hand'>
+        <div data-tip data-for="handtooltip" className='player-lineup-hand'>
           {/* uncomment this line when done testing */}
           {this.renderOverlay()}
           {currentPlayer.curHand.map(card => {
             return (
               <HandCardContainer
+
                 card={playedCards[card]}
                 key={card.gifId}
                 submitCard={this.props.submitCard}
@@ -44,6 +46,9 @@ class Hand extends React.Component {
             )       
           })}
         </div>
+        <ReactTooltip id="handtooltip" place="left" effect="solid">
+          Click a card to submit it for the round!
+        </ReactTooltip>
       </div>
     )
   }

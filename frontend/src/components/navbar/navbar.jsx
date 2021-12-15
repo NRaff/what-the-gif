@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import '../../stylesheets/root.scss'
+import ReactTooltip from "react-tooltip";
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -14,7 +15,10 @@ class Navbar extends React.Component {
       (this.props.auth ? (
         <div className='logged-in'>
           <Link to={`/profile/${user.id}`}>
-            <button id='display-name'>{user.displayName}</button>
+            <button data-tip data-for="profile-tool" id='display-name'>{user.displayName}</button>
+            <ReactTooltip id="profile-tool" place="right" effect="solid">
+              Go to your profile to set a favorite gif!
+            </ReactTooltip>
           </Link>
           <button id='log-out' onClick={this.props.logout}>Log Out</button>
         </div>
