@@ -28,7 +28,6 @@ class Board extends React.Component {
       if(!this.hasContent()) {
         getGameContent(gameManager)
           .then(() => {
-            console.log("Setting up board")
             this.setupBoard()
           })
       }
@@ -318,8 +317,9 @@ class Board extends React.Component {
   
   render() {
     //check if gamedeck, categories, users exist before anything else
-    const {game, players, categories, gameDeck} = this.props
-    if (this.hasContent()){
+    const { game, players } = this.props
+    const dealComplete = players.every(player => player.curHand.length >= 4)
+    if (this.hasContent() && dealComplete){
       if (game.winner) {
         return (
           <EndGameContainer />
