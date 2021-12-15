@@ -30,7 +30,7 @@ class Lobby extends React.Component {
     const { gameCode, game } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
     //this currently runs for every single person that joins
-    setupGame(this.manager)
+    // setupGame(this.manager)
   }
 
   firstRound = () => ({
@@ -55,16 +55,16 @@ class Lobby extends React.Component {
   }
 
   displayStartButton() {
-    const {cards} = this.props
-    if (cards.length > 0) {
+    // const {cards} = this.props
+    // if (cards.length > 0) {
       return (
         <button onClick={this.startGame}>Start Game</button>
       )
-    } else {
-      return (
-        <span>Setting up your game...</span>
-      )
-    }
+    // } else {
+    //   return (
+    //     <span>Setting up your game...</span>
+    //   )
+    // }
   }
 
   render() {
