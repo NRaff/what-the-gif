@@ -1,3 +1,5 @@
+@import 'color_palette.scss';
+
 .player-lineup {
   display: flex;
   flex-direction: row;
@@ -79,10 +81,13 @@
   z-index: 4;
 }
 
-.hand-overlay span {
-  background-color: #AE06CF;
-  border-radius: 5px;
-  padding: 10px;
+#judging-overlay {
+  background-color: $color4;
+  border-radius: 10px;
+  padding: 30px 80px 30px 80px;
+  font-weight: 600;
+  font-size: 40px;
+  min-width: 500px;
 }
 
 .endbox{
@@ -275,8 +280,7 @@
 }
 
 #cat-info {
-  // flex: 2;
-  width: 300px;
+  flex: 2;
   margin-right: 9%;
   display: flex;
   justify-content: center;
@@ -291,7 +295,6 @@
   border-radius: 5px;
   margin-right: 20px;
   height: 150px;
-  // width: 100em;
   display: inline-block;
 }
 
