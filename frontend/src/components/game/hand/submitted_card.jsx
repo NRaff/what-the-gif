@@ -10,9 +10,10 @@ class SubmittedCard extends React.Component {
   }
 
   removefromHand(){
-    const {users, submittedGifs, currentGame} = this.props
+    const {users, submittedGifs, currentGame, currentRound} = this.props
     const gameManager = manager(currentGame.gameCode)
-    users.forEach(user => {
+    const nonJudges = users.filter(user => user._id !== currentRound.judge)
+    nonJudges.forEach(user => {
       const payload = {
         user: user._id,
         cardId: submittedGifs[user._id].gifId
@@ -34,9 +35,13 @@ class SubmittedCard extends React.Component {
       updatedGame.players = updatedGame.players.map(player => {
         if(player.user === updatedRound.winner) {
           player.roundsWon.push(updatedRound.id)
+          if(player.roundsWon.length === updatedGame.scoreToWin) {
+            updatedGame.winner = player.user
+          }
         }
         return player
       })
+
       const payload = {
         type: 'RECEIVE_ROUND_WINNER',
         round: updatedRound,

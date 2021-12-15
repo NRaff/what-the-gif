@@ -86,7 +86,7 @@
           }
         },
         "currentRound": 1,
-        "winningScore": 10
+        "scoreToWin": 10
       }
     },
     "rounds": {

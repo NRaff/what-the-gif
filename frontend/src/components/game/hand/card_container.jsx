@@ -13,7 +13,7 @@ const mSTP = state => {
     roundWinnerChosen: state.ui.roundWinnerChosen,
     players: state.entities.users,
     submittedGifs: state.entities.cards.submittedCards,
-    users: Object.values(state.entities.users)
+    users: Object.values(state.entities.users),
   };
 }
 
