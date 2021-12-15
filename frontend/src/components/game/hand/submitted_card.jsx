@@ -61,7 +61,9 @@ class SubmittedCard extends React.Component {
               alt="altname"
               key={this.props.card.id}
             />
-            <h3>{players[playerId].displayName}</h3>
+            {(this.props.roundWinnerChosen) ? 
+            <h3>{players[playerId].displayName}</h3> : null
+          }
           </div>
       )
     } else {
