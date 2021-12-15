@@ -1,14 +1,9 @@
 import React from "react";
 import { removeCardFromHand } from "../../../actions/hand_actions";
-import { toggleRoundWinnerChosen } from "../../../actions/ui_actions";
 import '../../../stylesheets/root.scss';
 import { manager } from "../../../util/game_socket_util";
 
 class SubmittedCard extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   removefromHand(){
     const {users, submittedGifs, currentGame, currentRound} = this.props
     const gameManager = manager(currentGame.gameCode)

@@ -1,8 +1,7 @@
 import React from "react";
 import '../../stylesheets/root.scss'
 import {manager} from "../../util/game_socket_util"
-import { NEXT_ROUND, UPDATE_CATEGORY } from "../../actions/ui_actions";
-import { PLAY_CATEGORY } from "../../actions/categories/deck_category_actions";
+import { UPDATE_CATEGORY } from "../../actions/ui_actions";
 
 class Categories extends React.Component{
   constructor(props){
@@ -14,9 +13,6 @@ class Categories extends React.Component{
   handleSubmit(category){
     const {
       gameCode, 
-      dispatch, 
-      deckCategories, 
-      playedCategories,
       currentRound
     } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
@@ -30,7 +26,7 @@ class Categories extends React.Component{
 
   render(){
     if (!this.props.deckCategories.length > 0) return null
-    const {currentCat, nextCategory, deckCategories, currentRound} = this.props
+    const {deckCategories, currentRound} = this.props
     if (!currentRound) return null
     const category = deckCategories[currentRound.category]
     return (

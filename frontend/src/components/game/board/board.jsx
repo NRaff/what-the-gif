@@ -9,6 +9,7 @@ import {SubmittedCardContainer} from "../hand/card_container"
 import { NEXT_ROUND, toggleShowSubmitted } from "../../../actions/ui_actions";
 // import { RECEIVE_ROUND } from "../../../actions/round_actions";
 import EndGameContainer from "../../game/endgame/endgame_container"
+import { getGameContent } from "../../../util/game_setup";
 
 class Board extends React.Component {
   constructor(props){
@@ -21,9 +22,22 @@ class Board extends React.Component {
 
   componentDidMount(){
     const {currentUser, game} = this.props
+    const gameManager = manager(game.gameCode)
     if (currentUser.id === game.gameOwner) {
-      this.setupBoard()
+      // setup game
+      if(!this.hasContent()) {
+        getGameContent(gameManager)
+          .then(() => {
+            this.setupBoard()
+          })
+      }
     }
+  }
+
+  hasContent(){
+    const {gameDeck, players, categories} = this.props
+    if (gameDeck.length > 0 && players.length > 0 && categories.length > 0) return true
+    return false
   }
 
   scores(players){
@@ -54,17 +68,22 @@ class Board extends React.Component {
   }
 
   setupBoard(){
-    const {players, gameDeck, gameCode} = this.props
-    this.manager = this.manager ? this.manager : manager(gameCode)
-    players.forEach((player,idx) => {
-      const start = idx * 5
-      const end = start + 5
-      const cards = gameDeck.slice(start, end)
-      this.manager.sendToGame({
-        type: "DEAL_HAND", 
-        payload: this.dealHandPayload(player, cards)
+    if (!this.hasContent()) {
+      setTimeout(this.setupBoard.bind(this), 3000)
+    } else {
+      const { players, gameDeck, gameCode } = this.props
+      this.manager = this.manager ? this.manager : manager(gameCode)
+      // debugger
+      players.forEach((player, idx) => {
+        const start = idx * 5
+        const end = start + 5
+        const cards = gameDeck.slice(start, end)
+        this.manager.sendToGame({
+          type: "DEAL_HAND",
+          payload: this.dealHandPayload(player, cards)
+        })
       })
-    })
+    }
   }
 
   showSubmitted(){
@@ -297,13 +316,21 @@ class Board extends React.Component {
   }
   
   render() {
-    const {game} = this.props
-    if (game.winner){
-      return (
-        <EndGameContainer />
-      )
+    //check if gamedeck, categories, users exist before anything else
+    const { game, players } = this.props
+    const dealComplete = players.every(player => player.curHand.length >= 4)
+    if (this.hasContent() && dealComplete){
+      if (game.winner) {
+        return (
+          <EndGameContainer />
+        )
+      } else {
+        return (this.renderGameplay())
+      }
     } else {
-      return (this.renderGameplay())
+      return (
+        <h1>Setting up your game...</h1>
+      )
     }
   }
 }
