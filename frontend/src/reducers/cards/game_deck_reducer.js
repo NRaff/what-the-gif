@@ -3,7 +3,6 @@ import {
   REMOVE_DELT_CARD, 
   REMOVE_CARDS 
 } from "../../actions/cards/game_deck_actions";
-import { gifObject } from "../../util/giphy_util";
 const gameDeck = (state = {}, action) => {
   Object.freeze(state)
   const nextState = Object.assign({}, state)
@@ -12,7 +11,7 @@ const gameDeck = (state = {}, action) => {
     case RECEIVE_ALL_CARDS:
       if (!action.cards) return nextState
       action.cards.forEach((card, idx) => {
-        nextState[card.gifId] = card//gifObject(card)
+        nextState[card.gifId] = card
       }) 
       return nextState
     case REMOVE_DELT_CARD:

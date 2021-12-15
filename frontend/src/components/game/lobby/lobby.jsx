@@ -1,6 +1,5 @@
 import React from "react";
 import '../../../stylesheets/root.scss'
-import { setupGame } from "../../../util/game_setup";
 import { manager } from "../../../util/game_socket_util"
 
 export const playerIndex = (players) => {
@@ -26,13 +25,6 @@ class Lobby extends React.Component {
     this.manager = undefined;
   }
 
-  componentDidMount(){
-    const { gameCode, game } = this.props
-    this.manager = this.manager ? this.manager : manager(gameCode)
-    //this currently runs for every single person that joins
-    // setupGame(this.manager)
-  }
-
   firstRound = () => ({
     id: 1,
     winner: null,
@@ -43,14 +35,14 @@ class Lobby extends React.Component {
   })
 
   startGame(){
-    const {game,gameCode} = this.props
+    const {gameCode} = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
     this.manager.sendToGame({type: 'GAME_STARTED', round: this.firstRound()})
     this.props.history.push(`/game/${gameCode}`)
   }
 
   goToGame(){
-    const {game, gameCode, history} = this.props
+    const {gameCode, history} = this.props
     history.push(`/game/${gameCode}`)
   }
 

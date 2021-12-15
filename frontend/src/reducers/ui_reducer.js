@@ -1,6 +1,5 @@
 import { 
   GAME_STARTED, 
-  GAME_OVER, 
   RESET_GAME 
 } from "../util/game_dispatch";
 

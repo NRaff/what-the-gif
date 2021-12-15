@@ -1,8 +1,7 @@
 import React from "react";
 import { RECEIVE_SUBMITTED_CARD } from "../../../actions/cards/played_card_actions";
-// import { render } from "react-dom";
 import '../../../stylesheets/root.scss';
-import { manager, setupGameSocket } from "../../../util/game_socket_util";
+import { manager } from "../../../util/game_socket_util";
 
 class Card extends React.Component {
   constructor(props){
@@ -10,15 +9,9 @@ class Card extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSubmit(){
-    // this.props.submitCard(this.props.card)
     this.chooseGif()
-    // let prevcard = document.getElementsByClassName('select')
-    // prevcard.className='the-card'
-
-    // let card = document.getElementById(`${this.props.card.gifId}`)
-    // card.className = 'select'
-    //stuff
   }
+
   chooseGif(){
     const {currentPlayer, currentGame, card} = this.props
     const gameManager = manager(currentGame.gameCode)

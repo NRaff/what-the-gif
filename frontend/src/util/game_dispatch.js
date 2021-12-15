@@ -18,8 +18,7 @@ import {
   startGame, 
   toggleRoundWinnerChosen, 
   toggleShowSubmitted, 
-  toggleTimeUp, 
-  updateCategory, 
+  toggleTimeUp,  
   UPDATE_CATEGORY 
 } from '../actions/ui_actions'
 import { receiveUsers } from '../actions/user_actions'
