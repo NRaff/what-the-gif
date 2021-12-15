@@ -2,12 +2,13 @@ import React from "react";
 import '../../stylesheets/root.scss'
 import {manager} from "../../util/game_socket_util"
 import { UPDATE_CATEGORY } from "../../actions/ui_actions";
-
+import ReactTooltip from "react-tooltip";
 class Categories extends React.Component{
   constructor(props){
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.manager = undefined;
+    this.state = {hover: false}
   }
 
   handleSubmit(category){
@@ -24,6 +25,10 @@ class Categories extends React.Component{
     })
   }
 
+  componentDidUpdate() {
+    ReactTooltip.rebuild();
+  }
+
   render(){
     if (!this.props.deckCategories.length > 0) return null
     const {deckCategories, currentRound} = this.props
@@ -34,7 +39,12 @@ class Categories extends React.Component{
         <div id="categories">
             {/* <h2>CATEGORY</h2> */}
             <h1 key={category.id}>{category.name.toUpperCase()}</h1>
-          {this.props.timesUp ? null : <button onClick={() => this.handleSubmit(category)}>Shuffle</button>}
+            
+           
+            {this.props.timesUp ? null : <button data-tip data-for="registerTip" onClick={() => this.handleSubmit(category)}>Shuffle</button>}
+          <ReactTooltip id="registerTip" place="left" effect="solid">
+            Skip to the next category!
+          </ReactTooltip>
         </div>
         
       </div>
