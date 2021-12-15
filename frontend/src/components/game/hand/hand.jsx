@@ -31,18 +31,18 @@ class Hand extends React.Component {
       <div className="player-hand-show">
         <h2>MY HAND</h2>
         <div className='player-lineup-hand'>
-            {/* uncomment this line when done testing */}
-            {/* {this.renderOverlay()} */}
-            {currentPlayer.curHand.map(card => {
-              return (
-                <HandCardContainer
-                  card={playedCards[card]}
-                  key={card.gifId}
-                  submitCard={this.props.submitCard}
-                  removeCard={this.props.removeCard}
-                />
-              )       
-            })}
+          {/* uncomment this line when done testing */}
+          {this.renderOverlay()}
+          {currentPlayer.curHand.map(card => {
+            return (
+              <HandCardContainer
+                card={playedCards[card]}
+                key={card.gifId}
+                submitCard={this.props.submitCard}
+                removeCard={this.props.removeCard}
+              />
+            )       
+          })}
         </div>
       </div>
     )
