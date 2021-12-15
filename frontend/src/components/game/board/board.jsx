@@ -10,6 +10,7 @@ import Endgame from "../endgame/endgame_container";
 import {SubmittedCardContainer} from "../hand/card_container"
 import { NEXT_ROUND, toggleShowSubmitted } from "../../../actions/ui_actions";
 import { RECEIVE_ROUND } from "../../../actions/round_actions";
+import EndGameContainer from "../../game/endgame/endgame_container"
 
 class Board extends React.Component {
   constructor(props){
@@ -145,26 +146,28 @@ class Board extends React.Component {
   }
 
   renderSubmitted(){
-    const {players, submittedCards, showSubmitted} = this.props
+    const { players, submittedCards, showSubmitted, currentRound, currentUser} = this.props
     const submissions = Object.values(submittedCards)
     if (showSubmitted && submissions.length > 0) {
       return (
         <div id='show-wrap'>
           <div className="show-modal">
             <div className="judge-text">
-              { (this.props.currentRound.judge === this.props.currentUser.id) ?
+              { (currentRound.judge === currentUser.id) ?
               <h4>You are the judge. Select the best GiF!</h4> : <h4>Awaiting Judgement</h4>
             }
             </div>
             <div className="modal-player">
               {players.map(player => {
-                return (
-                  <SubmittedCardContainer
-                    card={submittedCards[player._id]}
-                    playerId={player._id}
-                    key={submittedCards[player._id].gifId}
-                  />
-                )
+                if(player._id !== currentRound.judge) {
+                  return (
+                    <SubmittedCardContainer
+                      card={submittedCards[player._id]}
+                      playerId={player._id}
+                      key={submittedCards[player._id].gifId}
+                    />
+                  )
+                }
               })}
             </div>
           </div>
@@ -283,9 +286,9 @@ class Board extends React.Component {
       <h1>Setting up your game...</h1>
     )
   }
-  
-  render() {
-    const {players, gameDeck, categories} = this.props
+
+  renderGameplay(){
+    const { players, gameDeck, categories } = this.props
     if (
       players.length > 0 &&
       gameDeck.length > 0 &&
@@ -298,6 +301,17 @@ class Board extends React.Component {
       return (
         this.renderLoading()
       )
+    }
+  }
+  
+  render() {
+    const {game} = this.props
+    if (game.winner){
+      return (
+        <EndGameContainer />
+      )
+    } else {
+      return (this.renderGameplay())
     }
   }
 }
