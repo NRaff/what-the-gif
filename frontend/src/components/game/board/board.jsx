@@ -271,12 +271,6 @@ class Board extends React.Component {
           {this.props.timesUp ? null : <Hand />}
           {this.renderSubmitted()}
         </section>
-
-        {/* {this.props.over ? 
-        <button onClick={this.handleClick}>Reset Round</button> : null }
-        <section className='gameisover'>
-          <Endgame />
-        </section> */}
       </div>
     )
   }

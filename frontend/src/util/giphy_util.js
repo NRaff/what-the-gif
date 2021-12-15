@@ -31,7 +31,7 @@ export const getGameDeck = async (categories) => {
   // debugger
   let deckGifs = [];
   for (const cat of categories){
-    let response = await searchGifs(cat, 30)
+    let response = await searchGifs(cat, 20)
     deckGifs = deckGifs.concat(response.data.data)
   }
   return deckGifs

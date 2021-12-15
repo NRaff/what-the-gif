@@ -44,7 +44,7 @@ export const setupGame = (manager) => {
       }
       manager.sendToGame(payload)
 
-      const sample = randomSample(cats, 10)
+      const sample = randomSample(cats, 15)
 
       GiphyUtil.getGameDeck(sample)
         .then(cards => {
@@ -54,7 +54,7 @@ export const setupGame = (manager) => {
           })
           const cardsPayload = {
             type: RECEIVE_ALL_CARDS,
-            cards: newCards
+            cards: newCards.sort(() => Math.random() - 0.5)
           }
           manager.sendToGame(cardsPayload)
         })
