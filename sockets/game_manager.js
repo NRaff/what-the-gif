@@ -102,7 +102,6 @@ const joinGame = (payload, io, socket) => {
         .then( users => {
           game.save()
           .then(updatedGame => {
-            console.log(users)
             const cleanedUsers = users.map(user => userParams(user))
             const newPayload = {
               game: updatedGame,

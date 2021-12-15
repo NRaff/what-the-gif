@@ -29,10 +29,6 @@ class Lobby extends React.Component {
   componentDidMount(){
     const { gameCode, game } = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
-    // debugger
-    if (!game) {
-      this.manager.getGame()
-    }
     //this currently runs for every single person that joins
     setupGame(this.manager)
   }
@@ -47,7 +43,7 @@ class Lobby extends React.Component {
   })
 
   startGame(){
-    const {game,gameCode,dispatch} = this.props
+    const {game,gameCode} = this.props
     this.manager = this.manager ? this.manager : manager(gameCode)
     this.manager.sendToGame({type: 'GAME_STARTED', round: this.firstRound()})
     this.props.history.push(`/game/${gameCode}`)
