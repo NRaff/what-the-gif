@@ -31,4 +31,7 @@ export const joinGame = game => dispatch => GameUtil.joinGame(game)
   ), err => 
     dispatch(receiveErrors(err))
   )
+export const clearErrors = () => dispatch => {
+  dispatch(receiveErrors({}))
+}
 

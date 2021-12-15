@@ -27,10 +27,22 @@ class GameForm extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     const {gameCode} = this.state
-    const {dispatch} = this.props
+    const {dispatch, errors} = this.props
+    
     this.manager = this.manager ? this.manager : setupGameSocket(gameCode, dispatch)
     this.manager.createGame(this.state)
-    this.props.history.push(`/lobby/${this.state.gameCode}`)
+   
+  }
+
+  componentDidUpdate(){
+    const {games} = this.props
+    if (games.length > 0) {
+      this.props.history.push(`/lobby/${this.state.gameCode}`)
+    }
+  }
+
+  componentWillUnmount(){
+    this.props.clearErrors()
   }
 
   update(field){
@@ -38,6 +50,7 @@ class GameForm extends React.Component{
   }
 
   render(){
+    const {errors} = this.props
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
@@ -46,6 +59,7 @@ class GameForm extends React.Component{
                    value={this.state.title} 
                    onChange={this.update('title')}/>
         </div>
+        {errors ? errors.title : ''}
         <div>
           <label>Max Players</label>
             <input type="number"
@@ -54,6 +68,7 @@ class GameForm extends React.Component{
                    value={this.state.maxPlayers} 
                    onChange={this.update('maxPlayers')}/>
         </div>
+        {errors ? errors.maxPlayers : ''}
         <div>
           <label>Max Score</label>
             <input type="number"
@@ -62,12 +77,14 @@ class GameForm extends React.Component{
                    value={this.state.scoreToWin} 
                    onChange={this.update('scoreToWin')}/>
         </div>
+        {errors ? errors.scoreToWin : ''}
         <div>
           <label>Round Time Limit</label>
             <input type="number"
                    value={this.state.roundTimeLimit} 
                    onChange={this.update('roundTimeLimit')}/>
         </div >
+        {errors ? errors.roundTimeLimit : ''}
         <div>
           <label>Game Key</label>
             <input type="text"
@@ -75,6 +92,7 @@ class GameForm extends React.Component{
                    onChange={this.update('gameCode')}
                    />
           </div >
+        {errors ? errors.gameCode : ''}
           <button>Create Game</button>
       </form>
     )
