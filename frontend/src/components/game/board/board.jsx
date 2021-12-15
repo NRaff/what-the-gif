@@ -233,7 +233,7 @@ class Board extends React.Component {
         <>
           <span>Times up!</span>
           {currentUser.id === currentRound.judge ? (
-            <button
+            <button id='show-cards'
               onClick={() => this.showSubmitted()}
             >Show Cards</button>
           ) : null}

@@ -31,10 +31,10 @@ class Endgame extends React.Component {
     
     return (
       <div className='endbox'>
-
+        <h1>GAME OVER</h1>
       <div className ='end-screen' key='stuff'>
         {playerIndex(theLEADER)} 
-        <h1>is the WINNER!</h1>
+        <h2>is the WINNER!</h2>
       </div>
         <div className='end-score'>
           <h2>Score: {leaderScore}</h2>
