@@ -238,27 +238,21 @@ class Board extends React.Component {
           </div>
         </div>
         <section className='categories'>
-          
           <div id="select-wrap">
-          <div id='cat-info'>
-            <h2>CATEGORY</h2>
-            <CategoriesContainer gameCode={gameCode} gameManager={this.manager} />
-          </div>
+            <div id='cat-info'>
+              <h2>CATEGORY</h2>
+              <CategoriesContainer gameCode={gameCode} gameManager={this.manager} />
+            </div>
             <div className="winner-wrap">
               {this.renderWinner()}
             </div>
-          
-            
               {submit[idx] && !this.props.timesUp ? 
               <div id='select'>
               <img src={submit[idx]} alt="" /> 
               <h2>YOUR SELECTION</h2>
               </div>
               : <div id='noselect'></div>}
-              
-            
           </div>
-          
         </section>
         <section className='player-hand'>
           {this.props.timesUp ? null : <Hand />}
