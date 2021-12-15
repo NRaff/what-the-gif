@@ -54,19 +54,6 @@ class Lobby extends React.Component {
     history.push(`/game/${gameCode}`)
   }
 
-  displayStartButton() {
-    // const {cards} = this.props
-    // if (cards.length > 0) {
-      return (
-        <button onClick={this.startGame}>Start Game</button>
-      )
-    // } else {
-    //   return (
-    //     <span>Setting up your game...</span>
-    //   )
-    // }
-  }
-
   render() {
     const {gameStatus} = this.props
     if (gameStatus) {
@@ -86,8 +73,7 @@ class Lobby extends React.Component {
           </div>
         </section>
         <section className='start-game'>
-          {/* <button onClick={this.startGame}>Start Game</button> */}
-          {this.displayStartButton()}
+          <button onClick={this.startGame}>Start Game</button>
         </section>
       </div>
     )
