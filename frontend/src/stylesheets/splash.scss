@@ -12,6 +12,8 @@ $random: random(5);
 $list: $a, $b, $c, $d, $e;
 $nth: nth($list, $random);
 
+$titlefont: 'Oswald';
+
 .splash {
   display: flex;
   flex-direction: column;
@@ -49,6 +51,7 @@ $nth: nth($list, $random);
 }
 
 .center h1 {
+  font-family: $titlefont;
   font-size: 80px;
   color: white;
   // text-shadow: 0px 4px 4px rgba(0, 0, 0, .6);
