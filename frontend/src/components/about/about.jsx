@@ -11,9 +11,11 @@ class About extends React.Component {
           <h1 className="the-team">The Team</h1>
         </div>
 
-        <div className="about-body-1">
-          {/* <p>A digital game inspired by Apples to Apples and Cards Against Humanity. Win by matching your best Gif to a given category!</p> */}
-        </div>
+        {/* <div className="about-body-1">
+          <p>A digital game inspired by Apples to Apples and Cards Against Humanity. Win by matching your best Gif to a given category!</p>
+        </div> */}
+        <div className="team-flex">
+
         
         <div className="group-social">
           
@@ -77,6 +79,7 @@ class About extends React.Component {
               </div>
             </div>
           
+        </div>
         </div>
       </div>
     )
