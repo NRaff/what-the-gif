@@ -19,8 +19,14 @@ class JoinForm extends React.Component {
     const {dispatch} = this.props
     this.manager = this.manager ? this.manager : setupGameSocket(gameCode, dispatch)
     this.manager.joinGame(this.state)
-    // ! Need to determine how to avoid pushing to the lobby unless success
-    this.props.history.push(`/lobby/${gameCode}`)
+  }
+
+  componentDidUpdate() {
+    const { games } = this.props
+    if (games.length > 0) {
+      const gameCode = games[0].gameCode
+      this.props.history.push(`/lobby/${gameCode}`)
+    }
   }
 
   update(field){
