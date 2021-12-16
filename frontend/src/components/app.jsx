@@ -13,7 +13,7 @@ import Profile from './profile/profile_container';
 import Board from './game/board/board_container';
 // import Endgame from './game/endgame/endgame_container';
 import Categories from './categories/categories_container'
-
+import GiphyAttr from './attribution';
 import Lobby from './game/lobby/lobby_container'
 import About from './about/about';
 
@@ -28,18 +28,21 @@ const App = () => (
     <Route>
       <Route exact path="/" component={Splash} />
       <div className='components'>
-      <Route exact path ="/category" component={Categories} />
-      <AuthRoute exact path="/login" component={LoginForm} />
-      <AuthRoute exact path="/signup" component={SignupForm} />
-      <ProtectedRoute path="/create" component={NewGame} />
-      <ProtectedRoute path="/join" component={JoinGame} />
-      <ProtectedRoute path="/profile/:userId" component={Profile} />
-      <ProtectedRoute path='/lobby/:gameCode' component={Lobby} />
-      <ProtectedRoute path='/game/:gameCode' component={Board} />
-      <ProtectedRoute path='/about' component={About} />
-      {/* <Route path='/over' component={Endgame} /> */}
+        <Route exact path ="/category" component={Categories} />
+        <AuthRoute exact path="/login" component={LoginForm} />
+        <AuthRoute exact path="/signup" component={SignupForm} />
+        <ProtectedRoute path="/create" component={NewGame} />
+        <ProtectedRoute path="/join" component={JoinGame} />
+        <ProtectedRoute path="/profile/:userId" component={Profile} />
+        <ProtectedRoute path='/lobby/:gameCode' component={Lobby} />
+        <ProtectedRoute path='/game/:gameCode' component={Board} />
+        <ProtectedRoute path='/about' component={About} />
+        {/* <Route path='/over' component={Endgame} /> */}
       </div>
     </Route>
+    <footer>
+      <GiphyAttr />
+    </footer>
   </div>
 );
 
