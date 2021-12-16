@@ -35,6 +35,12 @@
   overflow: hidden;
 }
 
+.the-team{
+  // position:fixed;
+  display: flex;
+  align-items: center;
+}
+
 .about-body-1 p{
   font-size: 18px;
   font-weight: 200;
@@ -54,6 +60,9 @@
   align-items: center;
   overflow: hidden;
   text-size-adjust: none;
+  position: relative;
+  margin: 0 auto;
+  min-width: 805px;
 }
 
 .about-title h1{
@@ -73,6 +82,11 @@
   padding:20px;
 }
 
+.name-team{
+  font-size: 19px;
+  font-weight: 600;
+}
+
 .social-logo{
   display: flex;
   justify-content: space-evenly;
@@ -82,34 +96,33 @@
 }
 
 .social-logo img:hover {
-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 
 .ln-pic img{
-  // max-height: 64px;
   margin-top: 20px;
-  // margin-right: 20px;
   height: 50px;
-  // size: 50%;
 }
 
 .git-pic img{
-  // max-height: 64px;
   height: 50px;
   margin-top: 20px;
-  
-  // size: 50%;
 }
 
-.group-social{
+.group-social {
   display: flex;
+  position: relative;
+  margin: 0 auto;
   justify-content: space-between;
   flex-direction: row;
-  flex-grow: 3;
-  overflow: scroll;
-  overflow: hidden;
-  width: 1000px;
+  // flex-grow: 3;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-left: 5px;
+  width: 805px;
+  min-height: 0;
+  min-width: 0;
 }
 
 .profile-pic img{
@@ -119,5 +132,6 @@ transform: scale(1.1);
   background-size: cover;
   border-radius: 50%;
   margin-top: 20px;
+  
 
 }
