@@ -15,7 +15,7 @@ class Profile extends React.Component {
     // console.log(this.props)
     return(
       <div id='profile-module'>
-        <h1>USER PROFILE</h1>
+        <h1>MY PROFILE</h1>
         <table>
           <tbody>
           <tr id='p-info'>
