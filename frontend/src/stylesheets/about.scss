@@ -25,7 +25,23 @@
   margin-left: 40px;
   letter-spacing: 0.06rem;
   margin: 30px 0 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  max-width: 700px;
 }
+
+// .about-body-1 p{
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // text-align: justify;
+  // max-width: 40vw;
+  // text-align:center; 
+  // vertical-align: middle;
+  // display: table-cell;
+// }
 
 .about-title h1{
   font-size: 64px;
@@ -34,8 +50,24 @@
 }
 
 .personal-social {
-  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
   padding:20px;
+}
+
+.ln-pic img{
+  // max-height: 64px;
+  height: 50px;
+  // size: 50%;
+}
+
+.git-pic img{
+  // max-height: 64px;
+  height: 50px;
+  // size: 50%;
 }
 
 .group-social{
@@ -43,4 +75,12 @@
   // justify-content: center;
   flex-direction: row;
   flex-grow: 3;
+}
+
+.profile-pic img{
+  width: 150px;
+  height: 150px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
 }
