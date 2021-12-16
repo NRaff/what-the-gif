@@ -16,6 +16,7 @@ import Categories from './categories/categories_container'
 import GiphyAttr from './attribution';
 import Lobby from './game/lobby/lobby_container'
 import About from './about/about';
+import HowToPlay from './about/how_to_container';
 
 
 const App = () => (
@@ -27,8 +28,10 @@ const App = () => (
     
     <Route>
       <Route exact path="/" component={Splash} />
+
       <div className='components'>
-      <Route exact path ="/category" component={Categories} />
+      <Route path='/team' component={About} />
+      <Route path='/how-to' component={HowToPlay} />
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
       <ProtectedRoute path="/create" component={NewGame} />
@@ -36,8 +39,6 @@ const App = () => (
       <ProtectedRoute path="/profile/:userId" component={Profile} />
       <ProtectedRoute path='/lobby/:gameCode' component={Lobby} />
       <ProtectedRoute path='/game/:gameCode' component={Board} />
-      <ProtectedRoute path='/team' component={About} />
-      {/* <Route path='/over' component={Endgame} /> */}
         <footer>
           <GiphyAttr />
         </footer>

@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
       <div className='search-container'>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label>Search for GIFS!</label>
+            <label>Search for your favorite GIF!</label>
             <input
               type="text"
               onChange={e => this.updateSearchTerm(e)}
