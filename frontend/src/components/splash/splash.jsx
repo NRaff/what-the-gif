@@ -2,7 +2,6 @@ import React from "react";
 import '../../stylesheets/root.scss'
 import { Link } from "react-router-dom";
 import { stopListening } from "../../util/game_socket_util";
-// import {manager} from "../../util/game_socket_util"
 
 class Splash extends React.Component {
   constructor(props) {
@@ -12,16 +11,7 @@ class Splash extends React.Component {
 
   componentDidMount(){
     stopListening()
-    this.props.clearUsers()
-    this.props.resetGame()
-    this.props.removeCurrentGame()
-    this.props.removePlayedCards()
-    this.props.removeSubmittedCards()
-    this.props.removeAllCategories()
-    this.props.removeAllPlayedCategories()
-    this.props.removeAllGames()
-    this.props.clearRounds()
-    this.props.resetAllUI()
+    this.props.clearAll()
   }
 
   splashNav(){
@@ -48,10 +38,6 @@ class Splash extends React.Component {
           <section className='center'>
             <h1>WHAT THE GIF!?</h1>
             {this.splashNav()}
-            {/* <div id='game-nav'>
-              <Link to='/create'><button>Create Game</button></Link>
-              <Link to='/join'><button>Join Game</button></Link>
-            </div> */}
           </section>
           <section className='bottom' />
         </div>

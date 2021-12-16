@@ -21,7 +21,7 @@ export const removeDeltCards = payload => ({
 })
 
 export const removeAllCards = () => ({
-  type: REMOVE_CARDS
+  type: REMOVE_ALL_CARDS
 })
 
 export const fetchCards = () => dispatch => GiphyUtil.getGameDeck(['happy'])

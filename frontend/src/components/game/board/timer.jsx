@@ -1,5 +1,5 @@
 import React from "react";
-import { roundOver, toggleTimeUp } from "../../../actions/ui_actions";
+import { toggleTimeUp } from "../../../actions/ui_actions";
 import '../../../stylesheets/root.scss'
 
 const { useEffect, useState } = React;
@@ -27,7 +27,7 @@ const Timer = React.memo(function Timer({
     return () => {
       clearInterval(timer)
     };
-  }, [roundOver, showSec]);
+  }, [showSec, timerEnds]);
   return <span>{showSec}</span>;
 });
 
