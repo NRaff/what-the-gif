@@ -8,11 +8,11 @@ class About extends React.Component {
     return(
       <div className="header-body">
         <div className="about-title">
-          <h1>About Us</h1>
+          <h1>The Team</h1>
         </div>
 
         <div className="about-body-1">
-          <p>A digital game inspired by Apples to Apples and Cards Against Humanity. Win by matching your best Gif to a given category!</p>
+          {/* <p>A digital game inspired by Apples to Apples and Cards Against Humanity. Win by matching your best Gif to a given category!</p> */}
         </div>
         
         <div className="group-social">
