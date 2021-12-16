@@ -1,6 +1,7 @@
 import { 
   RECEIVE_ALL_CATEGORIES, 
-  REMOVE_CATEGORY 
+  REMOVE_CATEGORY,
+  REMOVE_ALL_CATEGORIES 
 } from '../../actions/categories/deck_category_actions'
 
 const DeckCategoryReducer = (state = {}, action) => {
@@ -20,6 +21,8 @@ const DeckCategoryReducer = (state = {}, action) => {
     case REMOVE_CATEGORY:
       delete nextState[action.category.id]
       return nextState
+    case REMOVE_ALL_CATEGORIES:
+      return {}
     default:
       return state;
   }

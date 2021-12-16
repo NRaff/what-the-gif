@@ -14,12 +14,14 @@ class Splash extends React.Component {
     stopListening()
     this.props.clearUsers()
     this.props.resetGame()
-    // clear submitted cards
-    // clear cards
-    // clear games
-    // clear categories
-    // clear rounds
-    // this.props.removeCard()
+    this.props.removeCurrentGame()
+    this.props.removePlayedCards()
+    this.props.removeSubmittedCards()
+    this.props.removeAllCategories()
+    this.props.removeAllPlayedCategories()
+    this.props.removeAllGames()
+    this.props.clearRounds()
+    this.props.resetAllUI()
   }
 
   splashNav(){

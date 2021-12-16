@@ -1,6 +1,7 @@
 import { 
   RECEIVE_PLAYED_CATEGORY, 
-  REMOVE_PLAYED_CATEGORY 
+  REMOVE_PLAYED_CATEGORY,
+  REMOVE_ALL_PLAYED_CATEGORIES 
 } from "../../actions/categories/played_category_actions";
 
 const playedCategory = (state = {}, action) => {
@@ -13,6 +14,8 @@ const playedCategory = (state = {}, action) => {
     case REMOVE_PLAYED_CATEGORY:
       delete nextState[action.category.id]
       return nextState
+    case REMOVE_ALL_PLAYED_CATEGORIES:
+      return {}
     default:
       return state;
   }

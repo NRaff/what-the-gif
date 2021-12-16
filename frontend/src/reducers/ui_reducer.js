@@ -9,9 +9,11 @@ import {
   UPDATE_CATEGORY,
   NEXT_ROUND,
   SET_CURRENT_GAME,
+  REMOVE_CURRENT_GAME,
   TOGGLE_TIME_UP,
   TOGGLE_SHOW_SUBMITTED,
-  ROUND_WINNER_CHOSEN
+  ROUND_WINNER_CHOSEN,
+  RESET_ALL
  } from "../actions/ui_actions";
 
 const defaultState = {
@@ -51,6 +53,9 @@ const uiReducer = (state=defaultState, action) => {
     case SET_CURRENT_GAME:
       nextState.currentGame = action.game._id
       return nextState
+    case REMOVE_CURRENT_GAME:
+      nextState.currentGame = null
+      return nextState
     case TOGGLE_TIME_UP:
       nextState.timesUp = !nextState.timesUp
       return nextState
@@ -60,6 +65,8 @@ const uiReducer = (state=defaultState, action) => {
     case ROUND_WINNER_CHOSEN:
       nextState.roundWinnerChosen = !nextState.roundWinnerChosen
       return nextState
+    case RESET_ALL:
+      return defaultState
     default:
       return state
   }
