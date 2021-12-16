@@ -52,6 +52,8 @@ class GameForm extends React.Component{
   render(){
     const {errors} = this.props
     return (
+      <>
+      <h1>CREATE A GAME</h1>
       <form onSubmit={this.handleSubmit}>
         <div>
           <label>Game Name</label>
@@ -95,6 +97,7 @@ class GameForm extends React.Component{
         {errors ? errors.gameCode : ''}
           <button>Create Game</button>
       </form>
+      </>
     )
   }
 }
