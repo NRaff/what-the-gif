@@ -80,6 +80,7 @@ class SessionForm extends React.Component{
           <input type="password" value={this.state.password2} onChange={this.update('password2')} />
         </div>
         {this.props.errors ? this.props.errors.password2 : ''}
+        <div>Already have an account? <Link to='/login'>Log In</Link></div>
         <button onClick={this.anonLogin}>Generate Anonymous Login</button>
         <button value={this.state.formType}> {this.props.formType}</button>
       </form>  

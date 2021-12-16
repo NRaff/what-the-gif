@@ -40,6 +40,7 @@ class Navbar extends React.Component {
         <div className='nav'>
           <section id='left-nav'>
             <Link to={`/`}><button>Home</button></Link>
+            <Link to={`/how-to`}><button>How to Play</button></Link>
             <Link to={`/team`}><button>Team</button></Link>
 
           </section>

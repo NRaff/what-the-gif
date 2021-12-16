@@ -46,7 +46,6 @@ class Profile extends React.Component {
             ) : (null)) : (null)}
           </tbody>
         </table>
-
         <SearchBar />
       </div>
     )
