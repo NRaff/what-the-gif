@@ -1,3 +1,5 @@
+$titlefont: 'Oswald';
+
 .lobby-container {
   align-items: center;
   justify-content: center;
@@ -54,10 +56,10 @@
 .player-card p {
   position: absolute;
   top: 0;
-  margin-top: 20px;
+  margin-top: 15px;
   z-index: 2;
   text-align: center;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: $titlefont;
   font-size: 30px;
 }
 

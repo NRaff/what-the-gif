@@ -20,7 +20,7 @@ import About from './about/about';
 
 const App = () => (
 
-  <div>
+  <div className='bodywrap'>
     <header>
       <Navbar />
     </header>
@@ -38,11 +38,12 @@ const App = () => (
       <ProtectedRoute path='/game/:gameCode' component={Board} />
       <ProtectedRoute path='/team' component={About} />
       {/* <Route path='/over' component={Endgame} /> */}
+        <footer>
+          <GiphyAttr />
+        </footer>
       </div>
     </Route>
-    <footer>
-      <GiphyAttr />
-    </footer>
+    
   </div>
 );
 

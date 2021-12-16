@@ -1,5 +1,7 @@
 @import 'color_palette.scss';
 
+$titlefont: 'Oswald';
+
 button {
   font-weight: 600;
   padding: 15px 30px 15px 30px;
@@ -13,8 +15,27 @@ button {
 }
 
 h1 {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: $titlefont;
   font-size: 30px;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+h3 {
+  font-family: $titlefont;
+  font-weight: 700;
+}
+
+h4 {
+  font-family: sans-serif;
+}
+
+p {
+  font-family: sans-serif;
 }
 
 .components {
@@ -30,6 +51,7 @@ h1 {
 
 body {
   font-family: sans-serif;
+  font-weight: 400;
   background-color: black;
   // overflow: hidden;
 }
@@ -65,13 +87,34 @@ table, th, td {
   border: 0px solid black;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+label {
+  font-family: sans-serif;
+}
+
+input {
+  font-family: sans-serif;
+}
+
+
 #giphy {
-  position: absolute;
-  bottom: 20px;
+  position: relative;
   right: 20px;
+  bottom: 20px;
+  z-index: 0;
+}
+
+.bodywrap {
+  height: 100vh
 }
 
 // #giphy img {
-//   width: 200px;
+//   // position: absolute;
+//   // top: 0;
 // }
 
