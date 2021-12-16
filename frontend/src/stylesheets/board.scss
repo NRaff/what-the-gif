@@ -95,12 +95,20 @@ $titlefont: 'Oswald';
   // min-width: 450px;
 }
 
-.endbox{
+.endbox {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+}
+
+.endbox h1 {
+  font-size: 64px;
+}
+
+.endbox h2 {
+  font-size: 64px;
 }
 
 .player-card {
@@ -112,7 +120,7 @@ $titlefont: 'Oswald';
   text-align: center;
 }
 
-.end-score{
+.end-score {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -120,7 +128,7 @@ $titlefont: 'Oswald';
   margin: 0 auto;
 }
 
-.end-screen{
+.end-screen {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -163,7 +171,7 @@ $titlefont: 'Oswald';
 
 .board-container h1 {
   font-size: 70px;
-  
+
 }
 
 .board-container h2 {
@@ -189,17 +197,17 @@ $titlefont: 'Oswald';
   margin-top: -5px;
 }
 
-.categories{
+.categories {
   display: flex;
 }
 
 #categories {
-    margin-top: -10px;
-    padding-top: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  margin-top: -10px;
+  padding-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   // margin-right: 40px;
   // min-width: 500px;
 }
@@ -209,7 +217,7 @@ $titlefont: 'Oswald';
 //   justify-content: center;
 //   align-items: center;
 //   background-color: green;
-  
+
 // }
 
 .winner-wrap {
@@ -284,7 +292,7 @@ $titlefont: 'Oswald';
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  
+
 }
 
 #cat-info {
@@ -308,14 +316,16 @@ $titlefont: 'Oswald';
   display: inline-block;
 }
 
-#select h2, .the-card h2 {
+#select h2,
+.the-card h2 {
   color: black;
   font-size: 15px;
   display: block;
   text-align: center;
 }
 
-#select h3, .the-card h3 {
+#select h3,
+.the-card h3 {
   color: black;
 }
 
@@ -323,13 +333,13 @@ $titlefont: 'Oswald';
   height: 150px;
 }
 
-.show-modal{
+.show-modal {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.modal-player{
+.modal-player {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   // grid-template-rows: 3, 1fr;

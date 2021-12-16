@@ -8,17 +8,19 @@ class About extends React.Component {
     return(
       <div className="header-body">
         <div className="about-title">
-          <h1>THE TEAM</h1>
+          <h1 className="the-team">THE TEAM</h1>
         </div>
 
-        <div className="about-body-1">
-          {/* <p>A digital game inspired by Apples to Apples and Cards Against Humanity. Win by matching your best Gif to a given category!</p> */}
-        </div>
+        {/* <div className="about-body-1">
+          <p>A digital game inspired by Apples to Apples and Cards Against Humanity. Win by matching your best Gif to a given category!</p>
+        </div> */}
+        <div className="team-flex">
+
         
         <div className="group-social">
           
             <div className="personal-social">
-              <h2>Nick Raff</h2>
+              <h2 className='name-team'>Nick Raff</h2>
               <div className="profile-pic">
                 <img src="https://i.imgur.com/nm1ozZa.jpg" alt="prof-pic1" />
               </div>
@@ -33,7 +35,7 @@ class About extends React.Component {
             </div>
 
             <div className="personal-social">
-              <h2>Adrian Rothschild</h2>
+              <h2 className='name-team'>Adrian Rothschild</h2>
               <div className="profile-pic">
                 <img src="https://i.imgur.com/OKNAR13.jpg" alt="prof-pic2" />
               </div>
@@ -48,7 +50,7 @@ class About extends React.Component {
             </div>
 
             <div className="personal-social">
-              <h2>Alex Lolas</h2>
+              <h2 className='name-team'>Alex Lolas</h2>
               <div className="profile-pic">
                 <img src="https://live.staticflickr.com/65535/51749417371_0ba2444882_o.png" alt="prof-pic3" />
               </div>
@@ -63,7 +65,7 @@ class About extends React.Component {
             </div>
 
             <div className="personal-social">
-              <h2>Matt Pettenato</h2>
+              <h2 className='name-team'>Matt Pettenato</h2>
               <div className="profile-pic">
                 <img src="https://live.staticflickr.com/65535/51750297205_b021e10001_o.png" alt="prof-pic4" />
               </div>
@@ -77,6 +79,7 @@ class About extends React.Component {
               </div>
             </div>
           
+        </div>
         </div>
       </div>
     )
