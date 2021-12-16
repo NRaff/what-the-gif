@@ -65,13 +65,26 @@ table, th, td {
   border: 0px solid black;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+
 #giphy {
-  position: absolute;
-  bottom: 20px;
+  position: relative;
   right: 20px;
+  bottom: 20px;
+  z-index: 0;
+}
+
+.bodywrap {
+  height: 100vh
 }
 
 // #giphy img {
-//   width: 200px;
+//   // position: absolute;
+//   // top: 0;
 // }
 

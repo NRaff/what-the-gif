@@ -70,11 +70,12 @@
 
 .hand-overlay {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.421);
+  background-color: rgba(0, 0, 0, 0.9);
   top: 0px;
   bottom: 0px;
   right: 0px;
   left: 0px;
+  min-width: 850px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,13 +83,15 @@
 }
 
 #judging-overlay {
-  background-color: black;
-  border-radius: 0px;
-  padding: 40px 210px 40px 210px;
   font-weight: 600;
-  font-size: 40px;
-  margin-left: -25px;
-  min-width: 450px;
+  top: 20;
+  // background-color: black;
+  // border-radius: 0px;
+  // padding: 40px 210px 40px 210px;
+  // font-weight: 600;
+  // font-size: 40px;
+  // margin-left: -25px;
+  // min-width: 450px;
 }
 
 .endbox{
@@ -229,7 +232,7 @@
   font-weight: bold;
 }
 
-.player-hand-show h2 {
+.player-hand-show>h2 {
   margin-left: -25px;
 }
 
@@ -254,9 +257,6 @@
 
 .the-card:hover {
   margin: -5px 5px 0px -5px;
-  // margin-left: -5px;
-  // margin-right: 5px;
-  // margin-top: -10px;
   width: 160px;
   height: 160px;
   top: 10px;
@@ -288,7 +288,7 @@
 
 #cat-info {
   flex: 2;
-  margin-right: 9%;
+  margin-right: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -309,6 +309,7 @@
   color: black;
   font-size: 15px;
   display: block;
+  text-align: center;
 }
 
 #select h3, .the-card h3 {
@@ -317,8 +318,6 @@
 
 #select img {
   height: 150px;
-  width: 300px;
-  object-fit: cover;
 }
 
 .show-modal{

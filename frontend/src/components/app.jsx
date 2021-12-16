@@ -20,7 +20,7 @@ import About from './about/about';
 
 const App = () => (
 
-  <div>
+  <div className='bodywrap'>
     <header>
       <Navbar />
     </header>
