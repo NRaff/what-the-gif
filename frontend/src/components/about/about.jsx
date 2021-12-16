@@ -1,5 +1,6 @@
 import React from "react";
 import '../../stylesheets/root.scss';
+import {Link} from 'react-router';
 
 class About extends React.Component {
 
@@ -9,39 +10,70 @@ class About extends React.Component {
         <div className="about-title">
           <h1>About Us</h1>
         </div>
-        
+
         <div className="about-body-1">
-          <ul>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh nisl condimentum id venenatis. Ullamcorper velit sed ullamcorper morbi tincidunt ornare. Non diam phasellus vestibulum lorem sed risus. Laoreet sit amet cursus sit. At tempor commodo ullamcorper a. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Morbi tristique senectus et netus et malesuada. Nunc mattis enim ut tellus elementum sagittis vitae et leo. Pretium aenean pharetra magna ac placerat. Eu sem integer vitae justo eget. Nunc vel risus commodo viverra maecenas accumsan lacus vel. Malesuada pellentesque elit eget gravida cum. Nec dui nunc mattis enim. Tincidunt id aliquet risus feugiat. In hac habitasse platea dictumst. Mauris commodo quis imperdiet massa tincidunt nunc. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Sem viverra aliquet eget sit amet.</ul>
+          <p>A digital game inspired by Apples to Apples and Cards Against Humanity - win by matching your best Gif to a given category!</p>
         </div>
         
         <div className="group-social">
           
             <div className="personal-social">
-              <h2>Matt Pettenato</h2>
+              <h2>Nick Raff</h2>
               <div className="profile-pic">
-                <img src="https://cdn.frankerfacez.com/emoticon/228449/4" alt="prof-pic" />
+                <img src="https://i.imgur.com/nm1ozZa.jpg" alt="prof-pic1" />
               </div>
-              <div className="social-pic">
-                <img src="frontend/src/imgs/LI-In-Bug.png" alt="" />
+              <div className="social-logo">
+                <a className="ln-pic" href="https://www.linkedin.com/in/nickraff/" target="_blank" rel="noreferrer">
+                  <img src="https://live.staticflickr.com/65535/51750297305_aa540abf3e_o.png" alt="linkedin" />
+                </a>
+                <a className="git-pic" href="https://github.com/NRaff" target="_blank" rel="noreferrer">
+                  <img src="https://live.staticflickr.com/65535/51750298020_22cf236782_o.png" alt="githubicon" />
+                </a>
               </div>
             </div>
+
+            <div className="personal-social">
+              <h2>Adrian Rothschild</h2>
+              <div className="profile-pic">
+                <img src="https://i.imgur.com/OKNAR13.jpg" alt="prof-pic2" />
+              </div>
+              <div className="social-logo">
+                <a className="ln-pic" href="https://www.linkedin.com/in/adrian-rothschild/" target="_blank" rel="noreferrer">
+                  <img src="https://live.staticflickr.com/65535/51750297305_aa540abf3e_o.png" alt="linkedin" />
+                </a>
+                <a className="git-pic" href="https://github.com/darothmedia" target="_blank" rel="noreferrer">
+                  <img src="https://live.staticflickr.com/65535/51750298020_22cf236782_o.png" alt="githubicon" />
+                </a>
+              </div>
+            </div>
+
+            <div className="personal-social">
+              <h2>Alex Lolas</h2>
+              <div className="profile-pic">
+                <img src="https://live.staticflickr.com/65535/51749417371_0ba2444882_o.png" alt="prof-pic3" />
+              </div>
+              <div className="social-logo">
+                <a className="ln-pic" href="https://www.linkedin.com/in/alex-lolas-88b19b228/" target="_blank" rel="noreferrer">
+                  <img src="https://live.staticflickr.com/65535/51750297305_aa540abf3e_o.png" alt="linkedin" />
+                </a>
+                <a className="git-pic" href="https://github.com/alexlolas" target="_blank" rel="noreferrer">
+                  <img src="https://live.staticflickr.com/65535/51750298020_22cf236782_o.png" alt="githubicon" />
+                </a>
+              </div>
+            </div>
+
             <div className="personal-social">
               <h2>Matt Pettenato</h2>
               <div className="profile-pic">
-                <img src="https://cdn.frankerfacez.com/emoticon/228449/4" alt="prof-pic" />
+                <img src="https://live.staticflickr.com/65535/51750297205_b021e10001_o.png" alt="prof-pic4" />
               </div>
-            </div>
-            <div className="personal-social">
-              <h2>Matt Pettenato</h2>
-              <div className="profile-pic">
-                <img src="https://cdn.frankerfacez.com/emoticon/228449/4" alt="prof-pic" />
-                <img src="" alt="" />
-              </div>
-            </div>
-            <div className="personal-social">
-              <h2>Matt Pettenato</h2>
-              <div className="profile-pic">
-                <img src="https://cdn.frankerfacez.com/emoticon/228449/4" alt="prof-pic" />
+              <div className="social-logo">
+                <a className="ln-pic" href="https://www.linkedin.com/in/matthew-pettenato-936236123/" target="_blank" rel="noreferrer">
+                  <img src="https://live.staticflickr.com/65535/51750297305_aa540abf3e_o.png" alt="linkedin" />
+                </a>
+                <a className="git-pic" href="https://github.com/mattpettenato" target="_blank" rel="noreferrer">
+                  <img src="https://live.staticflickr.com/65535/51750298020_22cf236782_o.png" alt="githubicon" />
+                </a>
               </div>
             </div>
           
@@ -52,3 +84,5 @@ class About extends React.Component {
 }
 
 export default About;
+
+// https://live.staticflickr.com/65535/51750298020_22cf236782_o.png
