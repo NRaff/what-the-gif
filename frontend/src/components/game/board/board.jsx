@@ -314,7 +314,6 @@ class Board extends React.Component {
   }
   
   render() {
-    //check if gamedeck, categories, users exist before anything else
     const { game, players } = this.props
     const dealComplete = players.every(player => player.curHand.length >= 4)
     if (this.hasContent() && dealComplete){
