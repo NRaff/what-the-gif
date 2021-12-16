@@ -1,6 +1,7 @@
 # What the Gif
 ## About
 _What the Gif?!_ is a game inspired by _Apples to Apples_ and Cards Against Humanity. The game uses the Giphy API to supply a random set of gifs and categories (think _Apples to Apples_ greencards), and Socket.io to enable a realtime game between many players.
+![Screen Shot 2021-12-15 at 2 10 37 PM](https://user-images.githubusercontent.com/13125699/146441299-e3f3dad4-3e23-4068-b53f-ee247ca35691.png)
 ## Team
 | Team Member | LinkedIn | Github                |
 |-------------|----------|-----------------------|
