@@ -1,5 +1,7 @@
 @import 'color_palette.scss';
 
+$titlefont: 'Oswald';
+
 button {
   font-weight: 600;
   padding: 15px 30px 15px 30px;
@@ -13,8 +15,27 @@ button {
 }
 
 h1 {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: $titlefont;
   font-size: 30px;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+h3 {
+  font-family: $titlefont;
+  font-weight: 700;
+}
+
+h4 {
+  font-family: sans-serif;
+}
+
+p {
+  font-family: sans-serif;
 }
 
 .components {
@@ -30,6 +51,7 @@ h1 {
 
 body {
   font-family: sans-serif;
+  font-weight: 400;
   background-color: black;
   // overflow: hidden;
 }
@@ -69,6 +91,14 @@ footer {
   position: fixed;
   bottom: 0;
   right: 0;
+}
+
+label {
+  font-family: sans-serif;
+}
+
+input {
+  font-family: sans-serif;
 }
 
 

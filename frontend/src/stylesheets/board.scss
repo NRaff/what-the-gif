@@ -1,4 +1,5 @@
 @import 'color_palette.scss';
+$titlefont: 'Oswald';
 
 .player-lineup {
   display: flex;
@@ -33,14 +34,14 @@
 }
 
 .show-modal h3 {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: -5px;
   font-size: 20px;
 }
 
 .winning-card h3 {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 20px;
   display: block;
+  margin-top: -5px;
 }
 
 .winning-card {
@@ -181,6 +182,7 @@
 }
 
 .board-container span {
+  font-family: sans-serif;
   font-weight: 800px;
   font-size: 30px;
   margin-bottom: 10px;
@@ -227,7 +229,6 @@
 
 .player-hand h4 {
   display: block;
-  margin-left: -15px;
   font-size: 18px;
   font-weight: bold;
 }
@@ -287,8 +288,10 @@
 }
 
 #cat-info {
-  flex: 2;
+  // flex: 2;
+  min-width: 200px;
   margin-right: 40px;
+  margin-left: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
