@@ -7,24 +7,16 @@ var socket = io()
 export const manager = gameCode =>  ({
   sendToGame: payload => {
     const newPayload = Object.assign({}, payload,{gameCode})
-    socket.emit(`game:update`, newPayload, () => {
-      // socket.removeAllListeners(`joined-game:${gameCode}`)
-    })
+    socket.emit(`game:update`, newPayload)
   },
   getGame: () => {
-    socket.emit(`game:get`, { gameCode }, () => {
-      // socket.removeAllListeners(`joined-game:${gameCode}`)
-    })
+    socket.emit(`game:get`, { gameCode })
   },
   createGame: payload => {
-    socket.emit(`game:create`, payload, () => {
-      // socket.removeAllListeners(`joined-game:${gameCode}`)
-    })
+    socket.emit(`game:create`, payload)
   },
   joinGame: payload => {
-    socket.emit(`game:join`, payload, () => {
-      // socket.removeAllListeners(`joined-game:${gameCode}`)
-    })
+    socket.emit(`game:join`, payload)
   },
   killSocket: () => {
     socket.removeAllListeners(`joined-game:${gameCode}`)
@@ -34,10 +26,6 @@ export const manager = gameCode =>  ({
   },
   socket: socket
 })
-
-export const stopListening = () => {
-  socket.removeAllListeners()
-}
 
 export const setupGameSocket = (gameCode, dispatch) => {
     if (gameCode) {
@@ -55,6 +43,10 @@ export const setupGameSocket = (gameCode, dispatch) => {
       })
     }
   return manager(gameCode)
+}
+
+export const stopListening = () => {
+  socket.removeAllListeners()
 }
 
 // export default setupGameSocket;
