@@ -10,6 +10,11 @@ $titlefont: 'Oswald';
 
 .how-to-container h1 {
   margin-bottom: 25px;
+  font-size: 64px;
+  letter-spacing: 0.2rem;
+  line-height: 1.75;
+  overflow: hidden;
+  text-size-adjust: none;
 }
 
 .how-to-div {
@@ -28,7 +33,22 @@ $titlefont: 'Oswald';
 .how-to-div h2 {
   text-align: center;
   font-family: $titlefont;
-  font-size: 20px;
+  font-size: 30px;
   margin-bottom: 10px;
+}
+
+.how-to-div p {
+  font-size: 18px;
+}
+
+.how-to-div img {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#gameplay-how {
+  margin-bottom: 100px;
 }
 
