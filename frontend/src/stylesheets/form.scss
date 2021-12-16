@@ -9,7 +9,7 @@ form {
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  margin-top: 50px;
+  // margin-top: 50px;
   border-radius: 20px;
   background-color: black;
 }
@@ -53,4 +53,12 @@ form a {
   color: $color2;
   text-decoration: none;
   cursor: pointer;
+}
+
+.components>h1 {
+  font-size: 48px;
+  letter-spacing: 0.2rem;
+  line-height: 1.75;
+  overflow: hidden;
+  // text-size-adjust: none;
 }

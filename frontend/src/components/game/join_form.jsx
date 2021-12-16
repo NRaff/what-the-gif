@@ -35,6 +35,8 @@ class JoinForm extends React.Component {
 
   render(){
     return (
+      <>
+      <h1>JOIN A GAME</h1>
       <form onSubmit={this.handleSubmit}>
         <div>
         <label>Game Code</label>
@@ -46,6 +48,7 @@ class JoinForm extends React.Component {
         </div>
         <button>Join Game</button>
       </form>
+      </>
     )
   }
 }
