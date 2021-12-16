@@ -13,7 +13,7 @@ import Profile from './profile/profile_container';
 import Board from './game/board/board_container';
 // import Endgame from './game/endgame/endgame_container';
 import Categories from './categories/categories_container'
-
+import GiphyAttr from './attribution';
 import Lobby from './game/lobby/lobby_container'
 import About from './about/about';
 
@@ -40,6 +40,9 @@ const App = () => (
       {/* <Route path='/over' component={Endgame} /> */}
       </div>
     </Route>
+    <footer>
+      <GiphyAttr />
+    </footer>
   </div>
 );
 
