@@ -2,14 +2,19 @@
 ## About
 _What the Gif?!_ is a game inspired by _Apples to Apples_ and Cards Against Humanity. The game uses the Giphy API to supply a random set of gifs and categories (think _Apples to Apples_ greencards), and Socket.io to enable a realtime game between many players.
 ## Team
-Nick Raff | [LinkedIn](https://www.linkedin.com/in/nickraff/) | [Github](https://github.com/NRaff)
-Adrian Rothschild | [LinkedIn]() | [Github](https://github.com/darothmedia)
-Alex Lolas | [LinkedIn](https://www.linkedin.com/in/alex-lolas-88b19b228/) | [Github](https://github.com/alexlolas)
-Matt Pettenato | [LinkedIn](https://www.linkedin.com/in/matthew-pettenato-936236123/) | [Github](https://github.com/mattpettenato)
+| Team Member | LinkedIn | Github                |
+|-------------|----------|-----------------------|
+| Nick Raff          | [LinkedIn](https://www.linkedin.com/in/nickraff/)  | [Github](https://github.com/NRaff) |
+| Adrian Rothschild      | [LinkedIn](https://www.linkedin.com/in/adrian-rothschild/)  | [Github](https://github.com/darothmedia)     |
+| Alex Lolas     | [LinkedIn](https://www.linkedin.com/in/alex-lolas-88b19b228/)  | [Github](https://github.com/alexlolas)     |
+| Matt Pettenato     | [LinkedIn](https://www.linkedin.com/in/matthew-pettenato-936236123/)  | [Github](https://github.com/mattpettenato)     |
 
 __Explore the game for yourself, and invite friends to join, [here](https://what-the-gif.herokuapp.com/#/)!__
 ## Gameplay
 To begin, each player is dealt a hand of gifs and an initial judge is selected for the first round. In a round, a random Category is presented and players then submit their closest matching gif for the judge to review. The game ends when a single player has been chosen as the winner a predetermined number of times.
+![Screen Shot 2021-12-15 at 6 31 45 PM](https://user-images.githubusercontent.com/13125699/146319412-a4affac6-c2ba-4a5b-90cf-590ffd9aa867.png)
+![Screen Shot 2021-12-15 at 6 33 58 PM](https://user-images.githubusercontent.com/13125699/146319633-60558dda-0620-4c3b-a00b-3141308f2a30.png)
+
 ## Technology Used
 ### MongoDB
 - Allow users to create an account and store their favorite gif
@@ -85,6 +90,7 @@ export const setupGameSocket = (gameCode, dispatch) => {
 ```
 ### Joining a Game
 Game dispatch served as a 'Grand Central Dispatch' for all payloads served back to players in realtime. In this instance, when a player joins a game, the server provides all relevant game information (users and game details) back to each player, and we leverage Redux's _dispatch_ the update each client's state.
+![Screen Shot 2021-12-15 at 6 31 45 PM](https://user-images.githubusercontent.com/13125699/146319412-a4affac6-c2ba-4a5b-90cf-590ffd9aa867.png)
 ```javascript
 // ~ join_form.jsx
 handleSubmit(e){
