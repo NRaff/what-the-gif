@@ -37,8 +37,14 @@ class Endgame extends React.Component {
         <h2>is the WINNER!</h2>
       </div>
         <div className='end-score'>
-          <h2>Score: {leaderScore}</h2>
+          <h1>Score: {leaderScore}</h1>
           {/* can change this to include all of the winning gifs */}
+        </div>
+        <div className="redirect-home">
+          <a href="#/">
+
+          <button>Go Home</button>
+          </a>
         </div>
       </div>
     )
