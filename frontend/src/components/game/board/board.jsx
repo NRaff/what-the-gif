@@ -120,7 +120,6 @@ class Board extends React.Component {
   nextRound(){
     const {gameCode, players, gameDeck} = this.props
     const gameManager = manager(gameCode)
-    // deal card to each player
     gameManager.sendToGame({
       type: NEXT_ROUND,
       round: this.setRound()
@@ -161,7 +160,7 @@ class Board extends React.Component {
   }
 
   renderSubmitted(){
-    const { players, submittedCards, showSubmitted, currentRound, currentUser} = this.props
+    const { submittedCards, showSubmitted, currentRound, currentUser} = this.props
     const submissions = Object.values(submittedCards)
     const submitterIds = Object.keys(submittedCards)
     if (showSubmitted && submissions.length > 0) {
