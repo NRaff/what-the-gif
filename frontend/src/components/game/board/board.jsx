@@ -165,6 +165,7 @@ class Board extends React.Component {
   renderSubmitted(){
     const { players, submittedCards, showSubmitted, currentRound, currentUser} = this.props
     const submissions = Object.values(submittedCards)
+    const submitterIds = Object.keys(submittedCards)
     if (showSubmitted && submissions.length > 0) {
       return (
         <div id='show-wrap'>
@@ -175,13 +176,13 @@ class Board extends React.Component {
             }
             </div>
             <div className="modal-player">
-              {players.map(player => {
-                if(player._id !== currentRound.judge) {
+              {submitterIds.map(player => {
+                if(player !== currentRound.judge) {
                   return (
                     <SubmittedCardContainer
-                      card={submittedCards[player._id]}
-                      playerId={player._id}
-                      key={submittedCards[player._id].gifId}
+                      card={submittedCards[player]}
+                      playerId={player}
+                      key={submittedCards[player].gifId}
                     />
                   )
                 } else {return null}

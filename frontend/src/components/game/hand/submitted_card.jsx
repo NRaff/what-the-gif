@@ -8,7 +8,9 @@ class SubmittedCard extends React.Component {
     const {users, submittedGifs, currentGame, currentRound} = this.props
     const gameManager = manager(currentGame.gameCode)
     const nonJudges = users.filter(user => user._id !== currentRound.judge)
-    nonJudges.forEach(user => {
+    const submitterIds = Object.keys(submittedGifs)
+    const activePlayers = nonJudges.filter(user => submitterIds.includes(user._id))
+    activePlayers.forEach(user => {
       const payload = {
         user: user._id,
         cardId: submittedGifs[user._id].gifId
