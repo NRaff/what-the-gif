@@ -12,7 +12,7 @@ class About extends React.Component {
         </div>
 
         <div className="about-body-1">
-          <p>A digital game inspired by Apples to Apples and Cards Against Humanity - win by matching your best Gif to a given category!</p>
+          <p>A digital game inspired by Apples to Apples and Cards Against Humanity. Win by matching your best Gif to a given category!</p>
         </div>
         
         <div className="group-social">
@@ -27,7 +27,7 @@ class About extends React.Component {
                   <img src="https://live.staticflickr.com/65535/51750297305_aa540abf3e_o.png" alt="linkedin" />
                 </a>
                 <a className="git-pic" href="https://github.com/NRaff" target="_blank" rel="noreferrer">
-                  <img src="https://live.staticflickr.com/65535/51750298020_22cf236782_o.png" alt="githubicon" />
+                  <img src="https://i.imgur.com/2exRxJt.png" alt="githubicon" />
                 </a>
               </div>
             </div>
@@ -42,7 +42,7 @@ class About extends React.Component {
                   <img src="https://live.staticflickr.com/65535/51750297305_aa540abf3e_o.png" alt="linkedin" />
                 </a>
                 <a className="git-pic" href="https://github.com/darothmedia" target="_blank" rel="noreferrer">
-                  <img src="https://live.staticflickr.com/65535/51750298020_22cf236782_o.png" alt="githubicon" />
+                  <img src="https://i.imgur.com/2exRxJt.png" alt="githubicon" />
                 </a>
               </div>
             </div>
@@ -57,7 +57,7 @@ class About extends React.Component {
                   <img src="https://live.staticflickr.com/65535/51750297305_aa540abf3e_o.png" alt="linkedin" />
                 </a>
                 <a className="git-pic" href="https://github.com/alexlolas" target="_blank" rel="noreferrer">
-                  <img src="https://live.staticflickr.com/65535/51750298020_22cf236782_o.png" alt="githubicon" />
+                  <img src="https://i.imgur.com/2exRxJt.png" alt="githubicon" />
                 </a>
               </div>
             </div>
@@ -72,7 +72,7 @@ class About extends React.Component {
                   <img src="https://live.staticflickr.com/65535/51750297305_aa540abf3e_o.png" alt="linkedin" />
                 </a>
                 <a className="git-pic" href="https://github.com/mattpettenato" target="_blank" rel="noreferrer">
-                  <img src="https://live.staticflickr.com/65535/51750298020_22cf236782_o.png" alt="githubicon" />
+                  <img src="https://i.imgur.com/2exRxJt.png" alt="githubicon" />
                 </a>
               </div>
             </div>
