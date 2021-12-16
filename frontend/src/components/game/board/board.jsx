@@ -329,7 +329,7 @@ class Board extends React.Component {
       }
     } else {
       return (
-        <h1>Setting up your game...</h1>
+        this.renderLoading()
       )
     }
   }

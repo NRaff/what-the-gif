@@ -15,7 +15,7 @@ class Hand extends React.Component {
 
   renderOverlay(){
     const { currentRound, currentPlayer } = this.props
-    if (currentRound.judge === currentPlayer._id){
+    if ((currentRound.judge === currentPlayer._id) && this.props.users.length > 1){
       return (
         <div className="hand-overlay">
           <span id='judging-overlay'>It's your turn to judge!</span>

@@ -1,13 +1,16 @@
 import React from "react";
-import giphyAttr from "../imgs/Poweredby_640px-White_VertLogo.png"
+import giphyAttr from "../imgs/Poweredby_100px-Black_VertLogo.png"
 
 const GiphyAttr = props => {
   return (
-    <img 
-      src={giphyAttr} 
-      alt="Powered by Giphy" 
-      className="giphy-attr"
-    />
+    <div id='giphy'>
+      <img
+        src={giphyAttr}
+        alt="Powered by Giphy"
+        className="giphy-attr"
+      />
+    </div>
+    
   )
 }
 
