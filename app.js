@@ -11,7 +11,7 @@ const io = new Server(server)
 const registerGameManager = require("./sockets/game_manager")
 
 // * Setup
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 const users = require("./routes/api/users")
 const games = require("./routes/api/games")
 const bodyParser = require('body-parser')
