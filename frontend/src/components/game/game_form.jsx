@@ -17,7 +17,7 @@ class GameForm extends React.Component{
       maxPlayers: 8,
       gameCode: gameKey(6),
       scoreToWin: 8,
-      roundTimeLimit: 60
+      roundTimeLimit: 20
     }
     this.manager = undefined
     this.handleSubmit = this.handleSubmit.bind(this)
