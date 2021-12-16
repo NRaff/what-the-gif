@@ -3,6 +3,7 @@ import * as GiphyUtil from '../../util/giphy_util'
 export const RECEIVE_ALL_CARDS = "RECEIVE_ALL_CARDS"
 export const REMOVE_DELT_CARD = "REMOVE_DELT_CARDS"
 export const REMOVE_CARDS = "REMOVE_CARDS"
+export const REMOVE_ALL_CARDS = "REMOVE_ALL_CARDS"
 
 export const receiveCards = cards => ({
   type: RECEIVE_ALL_CARDS,
@@ -17,6 +18,10 @@ export const removeDeltCard = cardId => ({
 export const removeDeltCards = payload => ({
   type: REMOVE_CARDS,
   payload
+})
+
+export const removeAllCards = () => ({
+  type: REMOVE_CARDS
 })
 
 export const fetchCards = () => dispatch => GiphyUtil.getGameDeck(['happy'])

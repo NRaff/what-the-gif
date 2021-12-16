@@ -1,7 +1,8 @@
 import { 
   RECEIVE_ALL_CARDS, 
   REMOVE_DELT_CARD, 
-  REMOVE_CARDS 
+  REMOVE_CARDS,
+  REMOVE_ALL_CARDS 
 } from "../../actions/cards/game_deck_actions";
 const gameDeck = (state = {}, action) => {
   Object.freeze(state)
@@ -30,6 +31,8 @@ const gameDeck = (state = {}, action) => {
         delete nextState[card]
       })
       return nextState
+    case REMOVE_ALL_CARDS:
+      return {}
     default:
       return state;
   }

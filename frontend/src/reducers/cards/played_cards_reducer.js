@@ -1,7 +1,8 @@
 import { 
   RECEIVE_PLAYED_CARD, 
   REMOVE_DEALT_CARD, 
-  RECEIVE_PLAYED_CARDS 
+  RECEIVE_PLAYED_CARDS,
+  REMOVE_PLAYED_CARDS
 } from "../../actions/cards/played_cards_actions";
 
 const playedCardsReducer = (state = {}, action) => {
@@ -21,6 +22,8 @@ const playedCardsReducer = (state = {}, action) => {
         nextState[card.gifId] = card
       })
       return nextState
+    case REMOVE_PLAYED_CARDS:
+      return {}
     default:
       return state;
   }

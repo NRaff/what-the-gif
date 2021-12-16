@@ -1,5 +1,6 @@
 import {
   RECEIVE_ROUND,
+  CLEAR_ROUNDS
 } from "../actions/round_actions"
 
 const roundsReducer = (state={}, action) => {
@@ -9,6 +10,8 @@ const roundsReducer = (state={}, action) => {
     case RECEIVE_ROUND:
       nextState[action.round.id] = action.round
       return nextState;
+    case CLEAR_ROUNDS:
+      return {}
     default:
       return state
   }

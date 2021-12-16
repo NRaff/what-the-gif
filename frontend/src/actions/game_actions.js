@@ -3,6 +3,7 @@ import * as GameUtil from '../util/game_util'
 
 // Action Types
 export const RECEIVE_GAME = 'RECEIVE_GAME'
+export const REMOVE_ALL_GAMES = 'REMOVE_ALL_GAMES'
 export const RECEIVE_GAME_ERRORS = 'RECEIVE_GAME_ERRORS'
 
 // Actions
@@ -14,6 +15,10 @@ export const receiveGame = (game) => ({
 export const receiveErrors = errors => ({
   type: RECEIVE_GAME_ERRORS,
   errors
+})
+
+export const removeAllGames = () => ({
+  type: REMOVE_ALL_GAMES
 })
 
 // Thunk action for creating/joining a game

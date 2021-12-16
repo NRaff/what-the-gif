@@ -6,6 +6,7 @@ import { receivePlayedCategory } from './played_category_actions';
 export const RECEIVE_ALL_CATEGORIES = 'RECEIVE_ALL_CATEGORIES'
 export const REMOVE_CATEGORY = 'REMOVE_CATEGORY'
 export const PLAY_CATEGORY = 'PLAY_CATEGORY'
+export const REMOVE_ALL_CATEGORIES = 'REMOVE_ALL_CATEGORIES'
 // export const RECEIVE_CATEGORY_ERRORS = 'RECEIVE_CATEGORY_ERRORS'
 
 export const receiveAllCategories = (categories) => ({
@@ -16,6 +17,10 @@ export const receiveAllCategories = (categories) => ({
 export const removeCategory = (category) => ({
   type: REMOVE_CATEGORY,
   category
+})
+
+export const removeAllCategories = () => ({
+  type: REMOVE_ALL_CATEGORIES
 })
 
 export const fetchGifCategories = () => dispatch => GiphyUtil.getGifCategories()
