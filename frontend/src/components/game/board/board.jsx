@@ -24,7 +24,6 @@ class Board extends React.Component {
     const {currentUser, game} = this.props
     const gameManager = manager(game.gameCode)
     if (currentUser.id === game.gameOwner) {
-      // setup game
       if(!this.hasContent()) {
         getGameContent(gameManager)
           .then(() => {
@@ -73,7 +72,6 @@ class Board extends React.Component {
     } else {
       const { players, gameDeck, gameCode } = this.props
       this.manager = this.manager ? this.manager : manager(gameCode)
-      // debugger
       players.forEach((player, idx) => {
         const start = idx * 5
         const end = start + 5

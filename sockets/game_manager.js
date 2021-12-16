@@ -130,12 +130,6 @@ const joinGame = (payload, io, socket) => {
   }
 }
 
-const updateGame = (payload, io) => {
-  const {gameCode} = payload
-  // console.log(payload.type)
-  io.emit(`joined-game:${gameCode}`, payload)
-}
-
 const userParams = user => ({
   _id: user._id,
   displayName: user.displayName,
@@ -143,6 +137,11 @@ const userParams = user => ({
   favGIF: user.favGIF,
   email: user.email,
 })
+
+const updateGame = (payload, io) => {
+  const { gameCode } = payload
+  io.emit(`joined-game:${gameCode}`, payload)
+}
 
 // * Export socket listeners and events
 module.exports = (io, socket) => {
