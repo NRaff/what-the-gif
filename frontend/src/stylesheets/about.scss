@@ -18,7 +18,7 @@
 .about-body-1{
   padding: 0 10%;
   font-size: 18px;
-  font-weight: 100;
+  font-weight: 200;
   width: 75%;
   text-align: justify;
   overflow-wrap: break-word;
@@ -35,7 +35,9 @@
   overflow: hidden;
 }
 
-// .about-body-1 p{
+.about-body-1 p{
+  font-size: 18px;
+  font-weight: 200;
   // display: flex;
   // justify-content: center;
   // align-items: center;
@@ -44,7 +46,7 @@
   // text-align:center; 
   // vertical-align: middle;
   // display: table-cell;
-// }
+}
 .about-title {
   display: flex;
   justify-content: center;
