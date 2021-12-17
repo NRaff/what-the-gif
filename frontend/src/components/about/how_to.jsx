@@ -11,7 +11,7 @@ const HowToPlay = props => {
   return(
     <div className="how-to-container">
       <header>
-        <h1>HOW TO PLAY</h1>
+        <h1 id='pagetitle'>HOW TO PLAY</h1>
       </header>
       {auth ? <>
           <section className="how-to-div" id='fav-gif-how'>

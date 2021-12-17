@@ -1,0 +1,108 @@
+@media only screen and (max-width: 600px) {
+  .center h1 {
+    font-size: 50px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 15px 25px 15px 25px;
+  }
+
+  #left-nav {
+    flex-direction: column;
+    min-width: 150px;
+  }
+
+  .logged-in {
+    flex-direction: column;
+    // min-width: 150px;
+  }
+
+  .components {
+    margin-top: 180px;
+  }
+
+  .about-title {
+    display: block;
+    margin-left: 40px;
+  }
+
+  #pagetitle {
+    font-size: 50px;
+  }
+
+  #profile-module #pagetitle {
+    font-size: 50px;
+  }
+
+  table {
+    width: 80%;
+    max-width: 600px;
+  }
+
+  table img {
+    max-width: 200px;
+  }
+
+  .gif-wrapper {
+    gap: 5px;
+    width: 320px;
+    margin: 0 auto;
+  }
+
+  .gif-result img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .group-social {
+    flex-direction: column;
+  }
+
+  .components>h1 {
+    font-size: 40px;
+  }
+
+  .lobby-container h1 {
+    font-size: 25px;
+  }
+
+  .player-lineup-hand {
+    flex-direction: column;
+    height: 1000px;
+  }
+
+  .topwrap header {
+    margin-right: 10px;
+    margin-left: -30px;
+  }
+
+  #select-wrap {
+    flex-direction: column;
+  }
+
+  .categories {
+    flex-direction: column;
+  }
+
+  #cat-info {
+    margin-left: 5%;
+  }
+
+  #judging-overlay {
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+    margin-left: -600px;
+    margin-top: -800px;
+    font-size: 20px;
+  }
+
+  .how-to-container {
+    width: 100%;
+  }
+
+  .how-to-div {
+    width: 80%;
+  }
+}
