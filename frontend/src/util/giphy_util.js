@@ -1,6 +1,5 @@
 // import { GIPHY_KEY } from "../config";
-import GIPHY_KEY from "../config"
-// import { PROD_GIPHY_KEY } from "../config";
+import {GIPHY_KEY} from "../config"
 import axios from "axios";
 
 const giphy = {
