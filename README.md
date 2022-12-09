@@ -8,7 +8,7 @@ _What the Gif?!_ is a game inspired by _Apples to Apples_ and Cards Against Huma
 | Nick Raff          | [LinkedIn](https://www.linkedin.com/in/nickraff/)  | [Github](https://github.com/NRaff) |
 | Adrian Rothschild      | [LinkedIn](https://www.linkedin.com/in/adrian-rothschild/)  | [Github](https://github.com/darothmedia)     |
 | Alex Lolas     | [LinkedIn](https://www.linkedin.com/in/alex-lolas-88b19b228/)  | [Github](https://github.com/alexlolas)     |
-| Matt Pettenato     | [LinkedIn](https://www.linkedin.com/in/matthew-pettenato-936236123/)  | [Github](https://github.com/mattpettenato)     |
+| Matt Pettenato     | [LinkedIn](https://www.linkedin.com/in/matt-pettenato-936236123/)  | [Github](https://github.com/mattpettenato)     |
 
 __Explore the game for yourself, and invite friends to join, [here](https://what-the-gif.herokuapp.com/#/)!__
 ## Gameplay

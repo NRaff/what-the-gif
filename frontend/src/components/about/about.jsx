@@ -70,7 +70,7 @@ class About extends React.Component {
                 <img src="https://live.staticflickr.com/65535/51750297205_b021e10001_o.png" alt="prof-pic4" />
               </div>
               <div className="social-logo">
-                <a className="ln-pic" href="https://www.linkedin.com/in/matthew-pettenato-936236123/" target="_blank" rel="noreferrer">
+                <a className="ln-pic" href="https://www.linkedin.com/in/matt-pettenato-936236123/" target="_blank" rel="noreferrer">
                   <img src="https://live.staticflickr.com/65535/51750297305_aa540abf3e_o.png" alt="linkedin" />
                 </a>
                 <a className="git-pic" href="https://github.com/mattpettenato" target="_blank" rel="noreferrer">
